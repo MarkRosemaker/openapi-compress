@@ -3,7 +3,7 @@ module github.com/MarkRosemaker/openapi-compress
 go 1.27
 
 require (
-	github.com/MarkRosemaker/fsutil v0.0.0-20260811161722-f2d2b761db17
+	github.com/MarkRosemaker/fsutil v0.0.0-20260826210529-b58866d38f3e
 	github.com/MarkRosemaker/jsonutil v0.0.0-20260822121424-820b30d4cb47
 	github.com/MarkRosemaker/openapi v0.0.0-20260824220141-39020beab076
 	github.com/MarkRosemaker/openapi-compare v0.0.0-20260824220227-96aa2a51f115
