@@ -2710,7 +2710,7 @@
           "rounding_minutes": 0
         }
       },
-      "PostOrganizations9011051WorkspacesForbiddenJSONResponse": {
+      "PostOrganizations9011051WorkspacesForbidden": {
         "type": "string",
         "example": "User does not have access to this resource"
       }
@@ -2949,7 +2949,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/PostOrganizations9011051WorkspacesForbiddenJSONResponse"
+              "$ref": "#/components/schemas/PostOrganizations9011051WorkspacesForbidden"
             },
             "example": "User does not have access to this resource"
           }

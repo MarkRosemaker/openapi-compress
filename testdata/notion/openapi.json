@@ -52,7 +52,7 @@
   },
   "components": {
     "schemas": {
-      "GetV1PageByPageIDOkJSONResponse": {
+      "GetV1PageByPageIDOk": {
         "type": "object",
         "properties": {
           "object": {
@@ -74,19 +74,19 @@
             "example": "2025-02-02T19:54:00.000Z"
           },
           "created_by": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseCreatedBy"
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkCreatedBy"
           },
           "last_edited_by": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseLastEditedBy"
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkLastEditedBy"
           },
           "cover": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseCover"
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkCover"
           },
           "icon": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseIcon"
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkIcon"
           },
           "parent": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseParent"
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkParent"
           },
           "in_trash": {
             "type": "boolean"
@@ -98,7 +98,7 @@
             "type": "boolean"
           },
           "properties": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseProperties"
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkProperties"
           },
           "url": {
             "type": "string",
@@ -135,7 +135,7 @@
           "request_id"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponseCreatedBy": {
+      "GetV1PageByPageIDOkCreatedBy": {
         "type": "object",
         "properties": {
           "object": {
@@ -152,7 +152,7 @@
           "id"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponseLastEditedBy": {
+      "GetV1PageByPageIDOkLastEditedBy": {
         "type": "object",
         "properties": {
           "object": {
@@ -169,7 +169,7 @@
           "id"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponseCover": {
+      "GetV1PageByPageIDOkCover": {
         "type": "object",
         "properties": {
           "type": {
@@ -177,7 +177,7 @@
             "example": "external"
           },
           "external": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseCoverExternal"
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkCoverExternal"
           }
         },
         "required": [
@@ -185,7 +185,7 @@
           "external"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponseCoverExternal": {
+      "GetV1PageByPageIDOkCoverExternal": {
         "type": "object",
         "properties": {
           "url": {
@@ -198,7 +198,7 @@
           "url"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponseIcon": {
+      "GetV1PageByPageIDOkIcon": {
         "type": "object",
         "properties": {
           "type": {
@@ -215,7 +215,7 @@
           "emoji"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponseParent": {
+      "GetV1PageByPageIDOkParent": {
         "type": "object",
         "properties": {
           "type": {
@@ -233,18 +233,18 @@
           "page_id"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponseProperties": {
+      "GetV1PageByPageIDOkProperties": {
         "type": "object",
         "properties": {
           "title": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitle"
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkPropertiesTitle"
           }
         },
         "required": [
           "title"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitle": {
+      "GetV1PageByPageIDOkPropertiesTitle": {
         "type": "object",
         "properties": {
           "id": {
@@ -256,7 +256,7 @@
             "example": "title"
           },
           "title": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitle"
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkPropertiesTitleTitle"
           }
         },
         "required": [
@@ -265,13 +265,13 @@
           "title"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitle": {
+      "GetV1PageByPageIDOkPropertiesTitleTitle": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItem"
+          "$ref": "#/components/schemas/GetV1PageByPageIDOkPropertiesTitleTitleItem"
         }
       },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItem": {
+      "GetV1PageByPageIDOkPropertiesTitleTitleItem": {
         "type": "object",
         "properties": {
           "type": {
@@ -279,10 +279,10 @@
             "example": "text"
           },
           "text": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemText"
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkPropertiesTitleTitleItemText"
           },
           "annotations": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemAnnotations"
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkPropertiesTitleTitleItemAnnotations"
           },
           "plain_text": {
             "type": "string",
@@ -301,7 +301,7 @@
           "href"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemText": {
+      "GetV1PageByPageIDOkPropertiesTitleTitleItemText": {
         "type": "object",
         "properties": {
           "content": {
@@ -318,7 +318,7 @@
           "link"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemAnnotations": {
+      "GetV1PageByPageIDOkPropertiesTitleTitleItemAnnotations": {
         "type": "object",
         "properties": {
           "bold": {
@@ -350,7 +350,7 @@
           "color"
         ]
       },
-      "ListV1BlockChildrenOkJSONResponse": {
+      "ListV1BlockChildrenOk": {
         "type": "object",
         "properties": {
           "object": {
@@ -358,7 +358,7 @@
             "example": "list"
           },
           "results": {
-            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResults"
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkResults"
           },
           "next_cursor": {
             "type": "string",
@@ -391,13 +391,13 @@
           "request_id"
         ]
       },
-      "ListV1BlockChildrenOkJSONResponseResults": {
+      "ListV1BlockChildrenOkResults": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItem"
+          "$ref": "#/components/schemas/ListV1BlockChildrenOkResultsItem"
         }
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItem": {
+      "ListV1BlockChildrenOkResultsItem": {
         "type": "object",
         "properties": {
           "object": {
@@ -409,7 +409,7 @@
             "format": "uuid"
           },
           "parent": {
-            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemParent"
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkResultsItemParent"
           },
           "created_time": {
             "type": "string",
@@ -422,10 +422,10 @@
             "example": "2022-07-14T05:33:00.000Z"
           },
           "created_by": {
-            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemCreatedBy"
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkResultsItemCreatedBy"
           },
           "last_edited_by": {
-            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemLastEditedBy"
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkResultsItemLastEditedBy"
           },
           "has_children": {
             "type": "boolean"
@@ -438,7 +438,7 @@
             "example": "paragraph"
           },
           "paragraph": {
-            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemParagraph"
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkResultsItemParagraph"
           }
         },
         "required": [
@@ -455,7 +455,7 @@
           "paragraph"
         ]
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItemParent": {
+      "ListV1BlockChildrenOkResultsItemParent": {
         "type": "object",
         "properties": {
           "type": {
@@ -473,7 +473,7 @@
           "page_id"
         ]
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItemCreatedBy": {
+      "ListV1BlockChildrenOkResultsItemCreatedBy": {
         "type": "object",
         "properties": {
           "object": {
@@ -490,7 +490,7 @@
           "id"
         ]
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItemLastEditedBy": {
+      "ListV1BlockChildrenOkResultsItemLastEditedBy": {
         "type": "object",
         "properties": {
           "object": {
@@ -507,11 +507,11 @@
           "id"
         ]
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItemParagraph": {
+      "ListV1BlockChildrenOkResultsItemParagraph": {
         "type": "object",
         "properties": {
           "rich_text": {
-            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichText"
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkResultsItemParagraphRichText"
           },
           "icon": {
             "type": "object",
@@ -528,13 +528,13 @@
           "color"
         ]
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichText": {
+      "ListV1BlockChildrenOkResultsItemParagraphRichText": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichTextItem"
+          "$ref": "#/components/schemas/ListV1BlockChildrenOkResultsItemParagraphRichTextItem"
         }
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichTextItem": {
+      "ListV1BlockChildrenOkResultsItemParagraphRichTextItem": {
         "type": "object",
         "properties": {
           "type": {
@@ -542,10 +542,10 @@
             "example": "text"
           },
           "text": {
-            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichTextItemText"
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkResultsItemParagraphRichTextItemText"
           },
           "annotations": {
-            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichTextItemAnnotations"
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkResultsItemParagraphRichTextItemAnnotations"
           },
           "plain_text": {
             "type": "string",
@@ -558,7 +558,7 @@
         },
         "example": null
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichTextItemText": {
+      "ListV1BlockChildrenOkResultsItemParagraphRichTextItemText": {
         "type": "object",
         "properties": {
           "content": {
@@ -575,7 +575,7 @@
           "link"
         ]
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichTextItemAnnotations": {
+      "ListV1BlockChildrenOkResultsItemParagraphRichTextItemAnnotations": {
         "type": "object",
         "properties": {
           "bold": {
@@ -614,7 +614,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponse"
+              "$ref": "#/components/schemas/GetV1PageByPageIDOk"
             }
           }
         }
@@ -624,7 +624,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponse"
+              "$ref": "#/components/schemas/ListV1BlockChildrenOk"
             }
           }
         }

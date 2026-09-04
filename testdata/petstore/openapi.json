@@ -38,14 +38,14 @@
   },
   "components": {
     "schemas": {
-      "ListV1PetsOkJSONResponse": {
+      "ListV1PetsOk": {
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/ListV1PetsOkJSONResponseData"
+            "$ref": "#/components/schemas/ListV1PetsOkData"
           },
           "pagination": {
-            "$ref": "#/components/schemas/ListV1PetsOkJSONResponsePagination"
+            "$ref": "#/components/schemas/ListV1PetsOkPagination"
           }
         },
         "required": [
@@ -53,13 +53,13 @@
           "pagination"
         ]
       },
-      "ListV1PetsOkJSONResponseData": {
+      "ListV1PetsOkData": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/ListV1PetsOkJSONResponseDataItem"
+          "$ref": "#/components/schemas/ListV1PetsOkDataItem"
         }
       },
-      "ListV1PetsOkJSONResponseDataItem": {
+      "ListV1PetsOkDataItem": {
         "type": "object",
         "properties": {
           "id": {
@@ -112,7 +112,7 @@
             "example": "Domestic Shorthair"
           },
           "medicalInfo": {
-            "$ref": "#/components/schemas/ListV1PetsOkJSONResponseDataItemMedicalInfo"
+            "$ref": "#/components/schemas/ListV1PetsOkDataItemMedicalInfo"
           }
         },
         "required": [
@@ -129,7 +129,7 @@
           "updatedAt"
         ]
       },
-      "ListV1PetsOkJSONResponseDataItemMedicalInfo": {
+      "ListV1PetsOkDataItemMedicalInfo": {
         "type": "object",
         "properties": {
           "vaccinated": {
@@ -157,7 +157,7 @@
           "healthNotes"
         ]
       },
-      "ListV1PetsOkJSONResponsePagination": {
+      "ListV1PetsOkPagination": {
         "type": "object",
         "properties": {
           "page": {
@@ -184,7 +184,7 @@
           "totalPages"
         ]
       },
-      "GetV1PetByPetIDOkJSONResponse": {
+      "GetV1PetByPetIDOk": {
         "type": "object",
         "properties": {
           "id": {
@@ -237,7 +237,7 @@
             "example": "2026-01-13T10:40:45.67439Z"
           },
           "medicalInfo": {
-            "$ref": "#/components/schemas/GetV1PetByPetIDOkJSONResponseMedicalInfo"
+            "$ref": "#/components/schemas/GetV1PetByPetIDOkMedicalInfo"
           }
         },
         "required": [
@@ -256,7 +256,7 @@
           "medicalInfo"
         ]
       },
-      "GetV1PetByPetIDOkJSONResponseMedicalInfo": {
+      "GetV1PetByPetIDOkMedicalInfo": {
         "type": "object",
         "properties": {
           "vaccinated": {
@@ -291,7 +291,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ListV1PetsOkJSONResponse"
+              "$ref": "#/components/schemas/ListV1PetsOk"
             }
           }
         }
@@ -301,7 +301,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/GetV1PetByPetIDOkJSONResponse"
+              "$ref": "#/components/schemas/GetV1PetByPetIDOk"
             }
           }
         }
