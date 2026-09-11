@@ -31,9 +31,11 @@ func objectSchema(required []string, optional ...string) *openapi.Schema {
 	for _, name := range required {
 		s.Properties.Set(name, inlineRef(stringSchema()))
 	}
+
 	for _, name := range optional {
 		s.Properties.Set(name, inlineRef(stringSchema()))
 	}
+
 	return s
 }
 
@@ -84,6 +86,7 @@ func TestSchemasSimilarity_HalfOverlap(t *testing.T) {
 	// a has {x, y}, b has {y, z}: union={x,y,z} (3), y matches → score=1/3 ≈ 0.333.
 	a := objectSchema([]string{"x", "y"})
 	b := objectSchema([]string{"y", "z"})
+
 	got := schemasSimilarity(a, b)
 	want := 1.0 / 3.0
 	if abs(got-want) > 1e-9 {
@@ -95,6 +98,7 @@ func TestSchemasSimilarity_LowOverlap(t *testing.T) {
 	// a has {a,b,c,d,e}, b has {e,f,g,h,i}: union=9, one match → score=1/9.
 	a := objectSchema([]string{"a", "b", "c", "d", "e"})
 	b := objectSchema([]string{"e", "f", "g", "h", "i"})
+
 	got := schemasSimilarity(a, b)
 	want := 1.0 / 9.0
 	if abs(got-want) > 1e-9 {
@@ -121,6 +125,7 @@ func TestSchemasSimilarity_PartialCredit(t *testing.T) {
 			return refs
 		}(),
 	}
+
 	got := schemasSimilarity(a, b)
 	if abs(got-0.5) > 1e-9 {
 		t.Errorf("partial credit: want 0.5, got %v", got)
@@ -137,6 +142,7 @@ func TestSchemasSimilarity_IrreconcilableProperty(t *testing.T) {
 		refs.Set("same1", inlineRef(&openapi.Schema{Type: openapi.TypeBoolean}))
 		refs.Set("x", inlineRef(x))
 		refs.Set("same2", inlineRef(&openapi.Schema{Type: openapi.TypeString}))
+
 		return refs
 	}
 
@@ -204,6 +210,7 @@ func TestMergeSchemas_UnionOfProperties(t *testing.T) {
 			t.Errorf("property %q missing after merge", name)
 		}
 	}
+
 	if len(a.Properties) != 4 {
 		t.Errorf("want 4 properties after merge, got %d", len(a.Properties))
 	}
@@ -236,9 +243,11 @@ func TestMergeSchemas_IntegerPlusNumberBecomesNumber(t *testing.T) {
 	if !ok {
 		t.Fatal("property 'val' missing after merge")
 	}
+
 	if ref.Value == nil {
 		t.Fatal("expected inline schema for 'val', got nil value")
 	}
+
 	if ref.Value.Type != openapi.TypeNumber {
 		t.Errorf("'val' type after merge: want number, got %v", ref.Value.Type)
 	}
@@ -281,6 +290,7 @@ func TestDocument_ThresholdDependent(t *testing.T) {
 	if err := Document(d, Config{MinSimilarity: 0.3, SimilarityStep: 0.1}); err != nil {
 		t.Fatal(err)
 	}
+
 	if len(d.Components.Schemas) != 1 {
 		t.Errorf("threshold 0.3: want 1 schema after merge, got %d", len(d.Components.Schemas))
 	}
@@ -290,6 +300,7 @@ func TestDocument_ThresholdDependent(t *testing.T) {
 	if err := Document(d, Config{MinSimilarity: 0.5, SimilarityStep: 0.1}); err != nil {
 		t.Fatal(err)
 	}
+
 	if len(d.Components.Schemas) != 2 {
 		t.Errorf("threshold 0.5: want 2 schemas (no merge), got %d", len(d.Components.Schemas))
 	}
@@ -368,6 +379,7 @@ func TestSplitCamelCase(t *testing.T) {
 			t.Errorf("splitCamelCase(%q): got %v, want %v", tc.in, got, tc.want)
 			continue
 		}
+
 		for i := range got {
 			if got[i] != tc.want[i] {
 				t.Errorf("splitCamelCase(%q)[%d]: got %q, want %q (full: %v)", tc.in, i, got[i], tc.want[i], got)
@@ -380,6 +392,7 @@ func TestSplitCamelCase(t *testing.T) {
 
 func TestShortName_RemovesNoise(t *testing.T) {
 	schemas := make(openapi.Schemas)
+
 	got := shortName("GetV1PetByPetIDOkJSONResponseMedicalInfo", schemas)
 	want := "PetByPetIDMedicalInfo"
 	if got != want {
@@ -403,6 +416,7 @@ func TestShortName_StripsCIKNumber(t *testing.T) {
 func TestShortName_Unchanged(t *testing.T) {
 	// A name that only consists of meaningful words → no change.
 	schemas := make(openapi.Schemas)
+
 	got := shortName("MedicalInfo", schemas)
 	if got != "MedicalInfo" {
 		t.Errorf("want unchanged %q, got %q", "MedicalInfo", got)
@@ -440,6 +454,7 @@ func TestDocument_ShortensMergedCanonicals(t *testing.T) {
 	if _, ok := d.Components.Schemas["PetByPetIDMedicalInfo"]; !ok {
 		t.Errorf("expected shortened name 'PetByPetIDMedicalInfo', got schemas: %v", schemaKeys(d))
 	}
+
 	if _, ok := d.Components.Schemas["GetV1PetByPetIDOkJSONResponseBreed"]; !ok {
 		t.Error("non-merged schema should keep its original name")
 	}
@@ -450,6 +465,7 @@ func schemaKeys(d *openapi.Document) []string {
 	for k := range d.Components.Schemas {
 		keys = append(keys, k)
 	}
+
 	return keys
 }
 
@@ -471,5 +487,6 @@ func minimalDocument(schemas map[string]*openapi.Schema) *openapi.Document {
 	for name, s := range schemas {
 		d.Components.Schemas.Set(name, s)
 	}
+
 	return d
 }

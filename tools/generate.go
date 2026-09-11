@@ -55,8 +55,10 @@ func run(ctx context.Context) error {
 }
 
 func copyPreviousStep() error {
-	const flattenDir = "../openapi-flatten/testdata"
-	const enrichDir = "../openapi-enrich/testdata"
+	const (
+		flattenDir = "../openapi-flatten/testdata"
+		enrichDir  = "../openapi-enrich/testdata"
+	)
 
 	for srcDir, names := range map[string][2]string{
 		flattenDir: {"golden.json", "openapi.json"},
@@ -79,7 +81,6 @@ func copyPreviousStep() error {
 				return fmt.Errorf("copying file: %w", err)
 			}
 		}
-
 	}
 
 	return nil
