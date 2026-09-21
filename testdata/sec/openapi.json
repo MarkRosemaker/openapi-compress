@@ -8946,7 +8946,7 @@
           "val": {
             "type": "number",
             "format": "double",
-            "example": 2.65
+            "example": 0.2
           },
           "accn": {
             "type": "string",
@@ -9117,7 +9117,7 @@
           "val": {
             "type": "number",
             "format": "double",
-            "example": 0.00001
+            "example": 0.001
           },
           "accn": {
             "type": "string",
@@ -54400,9 +54400,8 @@
             "example": "2015-12-31"
           },
           "val": {
-            "type": "number",
-            "format": "double",
-            "example": -0.014
+            "type": "integer",
+            "example": 0
           },
           "accn": {
             "type": "string",
