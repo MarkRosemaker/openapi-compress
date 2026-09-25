@@ -23,11 +23,11 @@ github.com/MarkRosemaker/openapi-compare/schema
 # github.com/MarkRosemaker/openapi-edit v0.0.0-20260925152014-db661384fb81
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-edit
-# github.com/MarkRosemaker/openapi-enrich v0.0.0-20260829104236-06301c8f1e1e
+# github.com/MarkRosemaker/openapi-enrich v0.0.0-20260925174954-7b5f2ad15284
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-enrich
 github.com/MarkRosemaker/openapi-enrich/cassette
-# github.com/MarkRosemaker/openapi-merge v0.0.0-20260829103842-1c2b2540f717
+# github.com/MarkRosemaker/openapi-merge v0.0.0-20260925172950-33a5b540ba37
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-merge
 # github.com/MarkRosemaker/ordmap v0.0.0-20260920172223-2eab4db34adb
@@ -45,9 +45,6 @@ github.com/ettle/strcase
 # github.com/go-api-libs/types v0.0.0-20260821232109-0cf45378823e
 ## explicit; go 1.27
 github.com/go-api-libs/types
-# github.com/google/uuid v1.6.0
-## explicit
-github.com/google/uuid
 # github.com/spf13/afero v1.15.0
 ## explicit; go 1.23.0
 github.com/spf13/afero

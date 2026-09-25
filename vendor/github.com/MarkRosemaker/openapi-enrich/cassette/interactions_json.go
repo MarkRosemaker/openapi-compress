@@ -3,7 +3,13 @@ package cassette
 import (
 	"encoding/json/jsontext"
 	"encoding/json/v2"
+	"errors"
+	"fmt"
 	"io"
+	"io/fs"
+	"os"
+	"path/filepath"
+	"sync"
 
 	"github.com/MarkRosemaker/jsonutil"
 )
@@ -35,4 +41,27 @@ func (ias Interactions) WriteFile(path string) error {
 
 func (ias Interactions) MarshalWrite(w io.Writer) error {
 	return json.MarshalWrite(w, ias, jsonOpts)
+}
+
+var mu sync.Mutex
+
+// AddInteraction adds an interaction to the given path for debug purposes.
+func AddInteraction(path string, ia Interaction) error {
+	mu.Lock()
+	defer mu.Unlock()
+
+	ias, err := InteractionsReadFile(path)
+	if errors.Is(err, fs.ErrNotExist) {
+		if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+			return fmt.Errorf("making dir for interactions file: %w", err)
+		}
+	} else if err != nil {
+		return fmt.Errorf("reading interactions file: %w", err)
+	}
+
+	if err := append(ias, ia).WriteFile(path); err != nil {
+		return fmt.Errorf("writing interactions file: %w", err)
+	}
+
+	return nil
 }

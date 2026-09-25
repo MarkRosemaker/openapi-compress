@@ -5,9 +5,8 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/ettle/strcase"
-
 	"github.com/MarkRosemaker/openapi"
+	"github.com/ettle/strcase"
 )
 
 // inferOperationID returns an operation ID for the given HTTP method and path.
@@ -40,6 +39,7 @@ func inferOperationID(method string, path openapi.Path) string {
 			break
 		}
 	}
+
 	lastIsParam := lastParamIdx == len(segments)-1
 
 	var verb string
@@ -67,6 +67,7 @@ func inferOperationID(method string, path openapi.Path) string {
 	}
 
 	var parts []string
+
 	parts = append(parts, verb)
 
 	for i, seg := range segments {
@@ -76,6 +77,7 @@ func inferOperationID(method string, path openapi.Path) string {
 				paramName := seg[1 : len(seg)-1]
 				parts = append(parts, "By"+strcase.ToGoPascal(paramName))
 			}
+
 			continue
 		}
 
@@ -117,21 +119,26 @@ func expandEmbeddedSegment(seg string) []string {
 			}
 			break
 		}
+
 		if start > 0 {
 			if p := segmentTokenToPascal(seg[:start]); p != "" {
 				parts = append(parts, p)
 			}
 		}
+
 		end := strings.Index(seg[start:], "}")
 		if end < 0 {
 			break
 		}
+
 		end += start
 		if paramName := seg[start+1 : end]; paramName != "" {
 			parts = append(parts, strcase.ToGoPascal(paramName))
 		}
+
 		seg = seg[end+1:]
 	}
+
 	return parts
 }
 
@@ -141,5 +148,6 @@ func segmentTokenToPascal(s string) string {
 	if s == "" {
 		return ""
 	}
+
 	return strcase.ToGoPascal(s)
 }
