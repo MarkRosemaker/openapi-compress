@@ -8,14 +8,14 @@ require (
 	github.com/MarkRosemaker/openapi v0.0.0-20260925151750-5adf9ba8ff6b
 	github.com/MarkRosemaker/openapi-compare v0.0.0-20260925152010-e9740f154291
 	github.com/MarkRosemaker/openapi-edit v0.0.0-20260925152014-db661384fb81
-	github.com/MarkRosemaker/openapi-enrich v0.0.0-20260926120500-f089c142a305
+	github.com/MarkRosemaker/openapi-enrich v0.0.0-20260926122654-893a24357954
 )
 
 require (
 	cloud.google.com/go v0.123.0 // indirect
 	github.com/MarkRosemaker/errpath v0.0.0-20260920172209-24fb928433b3 // indirect
 	github.com/MarkRosemaker/json2yaml v0.0.0-20260920172209-522898d8cbe9 // indirect
-	github.com/MarkRosemaker/openapi-merge v0.0.0-20260926114428-18413a5ce2e7 // indirect
+	github.com/MarkRosemaker/openapi-merge v0.0.0-20260926122543-01c0913dce15 // indirect
 	github.com/MarkRosemaker/ordmap v0.0.0-20260920172223-2eab4db34adb // indirect
 	github.com/MarkRosemaker/yaml v0.0.0-20260920172227-27bebaf02fb5 // indirect
 	github.com/MarkRosemaker/yaml2json v0.0.0-20260920172209-d64c22f91b8c // indirect
