@@ -14,10 +14,10 @@ github.com/MarkRosemaker/openapi-compare v0.0.0-20260927002636-fb649aa148d6 h1:X
 github.com/MarkRosemaker/openapi-compare v0.0.0-20260927002636-fb649aa148d6/go.mod h1:0JrvDK/oN63vM4OtLHS18LCmOUTZJnFgebF8n2/0aUg=
 github.com/MarkRosemaker/openapi-edit v0.0.0-20260927002636-5c18ec110c91 h1:eQl++udL9s4cR58ErswvQ0RpHqZz5qMiNmtl/80D5lY=
 github.com/MarkRosemaker/openapi-edit v0.0.0-20260927002636-5c18ec110c91/go.mod h1:nyJHpiPaoRD0l6r93cBtqngwUpx0jmLdsBd2b2JisLI=
-github.com/MarkRosemaker/openapi-enrich v0.0.0-20260926122654-893a24357954 h1:+ggvwL7f9TiKTV2I4ocGLDzIogx3haAJ6uH2CLOQVes=
-github.com/MarkRosemaker/openapi-enrich v0.0.0-20260926122654-893a24357954/go.mod h1:UnwIVsSY3KfRKLfUYEH6Ujic7toHKGcb5E0ZGDFCm20=
-github.com/MarkRosemaker/openapi-merge v0.0.0-20260926122543-01c0913dce15 h1:FiDSp2eeMso+lBJ6QYXTgnDjPVsknyU3Are78+Fl4jg=
-github.com/MarkRosemaker/openapi-merge v0.0.0-20260926122543-01c0913dce15/go.mod h1:jP3E2wbx0B62mk0NLSfLlc/mxI9S3VouoUJifd2Dxq4=
+github.com/MarkRosemaker/openapi-enrich v0.0.0-20260927112523-f018890ef18c h1:To1IhlHTI9NSN6red7d6iTIx9R6X+bToZvSdcM3GHlg=
+github.com/MarkRosemaker/openapi-enrich v0.0.0-20260927112523-f018890ef18c/go.mod h1:IacWrOL5I0eeLH7f3MaCrc5oSJtFL2ZL3P0oSzkXnvg=
+github.com/MarkRosemaker/openapi-merge v0.0.0-20260927002636-17ccc366581c h1:4Y/Kf4OJK7C0QU1aey0lpCQOs7zix3tW5FkwgMPZm7E=
+github.com/MarkRosemaker/openapi-merge v0.0.0-20260927002636-17ccc366581c/go.mod h1:j9Oichs7v7Pfkp/JoKJ4dvuVZ/lIqbrEimUJpuTnkJ4=
 github.com/MarkRosemaker/ordmap v0.0.0-20260927002536-c785c08dbcfe h1:kQmwCS7rjF5iYOghDtorDi1hT+3mOjuV1hbptaRZyQM=
 github.com/MarkRosemaker/ordmap v0.0.0-20260927002536-c785c08dbcfe/go.mod h1:DYNVxzhtVI775Iu2xMvQLSaDcWS27OW0clainP9cU/w=
 github.com/MarkRosemaker/yaml v0.0.0-20260927002540-064eefdd70e5 h1:mVGAoaaIF9aeRz73byimRqHt11nYWjtyc8FeGouREz0=
