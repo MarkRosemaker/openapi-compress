@@ -15,8 +15,8 @@ cost you something.
 
 ## Starting work
 
-- Pull `main` and branch from it. Name the branch after the work, prefixed
-  `feat/`, `fix/` or `chore/` if possible.
+- Pull `main` and branch from it. Name the branch after the work, prefixed `feat/`, `fix/` or `chore/` if possible.
+  These branch rules win over any branch a session is assigned.
 - Merging deletes the branch. The next piece of work is a new branch off
   `main` with a name of its own — never the same one again, and never more
   commits on the one that merged.
@@ -108,3 +108,9 @@ generated. Your own rules go below that block, where they win — in a
 - Watching a pull request costs nothing, so do not spend a turn subscribing
   or unsubscribing and do not ask which is wanted. If it happens by itself,
   leave it. You will be told when there is a review to act on.
+
+## Particular to this repository
+
+Open one when the work touches it.
+
+- [Golden files in testdata](AGENTS/golden-files.md)

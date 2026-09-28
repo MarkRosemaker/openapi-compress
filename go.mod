@@ -8,7 +8,7 @@ require (
 	github.com/MarkRosemaker/openapi v0.0.0-20260928232605-32d203cb374a
 	github.com/MarkRosemaker/openapi-compare v0.0.0-20260928232628-2faeaabda1c9
 	github.com/MarkRosemaker/openapi-edit v0.0.0-20260928232629-9340c8d4bf90
-	github.com/MarkRosemaker/openapi-enrich v0.0.0-20260927112523-f018890ef18c
+	github.com/MarkRosemaker/openapi-enrich v0.0.0-20260928232814-0e0c42155d23
 )
 
 require (
