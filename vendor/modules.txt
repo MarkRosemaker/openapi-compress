@@ -14,20 +14,20 @@ github.com/MarkRosemaker/json2yaml
 # github.com/MarkRosemaker/jsonutil v0.0.0-20260927120110-8df582685e7f
 ## explicit; go 1.27
 github.com/MarkRosemaker/jsonutil
-# github.com/MarkRosemaker/openapi v0.0.0-20260928224039-ea37214c4e28
+# github.com/MarkRosemaker/openapi v0.0.0-20260928232605-32d203cb374a
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi
-# github.com/MarkRosemaker/openapi-compare v0.0.0-20260928231602-ef3afb95fa1e
+# github.com/MarkRosemaker/openapi-compare v0.0.0-20260928232628-2faeaabda1c9
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-compare/schema
-# github.com/MarkRosemaker/openapi-edit v0.0.0-20260928224244-9536cef76049
+# github.com/MarkRosemaker/openapi-edit v0.0.0-20260928232629-9340c8d4bf90
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-edit
 # github.com/MarkRosemaker/openapi-enrich v0.0.0-20260927112523-f018890ef18c
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-enrich
 github.com/MarkRosemaker/openapi-enrich/cassette
-# github.com/MarkRosemaker/openapi-merge v0.0.0-20260927002636-17ccc366581c
+# github.com/MarkRosemaker/openapi-merge v0.0.0-20260928232629-709b8513fec4
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-merge
 # github.com/MarkRosemaker/ordmap v0.0.0-20260927120128-34682a8f96cc
