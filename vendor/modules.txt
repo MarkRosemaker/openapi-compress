@@ -17,7 +17,7 @@ github.com/MarkRosemaker/jsonutil
 # github.com/MarkRosemaker/openapi v0.0.0-20260928224039-ea37214c4e28
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi
-# github.com/MarkRosemaker/openapi-compare v0.0.0-20260927220137-685e9dc74a7f
+# github.com/MarkRosemaker/openapi-compare v0.0.0-20260928231602-ef3afb95fa1e
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-compare/schema
 # github.com/MarkRosemaker/openapi-edit v0.0.0-20260928224244-9536cef76049

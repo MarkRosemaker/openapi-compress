@@ -6,7 +6,7 @@ require (
 	github.com/MarkRosemaker/fsutil v0.0.0-20260927120106-02a44d4e2c0e
 	github.com/MarkRosemaker/jsonutil v0.0.0-20260927120110-8df582685e7f
 	github.com/MarkRosemaker/openapi v0.0.0-20260928224039-ea37214c4e28
-	github.com/MarkRosemaker/openapi-compare v0.0.0-20260927220137-685e9dc74a7f
+	github.com/MarkRosemaker/openapi-compare v0.0.0-20260928231602-ef3afb95fa1e
 	github.com/MarkRosemaker/openapi-edit v0.0.0-20260928224244-9536cef76049
 	github.com/MarkRosemaker/openapi-enrich v0.0.0-20260927112523-f018890ef18c
 )
