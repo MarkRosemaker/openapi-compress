@@ -74,6 +74,10 @@ func copyPreviousStep() error {
 		}
 
 		for _, e := range entries {
+			if e.Name() == ".DS_Store" {
+				continue
+			}
+
 			if err := osutil.Copy(
 				filepath.Join(srcDir, e.Name(), names[0]),
 				filepath.Join("testdata", e.Name(), names[1]),
