@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"errors"
 	"fmt"
@@ -78,14 +79,39 @@ func copyPreviousStep() error {
 				continue
 			}
 
-			if err := osutil.Copy(
-				filepath.Join(srcDir, e.Name(), names[0]),
-				filepath.Join("testdata", e.Name(), names[1]),
-			); err != nil {
+			src := filepath.Join(srcDir, e.Name(), names[0])
+			dst := filepath.Join("testdata", e.Name(), names[1])
+
+			// a recording without interactions has nothing for the test to check against
+			if empty, err := isEmptyArray(src); err != nil {
+				return err
+			} else if empty {
+				if err := os.Remove(dst); err != nil && !errors.Is(err, fs.ErrNotExist) {
+					return err
+				}
+
+				continue
+			}
+
+			if err := osutil.Copy(src, dst); err != nil {
 				return fmt.Errorf("copying file: %w", err)
 			}
 		}
 	}
 
 	return nil
+}
+
+// isEmptyArray reports whether the JSON file at path holds an empty array.
+func isEmptyArray(path string) (bool, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		if errors.Is(err, fs.ErrNotExist) {
+			return false, nil
+		}
+
+		return false, err
+	}
+
+	return string(bytes.TrimSpace(data)) == "[]", nil
 }
