@@ -327,7 +327,7 @@
     "/agents/{agent_id}/chatStream": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/agent_id2"
+          "$ref": "#/components/parameters/agent_id"
         },
         {
           "$ref": "#/components/parameters/verbose"
@@ -420,7 +420,7 @@
     "/external_agent_stub/{agent_id}/vaults": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/agent_id3"
+          "$ref": "#/components/parameters/agent_id10"
         },
         {
           "$ref": "#/components/parameters/notionVersion"
@@ -721,7 +721,7 @@
         "operationId": "delete-external-agent-stub-vault",
         "parameters": [
           {
-            "$ref": "#/components/parameters/agent_id4"
+            "$ref": "#/components/parameters/agent_id10"
           },
           {
             "$ref": "#/components/parameters/vault_id"
@@ -777,7 +777,7 @@
         "operationId": "update-external-agent-stub-vault",
         "parameters": [
           {
-            "$ref": "#/components/parameters/agent_id5"
+            "$ref": "#/components/parameters/agent_id10"
           },
           {
             "$ref": "#/components/parameters/vault_id"
@@ -1592,7 +1592,7 @@
     "/external_agent_stub/{agent_id}/sessions/{session_id}/events": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/agent_id6"
+          "$ref": "#/components/parameters/agent_id10"
         },
         {
           "$ref": "#/components/parameters/session_id"
@@ -2025,7 +2025,7 @@
     "/agents/{agent_id}/threads": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/agent_id7"
+          "$ref": "#/components/parameters/agent_id"
         },
         {
           "$ref": "#/components/parameters/id2"
@@ -2311,7 +2311,7 @@
     "/agents/{agent_id}/threads/query": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/agent_id8"
+          "$ref": "#/components/parameters/agent_id"
         },
         {
           "$ref": "#/components/parameters/notionVersion"
@@ -3014,7 +3014,7 @@
     "/external_agent_stub/{agent_id}/sessions/{session_id}/messages": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/agent_id9"
+          "$ref": "#/components/parameters/agent_id10"
         },
         {
           "$ref": "#/components/parameters/session_id"
@@ -3109,7 +3109,7 @@
     "/external_agent_stub/{agent_id}/sessions": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/agent_id11"
+          "$ref": "#/components/parameters/agent_id10"
         },
         {
           "$ref": "#/components/parameters/notionVersion"
@@ -3287,7 +3287,7 @@
     "/agents/{agent_id}": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/agent_id12"
+          "$ref": "#/components/parameters/agent_id"
         },
         {
           "$ref": "#/components/parameters/notionVersion"
@@ -3500,8 +3500,8 @@
             "const": "user"
           },
           "user_id": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "The ID of the user to add."
+            "description": "The ID of the user to add.",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           }
         },
         "required": [
@@ -3723,8 +3723,8 @@
             "type": "object",
             "properties": {
               "id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The ID of the user."
+                "description": "The ID of the user.",
+                "$ref": "#/components/schemas/idResponse"
               },
               "object": {
                 "description": "The user object type name.",
@@ -4872,8 +4872,8 @@
           },
           "thread_id": {
             "description": "Deprecated. Use POST /v1/threads/:thread_id/messages to continue an existing thread. If not provided, a new thread will be created.",
-            "$ref": "#/components/schemas/idRequest",
-            "deprecated": true
+            "deprecated": true,
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           }
         },
         "additionalProperties": false
@@ -4955,39 +4955,15 @@
       },
       "ChatWithAgentOk": {
         "description": "Newline-delimited JSON (NDJSON) stream. Each line is a JSON-encoded chat stream chunk.",
-        "type": "string"
-      },
-      "ChatWithAgentStream": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "description": "The message to send to the agent.",
-            "type": "string",
-            "maxLength": 10000
-          },
-          "attachments": {
-            "$ref": "#/components/schemas/ChatWithAgentAttachments"
-          },
-          "metadata": {
-            "description": "Optional caller-provided string metadata persisted with the user message. user_id is used for lifecycle correlation and does not change authorization.",
-            "type": "object",
-            "additionalProperties": {
-              "type": "string",
-              "maxLength": 2000
-            },
-            "maxProperties": 20
-          },
-          "prompt_context": {
-            "description": "Additional caller-provided context for the agent to consider while responding.",
-            "type": "string",
-            "maxLength": 10000
-          },
-          "thread_id": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "The ID of an existing thread to continue the conversation. If not provided, a new thread will be created."
-          }
-        },
-        "additionalProperties": false
+        "type": "string",
+        "example": "😀",
+        "examples": [
+          "pizza",
+          "meeting",
+          "home",
+          "star",
+          "robot"
+        ]
       },
       "CheckboxFilter": {
         "description": "Property filter for checkbox properties.",
@@ -5309,9 +5285,9 @@
           "name": {
             "description": "The name of the group.",
             "type": "string",
-            "pattern": "\\S",
             "minLength": 1,
             "maxLength": 200,
+            "pattern": "\\S",
             "examples": [
               "Engineering"
             ]
@@ -5595,8 +5571,8 @@
             ]
           },
           "icon": {
-            "$ref": "#/components/schemas/pageIconRequest",
-            "description": "The icon for the teamspace."
+            "description": "The icon for the teamspace.",
+            "$ref": "#/components/schemas/pageIconRequest"
           },
           "settings": {
             "$ref": "#/components/schemas/CreateTeamspaceSettings"
@@ -5616,8 +5592,8 @@
             "const": "teamspace"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the teamspace."
+            "description": "The ID of the teamspace.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "name": {
             "description": "The name of the teamspace.",
@@ -5784,8 +5760,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "The ID of the custom emoji."
+            "description": "The ID of the custom emoji.",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           },
           "name": {
             "description": "The name of the custom emoji.",
@@ -6203,8 +6179,8 @@
         "type": "object",
         "properties": {
           "transfer_to_owner_id": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "The ID of an active workspace owner who will receive access that would otherwise be orphaned."
+            "description": "The ID of an active workspace owner who will receive access that would otherwise be orphaned.",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           }
         }
       },
@@ -6595,8 +6571,8 @@
             "const": "export"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the exported page or block."
+            "description": "The ID of the exported page or block.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "pdf_export_url": {
             "description": "URL to download the page export (PDF).",
@@ -7344,18 +7320,6 @@
           "ai-credit-spend.ai_credit_usage",
           "ai-meeting-notes.dictation_start_count"
         ]
-      },
-      "FormulaDatabasePropertyConfigFormula": {
-        "type": "object",
-        "properties": {
-          "expression": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "expression"
-        ],
-        "additionalProperties": false
       },
       "FormulaFilter": {
         "description": "Filter applied to a formula property.",
@@ -8360,8 +8324,8 @@
             "const": "user"
           },
           "user_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the user."
+            "description": "The ID of the user.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -8375,12 +8339,12 @@
         "type": "object",
         "properties": {
           "name": {
-            "$ref": "#/components/schemas/noticonName",
-            "description": "The name of the Notion icon (e.g. pizza, meeting, home). See the Notion icon picker for valid names."
+            "description": "The name of the Notion icon (e.g. pizza, meeting, home). See the Notion icon picker for valid names.",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           },
           "color": {
-            "$ref": "#/components/schemas/RunToolOneOfIconOneOfIconColor",
-            "description": "The color variant of the icon. Defaults to gray if not specified. Valid values: gray, lightgray, brown, yellow, orange, green, blue, purple, pink, red."
+            "description": "The color variant of the icon. Defaults to gray if not specified. Valid values: gray, lightgray, brown, yellow, orange, green, blue, purple, pink, red.",
+            "$ref": "#/components/schemas/RunToolOneOfIconOneOfIconColor"
           }
         },
         "required": [
@@ -8391,8 +8355,8 @@
         "type": "object",
         "properties": {
           "blockId": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "The ID of the page or block to export."
+            "description": "The ID of the page or block to export.",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           }
         },
         "required": [
@@ -8585,8 +8549,8 @@
             "type": "object",
             "properties": {
               "id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The ID of the published artifact."
+                "description": "The ID of the published artifact.",
+                "$ref": "#/components/schemas/idResponse"
               },
               "number": {
                 "description": "The version number.",
@@ -9335,8 +9299,8 @@
                 "const": "user"
               },
               "id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The ID of the user that created this agent."
+                "description": "The ID of the user that created this agent.",
+                "$ref": "#/components/schemas/idResponse"
               }
             },
             "required": [
@@ -9757,7 +9721,12 @@
             "$ref": "#/components/schemas/emptyObject"
           },
           "results": {
-            "$ref": "#/components/schemas/ListGroupMembersOkResults"
+            "description": "The direct user memberships in the group.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/groupMembershipObjectResponse"
+            }
           },
           "has_more": {
             "description": "Whether there are more results available.",
@@ -9777,14 +9746,6 @@
         ],
         "additionalProperties": false
       },
-      "ListGroupMembersOkResults": {
-        "description": "The direct user memberships in the group.",
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/groupMembershipObjectResponse"
-        }
-      },
       "ListTeamMembershipOk": {
         "type": "object",
         "properties": {
@@ -9802,8 +9763,8 @@
             "$ref": "#/components/schemas/ListTeamMembershipOkResults"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the teamspace whose membership is listed."
+            "description": "The ID of the teamspace whose membership is listed.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "next_cursor": {
             "$ref": "#/components/schemas/ChatStreamChunkOneOfContentPartsItemOneOfResultsItemAgentStepID"
@@ -9840,8 +9801,8 @@
             "const": "teamspace_member"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the user or group on the teamspace."
+            "description": "The ID of the user or group on the teamspace.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "type": {
             "$ref": "#/components/schemas/ListTeamMembershipResultsItemType"
@@ -9883,8 +9844,8 @@
             "$ref": "#/components/schemas/ListTeamPermissionsOkResults"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the teamspace whose permissions are listed."
+            "description": "The ID of the teamspace whose permissions are listed.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "next_cursor": {
             "$ref": "#/components/schemas/ChatStreamChunkOneOfContentPartsItemOneOfResultsItemAgentStepID"
@@ -9921,8 +9882,8 @@
             "const": "teamspace_permission"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of corresponding permission type. E.g. space, team (for members and owners), group, or person id."
+            "description": "The ID of corresponding permission type. E.g. space, team (for members and owners), group, or person id.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "type": {
             "$ref": "#/components/schemas/ListTeamPermissionsResultsItemType"
@@ -10014,8 +9975,8 @@
             "const": "teamspace"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the teamspace."
+            "description": "The ID of the teamspace.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "teamspace_name": {
             "description": "The name of the teamspace.",
@@ -10126,8 +10087,8 @@
             "const": "thread"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the parent thread."
+            "description": "The ID of the parent thread.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -10257,8 +10218,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the actor that created this thread: a bot for an integration-created thread, a user for one created in the Notion app."
+            "description": "The ID of the actor that created this thread: a bot for an integration-created thread, a user for one created in the Notion app.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "type": {
             "$ref": "#/components/schemas/ListThreadsResultsItemCreatedByType"
@@ -10468,8 +10429,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "The ID of the page in the mention."
+            "description": "The ID of the page in the mention.",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           }
         },
         "required": [
@@ -10481,8 +10442,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the page in the mention."
+            "description": "The ID of the page in the mention.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -10503,8 +10464,8 @@
                 "const": "user"
               },
               "user": {
-                "$ref": "#/components/schemas/partialUserObjectRequest",
-                "description": "Details of the user mention."
+                "description": "Details of the user mention.",
+                "$ref": "#/components/schemas/partialUserObjectRequest"
               }
             },
             "required": [
@@ -10521,8 +10482,8 @@
                 "const": "date"
               },
               "date": {
-                "$ref": "#/components/schemas/date",
-                "description": "Details of the date mention."
+                "description": "Details of the date mention.",
+                "$ref": "#/components/schemas/date"
               }
             },
             "required": [
@@ -10573,8 +10534,8 @@
                 "const": "template_mention"
               },
               "template_mention": {
-                "$ref": "#/components/schemas/templateMention",
-                "description": "Details of the template mention."
+                "description": "Details of the template mention.",
+                "$ref": "#/components/schemas/templateMention"
               }
             },
             "required": [
@@ -10613,8 +10574,8 @@
                 "const": "user"
               },
               "user": {
-                "$ref": "#/components/schemas/userValueResponse",
-                "description": "Details of the user mention."
+                "description": "Details of the user mention.",
+                "$ref": "#/components/schemas/userValueResponse"
               }
             },
             "required": [
@@ -10633,8 +10594,8 @@
                 "const": "date"
               },
               "date": {
-                "$ref": "#/components/schemas/date",
-                "description": "Details of the date mention."
+                "description": "Details of the date mention.",
+                "$ref": "#/components/schemas/date"
               }
             },
             "required": [
@@ -10653,8 +10614,8 @@
                 "const": "link_preview"
               },
               "link_preview": {
-                "$ref": "#/components/schemas/ExternalInternalOrExternalFileWithNameExternal",
-                "description": "Details of the link preview mention."
+                "description": "Details of the link preview mention.",
+                "$ref": "#/components/schemas/ExternalInternalOrExternalFileWithNameExternal"
               }
             },
             "required": [
@@ -10673,8 +10634,8 @@
                 "const": "link_mention"
               },
               "link_mention": {
-                "$ref": "#/components/schemas/linkMentionResponse",
-                "description": "Details of the link mention."
+                "description": "Details of the link mention.",
+                "$ref": "#/components/schemas/linkMentionResponse"
               }
             },
             "required": [
@@ -10731,8 +10692,8 @@
                 "const": "template_mention"
               },
               "template_mention": {
-                "$ref": "#/components/schemas/templateMention",
-                "description": "Details of the template mention."
+                "description": "Details of the template mention.",
+                "$ref": "#/components/schemas/templateMention"
               }
             },
             "required": [
@@ -10751,8 +10712,8 @@
                 "const": "custom_emoji"
               },
               "custom_emoji": {
-                "$ref": "#/components/schemas/customEmojiResponse",
-                "description": "Details of the custom emoji mention."
+                "description": "Details of the custom emoji mention.",
+                "$ref": "#/components/schemas/customEmojiResponse"
               }
             },
             "required": [
@@ -10767,20 +10728,17 @@
         "type": "object",
         "properties": {
           "options": {
-            "$ref": "#/components/schemas/MultiSelectDatabasePropertyConfigMultiSelect2"
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/selectProperty"
+            }
           }
         },
         "required": [
           "options"
         ],
         "additionalProperties": false
-      },
-      "MultiSelectDatabasePropertyConfigMultiSelect2": {
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/selectProperty"
-        }
       },
       "MultiSelectFilter": {
         "description": "Property filter for multi-select properties.",
@@ -10873,13 +10831,6 @@
         ],
         "additionalProperties": false
       },
-      "MultiSelectPropertyItemObjectMultiSelect": {
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/partialSelectPropertyValue"
-        }
-      },
       "NotionVersion": {
         "type": "string",
         "enum": [
@@ -10890,8 +10841,8 @@
         "type": "object",
         "properties": {
           "format": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "The number format for the property."
+            "description": "The number format for the property.",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           }
         },
         "required": [
@@ -11691,8 +11642,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "Filter threads by ID (exact match)."
+            "description": "Filter threads by ID (exact match).",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           },
           "status": {
             "$ref": "#/components/schemas/QueryThreadsFilterStatus"
@@ -11787,13 +11738,6 @@
           "created_time",
           "last_used_time"
         ]
-      },
-      "RelationArrayBasedPropertyValueResponseRelation": {
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/MentionRichTextItemMentionOneOfPage2"
-        }
       },
       "RelationFilter": {
         "description": "Property filter for relation properties.",
@@ -11930,8 +11874,8 @@
         "type": "object",
         "properties": {
           "function": {
-            "$ref": "#/components/schemas/rollupFunction",
-            "description": "The function to use for the rollup, e.g. count, count_values, percent_not_empty, max."
+            "description": "The function to use for the rollup, e.g. count, count_values, percent_not_empty, max.",
+            "$ref": "#/components/schemas/rollupFunction"
           },
           "rollup_property_name": {
             "type": "string"
@@ -13840,16 +13784,16 @@
               "eval_session_id": {
                 "description": "The eval session ID for tracking operations across multiple tool calls.",
                 "type": "string",
-                "pattern": "^[A-Za-z0-9_-]{1,64}$",
                 "minLength": 1,
-                "maxLength": 64
+                "maxLength": 64,
+                "pattern": "^[A-Za-z0-9_-]{1,64}$"
               },
               "eval_run_id": {
                 "description": "The eval run ID for organizing a group of eval sessions.",
                 "type": "string",
-                "pattern": "^[A-Za-z0-9_-]{1,64}$",
                 "minLength": 1,
-                "maxLength": 64
+                "maxLength": 64,
+                "pattern": "^[A-Za-z0-9_-]{1,64}$"
               }
             },
             "required": [
@@ -15242,9 +15186,9 @@
           "query": {
             "description": "Words or a short phrase to find in personal memories.",
             "type": "string",
-            "pattern": "\\S",
             "minLength": 1,
-            "maxLength": 500
+            "maxLength": 500,
+            "pattern": "\\S"
           },
           "limit": {
             "description": "Maximum number of memories to return. Defaults to 10 and cannot exceed 50.",
@@ -15450,8 +15394,8 @@
                 "type": "string"
               },
               "filter": {
-                "$ref": "#/components/schemas/workflowViewFilter",
-                "description": "Structured filter using exact property names from the data source schema. Supports an outer Boolean group plus one nested group level."
+                "description": "Structured filter using exact property names from the data source schema. Supports an outer Boolean group plus one nested group level.",
+                "$ref": "#/components/schemas/workflowViewFilter"
               },
               "sort": {
                 "$ref": "#/components/schemas/RunToolEvalAllOfOneOfQueryDataSourcesDataOneOfSort"
@@ -16441,20 +16385,20 @@
             "type": "array",
             "minItems": 1,
             "maxItems": 100,
+            "uniqueItems": true,
             "items": {
               "type": "string"
-            },
-            "uniqueItems": true
+            }
           },
           "file_urls": {
             "description": "Required for remove_files. The exact file URLs shown in the Folder's latest fetch output.",
             "type": "array",
             "minItems": 1,
             "maxItems": 100,
+            "uniqueItems": true,
             "items": {
               "type": "string"
-            },
-            "uniqueItems": true
+            }
           },
           "title": {
             "description": "Required for add_subfolder. The new Folder's title.",
@@ -17431,8 +17375,8 @@
             "description": "Maximum number of resources to return per time slot (default: 20, max: 40)",
             "type": "integer",
             "maximum": 40,
-            "default": 20,
-            "exclusiveMinimum": 0
+            "exclusiveMinimum": 0,
+            "default": 20
           },
           "ignoreWorkingLocation": {
             "description": "If true, do not narrow rooms to the user's working-location building for this day. Set this when the user is explicitly asking about rooms in a different office (e.g. for a visiting team).",
@@ -17697,8 +17641,8 @@
         "type": "object",
         "properties": {
           "file_upload_id": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "The FileUpload ID returned by the create-attachment tool."
+            "description": "The FileUpload ID returned by the create-attachment tool.",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           }
         },
         "required": [
@@ -18912,8 +18856,8 @@
             "const": "team"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The unique identifier of the team."
+            "description": "The unique identifier of the team.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "name": {
             "description": "The display name of the team.",
@@ -19520,10 +19464,10 @@
                 "description": "Option URLs that activate this conditional group.",
                 "type": "array",
                 "minItems": 1,
+                "uniqueItems": true,
                 "items": {
                   "type": "string"
-                },
-                "uniqueItems": true
+                }
               }
             },
             "required": [
@@ -19547,10 +19491,10 @@
                 "description": "Option URLs matched by this conditional group.",
                 "type": "array",
                 "minItems": 1,
+                "uniqueItems": true,
                 "items": {
                   "type": "string"
-                },
-                "uniqueItems": true
+                }
               }
             },
             "required": [
@@ -20385,8 +20329,8 @@
             "type": "object",
             "properties": {
               "page_id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The ID of the page that owns the Folder."
+                "description": "The ID of the page that owns the Folder.",
+                "$ref": "#/components/schemas/idResponse"
               }
             },
             "required": [
@@ -20398,8 +20342,8 @@
             "type": "object",
             "properties": {
               "folder_id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The ID of the Folder that contains the created Folder."
+                "description": "The ID of the Folder that contains the created Folder.",
+                "$ref": "#/components/schemas/idResponse"
               }
             },
             "required": [
@@ -22112,8 +22056,8 @@
             "const": "agent"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The unique identifier of the agent."
+            "description": "The unique identifier of the agent.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "name": {
             "description": "The display name of the agent.",
@@ -23890,7 +23834,12 @@
         "type": "object",
         "properties": {
           "options": {
-            "$ref": "#/components/schemas/MultiSelectDatabasePropertyConfigMultiSelect2"
+            "description": "The options for the status property.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/selectProperty"
+            }
           },
           "groups": {
             "$ref": "#/components/schemas/StatusDatabasePropertyConfigResponseStatusGroups"
@@ -23922,8 +23871,8 @@
             "type": "string"
           },
           "color": {
-            "$ref": "#/components/schemas/PartialSelectPropertyValueColor",
-            "description": "The color of the status group."
+            "description": "The color of the status group.",
+            "$ref": "#/components/schemas/PartialSelectPropertyValueColor"
           },
           "option_ids": {
             "description": "The IDs of the status options in this group.",
@@ -24419,9 +24368,9 @@
               "query": {
                 "description": "Words or a short phrase to find in personal memories.",
                 "type": "string",
-                "pattern": "\\S",
                 "minLength": 1,
-                "maxLength": 500
+                "maxLength": 500,
+                "pattern": "\\S"
               },
               "limit": {
                 "description": "Maximum number of memories to return. Defaults to 10 and cannot exceed 50.",
@@ -24566,8 +24515,8 @@
             "type": "object",
             "properties": {
               "file_upload_id": {
-                "$ref": "#/components/schemas/ChatWithAgentOk",
-                "description": "The FileUpload ID returned by the create-attachment tool."
+                "description": "The FileUpload ID returned by the create-attachment tool.",
+                "$ref": "#/components/schemas/ChatWithAgentOk"
               }
             },
             "required": [
@@ -24736,8 +24685,8 @@
             "type": "object",
             "properties": {
               "id": {
-                "$ref": "#/components/schemas/ChatWithAgentOk",
-                "description": "Identifier for a Notion skill page."
+                "description": "Identifier for a Notion skill page.",
+                "$ref": "#/components/schemas/ChatWithAgentOk"
               }
             },
             "required": [
@@ -24868,20 +24817,20 @@
                 "type": "array",
                 "minItems": 1,
                 "maxItems": 100,
+                "uniqueItems": true,
                 "items": {
                   "type": "string"
-                },
-                "uniqueItems": true
+                }
               },
               "file_urls": {
                 "description": "Required for remove_files. The exact file URLs shown in the Folder's latest fetch output.",
                 "type": "array",
                 "minItems": 1,
                 "maxItems": 100,
+                "uniqueItems": true,
                 "items": {
                   "type": "string"
-                },
-                "uniqueItems": true
+                }
               },
               "title": {
                 "description": "Required for add_subfolder. The new Folder's title.",
@@ -25797,8 +25746,8 @@
                 "description": "Maximum number of resources to return per time slot (default: 20, max: 40)",
                 "type": "integer",
                 "maximum": 40,
-                "default": 20,
-                "exclusiveMinimum": 0
+                "exclusiveMinimum": 0,
+                "default": 20
               },
               "ignoreWorkingLocation": {
                 "description": "If true, do not narrow rooms to the user's working-location building for this day. Set this when the user is explicitly asking about rooms in a different office (e.g. for a visiting team).",
@@ -26048,12 +25997,12 @@
         "type": "object",
         "properties": {
           "from_user_id": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "The ID of the source user to transfer content from."
+            "description": "The ID of the source user to transfer content from.",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           },
           "to_user_id": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "The ID of the destination user to transfer content to."
+            "description": "The ID of the destination user to transfer content to.",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           },
           "content_types": {
             "$ref": "#/components/schemas/TransferUserContentContentTypes"
@@ -26605,8 +26554,8 @@
             "type": "object",
             "properties": {
               "entity_id": {
-                "$ref": "#/components/schemas/ChatWithAgentOk",
-                "description": "The ID of the entity (person or group)."
+                "description": "The ID of the entity (person or group).",
+                "$ref": "#/components/schemas/ChatWithAgentOk"
               },
               "entity_type": {
                 "$ref": "#/components/schemas/ListTeamMembershipResultsItemType"
@@ -26631,8 +26580,8 @@
             "type": "object",
             "properties": {
               "entity_id": {
-                "$ref": "#/components/schemas/ChatWithAgentOk",
-                "description": "The ID of the entity (person or group)."
+                "description": "The ID of the entity (person or group).",
+                "$ref": "#/components/schemas/ChatWithAgentOk"
               },
               "entity_type": {
                 "$ref": "#/components/schemas/ListTeamMembershipResultsItemType"
@@ -26657,8 +26606,8 @@
             "type": "object",
             "properties": {
               "entity_id": {
-                "$ref": "#/components/schemas/ChatWithAgentOk",
-                "description": "The ID of the entity (person or group)."
+                "description": "The ID of the entity (person or group).",
+                "$ref": "#/components/schemas/ChatWithAgentOk"
               },
               "entity_type": {
                 "$ref": "#/components/schemas/ListTeamMembershipResultsItemType"
@@ -26700,8 +26649,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "The ID of the space, teamspace, group, or person."
+            "description": "The ID of the space, teamspace, group, or person.",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           },
           "type": {
             "$ref": "#/components/schemas/ListTeamPermissionsResultsItemType"
@@ -26889,8 +26838,8 @@
             "const": "agent_id"
           },
           "agent_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the parent agent."
+            "description": "The ID of the parent agent.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -26923,8 +26872,8 @@
             "type": "boolean"
           },
           "color": {
-            "$ref": "#/components/schemas/apiColor",
-            "description": "The color of the text."
+            "description": "The color of the text.",
+            "$ref": "#/components/schemas/apiColor"
           }
         }
       },
@@ -27069,8 +27018,8 @@
             "const": "block_id"
           },
           "block_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the parent block."
+            "description": "The ID of the parent block.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -28145,8 +28094,8 @@
             "const": "custom_emoji"
           },
           "custom_emoji": {
-            "$ref": "#/components/schemas/customEmojiResponse",
-            "description": "The custom emoji details for the icon."
+            "description": "The custom emoji details for the icon.",
+            "$ref": "#/components/schemas/customEmojiResponse"
           }
         },
         "required": [
@@ -28159,8 +28108,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the custom emoji."
+            "description": "The ID of the custom emoji.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "name": {
             "description": "The name of the custom emoji.",
@@ -28187,8 +28136,8 @@
             "const": "data_source"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the data source."
+            "description": "The ID of the data source.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "title": {
             "description": "The title of the data source.",
@@ -28207,12 +28156,12 @@
             }
           },
           "parent": {
-            "$ref": "#/components/schemas/parentOfDataSourceResponse",
-            "description": "The parent of the data source."
+            "description": "The parent of the data source.",
+            "$ref": "#/components/schemas/parentOfDataSourceResponse"
           },
           "database_parent": {
-            "$ref": "#/components/schemas/parentOfDatabaseResponse",
-            "description": "The parent of the data source's containing database. This is typically a page, block, or workspace, but can be another database in the case of wikis."
+            "description": "The parent of the data source's containing database. This is typically a page, block, or workspace, but can be another database in the case of wikis.",
+            "$ref": "#/components/schemas/parentOfDatabaseResponse"
           },
           "is_inline": {
             "description": "Whether the data source is inline.",
@@ -28236,12 +28185,12 @@
             "format": "date-time"
           },
           "created_by": {
-            "$ref": "#/components/schemas/partialUserObjectResponse",
-            "description": "The user who created the data source."
+            "description": "The user who created the data source.",
+            "$ref": "#/components/schemas/partialUserObjectResponse"
           },
           "last_edited_by": {
-            "$ref": "#/components/schemas/partialUserObjectResponse",
-            "description": "The user who last edited the data source."
+            "description": "The user who last edited the data source.",
+            "$ref": "#/components/schemas/partialUserObjectResponse"
           },
           "properties": {
             "description": "The properties schema of the data source.",
@@ -28295,12 +28244,12 @@
             "const": "data_source_id"
           },
           "data_source_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the parent data source."
+            "description": "The ID of the parent data source.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "database_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the data source's parent database."
+            "description": "The ID of the data source's parent database.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -28319,8 +28268,8 @@
             "const": "database_id"
           },
           "database_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the parent database."
+            "description": "The ID of the parent database.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -28765,8 +28714,8 @@
             "const": "emoji"
           },
           "emoji": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "An emoji character."
+            "description": "An emoji character.",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           }
         },
         "required": [
@@ -28786,7 +28735,7 @@
             "const": "equation"
           },
           "equation": {
-            "$ref": "#/components/schemas/FormulaDatabasePropertyConfigFormula"
+            "$ref": "#/components/schemas/EquationRichTextItemEquation"
           },
           "parent": {
             "$ref": "#/components/schemas/parentForBlockBasedObjectResponse"
@@ -29386,8 +29335,8 @@
             "const": "file"
           },
           "file": {
-            "$ref": "#/components/schemas/RunToolOneOfCoverOneOfFile",
-            "description": "The file URL."
+            "description": "The file URL.",
+            "$ref": "#/components/schemas/RunToolOneOfCoverOneOfFile"
           }
         },
         "required": [
@@ -29547,7 +29496,7 @@
             "const": "formula"
           },
           "formula": {
-            "$ref": "#/components/schemas/FormulaDatabasePropertyConfigFormula"
+            "$ref": "#/components/schemas/EquationRichTextItemEquation"
           }
         },
         "required": [
@@ -29647,8 +29596,8 @@
             "const": "group_membership"
           },
           "group_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the group."
+            "description": "The ID of the group.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "member": {
             "$ref": "#/components/schemas/GroupMembershipObjectResponseMember"
@@ -29669,8 +29618,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the group."
+            "description": "The ID of the group.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "object": {
             "description": "The group object type name.",
@@ -30595,7 +30544,11 @@
             "const": "multi_select"
           },
           "multi_select": {
-            "$ref": "#/components/schemas/MultiSelectPropertyItemObjectMultiSelect"
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/partialSelectPropertyValue"
+            }
           },
           "object": {
             "type": "string",
@@ -30622,7 +30575,11 @@
             "const": "multi_select"
           },
           "multi_select": {
-            "$ref": "#/components/schemas/MultiSelectPropertyItemObjectMultiSelect"
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/partialSelectPropertyValue"
+            }
           }
         },
         "required": [
@@ -30630,16 +30587,6 @@
           "multi_select"
         ],
         "additionalProperties": false
-      },
-      "noticonName": {
-        "type": "string",
-        "examples": [
-          "pizza",
-          "meeting",
-          "home",
-          "star",
-          "robot"
-        ]
       },
       "numberDatabasePropertyConfigResponse": {
         "title": "Number",
@@ -30849,8 +30796,8 @@
             "const": "page_id"
           },
           "page_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the parent page."
+            "description": "The ID of the parent page.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -30868,8 +30815,8 @@
             "const": "page"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the page."
+            "description": "The ID of the page.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "created_time": {
             "description": "Date and time when this page was created.",
@@ -30901,8 +30848,8 @@
             "$ref": "#/components/schemas/BotInfoOwnerOneOfUserOneOfAvatarURL"
           },
           "parent": {
-            "$ref": "#/components/schemas/parentForBlockBasedObjectResponse",
-            "description": "Information about the page's parent."
+            "description": "Information about the page's parent.",
+            "$ref": "#/components/schemas/parentForBlockBasedObjectResponse"
           },
           "properties": {
             "description": "Property values of this page.",
@@ -30918,12 +30865,12 @@
             "$ref": "#/components/schemas/DataSourceObjectCover"
           },
           "created_by": {
-            "$ref": "#/components/schemas/partialUserObjectResponse",
-            "description": "User who created the page."
+            "description": "User who created the page.",
+            "$ref": "#/components/schemas/partialUserObjectResponse"
           },
           "last_edited_by": {
-            "$ref": "#/components/schemas/partialUserObjectResponse",
-            "description": "User who last edited the page."
+            "description": "User who last edited the page.",
+            "$ref": "#/components/schemas/partialUserObjectResponse"
           }
         },
         "required": [
@@ -31094,8 +31041,8 @@
             "const": "data_source"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the data source."
+            "description": "The ID of the data source.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "properties": {
             "description": "The properties schema of the data source.",
@@ -31121,8 +31068,8 @@
             "const": "page"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the page."
+            "description": "The ID of the page.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -31176,8 +31123,8 @@
         "type": "object",
         "properties": {
           "function": {
-            "$ref": "#/components/schemas/rollupFunction",
-            "description": "The function used for the rollup, e.g. count, count_values, percent_not_empty, max."
+            "description": "The function used for the rollup, e.g. count, count_values, percent_not_empty, max.",
+            "$ref": "#/components/schemas/rollupFunction"
           }
         },
         "required": [
@@ -31209,8 +31156,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/ChatWithAgentOk",
-            "description": "The ID of the user."
+            "description": "The ID of the user.",
+            "$ref": "#/components/schemas/ChatWithAgentOk"
           },
           "object": {
             "description": "The user object type name.",
@@ -31373,8 +31320,8 @@
             "const": "group"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the group."
+            "description": "The ID of the group.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "name": {
             "description": "The name of the group.",
@@ -31758,7 +31705,11 @@
             "const": "relation"
           },
           "relation": {
-            "$ref": "#/components/schemas/RelationArrayBasedPropertyValueResponseRelation"
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/MentionRichTextItemMentionOneOfPage2"
+            }
           }
         },
         "required": [
@@ -31893,8 +31844,8 @@
         "type": "object",
         "properties": {
           "annotations": {
-            "$ref": "#/components/schemas/annotation",
-            "description": "All rich text objects contain an annotations object that sets the styling for the rich text."
+            "description": "All rich text objects contain an annotations object that sets the styling for the rich text.",
+            "$ref": "#/components/schemas/annotation"
           }
         }
       },
@@ -31929,8 +31880,8 @@
             "$ref": "#/components/schemas/BotInfoOwnerOneOfUserOneOfAvatarURL"
           },
           "annotations": {
-            "$ref": "#/components/schemas/annotation",
-            "description": "All rich text objects contain an annotations object that sets the styling for the rich text."
+            "description": "All rich text objects contain an annotations object that sets the styling for the rich text.",
+            "$ref": "#/components/schemas/annotation"
           }
         },
         "required": [
@@ -32454,8 +32405,8 @@
             "type": "object",
             "properties": {
               "file_upload_id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The Public API FileUpload ID for the uploaded file."
+                "description": "The Public API FileUpload ID for the uploaded file.",
+                "$ref": "#/components/schemas/idResponse"
               },
               "filename": {
                 "description": "The normalized filename stored in Notion.",
@@ -32499,8 +32450,8 @@
             "type": "object",
             "properties": {
               "file_upload_id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The FileUpload ID reserved for this upload."
+                "description": "The FileUpload ID reserved for this upload.",
+                "$ref": "#/components/schemas/idResponse"
               },
               "filename": {
                 "description": "The normalized filename stored in Notion.",
@@ -32549,8 +32500,8 @@
             "type": "object",
             "properties": {
               "file_upload_id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The Public API FileUpload ID that was downloaded."
+                "description": "The Public API FileUpload ID that was downloaded.",
+                "$ref": "#/components/schemas/idResponse"
               },
               "filename": {
                 "description": "The normalized filename stored in Notion.",
@@ -32599,8 +32550,8 @@
             "type": "object",
             "properties": {
               "id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The canonical ID of the created Folder."
+                "description": "The canonical ID of the created Folder.",
+                "$ref": "#/components/schemas/idResponse"
               },
               "parent": {
                 "$ref": "#/components/schemas/RunToolResponseOneOf23Parent"
@@ -32694,8 +32645,8 @@
                 "type": "string"
               },
               "request_status": {
-                "$ref": "#/components/schemas/requestStatusResponse",
-                "description": "Set when the result set is incomplete due to a server-side query limit."
+                "description": "Set when the result set is incomplete due to a server-side query limit.",
+                "$ref": "#/components/schemas/requestStatusResponse"
               }
             },
             "required": [
@@ -32735,8 +32686,8 @@
                 "type": "string"
               },
               "request_status": {
-                "$ref": "#/components/schemas/requestStatusResponse",
-                "description": "Set when the result set is incomplete due to a server-side query limit."
+                "description": "Set when the result set is incomplete due to a server-side query limit.",
+                "$ref": "#/components/schemas/requestStatusResponse"
               }
             },
             "required": [
@@ -32780,8 +32731,8 @@
                 "type": "string"
               },
               "request_status": {
-                "$ref": "#/components/schemas/requestStatusResponse",
-                "description": "Set when the result set is incomplete due to a server-side query limit."
+                "description": "Set when the result set is incomplete due to a server-side query limit.",
+                "$ref": "#/components/schemas/requestStatusResponse"
               }
             },
             "required": [
@@ -33742,8 +33693,8 @@
             "type": "object",
             "properties": {
               "page_id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The page the notification level was applied to, as a dashed UUID."
+                "description": "The page the notification level was applied to, as a dashed UUID.",
+                "$ref": "#/components/schemas/idResponse"
               },
               "level": {
                 "$ref": "#/components/schemas/RunToolOneOfSetPageNotificationLevel"
@@ -34218,8 +34169,8 @@
       },
       "stringRequest": {
         "type": "string",
-        "maxLength": 100,
-        "minLength": 1
+        "minLength": 1,
+        "maxLength": 100
       },
       "syncedBlockBlockObjectResponse": {
         "title": "Synced Block",
@@ -34613,8 +34564,8 @@
       },
       "textRequest": {
         "type": "string",
-        "maxLength": 2000,
-        "minLength": 1
+        "minLength": 1,
+        "maxLength": 2000
       },
       "textRichTextItemRequest": {
         "title": "Text",
@@ -35158,8 +35109,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the user."
+            "description": "The ID of the user.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "object": {
             "description": "The user object type name.",
@@ -42113,86 +42064,6 @@
           "$ref": "#/components/schemas/AgentID2"
         }
       },
-      "agent_id11": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentID2"
-        }
-      },
-      "agent_id12": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentID"
-        }
-      },
-      "agent_id2": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentID"
-        }
-      },
-      "agent_id3": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentID2"
-        }
-      },
-      "agent_id4": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentID2"
-        }
-      },
-      "agent_id5": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentID2"
-        }
-      },
-      "agent_id6": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentID2"
-        }
-      },
-      "agent_id7": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentID"
-        }
-      },
-      "agent_id8": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentID"
-        }
-      },
-      "agent_id9": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentID2"
-        }
-      },
       "agent_ids": {
         "name": "agent_ids",
         "in": "query",
@@ -42261,8 +42132,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "The ID of the group."
+          "description": "The ID of the group.",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "id": {
@@ -42270,16 +42141,16 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "The ID of the page or block to export."
+          "description": "The ID of the page or block to export.",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "id2": {
         "name": "id",
         "in": "query",
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "Filter threads by ID (exact match)."
+          "description": "Filter threads by ID (exact match).",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "include_types": {
@@ -42327,8 +42198,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "The ID of the page to remove guests from."
+          "description": "The ID of the page to remove guests from.",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "page_id2": {
@@ -42399,8 +42270,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "The provider-owned session ID returned when the session was created."
+          "description": "The provider-owned session ID returned when the session was created.",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "sort_by": {
@@ -42452,8 +42323,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "The ID of the teamspace to retrieve."
+          "description": "The ID of the teamspace to retrieve.",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "team_id2": {
@@ -42461,8 +42332,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "The ID of the teamspace to update."
+          "description": "The ID of the teamspace to update.",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "team_id3": {
@@ -42470,8 +42341,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "The ID of the teamspace to retrieve membership for."
+          "description": "The ID of the teamspace to retrieve membership for.",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "team_id4": {
@@ -42479,8 +42350,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "The ID of the teamspace to update membership for."
+          "description": "The ID of the teamspace to update membership for.",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "team_id5": {
@@ -42488,8 +42359,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "The ID of the teamspace to retrieve permissions for"
+          "description": "The ID of the teamspace to retrieve permissions for",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "team_id6": {
@@ -42497,8 +42368,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "The ID of the teamspace to update permissions for."
+          "description": "The ID of the teamspace to update permissions for.",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "thread_id": {
@@ -42506,8 +42377,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "The ID of the thread."
+          "description": "The ID of the thread.",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "title": {
@@ -42530,8 +42401,8 @@
         "name": "user_id",
         "in": "query",
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "If provided, returns the teamspaces that the given user can access."
+          "description": "If provided, returns the teamspaces that the given user can access.",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "user_id2": {
@@ -42539,8 +42410,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/ChatWithAgentOk",
-          "description": "The ID of the user."
+          "description": "The ID of the user.",
+          "$ref": "#/components/schemas/ChatWithAgentOk"
         }
       },
       "vault_id": {
@@ -42586,7 +42457,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ChatWithAgentStream"
+              "$ref": "#/components/schemas/ChatWithAgent"
             }
           }
         }

@@ -52,6 +52,9 @@ func Document(d *openapi.Document, cfg Config) error {
 		threshold = math.Max(cfg.MinSimilarity, threshold-cfg.SimilarityStep)
 	}
 
+	// merging schemas can make parameters that referred to different ones identical
+	deduplicateParameters(d)
+
 	if !cfg.SkipNameShortening {
 		if err := shortenMergedSchemaNames(d, mergedCanonicals); err != nil {
 			return err
@@ -127,6 +130,8 @@ func deduplicateSchemasAtThreshold(d *openapi.Document, threshold float64) (map[
 				// Not exactly equal: widen schemaA to also cover schemaB.
 				mergeSchemas(schemaA, schemaB)
 			}
+
+			fillExamples(schemaA, schemaB)
 
 			replacements[nameB] = nameA
 		}

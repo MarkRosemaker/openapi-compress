@@ -3216,7 +3216,7 @@
         "operationId": "delete-agent",
         "parameters": [
           {
-            "$ref": "#/components/parameters/agent_id2"
+            "$ref": "#/components/parameters/agent_id"
           }
         ],
         "responses": {
@@ -3271,7 +3271,7 @@
     "/agents/{agent_id}/insights": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/agent_id3"
+          "$ref": "#/components/parameters/agent_id"
         },
         {
           "$ref": "#/components/parameters/start_time"
@@ -3341,7 +3341,7 @@
     "/agents/{agent_id}/status": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/agent_id4"
+          "$ref": "#/components/parameters/agent_id"
         },
         {
           "$ref": "#/components/parameters/notionVersion"
@@ -3407,7 +3407,7 @@
     "/agents/{agent_id}/credit_limit": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/agent_id5"
+          "$ref": "#/components/parameters/agent_id"
         },
         {
           "$ref": "#/components/parameters/notionVersion"
@@ -6278,8 +6278,8 @@
             "type": "object",
             "properties": {
               "id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The ID of the published artifact."
+                "description": "The ID of the published artifact.",
+                "$ref": "#/components/schemas/idResponse"
               },
               "number": {
                 "description": "The version number.",
@@ -6317,8 +6317,8 @@
             "type": "object",
             "properties": {
               "id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The ID of the user."
+                "description": "The ID of the user.",
+                "$ref": "#/components/schemas/idResponse"
               },
               "type": {
                 "description": "Always `person`",
@@ -6336,8 +6336,8 @@
             "type": "object",
             "properties": {
               "id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The ID of the bot."
+                "description": "The ID of the bot.",
+                "$ref": "#/components/schemas/idResponse"
               },
               "type": {
                 "description": "Always `bot`",
@@ -6935,14 +6935,6 @@
           }
         ]
       },
-      "BoardViewConfigProperties2": {
-        "description": "Properties to display on each card.",
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/viewPropertyConfigResponse"
-        }
-      },
       "BoardViewConfigSubGroupBy": {
         "description": "Secondary group-by configuration for sub-grouping within columns. Pass null to remove sub-grouping.",
         "oneOf": [
@@ -7042,8 +7034,8 @@
             "type": "object",
             "properties": {
               "id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The ID of the user."
+                "description": "The ID of the user.",
+                "$ref": "#/components/schemas/idResponse"
               },
               "object": {
                 "description": "The user object type name.",
@@ -7660,29 +7652,21 @@
           "language"
         ]
       },
-      "ColumnListRequestChildren": {
-        "type": "array",
-        "minItems": 2,
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/columnBlockWithChildrenRequest"
-        }
-      },
       "CommentCreatedWebhookPayloadAllOfData": {
         "description": "Additional event-specific data.",
         "type": "object",
         "properties": {
           "parent": {
-            "$ref": "#/components/schemas/webhookExternalBlock",
-            "description": "The parent of the comment (the page or block the comment is attached to)."
+            "description": "The parent of the comment (the page or block the comment is attached to).",
+            "$ref": "#/components/schemas/webhookExternalBlock"
           },
           "page_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the page containing the comment."
+            "description": "The ID of the page containing the comment.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "discussion_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the discussion containing the comment."
+            "description": "The ID of the discussion containing the comment.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -7838,8 +7822,8 @@
                 "type": "object",
                 "properties": {
                   "discussion_id": {
-                    "$ref": "#/components/schemas/emoji",
-                    "description": "The ID of the discussion to comment on."
+                    "description": "The ID of the discussion to comment on.",
+                    "$ref": "#/components/schemas/emoji"
                   },
                   "rich_text": {
                     "description": "An array of rich text objects that represent the content of the comment.",
@@ -7859,8 +7843,8 @@
                 "type": "object",
                 "properties": {
                   "discussion_id": {
-                    "$ref": "#/components/schemas/emoji",
-                    "description": "The ID of the discussion to comment on."
+                    "description": "The ID of the discussion to comment on.",
+                    "$ref": "#/components/schemas/emoji"
                   },
                   "markdown": {
                     "description": "The content of the comment as a Markdown string. Comment Markdown supports inline formatting only (bold, italic, strikethrough, code, links), inline equations ($expression$), and mentions. Block-level Markdown such as fenced code blocks, headings, lists, tables, and blockquotes does not render as structured blocks in comments.",
@@ -7982,8 +7966,8 @@
             "type": "object",
             "properties": {
               "page_id": {
-                "$ref": "#/components/schemas/emoji",
-                "description": "The ID of the parent page (with or without dashes), for example, 195de9221179449fab8075a27c979105"
+                "description": "The ID of the parent page (with or without dashes), for example, 195de9221179449fab8075a27c979105",
+                "$ref": "#/components/schemas/emoji"
               },
               "type": {
                 "description": "Always `page_id`",
@@ -7999,8 +7983,8 @@
             "type": "object",
             "properties": {
               "block_id": {
-                "$ref": "#/components/schemas/emoji",
-                "description": "The ID of the parent block (with or without dashes), for example, 195de9221179449fab8075a27c979105"
+                "description": "The ID of the parent block (with or without dashes), for example, 195de9221179449fab8075a27c979105",
+                "$ref": "#/components/schemas/emoji"
               },
               "type": {
                 "description": "Always `block_id`",
@@ -8018,8 +8002,8 @@
         "type": "object",
         "properties": {
           "parent": {
-            "$ref": "#/components/schemas/parentOfDataSourceRequest",
-            "description": "An object specifying the parent of the new data source to be created."
+            "description": "An object specifying the parent of the new data source to be created.",
+            "$ref": "#/components/schemas/parentOfDataSourceRequest"
           },
           "properties": {
             "description": "Property schema of data source.",
@@ -8299,19 +8283,19 @@
             "type": "boolean"
           },
           "initial_data_source": {
-            "$ref": "#/components/schemas/initialDataSourceRequest",
-            "description": "Initial data source configuration for the database."
+            "description": "Initial data source configuration for the database.",
+            "$ref": "#/components/schemas/initialDataSourceRequest"
           },
           "database_type": {
             "$ref": "#/components/schemas/CreateDatabaseDatabaseType"
           },
           "icon": {
-            "$ref": "#/components/schemas/pageIconRequest",
-            "description": "The icon for the database."
+            "description": "The icon for the database.",
+            "$ref": "#/components/schemas/pageIconRequest"
           },
           "cover": {
-            "$ref": "#/components/schemas/pageCoverRequest",
-            "description": "The cover image for the database."
+            "description": "The cover image for the database.",
+            "$ref": "#/components/schemas/pageCoverRequest"
           }
         },
         "required": [
@@ -8347,8 +8331,8 @@
             "const": "page_id"
           },
           "page_id": {
-            "$ref": "#/components/schemas/emoji",
-            "description": "The ID of the page to create the database on."
+            "description": "The ID of the page to create the database on.",
+            "$ref": "#/components/schemas/emoji"
           }
         },
         "required": [
@@ -8366,8 +8350,8 @@
             "const": "after_block"
           },
           "block_id": {
-            "$ref": "#/components/schemas/emoji",
-            "description": "The ID of an existing block in the page. The new database will be placed after this block."
+            "description": "The ID of an existing block in the page. The new database will be placed after this block.",
+            "$ref": "#/components/schemas/emoji"
           }
         },
         "required": [
@@ -8586,8 +8570,8 @@
             "const": "file_upload"
           },
           "file_upload_id": {
-            "$ref": "#/components/schemas/emoji",
-            "description": "ID of a completed public API file upload."
+            "description": "ID of a completed public API file upload.",
+            "$ref": "#/components/schemas/emoji"
           }
         },
         "required": [
@@ -8606,8 +8590,8 @@
             "const": "block"
           },
           "block_id": {
-            "$ref": "#/components/schemas/emoji",
-            "description": "ID of an existing audio, video, or file block."
+            "description": "ID of an existing audio, video, or file block.",
+            "$ref": "#/components/schemas/emoji"
           }
         },
         "required": [
@@ -8627,8 +8611,8 @@
                 "const": "block"
               },
               "id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The ID of the meeting note block."
+                "description": "The ID of the meeting note block.",
+                "$ref": "#/components/schemas/idResponse"
               }
             },
             "required": [
@@ -8646,8 +8630,8 @@
                 "const": "block"
               },
               "id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The ID of the meeting note block."
+                "description": "The ID of the meeting note block.",
+                "$ref": "#/components/schemas/idResponse"
               },
               "type": {
                 "description": "Always \"meeting_notes\".",
@@ -8666,12 +8650,12 @@
                 "type": "string"
               },
               "created_by": {
-                "$ref": "#/components/schemas/partialUserObjectResponse",
-                "description": "User who created this meeting note."
+                "description": "User who created this meeting note.",
+                "$ref": "#/components/schemas/partialUserObjectResponse"
               },
               "last_edited_by": {
-                "$ref": "#/components/schemas/partialUserObjectResponse",
-                "description": "User who last edited this meeting note."
+                "description": "User who last edited this meeting note.",
+                "$ref": "#/components/schemas/partialUserObjectResponse"
               },
               "has_children": {
                 "description": "Whether this block has child blocks.",
@@ -8757,16 +8741,16 @@
         "type": "object",
         "properties": {
           "summary_block_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "Block ID of the AI summary tab."
+            "description": "Block ID of the AI summary tab.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "notes_block_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "Block ID of the meeting notes tab."
+            "description": "Block ID of the meeting notes tab.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "transcript_block_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "Block ID of the transcript tab."
+            "description": "Block ID of the transcript tab.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "additionalProperties": false
@@ -8822,8 +8806,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/emoji",
-            "description": "The ID of the custom emoji."
+            "description": "The ID of the custom emoji.",
+            "$ref": "#/components/schemas/emoji"
           },
           "name": {
             "description": "The name of the custom emoji.",
@@ -8838,32 +8822,21 @@
           "id"
         ]
       },
-      "DashboardRowResponseWidgets": {
-        "description": "The widget modules within this row.",
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/dashboardWidgetResponse"
-        }
-      },
-      "DashboardViewConfigResponseRows": {
-        "description": "The rows that make up the dashboard layout. Each row contains one or more widget modules.",
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/dashboardRowResponse"
-        }
-      },
       "DataSourceContentUpdatedWebhookPayloadAllOfData": {
         "description": "Additional event-specific data.",
         "type": "object",
         "properties": {
           "parent": {
-            "$ref": "#/components/schemas/webhookParentBlock",
-            "description": "The parent of the entity whose content was updated."
+            "description": "The parent of the entity whose content was updated.",
+            "$ref": "#/components/schemas/webhookParentBlock"
           },
           "updated_blocks": {
-            "$ref": "#/components/schemas/DataSourceContentUpdatedWebhookPayloadAllOfDataUpdatedBlocks"
+            "description": "The blocks that were updated in this event.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/webhookExternalBlock"
+            }
           }
         },
         "required": [
@@ -8872,21 +8845,13 @@
         ],
         "additionalProperties": false
       },
-      "DataSourceContentUpdatedWebhookPayloadAllOfDataUpdatedBlocks": {
-        "description": "The blocks that were updated in this event.",
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/webhookExternalBlock"
-        }
-      },
       "DataSourceCreatedWebhookPayloadAllOfData": {
         "description": "Additional event-specific data.",
         "type": "object",
         "properties": {
           "parent": {
-            "$ref": "#/components/schemas/webhookParentBlock",
-            "description": "The parent of the entity that triggered the event."
+            "description": "The parent of the entity that triggered the event.",
+            "$ref": "#/components/schemas/webhookParentBlock"
           }
         },
         "required": [
@@ -8944,8 +8909,8 @@
         "type": "object",
         "properties": {
           "parent": {
-            "$ref": "#/components/schemas/webhookParentBlock",
-            "description": "The parent of the database whose schema was updated."
+            "description": "The parent of the database whose schema was updated.",
+            "$ref": "#/components/schemas/webhookParentBlock"
           },
           "updated_properties": {
             "$ref": "#/components/schemas/DataSourceSchemaUpdatedWebhookPayloadAllOfDataUpdatedProperties"
@@ -9071,14 +9036,6 @@
           "map",
           "dashboard"
         ]
-      },
-      "DatabaseObjectResponseDataSources": {
-        "description": "The data sources of the database.",
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/dataSourceReferenceResponse"
-        }
       },
       "DatabasePropertyConfigCommonDescription": {
         "description": "The description of the property.",
@@ -9581,8 +9538,8 @@
                     "const": "success"
                   },
                   "success": {
-                    "$ref": "#/components/schemas/emptyObject",
-                    "description": "Empty object for success type."
+                    "description": "Empty object for success type.",
+                    "$ref": "#/components/schemas/emptyObject"
                   }
                 },
                 "required": [
@@ -9682,8 +9639,8 @@
                 "type": "string"
               },
               "success": {
-                "$ref": "#/components/schemas/emptyObject",
-                "description": "Empty object indicating success."
+                "description": "Empty object indicating success.",
+                "$ref": "#/components/schemas/emptyObject"
               }
             },
             "required": [
@@ -9747,18 +9704,6 @@
           "read_and_write",
           "editor"
         ]
-      },
-      "FormulaDatabasePropertyConfigFormula": {
-        "type": "object",
-        "properties": {
-          "expression": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "expression"
-        ],
-        "additionalProperties": false
       },
       "FormulaGroupByConfigGroupBy": {
         "description": "Sub-group-by configuration based on the formula result type.",
@@ -9999,8 +9944,8 @@
                 "const": "user"
               },
               "id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The ID of the user that created this agent."
+                "description": "The ID of the user that created this agent.",
+                "$ref": "#/components/schemas/idResponse"
               }
             },
             "required": [
@@ -10106,7 +10051,10 @@
             "type": "boolean"
           },
           "results": {
-            "$ref": "#/components/schemas/GetViewQueryResultsOkResults"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/partialPageObjectResponse"
+            }
           },
           "type": {
             "description": "Always `page`",
@@ -10130,12 +10078,6 @@
         ],
         "additionalProperties": false
       },
-      "GetViewQueryResultsOkResults": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/partialPageObjectResponse"
-        }
-      },
       "GroupSortType": {
         "description": "Sort direction for groups.",
         "type": "string",
@@ -10150,12 +10092,12 @@
         "type": "object",
         "properties": {
           "name": {
-            "$ref": "#/components/schemas/noticonName",
-            "description": "The name of the Notion icon (e.g. pizza, meeting, home). See the Notion icon picker for valid names."
+            "description": "The name of the Notion icon (e.g. pizza, meeting, home). See the Notion icon picker for valid names.",
+            "$ref": "#/components/schemas/emoji"
           },
           "color": {
-            "$ref": "#/components/schemas/ChartReferenceLineColor",
-            "description": "The color variant of the icon. Defaults to gray if not specified. Valid values: gray, lightgray, brown, yellow, orange, green, blue, purple, pink, red."
+            "description": "The color variant of the icon. Defaults to gray if not specified. Valid values: gray, lightgray, brown, yellow, orange, green, blue, purple, pink, red.",
+            "$ref": "#/components/schemas/ChartReferenceLineColor"
           }
         },
         "required": [
@@ -10264,7 +10206,10 @@
             "type": "boolean"
           },
           "results": {
-            "$ref": "#/components/schemas/ListCommentsOkResults"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/commentObjectResponse"
+            }
           },
           "type": {
             "description": "Always `comment`",
@@ -10288,12 +10233,6 @@
         ],
         "additionalProperties": false
       },
-      "ListCommentsOkResults": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/commentObjectResponse"
-        }
-      },
       "ListCustomEmojisOk": {
         "type": "object",
         "properties": {
@@ -10308,7 +10247,12 @@
             "const": "custom_emoji"
           },
           "results": {
-            "$ref": "#/components/schemas/ListCustomEmojisOkResults"
+            "description": "The list of custom emojis.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/customEmojiResponse"
+            }
           },
           "has_more": {
             "description": "Whether there are more results available.",
@@ -10326,14 +10270,6 @@
           "next_cursor"
         ],
         "additionalProperties": false
-      },
-      "ListCustomEmojisOkResults": {
-        "description": "The list of custom emojis.",
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/customEmojiResponse"
-        }
       },
       "ListDataSourceTemplatesOk": {
         "type": "object",
@@ -10368,8 +10304,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "ID of the template page."
+            "description": "ID of the template page.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "name": {
             "description": "Name of the template.",
@@ -10402,7 +10338,10 @@
             "type": "boolean"
           },
           "results": {
-            "$ref": "#/components/schemas/ListFileUploadsOkResults"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/fileUploadObjectResponse"
+            }
           },
           "type": {
             "description": "Always `file_upload`",
@@ -10425,12 +10364,6 @@
           "file_upload"
         ],
         "additionalProperties": false
-      },
-      "ListFileUploadsOkResults": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/fileUploadObjectResponse"
-        }
       },
       "ListSkillsPluginsOk": {
         "type": "object",
@@ -10514,7 +10447,10 @@
             "type": "boolean"
           },
           "results": {
-            "$ref": "#/components/schemas/ListViewsOkResults"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/dataSourceViewReferenceResponse"
+            }
           },
           "type": {
             "description": "Always `view`",
@@ -10544,19 +10480,13 @@
         ],
         "additionalProperties": false
       },
-      "ListViewsOkResults": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/dataSourceViewReferenceResponse"
-        }
-      },
       "MentionRichTextItemMentionOneOfPage": {
         "description": "Details of the page mention.",
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the page in the mention."
+            "description": "The ID of the page in the mention.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -10577,8 +10507,8 @@
                 "const": "user"
               },
               "user": {
-                "$ref": "#/components/schemas/partialUserObjectRequest",
-                "description": "Details of the user mention."
+                "description": "Details of the user mention.",
+                "$ref": "#/components/schemas/partialUserObjectRequest"
               }
             },
             "required": [
@@ -10595,8 +10525,8 @@
                 "const": "date"
               },
               "date": {
-                "$ref": "#/components/schemas/date",
-                "description": "Details of the date mention."
+                "description": "Details of the date mention.",
+                "$ref": "#/components/schemas/date"
               }
             },
             "required": [
@@ -10647,8 +10577,8 @@
                 "const": "template_mention"
               },
               "template_mention": {
-                "$ref": "#/components/schemas/templateMention",
-                "description": "Details of the template mention."
+                "description": "Details of the template mention.",
+                "$ref": "#/components/schemas/templateMention"
               }
             },
             "required": [
@@ -10687,8 +10617,8 @@
                 "const": "user"
               },
               "user": {
-                "$ref": "#/components/schemas/userValueResponse",
-                "description": "Details of the user mention."
+                "description": "Details of the user mention.",
+                "$ref": "#/components/schemas/userValueResponse"
               }
             },
             "required": [
@@ -10707,8 +10637,8 @@
                 "const": "date"
               },
               "date": {
-                "$ref": "#/components/schemas/date",
-                "description": "Details of the date mention."
+                "description": "Details of the date mention.",
+                "$ref": "#/components/schemas/date"
               }
             },
             "required": [
@@ -10727,8 +10657,8 @@
                 "const": "link_preview"
               },
               "link_preview": {
-                "$ref": "#/components/schemas/ExternalInternalOrExternalFileWithNameExternal",
-                "description": "Details of the link preview mention."
+                "description": "Details of the link preview mention.",
+                "$ref": "#/components/schemas/ExternalInternalOrExternalFileWithNameExternal"
               }
             },
             "required": [
@@ -10747,8 +10677,8 @@
                 "const": "link_mention"
               },
               "link_mention": {
-                "$ref": "#/components/schemas/linkMentionResponse",
-                "description": "Details of the link mention."
+                "description": "Details of the link mention.",
+                "$ref": "#/components/schemas/linkMentionResponse"
               }
             },
             "required": [
@@ -10805,8 +10735,8 @@
                 "const": "template_mention"
               },
               "template_mention": {
-                "$ref": "#/components/schemas/templateMention",
-                "description": "Details of the template mention."
+                "description": "Details of the template mention.",
+                "$ref": "#/components/schemas/templateMention"
               }
             },
             "required": [
@@ -10825,8 +10755,8 @@
                 "const": "custom_emoji"
               },
               "custom_emoji": {
-                "$ref": "#/components/schemas/customEmojiResponse",
-                "description": "Details of the custom emoji mention."
+                "description": "Details of the custom emoji mention.",
+                "$ref": "#/components/schemas/customEmojiResponse"
               }
             },
             "required": [
@@ -10865,8 +10795,8 @@
             "type": "object",
             "properties": {
               "page_id": {
-                "$ref": "#/components/schemas/emoji",
-                "description": "The ID of the parent page (with or without dashes), for example, 195de9221179449fab8075a27c979105"
+                "description": "The ID of the parent page (with or without dashes), for example, 195de9221179449fab8075a27c979105",
+                "$ref": "#/components/schemas/emoji"
               },
               "type": {
                 "description": "Always `page_id`",
@@ -10882,8 +10812,8 @@
             "type": "object",
             "properties": {
               "data_source_id": {
-                "$ref": "#/components/schemas/emoji",
-                "description": "The ID of the parent data source (collection), with or without dashes. For example, f336d0bc-b841-465b-8045-024475c079dd"
+                "description": "The ID of the parent data source (collection), with or without dashes. For example, f336d0bc-b841-465b-8045-024475c079dd",
+                "$ref": "#/components/schemas/emoji"
               },
               "type": {
                 "description": "Always `data_source_id`",
@@ -10901,20 +10831,17 @@
         "type": "object",
         "properties": {
           "options": {
-            "$ref": "#/components/schemas/MultiSelectDatabasePropertyConfigMultiSelect2"
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/selectProperty"
+            }
           }
         },
         "required": [
           "options"
         ],
         "additionalProperties": false
-      },
-      "MultiSelectDatabasePropertyConfigMultiSelect2": {
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/selectProperty"
-        }
       },
       "MultiSelectPropertyConfigurationMultiSelect": {
         "type": "object",
@@ -10948,13 +10875,6 @@
           "name"
         ]
       },
-      "MultiSelectPropertyItemObjectMultiSelect": {
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/partialSelectPropertyValue"
-        }
-      },
       "NotionVersion": {
         "type": "string",
         "enum": [
@@ -10966,8 +10886,8 @@
         "type": "object",
         "properties": {
           "format": {
-            "$ref": "#/components/schemas/emoji",
-            "description": "The number format for the property."
+            "description": "The number format for the property.",
+            "$ref": "#/components/schemas/emoji"
           }
         },
         "required": [
@@ -11104,8 +11024,8 @@
         "type": "object",
         "properties": {
           "parent": {
-            "$ref": "#/components/schemas/webhookParentBlock",
-            "description": "The parent of the page whose properties were updated."
+            "description": "The parent of the page whose properties were updated.",
+            "$ref": "#/components/schemas/webhookParentBlock"
           },
           "updated_properties": {
             "description": "The IDs of the properties that were updated.",
@@ -11335,7 +11255,11 @@
             "type": "object",
             "properties": {
               "relation": {
-                "$ref": "#/components/schemas/PagePropertiesValueAnyOfRelation"
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "$ref": "#/components/schemas/ContentPositionSchemaAnyOfAfterBlock"
+                }
               },
               "type": {
                 "type": "string",
@@ -11539,13 +11463,6 @@
           "lon"
         ]
       },
-      "PagePropertiesValueAnyOfRelation": {
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/ContentPositionSchemaAnyOfAfterBlock"
-        }
-      },
       "PagePropertiesValueAnyOfStatus": {
         "anyOf": [
           {
@@ -11641,8 +11558,8 @@
         "type": "object",
         "properties": {
           "target": {
-            "$ref": "#/components/schemas/webhookExternalBlock",
-            "description": "The block that contained the deleted transcript."
+            "description": "The block that contained the deleted transcript.",
+            "$ref": "#/components/schemas/webhookExternalBlock"
           },
           "transcript_id": {
             "$ref": "#/components/schemas/BotInfoOwnerOneOfUserOneOfAvatarURL"
@@ -11706,8 +11623,7 @@
             "example": "some content here"
           },
           "href": {
-            "type": "object",
-            "example": null
+            "type": "null"
           }
         },
         "required": [
@@ -11758,8 +11674,7 @@
             "example": "some content here"
           },
           "link": {
-            "type": "object",
-            "example": null
+            "type": "null"
           }
         },
         "required": [
@@ -11954,7 +11869,7 @@
                 "const": "default"
               },
               "timezone": {
-                "$ref": "#/components/schemas/templateTimezone"
+                "$ref": "#/components/schemas/emoji"
               }
             },
             "required": [
@@ -11972,7 +11887,7 @@
                 "$ref": "#/components/schemas/emoji"
               },
               "timezone": {
-                "$ref": "#/components/schemas/templateTimezone"
+                "$ref": "#/components/schemas/emoji"
               }
             },
             "required": [
@@ -12332,7 +12247,7 @@
                 "const": "default"
               },
               "timezone": {
-                "$ref": "#/components/schemas/templateTimezone"
+                "$ref": "#/components/schemas/emoji"
               }
             },
             "required": [
@@ -12350,7 +12265,7 @@
                 "$ref": "#/components/schemas/emoji"
               },
               "timezone": {
-                "$ref": "#/components/schemas/templateTimezone"
+                "$ref": "#/components/schemas/emoji"
               }
             },
             "required": [
@@ -13730,8 +13645,8 @@
                 "$ref": "#/components/schemas/AgentInsightsCreatedByOneOfType"
               },
               "id": {
-                "$ref": "#/components/schemas/idResponse",
-                "description": "The ID of the user or bot that created this agent."
+                "description": "The ID of the user or bot that created this agent.",
+                "$ref": "#/components/schemas/idResponse"
               }
             },
             "required": [
@@ -14464,8 +14379,8 @@
             "const": "block"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the meeting note block."
+            "description": "The ID of the meeting note block.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "type": {
             "description": "Always \"meeting_notes\".",
@@ -14484,12 +14399,12 @@
             "type": "string"
           },
           "created_by": {
-            "$ref": "#/components/schemas/partialUserObjectResponse",
-            "description": "User who created this meeting note."
+            "description": "User who created this meeting note.",
+            "$ref": "#/components/schemas/partialUserObjectResponse"
           },
           "last_edited_by": {
-            "$ref": "#/components/schemas/partialUserObjectResponse",
-            "description": "User who last edited this meeting note."
+            "description": "User who last edited this meeting note.",
+            "$ref": "#/components/schemas/partialUserObjectResponse"
           },
           "has_children": {
             "description": "Whether this block has child blocks.",
@@ -17206,8 +17121,8 @@
         "type": "object",
         "properties": {
           "function": {
-            "$ref": "#/components/schemas/rollupFunction",
-            "description": "The function to use for the rollup, e.g. count, count_values, percent_not_empty, max."
+            "description": "The function to use for the rollup, e.g. count, count_values, percent_not_empty, max.",
+            "$ref": "#/components/schemas/rollupFunction"
           },
           "rollup_property_name": {
             "type": "string"
@@ -17237,8 +17152,8 @@
             "type": "object",
             "properties": {
               "function": {
-                "$ref": "#/components/schemas/rollupFunction",
-                "description": "The function to use for the rollup, e.g. count, count_values, percent_not_empty, max."
+                "description": "The function to use for the rollup, e.g. count, count_values, percent_not_empty, max.",
+                "$ref": "#/components/schemas/rollupFunction"
               }
             },
             "required": [
@@ -17343,7 +17258,12 @@
         "type": "object",
         "properties": {
           "options": {
-            "$ref": "#/components/schemas/MultiSelectDatabasePropertyConfigMultiSelect2"
+            "description": "The options for the status property.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/selectProperty"
+            }
           },
           "groups": {
             "$ref": "#/components/schemas/StatusDatabasePropertyConfigResponseStatusGroups"
@@ -17375,8 +17295,8 @@
             "type": "string"
           },
           "color": {
-            "$ref": "#/components/schemas/PartialSelectPropertyValueColor",
-            "description": "The color of the status group."
+            "description": "The color of the status group.",
+            "$ref": "#/components/schemas/PartialSelectPropertyValueColor"
           },
           "option_ids": {
             "description": "The IDs of the status options in this group.",
@@ -17421,30 +17341,6 @@
           "parents_and_subitems",
           "subitems"
         ]
-      },
-      "TabRequestWithNestedTabItemChildrenChildren": {
-        "type": "array",
-        "minItems": 1,
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/tabItemRequestWithSingleLevelOfChildren"
-        }
-      },
-      "TabRequestWithTabItemChildrenChildren": {
-        "type": "array",
-        "minItems": 1,
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/tabItemRequestWithoutChildren"
-        }
-      },
-      "TableRequestWithTableRowChildrenChildren": {
-        "type": "array",
-        "minItems": 1,
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/tableRowRequest"
-        }
       },
       "TableViewConfigRequestSubtasks": {
         "description": "Subtask (sub-item) configuration. Pass null to reset subtask config to defaults (which may show subtasks). Use `{ \"display_mode\": \"disabled\" }` to explicitly disable subtasks.",
@@ -17848,7 +17744,7 @@
                 "type": "object",
                 "properties": {
                   "equation": {
-                    "$ref": "#/components/schemas/FormulaDatabasePropertyConfigFormula"
+                    "$ref": "#/components/schemas/EquationRichTextItemEquation"
                   },
                   "type": {
                     "type": "string",
@@ -18324,11 +18220,11 @@
           "width_ratio": {
             "description": "Ratio between 0 and 1 of the width of this column relative to all columns in the list. If not provided, uses an equal width.",
             "type": "number",
+            "exclusiveMinimum": 0,
+            "exclusiveMaximum": 1,
             "examples": [
               0.5
-            ],
-            "exclusiveMinimum": 0,
-            "exclusiveMaximum": 1
+            ]
           }
         },
         "additionalProperties": false
@@ -18391,8 +18287,8 @@
             "type": "boolean"
           },
           "parent": {
-            "$ref": "#/components/schemas/parentOfDataSourceRequest",
-            "description": "The parent of the data source, when moving it to a different database. If not provided, the parent will not be updated."
+            "description": "The parent of the data source, when moving it to a different database. If not provided, the parent will not be updated.",
+            "$ref": "#/components/schemas/parentOfDataSourceRequest"
           }
         }
       },
@@ -18441,7 +18337,7 @@
                         "const": "formula"
                       },
                       "formula": {
-                        "$ref": "#/components/schemas/FormulaDatabasePropertyConfigFormula"
+                        "$ref": "#/components/schemas/EquationRichTextItemEquation"
                       }
                     },
                     "required": [
@@ -18941,12 +18837,12 @@
             "type": "boolean"
           },
           "icon": {
-            "$ref": "#/components/schemas/pageIconRequest",
-            "description": "The updated icon for the database, if any. If not provided, the icon will not be updated."
+            "description": "The updated icon for the database, if any. If not provided, the icon will not be updated.",
+            "$ref": "#/components/schemas/pageIconRequest"
           },
           "cover": {
-            "$ref": "#/components/schemas/pageCoverRequest",
-            "description": "The updated cover image for the database, if any. If not provided, the cover will not be updated."
+            "description": "The updated cover image for the database, if any. If not provided, the cover will not be updated.",
+            "$ref": "#/components/schemas/pageCoverRequest"
           },
           "in_trash": {
             "description": "Whether the database should be moved to or from the trash. If not provided, the trash status will not be updated.",
@@ -19426,10 +19322,10 @@
         "type": "array",
         "minItems": 1,
         "maxItems": 100,
+        "uniqueItems": true,
         "items": {
           "$ref": "#/components/schemas/UpdateSessionRequestOneOf1ActionsItem"
-        },
-        "uniqueItems": true
+        }
       },
       "UpdateSessionRequestOneOf1ActionsItem": {
         "type": "object",
@@ -19590,8 +19486,8 @@
         "type": "object",
         "properties": {
           "parent": {
-            "$ref": "#/components/schemas/webhookParentBlock",
-            "description": "The parent of the created view."
+            "description": "The parent of the created view.",
+            "$ref": "#/components/schemas/webhookParentBlock"
           },
           "view_type": {
             "description": "The type of the created view (e.g. `table`, `board`, `list`, `calendar`, `gallery`, `timeline`).",
@@ -19725,21 +19621,13 @@
           "hidden"
         ]
       },
-      "ViewQueryResponseResults": {
-        "description": "The page results for this page.",
-        "type": "array",
-        "maxItems": 100,
-        "items": {
-          "$ref": "#/components/schemas/pageReferenceResponse"
-        }
-      },
       "ViewUpdatedWebhookPayloadAllOf1Data": {
         "description": "Additional event-specific data.",
         "type": "object",
         "properties": {
           "parent": {
-            "$ref": "#/components/schemas/webhookParentBlock",
-            "description": "The parent of the updated view."
+            "description": "The parent of the updated view.",
+            "$ref": "#/components/schemas/webhookParentBlock"
           },
           "updated_fields": {
             "$ref": "#/components/schemas/ViewUpdatedWebhookPayloadAllOf1DataUpdatedFields"
@@ -19808,8 +19696,8 @@
             "const": "agent_id"
           },
           "agent_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the parent agent."
+            "description": "The ID of the parent agent.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -19842,8 +19730,8 @@
             "type": "boolean"
           },
           "color": {
-            "$ref": "#/components/schemas/apiColor",
-            "description": "The color of the text."
+            "description": "The color of the text.",
+            "$ref": "#/components/schemas/apiColor"
           }
         }
       },
@@ -19994,20 +19882,20 @@
             "type": "string"
           },
           "workspace_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the workspace where the event originated."
+            "description": "The ID of the workspace where the event originated.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "workspace_name": {
             "description": "The name of the workspace where the event originated.",
             "type": "string"
           },
           "subscription_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the webhook subscription."
+            "description": "The ID of the webhook subscription.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "integration_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the integration the subscription is set up with."
+            "description": "The ID of the integration the subscription is set up with.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "authors": {
             "description": "The users or bots that performed the action. Typically an array of length 1; can be more for aggregated events.",
@@ -20239,7 +20127,7 @@
             "type": "object",
             "properties": {
               "equation": {
-                "$ref": "#/components/schemas/FormulaDatabasePropertyConfigFormula"
+                "$ref": "#/components/schemas/EquationRichTextItemEquation"
               },
               "type": {
                 "type": "string",
@@ -20894,7 +20782,7 @@
             "type": "object",
             "properties": {
               "equation": {
-                "$ref": "#/components/schemas/FormulaDatabasePropertyConfigFormula"
+                "$ref": "#/components/schemas/EquationRichTextItemEquation"
               },
               "type": {
                 "type": "string",
@@ -21598,7 +21486,7 @@
             "type": "object",
             "properties": {
               "equation": {
-                "$ref": "#/components/schemas/FormulaDatabasePropertyConfigFormula"
+                "$ref": "#/components/schemas/EquationRichTextItemEquation"
               },
               "type": {
                 "type": "string",
@@ -22045,8 +21933,8 @@
             "const": "board"
           },
           "group_by": {
-            "$ref": "#/components/schemas/groupByConfig",
-            "description": "Group-by configuration for board columns."
+            "description": "Group-by configuration for board columns.",
+            "$ref": "#/components/schemas/groupByConfig"
           },
           "sub_group_by": {
             "$ref": "#/components/schemas/BoardViewConfigSubGroupBy"
@@ -22081,19 +21969,24 @@
             "const": "board"
           },
           "group_by": {
-            "$ref": "#/components/schemas/groupByConfig",
-            "description": "Column (horizontal) grouping - required for board view."
+            "description": "Column (horizontal) grouping - required for board view.",
+            "$ref": "#/components/schemas/groupByConfig"
           },
           "sub_group_by": {
-            "$ref": "#/components/schemas/groupByConfig",
-            "description": "Sub-grouping (vertical swimlanes within columns)."
+            "description": "Sub-grouping (vertical swimlanes within columns).",
+            "$ref": "#/components/schemas/groupByConfig"
           },
           "properties": {
-            "$ref": "#/components/schemas/BoardViewConfigProperties2"
+            "description": "Properties to display on each card.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/viewPropertyConfigResponse"
+            }
           },
           "cover": {
-            "$ref": "#/components/schemas/coverConfigResponse",
-            "description": "Card cover/preview image configuration."
+            "description": "Card cover/preview image configuration.",
+            "$ref": "#/components/schemas/coverConfigResponse"
           },
           "cover_size": {
             "$ref": "#/components/schemas/BoardViewConfigCoverSize2"
@@ -22451,7 +22344,12 @@
             "type": "string"
           },
           "properties": {
-            "$ref": "#/components/schemas/BoardViewConfigProperties2"
+            "description": "Properties to display on calendar event cards.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/viewPropertyConfigResponse"
+            }
           },
           "view_range": {
             "$ref": "#/components/schemas/CalendarViewConfigResponseViewRange"
@@ -22686,8 +22584,8 @@
             "type": "string"
           },
           "value": {
-            "$ref": "#/components/schemas/chartAggregation",
-            "description": "Aggregation configuration for number charts (single value display)."
+            "description": "Aggregation configuration for number charts (single value display).",
+            "$ref": "#/components/schemas/chartAggregation"
           },
           "sort": {
             "$ref": "#/components/schemas/ChartViewConfigResponseSort"
@@ -22794,8 +22692,8 @@
             "type": "string"
           },
           "sort": {
-            "$ref": "#/components/schemas/groupSort",
-            "description": "Sort order for groups."
+            "description": "Sort order for groups.",
+            "$ref": "#/components/schemas/groupSort"
           },
           "hide_empty_groups": {
             "description": "Whether to hide groups that have no items.",
@@ -23193,7 +23091,12 @@
         "type": "object",
         "properties": {
           "children": {
-            "$ref": "#/components/schemas/ColumnListRequestChildren"
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/columnBlockWithChildrenRequest"
+            }
           }
         },
         "required": [
@@ -23226,11 +23129,11 @@
           "width_ratio": {
             "description": "Ratio between 0 and 1 of the width of this column relative to all columns in the list. If not provided, uses an equal width.",
             "type": "number",
+            "exclusiveMinimum": 0,
+            "exclusiveMaximum": 1,
             "examples": [
               0.5
-            ],
-            "exclusiveMinimum": 0,
-            "exclusiveMaximum": 1
+            ]
           }
         },
         "required": [
@@ -23252,8 +23155,8 @@
                 "const": "comment.created"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookCommentEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookCommentEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/CommentCreatedWebhookPayloadAllOfData"
@@ -23281,8 +23184,8 @@
                 "const": "comment.deleted"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookCommentEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookCommentEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/CommentCreatedWebhookPayloadAllOfData"
@@ -23305,16 +23208,16 @@
             "const": "comment"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the comment."
+            "description": "The ID of the comment.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "parent": {
-            "$ref": "#/components/schemas/commentParentResponse",
-            "description": "The parent of the comment."
+            "description": "The parent of the comment.",
+            "$ref": "#/components/schemas/commentParentResponse"
           },
           "discussion_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the discussion thread this comment belongs to."
+            "description": "The ID of the discussion thread this comment belongs to.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "created_time": {
             "description": "The time when the comment was created.",
@@ -23327,8 +23230,8 @@
             "format": "date-time"
           },
           "created_by": {
-            "$ref": "#/components/schemas/partialUserObjectResponse",
-            "description": "The user who created the comment."
+            "description": "The user who created the comment.",
+            "$ref": "#/components/schemas/partialUserObjectResponse"
           },
           "rich_text": {
             "description": "The rich text content of the comment.",
@@ -23392,8 +23295,8 @@
                 "const": "comment.updated"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookCommentEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookCommentEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/CommentCreatedWebhookPayloadAllOfData"
@@ -23676,32 +23579,32 @@
         "type": "object",
         "properties": {
           "data_source_id": {
-            "$ref": "#/components/schemas/emoji",
-            "description": "The ID of the data source this view should be scoped to."
+            "description": "The ID of the data source this view should be scoped to.",
+            "$ref": "#/components/schemas/emoji"
           },
           "name": {
             "description": "The name of the view.",
             "type": "string"
           },
           "type": {
-            "$ref": "#/components/schemas/DataSourceViewObjectType",
-            "description": "The type of view to create."
+            "description": "The type of view to create.",
+            "$ref": "#/components/schemas/DataSourceViewObjectType"
           },
           "database_id": {
-            "$ref": "#/components/schemas/emoji",
-            "description": "The ID of the database to create a view in. Mutually exclusive with view_id and create_database."
+            "description": "The ID of the database to create a view in. Mutually exclusive with view_id and create_database.",
+            "$ref": "#/components/schemas/emoji"
           },
           "view_id": {
-            "$ref": "#/components/schemas/emoji",
-            "description": "The ID of a dashboard view to add this view to as a widget. Mutually exclusive with database_id and create_database."
+            "description": "The ID of a dashboard view to add this view to as a widget. Mutually exclusive with database_id and create_database.",
+            "$ref": "#/components/schemas/emoji"
           },
           "filter": {
-            "$ref": "#/components/schemas/quickFilterCondition",
-            "description": "Filter to apply to the view. Uses the same format as the data source query filter."
+            "description": "Filter to apply to the view. Uses the same format as the data source query filter.",
+            "$ref": "#/components/schemas/quickFilterCondition"
           },
           "sorts": {
-            "$ref": "#/components/schemas/viewSortsRequest",
-            "description": "Sorts to apply to the view. Uses the same format as the data source query sorts."
+            "description": "Sorts to apply to the view. Uses the same format as the data source query sorts.",
+            "$ref": "#/components/schemas/viewSortsRequest"
           },
           "quick_filters": {
             "description": "Quick filters to pin in the view's filter bar. Keys are property names or IDs. Values are filter conditions (same shape as a property filter but without the property field). Each quick filter appears as a clickable pill above the view, independent of the advanced filter.",
@@ -23711,20 +23614,20 @@
             }
           },
           "create_database": {
-            "$ref": "#/components/schemas/createDatabaseForViewRequest",
-            "description": "Create a new linked database block on a page and add the view to it. Mutually exclusive with database_id and view_id."
+            "description": "Create a new linked database block on a page and add the view to it. Mutually exclusive with database_id and view_id.",
+            "$ref": "#/components/schemas/createDatabaseForViewRequest"
           },
           "configuration": {
-            "$ref": "#/components/schemas/viewConfigRequest",
-            "description": "View presentation configuration. The type field must match the view type."
+            "description": "View presentation configuration. The type field must match the view type.",
+            "$ref": "#/components/schemas/viewConfigRequest"
           },
           "position": {
-            "$ref": "#/components/schemas/viewPositionRequest",
-            "description": "Where to place the new view in the database's view tab bar. Only applicable when database_id is provided. Defaults to \"end\" (append)."
+            "description": "Where to place the new view in the database's view tab bar. Only applicable when database_id is provided. Defaults to \"end\" (append).",
+            "$ref": "#/components/schemas/viewPositionRequest"
           },
           "placement": {
-            "$ref": "#/components/schemas/widgetPlacementRequest",
-            "description": "Where to place the new widget in a dashboard view. Only applicable when view_id is provided. Defaults to creating a new row at the end."
+            "description": "Where to place the new widget in a dashboard view. Only applicable when view_id is provided. Defaults to creating a new row at the end.",
+            "$ref": "#/components/schemas/widgetPlacementRequest"
           }
         },
         "required": [
@@ -23888,8 +23791,8 @@
             "const": "custom_emoji"
           },
           "custom_emoji": {
-            "$ref": "#/components/schemas/customEmojiResponse",
-            "description": "The custom emoji details for the icon."
+            "description": "The custom emoji details for the icon.",
+            "$ref": "#/components/schemas/customEmojiResponse"
           }
         },
         "required": [
@@ -23902,8 +23805,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the custom emoji."
+            "description": "The ID of the custom emoji.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "name": {
             "description": "The name of the custom emoji.",
@@ -23929,7 +23832,12 @@
             "type": "string"
           },
           "widgets": {
-            "$ref": "#/components/schemas/DashboardRowResponseWidgets"
+            "description": "The widget modules within this row.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/dashboardWidgetResponse"
+            }
           },
           "height": {
             "description": "Fixed height of the row in pixels.",
@@ -23951,7 +23859,12 @@
             "const": "dashboard"
           },
           "rows": {
-            "$ref": "#/components/schemas/DashboardViewConfigResponseRows"
+            "description": "The rows that make up the dashboard layout. Each row contains one or more widget modules.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/dashboardRowResponse"
+            }
           }
         },
         "required": [
@@ -24000,8 +23913,8 @@
                 "const": "data_source.content_updated"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookDatabaseEventEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookDatabaseEventEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceContentUpdatedWebhookPayloadAllOfData"
@@ -24029,8 +23942,8 @@
                 "const": "data_source.created"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookDatabaseEventEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookDatabaseEventEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -24058,8 +23971,8 @@
                 "const": "data_source.deleted"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookDatabaseEventEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookDatabaseEventEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -24087,8 +24000,8 @@
                 "const": "data_source.moved"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookDatabaseEventEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookDatabaseEventEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -24111,8 +24024,8 @@
             "const": "data_source"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the data source."
+            "description": "The ID of the data source.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "title": {
             "description": "The title of the data source.",
@@ -24131,12 +24044,12 @@
             }
           },
           "parent": {
-            "$ref": "#/components/schemas/parentOfDataSourceResponse",
-            "description": "The parent of the data source."
+            "description": "The parent of the data source.",
+            "$ref": "#/components/schemas/parentOfDataSourceResponse"
           },
           "database_parent": {
-            "$ref": "#/components/schemas/parentOfDatabaseResponse",
-            "description": "The parent of the data source's containing database. This is typically a page, block, or workspace, but can be another database in the case of wikis."
+            "description": "The parent of the data source's containing database. This is typically a page, block, or workspace, but can be another database in the case of wikis.",
+            "$ref": "#/components/schemas/parentOfDatabaseResponse"
           },
           "is_inline": {
             "description": "Whether the data source is inline.",
@@ -24160,12 +24073,12 @@
             "format": "date-time"
           },
           "created_by": {
-            "$ref": "#/components/schemas/partialUserObjectResponse",
-            "description": "The user who created the data source."
+            "description": "The user who created the data source.",
+            "$ref": "#/components/schemas/partialUserObjectResponse"
           },
           "last_edited_by": {
-            "$ref": "#/components/schemas/partialUserObjectResponse",
-            "description": "The user who last edited the data source."
+            "description": "The user who last edited the data source.",
+            "$ref": "#/components/schemas/partialUserObjectResponse"
           },
           "properties": {
             "description": "The properties schema of the data source.",
@@ -24219,12 +24132,12 @@
             "const": "data_source_id"
           },
           "data_source_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the parent data source."
+            "description": "The ID of the parent data source.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "database_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the data source's parent database."
+            "description": "The ID of the data source's parent database.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -24238,8 +24151,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the data source."
+            "description": "The ID of the data source.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "name": {
             "description": "The name of the data source.",
@@ -24266,8 +24179,8 @@
                 "const": "data_source.schema_updated"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookDatabaseEventEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookDatabaseEventEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceSchemaUpdatedWebhookPayloadAllOfData"
@@ -24295,8 +24208,8 @@
                 "const": "data_source.undeleted"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookDatabaseEventEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookDatabaseEventEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -24319,12 +24232,12 @@
             "const": "view"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the view."
+            "description": "The ID of the view.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "parent": {
-            "$ref": "#/components/schemas/databaseParentResponse",
-            "description": "The parent database of the view."
+            "description": "The parent database of the view.",
+            "$ref": "#/components/schemas/databaseParentResponse"
           },
           "name": {
             "description": "The name of the view.",
@@ -24395,8 +24308,8 @@
             "example": "view"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the view."
+            "description": "The ID of the view.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -24419,8 +24332,8 @@
                 "const": "database.content_updated"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookDatabaseEventEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookDatabaseEventEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceContentUpdatedWebhookPayloadAllOfData"
@@ -24448,8 +24361,8 @@
                 "const": "database.created"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookDatabaseEventEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookDatabaseEventEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -24477,8 +24390,8 @@
                 "const": "database.deleted"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookDatabaseEventEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookDatabaseEventEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -24506,8 +24419,8 @@
                 "const": "database.moved"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookDatabaseEventEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookDatabaseEventEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -24530,8 +24443,8 @@
             "const": "database"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the database."
+            "description": "The ID of the database.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "title": {
             "description": "The title of the database.",
@@ -24550,8 +24463,8 @@
             }
           },
           "parent": {
-            "$ref": "#/components/schemas/parentOfDatabaseResponse",
-            "description": "The parent of the database. This is typically a page, block, or workspace, but can be another database in the case of wikis."
+            "description": "The parent of the database. This is typically a page, block, or workspace, but can be another database in the case of wikis.",
+            "$ref": "#/components/schemas/parentOfDatabaseResponse"
           },
           "is_inline": {
             "description": "Whether the database is inline.",
@@ -24579,7 +24492,12 @@
             "format": "date-time"
           },
           "data_sources": {
-            "$ref": "#/components/schemas/DatabaseObjectResponseDataSources"
+            "description": "The data sources of the database.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/dataSourceReferenceResponse"
+            }
           },
           "icon": {
             "$ref": "#/components/schemas/DataSourceObjectIcon"
@@ -24624,8 +24542,8 @@
             "const": "database_id"
           },
           "database_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the parent database."
+            "description": "The ID of the parent database.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -24777,8 +24695,8 @@
                 "const": "database.schema_updated"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookDatabaseEventEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookDatabaseEventEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceSchemaUpdatedWebhookPayloadAllOfData"
@@ -24806,8 +24724,8 @@
                 "const": "database.undeleted"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookDatabaseEventEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookDatabaseEventEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -24909,8 +24827,8 @@
             "$ref": "#/components/schemas/DateGroupByConfigGroupBy"
           },
           "sort": {
-            "$ref": "#/components/schemas/groupSort",
-            "description": "Sort order for groups."
+            "description": "Sort order for groups.",
+            "$ref": "#/components/schemas/groupSort"
           },
           "hide_empty_groups": {
             "description": "Whether to hide groups that have no items.",
@@ -25125,8 +25043,8 @@
             "const": "view_query"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the deleted view query."
+            "description": "The ID of the deleted view query.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "deleted": {
             "description": "Whether the view query was deleted.",
@@ -25362,7 +25280,14 @@
       },
       "emoji": {
         "type": "string",
-        "example": "😀"
+        "example": "😀",
+        "examples": [
+          "pizza",
+          "meeting",
+          "home",
+          "star",
+          "robot"
+        ]
       },
       "emojiPageIcon": {
         "title": "Emoji",
@@ -25374,8 +25299,8 @@
             "const": "emoji"
           },
           "emoji": {
-            "$ref": "#/components/schemas/emoji",
-            "description": "An emoji character."
+            "description": "An emoji character.",
+            "$ref": "#/components/schemas/emoji"
           }
         },
         "required": [
@@ -25395,7 +25320,7 @@
             "const": "equation"
           },
           "equation": {
-            "$ref": "#/components/schemas/FormulaDatabasePropertyConfigFormula"
+            "$ref": "#/components/schemas/EquationRichTextItemEquation"
           },
           "parent": {
             "$ref": "#/components/schemas/parentForBlockBasedObjectResponse"
@@ -26023,8 +25948,8 @@
             "const": "file"
           },
           "file": {
-            "$ref": "#/components/schemas/internalFile",
-            "description": "The file URL."
+            "description": "The file URL.",
+            "$ref": "#/components/schemas/internalFile"
           }
         },
         "required": [
@@ -26100,8 +26025,8 @@
                 "const": "file_upload.completed"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookFileUploadEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookFileUploadEntity"
               }
             },
             "required": [
@@ -26125,8 +26050,8 @@
                 "const": "file_upload.created"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookFileUploadEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookFileUploadEntity"
               }
             },
             "required": [
@@ -26150,8 +26075,8 @@
                 "const": "file_upload.expired"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookFileUploadEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookFileUploadEntity"
               }
             },
             "required": [
@@ -26260,8 +26185,8 @@
                 "const": "file_upload.upload_failed"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookFileUploadEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookFileUploadEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/FileUploadUploadFailedWebhookPayloadAllOf1Data"
@@ -26421,8 +26346,8 @@
             "const": "checkbox"
           },
           "sort": {
-            "$ref": "#/components/schemas/groupSort",
-            "description": "Sort order for groups."
+            "description": "Sort order for groups.",
+            "$ref": "#/components/schemas/groupSort"
           }
         },
         "required": [
@@ -26440,7 +26365,7 @@
             "const": "formula"
           },
           "formula": {
-            "$ref": "#/components/schemas/FormulaDatabasePropertyConfigFormula"
+            "$ref": "#/components/schemas/EquationRichTextItemEquation"
           }
         },
         "required": [
@@ -26460,8 +26385,8 @@
             "$ref": "#/components/schemas/DateGroupByConfigGroupBy"
           },
           "sort": {
-            "$ref": "#/components/schemas/groupSort",
-            "description": "Sort order for groups."
+            "description": "Sort order for groups.",
+            "$ref": "#/components/schemas/groupSort"
           },
           "start_day_of_week": {
             "description": "Start day of week for week grouping (0 = Sunday, 1 = Monday).",
@@ -26517,8 +26442,8 @@
             "const": "number"
           },
           "sort": {
-            "$ref": "#/components/schemas/groupSort",
-            "description": "Sort order for groups."
+            "description": "Sort order for groups.",
+            "$ref": "#/components/schemas/groupSort"
           },
           "range_start": {
             "description": "Start of the range for number grouping buckets.",
@@ -26682,8 +26607,8 @@
             "$ref": "#/components/schemas/FormulaTextSubGroupByGroupBy"
           },
           "sort": {
-            "$ref": "#/components/schemas/groupSort",
-            "description": "Sort order for groups."
+            "description": "Sort order for groups.",
+            "$ref": "#/components/schemas/groupSort"
           }
         },
         "required": [
@@ -26729,11 +26654,16 @@
             "const": "gallery"
           },
           "properties": {
-            "$ref": "#/components/schemas/BoardViewConfigProperties2"
+            "description": "Properties to display on gallery cards.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/viewPropertyConfigResponse"
+            }
           },
           "cover": {
-            "$ref": "#/components/schemas/coverConfigResponse",
-            "description": "Card cover/preview image configuration."
+            "description": "Card cover/preview image configuration.",
+            "$ref": "#/components/schemas/coverConfigResponse"
           },
           "cover_size": {
             "$ref": "#/components/schemas/BoardViewConfigCoverSize2"
@@ -26848,8 +26778,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the group."
+            "description": "The ID of the group.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "object": {
             "description": "The group object type name.",
@@ -27794,7 +27724,12 @@
             "const": "list"
           },
           "properties": {
-            "$ref": "#/components/schemas/BoardViewConfigProperties2"
+            "description": "Properties to display in list items.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/viewPropertyConfigResponse"
+            }
           }
         },
         "required": [
@@ -27861,7 +27796,12 @@
             "type": "string"
           },
           "properties": {
-            "$ref": "#/components/schemas/BoardViewConfigProperties2"
+            "description": "Properties to display on map pin cards.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/viewPropertyConfigResponse"
+            }
           }
         },
         "required": [
@@ -28206,7 +28146,11 @@
             "const": "multi_select"
           },
           "multi_select": {
-            "$ref": "#/components/schemas/MultiSelectPropertyItemObjectMultiSelect"
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/partialSelectPropertyValue"
+            }
           },
           "object": {
             "type": "string",
@@ -28233,7 +28177,11 @@
             "const": "multi_select"
           },
           "multi_select": {
-            "$ref": "#/components/schemas/MultiSelectPropertyItemObjectMultiSelect"
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/partialSelectPropertyValue"
+            }
           }
         },
         "required": [
@@ -28241,16 +28189,6 @@
           "multi_select"
         ],
         "additionalProperties": false
-      },
-      "noticonName": {
-        "type": "string",
-        "examples": [
-          "pizza",
-          "meeting",
-          "home",
-          "star",
-          "robot"
-        ]
       },
       "numberDatabasePropertyConfig": {
         "title": "Number",
@@ -28322,8 +28260,8 @@
             "type": "string"
           },
           "sort": {
-            "$ref": "#/components/schemas/groupSort",
-            "description": "Sort order for groups."
+            "description": "Sort order for groups.",
+            "$ref": "#/components/schemas/groupSort"
           },
           "hide_empty_groups": {
             "description": "Whether to hide groups that have no items.",
@@ -28538,8 +28476,8 @@
                 "const": "page.content_updated"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookPageEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookPageEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceContentUpdatedWebhookPayloadAllOfData"
@@ -28587,8 +28525,8 @@
                 "const": "page.created"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookPageEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookPageEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -28616,8 +28554,8 @@
                 "const": "page.deleted"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookPageEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookPageEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -28702,8 +28640,8 @@
                 "const": "page.locked"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookPageEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookPageEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -28726,8 +28664,8 @@
             "const": "page_markdown"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the page or block."
+            "description": "The ID of the page or block.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "markdown": {
             "description": "The page content rendered as enhanced Markdown.",
@@ -28769,8 +28707,8 @@
                 "const": "page.moved"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookPageEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookPageEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -28793,8 +28731,8 @@
             "const": "page"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the page."
+            "description": "The ID of the page.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "created_time": {
             "description": "Date and time when this page was created.",
@@ -28826,8 +28764,8 @@
             "$ref": "#/components/schemas/BotInfoOwnerOneOfUserOneOfAvatarURL"
           },
           "parent": {
-            "$ref": "#/components/schemas/parentForBlockBasedObjectResponse",
-            "description": "Information about the page's parent."
+            "description": "Information about the page's parent.",
+            "$ref": "#/components/schemas/parentForBlockBasedObjectResponse"
           },
           "properties": {
             "description": "Property values of this page.",
@@ -28843,12 +28781,12 @@
             "$ref": "#/components/schemas/DataSourceObjectCover"
           },
           "created_by": {
-            "$ref": "#/components/schemas/partialUserObjectResponse",
-            "description": "User who created the page."
+            "description": "User who created the page.",
+            "$ref": "#/components/schemas/partialUserObjectResponse"
           },
           "last_edited_by": {
-            "$ref": "#/components/schemas/partialUserObjectResponse",
-            "description": "User who last edited the page."
+            "description": "User who last edited the page.",
+            "$ref": "#/components/schemas/partialUserObjectResponse"
           }
         },
         "required": [
@@ -28928,8 +28866,8 @@
                 "const": "page.properties_updated"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookPageEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookPageEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/PagePropertiesUpdatedWebhookPayloadAllOf1Data"
@@ -28968,8 +28906,8 @@
             "type": "string"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The object ID."
+            "description": "The object ID.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -28992,8 +28930,8 @@
                 "const": "page.transcription_block.transcript_deleted"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookPageEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookPageEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/PageTranscriptionBlockTranscriptDeletedWebhookPayloadAllOf1Data"
@@ -29021,8 +28959,8 @@
                 "const": "page.undeleted"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookPageEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookPageEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -29050,8 +28988,8 @@
                 "const": "page.unlocked"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookPageEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookPageEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -29154,8 +29092,8 @@
             "const": "database_id"
           },
           "database_id": {
-            "$ref": "#/components/schemas/emoji",
-            "description": "The ID of the parent database (with or without dashes), for example, 195de9221179449fab8075a27c979105"
+            "description": "The ID of the parent database (with or without dashes), for example, 195de9221179449fab8075a27c979105",
+            "$ref": "#/components/schemas/emoji"
           }
         },
         "required": [
@@ -29215,8 +29153,8 @@
             "const": "comment"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the comment."
+            "description": "The ID of the comment.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -29234,8 +29172,8 @@
             "const": "data_source"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the data source."
+            "description": "The ID of the data source.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "properties": {
             "description": "The properties schema of the data source.",
@@ -29261,12 +29199,12 @@
             "const": "view"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the view."
+            "description": "The ID of the view.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "parent": {
-            "$ref": "#/components/schemas/databaseParentResponse",
-            "description": "The parent database of the view."
+            "description": "The parent database of the view.",
+            "$ref": "#/components/schemas/databaseParentResponse"
           },
           "type": {
             "$ref": "#/components/schemas/DataSourceViewObjectType"
@@ -29290,8 +29228,8 @@
             "example": "database"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the database."
+            "description": "The ID of the database.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "title": {
             "$ref": "#/components/schemas/PartialDatabaseObjectDescription"
@@ -29336,8 +29274,7 @@
             "example": "https://app.notion.com/p/457d00dcfc3a4ddba42ffe376530bee0"
           },
           "public_url": {
-            "type": "object",
-            "example": null
+            "type": "null"
           },
           "request_id": {
             "type": "string",
@@ -29361,8 +29298,8 @@
             "example": "page"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the page."
+            "description": "The ID of the page.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "created_time": {
             "type": "string",
@@ -29468,8 +29405,8 @@
         "type": "object",
         "properties": {
           "function": {
-            "$ref": "#/components/schemas/rollupFunction",
-            "description": "The function used for the rollup, e.g. count, count_values, percent_not_empty, max."
+            "description": "The function used for the rollup, e.g. count, count_values, percent_not_empty, max.",
+            "$ref": "#/components/schemas/rollupFunction"
           }
         },
         "required": [
@@ -29501,8 +29438,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/emoji",
-            "description": "The ID of the user."
+            "description": "The ID of the user.",
+            "$ref": "#/components/schemas/emoji"
           },
           "object": {
             "description": "The user object type name.",
@@ -29700,8 +29637,8 @@
             "type": "string"
           },
           "sort": {
-            "$ref": "#/components/schemas/groupSort",
-            "description": "Sort order for groups."
+            "description": "Sort order for groups.",
+            "$ref": "#/components/schemas/groupSort"
           },
           "hide_empty_groups": {
             "description": "Whether to hide groups that have no items.",
@@ -30745,7 +30682,11 @@
             "const": "relation"
           },
           "relation": {
-            "$ref": "#/components/schemas/PagePropertiesValueAnyOfRelation"
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/ContentPositionSchemaAnyOfAfterBlock"
+            }
           }
         },
         "required": [
@@ -30785,8 +30726,8 @@
             "type": "string"
           },
           "sort": {
-            "$ref": "#/components/schemas/groupSort",
-            "description": "Sort order for groups."
+            "description": "Sort order for groups.",
+            "$ref": "#/components/schemas/groupSort"
           },
           "hide_empty_groups": {
             "description": "Whether to hide groups that have no items.",
@@ -30961,8 +30902,8 @@
         "type": "object",
         "properties": {
           "annotations": {
-            "$ref": "#/components/schemas/annotation",
-            "description": "All rich text objects contain an annotations object that sets the styling for the rich text."
+            "description": "All rich text objects contain an annotations object that sets the styling for the rich text.",
+            "$ref": "#/components/schemas/annotation"
           }
         }
       },
@@ -30997,8 +30938,8 @@
             "$ref": "#/components/schemas/BotInfoOwnerOneOfUserOneOfAvatarURL"
           },
           "annotations": {
-            "$ref": "#/components/schemas/annotation",
-            "description": "All rich text objects contain an annotations object that sets the styling for the rich text."
+            "description": "All rich text objects contain an annotations object that sets the styling for the rich text.",
+            "$ref": "#/components/schemas/annotation"
           }
         },
         "required": [
@@ -31326,8 +31267,8 @@
             "type": "string"
           },
           "sort": {
-            "$ref": "#/components/schemas/groupSort",
-            "description": "Sort order for groups."
+            "description": "Sort order for groups.",
+            "$ref": "#/components/schemas/groupSort"
           },
           "hide_empty_groups": {
             "description": "Whether to hide groups that have no items.",
@@ -31586,8 +31527,8 @@
             "$ref": "#/components/schemas/StatusGroupByConfigGroupBy"
           },
           "sort": {
-            "$ref": "#/components/schemas/groupSort",
-            "description": "Sort order for groups."
+            "description": "Sort order for groups.",
+            "$ref": "#/components/schemas/groupSort"
           },
           "hide_empty_groups": {
             "description": "Whether to hide groups that have no items.",
@@ -31705,8 +31646,8 @@
         "type": "object",
         "properties": {
           "options": {
-            "$ref": "#/components/schemas/statusOptionRequestArray",
-            "description": "The initial status options. If not provided, defaults are created."
+            "description": "The initial status options. If not provided, defaults are created.",
+            "$ref": "#/components/schemas/statusOptionRequestArray"
           }
         }
       },
@@ -31714,8 +31655,8 @@
         "type": "object",
         "properties": {
           "options": {
-            "$ref": "#/components/schemas/statusOptionUpdateRequestArray",
-            "description": "Status options to add or update. Use group to assign an option to To-do, In progress, or Complete. Existing options keep their current group when group is omitted; new options use To-do when present, or the first existing group otherwise."
+            "description": "Status options to add or update. Use group to assign an option to To-do, In progress, or Complete. Existing options keep their current group when group is omitted; new options use To-do when present, or the first existing group otherwise.",
+            "$ref": "#/components/schemas/statusOptionUpdateRequestArray"
           }
         }
       },
@@ -31835,8 +31776,8 @@
       },
       "stringRequest": {
         "type": "string",
-        "maxLength": 100,
-        "minLength": 1
+        "minLength": 1,
+        "maxLength": 100
       },
       "subtaskConfig": {
         "type": "object",
@@ -32017,7 +31958,12 @@
         "type": "object",
         "properties": {
           "children": {
-            "$ref": "#/components/schemas/TabRequestWithNestedTabItemChildrenChildren"
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/tabItemRequestWithSingleLevelOfChildren"
+            }
           }
         },
         "required": [
@@ -32029,7 +31975,12 @@
         "type": "object",
         "properties": {
           "children": {
-            "$ref": "#/components/schemas/TabRequestWithTabItemChildrenChildren"
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/tabItemRequestWithoutChildren"
+            }
           }
         },
         "required": [
@@ -32159,7 +32110,12 @@
             "minimum": 1
           },
           "children": {
-            "$ref": "#/components/schemas/TableRequestWithTableRowChildrenChildren"
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/tableRowRequest"
+            }
           },
           "has_column_header": {
             "type": "boolean"
@@ -32296,15 +32252,20 @@
             "const": "table"
           },
           "properties": {
-            "$ref": "#/components/schemas/BoardViewConfigProperties2"
+            "description": "Columns/properties visible in the table view.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/viewPropertyConfigResponse"
+            }
           },
           "group_by": {
-            "$ref": "#/components/schemas/groupByConfig",
-            "description": "Vertical (row) grouping configuration."
+            "description": "Vertical (row) grouping configuration.",
+            "$ref": "#/components/schemas/groupByConfig"
           },
           "subtasks": {
-            "$ref": "#/components/schemas/subtaskConfig",
-            "description": "Sub-item (subtask) display configuration."
+            "description": "Sub-item (subtask) display configuration.",
+            "$ref": "#/components/schemas/subtaskConfig"
           },
           "wrap_cells": {
             "description": "Whether to wrap cell content by default.",
@@ -32430,15 +32391,6 @@
         ],
         "additionalProperties": false
       },
-      "templateTimezone": {
-        "description": "IANA timezone to use when resolving template variables like @now and @today (e.g. 'America/New_York'). Defaults to the authorizing user's timezone for public integrations, or UTC for internal integrations.",
-        "type": "string",
-        "examples": [
-          "America/New_York",
-          "Europe/London",
-          "Asia/Tokyo"
-        ]
-      },
       "textGroupByConfig": {
         "type": "object",
         "properties": {
@@ -32453,8 +32405,8 @@
             "$ref": "#/components/schemas/FormulaTextSubGroupByGroupBy"
           },
           "sort": {
-            "$ref": "#/components/schemas/groupSort",
-            "description": "Sort order for groups."
+            "description": "Sort order for groups.",
+            "$ref": "#/components/schemas/groupSort"
           },
           "hide_empty_groups": {
             "description": "Whether to hide groups that have no items.",
@@ -32551,8 +32503,8 @@
       },
       "textRequest": {
         "type": "string",
-        "maxLength": 2000,
-        "minLength": 1
+        "minLength": 1,
+        "maxLength": 2000
       },
       "textRichTextItemRequest": {
         "title": "Text",
@@ -32693,22 +32645,32 @@
             "type": "string"
           },
           "properties": {
-            "$ref": "#/components/schemas/BoardViewConfigProperties2"
+            "description": "Properties to display on timeline items.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/viewPropertyConfigResponse"
+            }
           },
           "show_table": {
             "description": "Whether to show the table panel alongside the timeline.",
             "type": "boolean"
           },
           "table_properties": {
-            "$ref": "#/components/schemas/BoardViewConfigProperties2"
+            "description": "Properties to display in the table panel (when show_table is true).",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/viewPropertyConfigResponse"
+            }
           },
           "preference": {
-            "$ref": "#/components/schemas/timelinePreferenceResponse",
-            "description": "Timeline zoom/preference state."
+            "description": "Timeline zoom/preference state.",
+            "$ref": "#/components/schemas/timelinePreferenceResponse"
           },
           "arrows_by": {
-            "$ref": "#/components/schemas/timelineArrowsBy",
-            "description": "Dependency arrows configuration."
+            "description": "Dependency arrows configuration.",
+            "$ref": "#/components/schemas/timelineArrowsBy"
           },
           "color_by": {
             "description": "Whether to color-code items by property.",
@@ -33288,8 +33250,8 @@
             "$ref": "#/components/schemas/UpdateViewRequestQuickFilters"
           },
           "configuration": {
-            "$ref": "#/components/schemas/viewConfigRequest",
-            "description": "View presentation configuration. The type field must match the view type. Individual nullable fields within the configuration can be set to null to clear them."
+            "description": "View presentation configuration. The type field must match the view type. Individual nullable fields within the configuration can be set to null to clear them.",
+            "$ref": "#/components/schemas/viewConfigRequest"
           }
         }
       },
@@ -33380,8 +33342,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the user."
+            "description": "The ID of the user.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "object": {
             "description": "The user object type name.",
@@ -33691,8 +33653,8 @@
                 "const": "view.created"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookViewEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookViewEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/ViewCreatedWebhookPayloadAllOf1Data"
@@ -33720,8 +33682,8 @@
                 "const": "view.deleted"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookViewEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookViewEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/DataSourceCreatedWebhookPayloadAllOfData"
@@ -33825,8 +33787,8 @@
                 "const": "after_view"
               },
               "view_id": {
-                "$ref": "#/components/schemas/emoji",
-                "description": "The ID of an existing view in the database. The new view will be placed after this view."
+                "description": "The ID of an existing view in the database. The new view will be placed after this view.",
+                "$ref": "#/components/schemas/emoji"
               }
             },
             "required": [
@@ -33931,12 +33893,12 @@
             "const": "view_query"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The query ID."
+            "description": "The query ID.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "view_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The view this query was executed against."
+            "description": "The view this query was executed against.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "expires_at": {
             "description": "When the cached query results expire.",
@@ -33948,7 +33910,12 @@
             "type": "number"
           },
           "results": {
-            "$ref": "#/components/schemas/ViewQueryResponseResults"
+            "description": "The page results for this page.",
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/pageReferenceResponse"
+            }
           },
           "next_cursor": {
             "$ref": "#/components/schemas/AgentInstructionsPageID"
@@ -33958,8 +33925,8 @@
             "type": "boolean"
           },
           "request_status": {
-            "$ref": "#/components/schemas/requestStatusResponse",
-            "description": "Set to `{ type: 'incomplete', incomplete_reason: 'query_result_limit_reached' }` when the view's underlying data source has more rows matching this query than the server-side pagination depth limit allows."
+            "description": "Set to `{ type: 'incomplete', incomplete_reason: 'query_result_limit_reached' }` when the view's underlying data source has more rows matching this query than the server-side pagination depth limit allows.",
+            "$ref": "#/components/schemas/requestStatusResponse"
           }
         },
         "required": [
@@ -34006,8 +33973,8 @@
                 "const": "view.updated"
               },
               "entity": {
-                "$ref": "#/components/schemas/webhookViewEntity",
-                "description": "The object that triggered the event."
+                "description": "The object that triggered the event.",
+                "$ref": "#/components/schemas/webhookViewEntity"
               },
               "data": {
                 "$ref": "#/components/schemas/ViewUpdatedWebhookPayloadAllOf1Data"
@@ -34030,8 +33997,8 @@
             "const": "comment"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the comment that triggered the event."
+            "description": "The ID of the comment that triggered the event.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -34044,8 +34011,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the database or data source that triggered the event."
+            "description": "The ID of the database or data source that triggered the event.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "type": {
             "$ref": "#/components/schemas/WebhookDatabaseEventEntityType"
@@ -34061,8 +34028,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the parent."
+            "description": "The ID of the parent.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "type": {
             "$ref": "#/components/schemas/WebhookExternalBlockType"
@@ -34083,8 +34050,8 @@
             "const": "file_upload"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the file upload that triggered the event."
+            "description": "The ID of the file upload that triggered the event.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -34102,8 +34069,8 @@
             "const": "page"
           },
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the page that triggered the event."
+            "description": "The ID of the page that triggered the event.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -34116,15 +34083,15 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the parent."
+            "description": "The ID of the parent.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "type": {
             "$ref": "#/components/schemas/WebhookParentBlockType"
           },
           "data_source_id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The data source ID of the parent, if applicable."
+            "description": "The data source ID of the parent, if applicable.",
+            "$ref": "#/components/schemas/idResponse"
           }
         },
         "required": [
@@ -34137,8 +34104,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/idResponse",
-            "description": "The ID of the view that triggered the event."
+            "description": "The ID of the view that triggered the event.",
+            "$ref": "#/components/schemas/idResponse"
           },
           "type": {
             "description": "Always `view`",
@@ -41716,38 +41683,6 @@
           "$ref": "#/components/schemas/AgentBatchOperationsItemOneOfAgentID"
         }
       },
-      "agent_id2": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentBatchOperationsItemOneOfAgentID"
-        }
-      },
-      "agent_id3": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentBatchOperationsItemOneOfAgentID"
-        }
-      },
-      "agent_id4": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentBatchOperationsItemOneOfAgentID"
-        }
-      },
-      "agent_id5": {
-        "name": "agent_id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/AgentBatchOperationsItemOneOfAgentID"
-        }
-      },
       "block_id": {
         "name": "block_id",
         "in": "path",
@@ -41761,8 +41696,8 @@
         "in": "query",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "Identifier for a Notion block or page."
+          "description": "Identifier for a Notion block or page.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "comment_id": {
@@ -41770,8 +41705,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the comment to retrieve."
+          "description": "The ID of the comment to retrieve.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "comment_id2": {
@@ -41779,8 +41714,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the comment to delete."
+          "description": "The ID of the comment to delete.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "comment_id3": {
@@ -41788,8 +41723,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the comment to update."
+          "description": "The ID of the comment to update.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "data_source_id": {
@@ -41797,8 +41732,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "ID of a Notion data source."
+          "description": "ID of a Notion data source.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "data_source_id3": {
@@ -41813,8 +41748,8 @@
         "name": "data_source_id",
         "in": "query",
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "ID of a data source (collection) to list all views for, including linked views across the workspace. At least one of database_id or data_source_id is required."
+          "description": "ID of a data source (collection) to list all views for, including linked views across the workspace. At least one of database_id or data_source_id is required.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "database_id": {
@@ -41822,16 +41757,16 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "ID of a Notion database, a container for one or more data sources."
+          "description": "ID of a Notion database, a container for one or more data sources.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "database_id3": {
         "name": "database_id",
         "in": "query",
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "ID of a Notion database (collection view block) to list views for. At least one of database_id or data_source_id is required."
+          "description": "ID of a Notion database (collection view block) to list views for. At least one of database_id or data_source_id is required.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "end_time": {
@@ -41848,8 +41783,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "Identifier for a Notion file upload object."
+          "description": "Identifier for a Notion file upload object.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "filter_properties": {
@@ -41884,9 +41819,9 @@
         "required": true,
         "schema": {
           "type": "string",
-          "pattern": "^[^\\u0000-\\u001f\\u007f]+$",
           "minLength": 1,
           "maxLength": 200,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]+$",
           "examples": [
             "9b4a1d3f-1f0a-4c2a-9f0b-6c1f5a3d2e10"
           ]
@@ -41897,8 +41832,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "Identifier for a Notion skill page."
+          "description": "Identifier for a Notion skill page.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "include_transcript": {
@@ -41939,8 +41874,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the page to retrieve."
+          "description": "The ID of the page to retrieve.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "page_id2": {
@@ -41956,8 +41891,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the page to move."
+          "description": "The ID of the page to move.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "page_id4": {
@@ -41965,8 +41900,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the page containing the property."
+          "description": "The ID of the page containing the property.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "page_id5": {
@@ -41974,8 +41909,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the page (or block) to retrieve as markdown. Non-navigable block IDs from truncated responses can be passed here to fetch their subtrees."
+          "description": "The ID of the page (or block) to retrieve as markdown. Non-navigable block IDs from truncated responses can be passed here to fetch their subtrees.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "page_id6": {
@@ -41983,8 +41918,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the page to update."
+          "description": "The ID of the page to update.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "page_size": {
@@ -42045,8 +41980,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the query."
+          "description": "The ID of the query.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "session_id": {
@@ -42054,8 +41989,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the session to retrieve."
+          "description": "The ID of the session to retrieve.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "session_id2": {
@@ -42063,8 +41998,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the session whose events should be queried."
+          "description": "The ID of the session whose events should be queried.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "session_id3": {
@@ -42072,8 +42007,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the session to cancel."
+          "description": "The ID of the session to cancel.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "start_cursor": {
@@ -42089,9 +42024,9 @@
         "schema": {
           "description": "An opaque cursor returned by the previous page of results.",
           "type": "string",
-          "pattern": "^[A-Za-z0-9]+$",
           "minLength": 1,
-          "maxLength": 200
+          "maxLength": 200,
+          "pattern": "^[A-Za-z0-9]+$"
         }
       },
       "start_cursor3": {
@@ -42152,8 +42087,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the user or bot to retrieve."
+          "description": "The ID of the user or bot to retrieve.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "verbose": {
@@ -42169,8 +42104,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "ID of a Notion view."
+          "description": "ID of a Notion view.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "view_id2": {
@@ -42178,8 +42113,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the view to delete."
+          "description": "The ID of the view to delete.",
+          "$ref": "#/components/schemas/emoji"
         }
       },
       "view_id4": {
@@ -42187,8 +42122,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/emoji",
-          "description": "The ID of the view."
+          "description": "The ID of the view.",
+          "$ref": "#/components/schemas/emoji"
         }
       }
     },

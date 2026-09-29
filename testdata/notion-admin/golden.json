@@ -2327,8 +2327,8 @@
             "const": "user"
           },
           "user_id": {
-            "$ref": "#/components/schemas/idRequest",
-            "description": "The ID of the user."
+            "description": "The ID of the user.",
+            "$ref": "#/components/schemas/idRequest"
           }
         },
         "required": [
@@ -2822,9 +2822,9 @@
           "name": {
             "description": "The name of the group.",
             "type": "string",
-            "pattern": "\\S",
             "minLength": 1,
-            "maxLength": 200
+            "maxLength": 200,
+            "pattern": "\\S"
           }
         },
         "required": [
@@ -3896,8 +3896,8 @@
                     "const": "bot"
                   },
                   "bot": {
-                    "$ref": "#/components/schemas/emptyObject",
-                    "description": "Details about the bot, when the `type` of the user is `bot`."
+                    "description": "Details about the bot, when the `type` of the user is `bot`.",
+                    "$ref": "#/components/schemas/emptyObject"
                   }
                 },
                 "required": [
@@ -10447,8 +10447,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/idRequest",
-          "description": "The ID of the group."
+          "description": "The ID of the group.",
+          "$ref": "#/components/schemas/idRequest"
         }
       },
       "include_deleted": {
@@ -10741,8 +10741,8 @@
         "name": "transfer_to_owner_id",
         "in": "query",
         "schema": {
-          "$ref": "#/components/schemas/idRequest",
-          "description": "Active workspace owner who receives access that would otherwise be orphaned."
+          "description": "Active workspace owner who receives access that would otherwise be orphaned.",
+          "$ref": "#/components/schemas/idRequest"
         }
       },
       "user_id": {
@@ -10767,8 +10767,8 @@
         "in": "path",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/idRequest",
-          "description": "The ID of the user."
+          "description": "The ID of the user.",
+          "$ref": "#/components/schemas/idRequest"
         }
       },
       "user_ids": {

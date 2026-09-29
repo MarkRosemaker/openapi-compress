@@ -274,15 +274,18 @@
         "type": "object",
         "properties": {
           "candidates": {
-            "$ref": "#/components/schemas/ErrorCandidates"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Candidate"
+            }
           },
           "code": {
             "description": "HTTP status code",
             "type": "integer"
           },
           "err": {
-            "$ref": "#/components/schemas/Error",
-            "description": "Unexported field for internal tracking"
+            "description": "Unexported field for internal tracking",
+            "$ref": "#/components/schemas/Error"
           },
           "fixes": {
             "description": "suggestions for how to fix",
@@ -337,7 +340,10 @@
             "type": "boolean"
           },
           "licenses": {
-            "$ref": "#/components/schemas/ModuleLicenses"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/License"
+            }
           },
           "path": {
             "type": "string"
@@ -419,7 +425,10 @@
             "type": "boolean"
           },
           "licenses": {
-            "$ref": "#/components/schemas/PackageLicenses"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/License"
+            }
           },
           "modulePath": {
             "type": "string",
@@ -600,24 +609,6 @@
           "summary": {
             "type": "string"
           }
-        }
-      },
-      "ErrorCandidates": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Candidate"
-        }
-      },
-      "ModuleLicenses": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/License"
-        }
-      },
-      "PackageLicenses": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/License"
         }
       },
       "PaginatedResponseItems": {
