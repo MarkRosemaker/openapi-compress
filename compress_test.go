@@ -5,7 +5,9 @@ import (
 	"embed"
 	"encoding/json/jsontext"
 	"encoding/json/v2"
+	"errors"
 	"fmt"
+	"io/fs"
 	"path/filepath"
 	"testing"
 
@@ -72,13 +74,11 @@ func TestCompress_TestData(t *testing.T) {
 				})
 			}
 
-			if tc.Name() == "toggl" {
-				return
-			}
-
 			// Run enrich step again, check that nothing changes (no info got lost)
 			iaData, err := testdata.ReadFile(filepath.Join("testdata", tc.Name(), "interactions.json"))
-			if err != nil {
+			if errors.Is(err, fs.ErrNotExist) {
+				return // no recording to check against
+			} else if err != nil {
 				t.Fatal(err)
 			}
 
