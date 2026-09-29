@@ -1,15 +1,11 @@
 package compress
 
 import (
+	"encoding/json/jsontext"
 	"testing"
 
 	"github.com/MarkRosemaker/openapi"
 )
-
-// inlineRef creates a SchemaRef wrapping an inline (non-$ref) schema.
-func inlineRef(s *openapi.Schema) *openapi.SchemaRef {
-	return &openapi.SchemaRef{Value: s}
-}
 
 // stringSchema returns a minimal string schema.
 func stringSchema() *openapi.Schema {
@@ -29,11 +25,11 @@ func objectSchema(required []string, optional ...string) *openapi.Schema {
 		Required: append([]string(nil), required...),
 	}
 	for _, name := range required {
-		s.Properties.Set(name, inlineRef(stringSchema()))
+		s.Properties.Set(name, stringSchema())
 	}
 
 	for _, name := range optional {
-		s.Properties.Set(name, inlineRef(stringSchema()))
+		s.Properties.Set(name, stringSchema())
 	}
 
 	return s
@@ -111,17 +107,17 @@ func TestSchemasSimilarity_PartialCredit(t *testing.T) {
 	// union={x}: score = 0.5/1 = 0.5.
 	a := &openapi.Schema{
 		Type: openapi.TypeObject,
-		Properties: func() openapi.SchemaRefs {
-			var refs openapi.SchemaRefs
-			refs.Set("x", inlineRef(&openapi.Schema{Type: openapi.TypeInteger}))
+		Properties: func() openapi.Schemas {
+			var refs openapi.Schemas
+			refs.Set("x", &openapi.Schema{Type: openapi.TypeInteger})
 			return refs
 		}(),
 	}
 	b := &openapi.Schema{
 		Type: openapi.TypeObject,
-		Properties: func() openapi.SchemaRefs {
-			var refs openapi.SchemaRefs
-			refs.Set("x", inlineRef(&openapi.Schema{Type: openapi.TypeNumber}))
+		Properties: func() openapi.Schemas {
+			var refs openapi.Schemas
+			refs.Set("x", &openapi.Schema{Type: openapi.TypeNumber})
 			return refs
 		}(),
 	}
@@ -137,11 +133,11 @@ func TestSchemasSimilarity_IrreconcilableProperty(t *testing.T) {
 	// cannot be widened to cover both: merging keeps a's, leaving the result
 	// claiming a shape b's data does not have. No agreement elsewhere makes
 	// the two mergeable, so the score is 0 however many properties match.
-	props := func(x *openapi.Schema) openapi.SchemaRefs {
-		var refs openapi.SchemaRefs
-		refs.Set("same1", inlineRef(&openapi.Schema{Type: openapi.TypeBoolean}))
-		refs.Set("x", inlineRef(x))
-		refs.Set("same2", inlineRef(&openapi.Schema{Type: openapi.TypeString}))
+	props := func(x *openapi.Schema) openapi.Schemas {
+		var refs openapi.Schemas
+		refs.Set("same1", &openapi.Schema{Type: openapi.TypeBoolean})
+		refs.Set("x", x)
+		refs.Set("same2", &openapi.Schema{Type: openapi.TypeString})
 
 		return refs
 	}
@@ -221,18 +217,18 @@ func TestMergeSchemas_IntegerPlusNumberBecomesNumber(t *testing.T) {
 	a := &openapi.Schema{
 		Type:     openapi.TypeObject,
 		Required: []string{"val"},
-		Properties: func() openapi.SchemaRefs {
-			var refs openapi.SchemaRefs
-			refs.Set("val", inlineRef(&openapi.Schema{Type: openapi.TypeInteger}))
+		Properties: func() openapi.Schemas {
+			var refs openapi.Schemas
+			refs.Set("val", &openapi.Schema{Type: openapi.TypeInteger})
 			return refs
 		}(),
 	}
 	b := &openapi.Schema{
 		Type:     openapi.TypeObject,
 		Required: []string{"val"},
-		Properties: func() openapi.SchemaRefs {
-			var refs openapi.SchemaRefs
-			refs.Set("val", inlineRef(&openapi.Schema{Type: openapi.TypeNumber}))
+		Properties: func() openapi.Schemas {
+			var refs openapi.Schemas
+			refs.Set("val", &openapi.Schema{Type: openapi.TypeNumber})
 			return refs
 		}(),
 	}
@@ -244,12 +240,12 @@ func TestMergeSchemas_IntegerPlusNumberBecomesNumber(t *testing.T) {
 		t.Fatal("property 'val' missing after merge")
 	}
 
-	if ref.Value == nil {
+	if ref == nil {
 		t.Fatal("expected inline schema for 'val', got nil value")
 	}
 
-	if ref.Value.Type != openapi.TypeNumber {
-		t.Errorf("'val' type after merge: want number, got %v", ref.Value.Type)
+	if ref.Type != openapi.TypeNumber {
+		t.Errorf("'val' type after merge: want number, got %v", ref.Type)
 	}
 }
 
@@ -489,4 +485,25 @@ func minimalDocument(schemas map[string]*openapi.Schema) *openapi.Document {
 	}
 
 	return d
+}
+
+func TestFillExamples(t *testing.T) {
+	a := &openapi.Schema{Type: openapi.TypeObject, Properties: openapi.Schemas{
+		"kept":   &openapi.Schema{Type: openapi.TypeString, Example: jsontext.Value(`"a"`)},
+		"filled": &openapi.Schema{Type: openapi.TypeString},
+		"ref":    &openapi.Schema{Ref: &openapi.SchemaRef{Identifier: "#/components/schemas/X"}},
+	}}
+	b := &openapi.Schema{Type: openapi.TypeObject, Properties: openapi.Schemas{
+		"kept":   &openapi.Schema{Type: openapi.TypeString, Example: jsontext.Value(`"b"`)},
+		"filled": &openapi.Schema{Type: openapi.TypeString, Example: jsontext.Value(`"b"`)},
+		"ref":    &openapi.Schema{Type: openapi.TypeString, Example: jsontext.Value(`"b"`)},
+	}}
+
+	fillExamples(a, b)
+
+	for name, want := range map[string]string{"kept": `"a"`, "filled": `"b"`, "ref": ``} {
+		if got := string(a.Properties[name].Example); got != want {
+			t.Errorf("%s: got example %s, want %s", name, got, want)
+		}
+	}
 }
