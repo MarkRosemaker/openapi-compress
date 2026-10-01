@@ -22908,9 +22908,6 @@
             "$ref": "#/components/schemas/AiSearchAiSearch"
           },
           {
-            "$ref": "#/components/schemas/AiSearchAiSearch"
-          },
-          {
             "$ref": "#/components/schemas/MemorySearchMemorySearch"
           },
           {
@@ -22948,9 +22945,6 @@
           },
           {
             "$ref": "#/components/schemas/MovePagesMovePages"
-          },
-          {
-            "$ref": "#/components/schemas/CreateFolderCreateFolderParentOneOf"
           },
           {
             "$ref": "#/components/schemas/CreateDatabaseCreateDatabase"
@@ -23032,9 +23026,6 @@
           },
           {
             "$ref": "#/components/schemas/ToolInputAnyOf6"
-          },
-          {
-            "$ref": "#/components/schemas/SessionStatusSessionStatus"
           },
           {
             "$ref": "#/components/schemas/SendMessageToSessionSendMessageToSession"
@@ -30170,9 +30161,6 @@
             "$ref": "#/components/schemas/runToolResponseOneOf11"
           },
           {
-            "$ref": "#/components/schemas/runToolOneOf"
-          },
-          {
             "$ref": "#/components/schemas/runToolResponseOneOf13"
           },
           {
@@ -30209,15 +30197,6 @@
             "$ref": "#/components/schemas/runToolResponseOneOf24"
           },
           {
-            "$ref": "#/components/schemas/runToolOneOf2"
-          },
-          {
-            "$ref": "#/components/schemas/runToolOneOf3"
-          },
-          {
-            "$ref": "#/components/schemas/runToolOneOf3"
-          },
-          {
             "$ref": "#/components/schemas/runToolOneOf3"
           },
           {
@@ -30246,9 +30225,6 @@
           },
           {
             "$ref": "#/components/schemas/runToolResponseOneOf37"
-          },
-          {
-            "$ref": "#/components/schemas/runToolOneOf4"
           },
           {
             "$ref": "#/components/schemas/runToolResponseOneOf39"
@@ -30296,15 +30272,6 @@
             "$ref": "#/components/schemas/runToolOneOf5"
           },
           {
-            "$ref": "#/components/schemas/runToolOneOf5"
-          },
-          {
-            "$ref": "#/components/schemas/runToolOneOf5"
-          },
-          {
-            "$ref": "#/components/schemas/runToolOneOf5"
-          },
-          {
             "$ref": "#/components/schemas/runToolResponseOneOf57"
           },
           {
@@ -30320,22 +30287,7 @@
             "$ref": "#/components/schemas/runToolResponseOneOf61"
           },
           {
-            "$ref": "#/components/schemas/runToolOneOf6"
-          },
-          {
-            "$ref": "#/components/schemas/runToolOneOf2"
-          },
-          {
-            "$ref": "#/components/schemas/runToolOneOf2"
-          },
-          {
             "$ref": "#/components/schemas/runToolResponseOneOf65"
-          },
-          {
-            "$ref": "#/components/schemas/runToolOneOf2"
-          },
-          {
-            "$ref": "#/components/schemas/runToolOneOf2"
           },
           {
             "$ref": "#/components/schemas/runToolResponseOneOf68"
@@ -30393,9 +30345,6 @@
           },
           {
             "$ref": "#/components/schemas/runToolResponseOneOf86"
-          },
-          {
-            "$ref": "#/components/schemas/runToolOneOf7"
           },
           {
             "$ref": "#/components/schemas/runToolOneOf7"

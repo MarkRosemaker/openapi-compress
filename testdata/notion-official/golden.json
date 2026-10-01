@@ -12161,9 +12161,6 @@
         "anyOf": [
           {
             "$ref": "#/components/schemas/MultiSelectMultiSelectItemAnyOf"
-          },
-          {
-            "$ref": "#/components/schemas/MultiSelectMultiSelectItemAnyOf"
           }
         ]
       },
@@ -12190,9 +12187,6 @@
       },
       "MultiSelectMultiSelectItemAllOf2": {
         "oneOf": [
-          {
-            "$ref": "#/components/schemas/MultiSelectMultiSelectItemAllOfOneOf"
-          },
           {
             "$ref": "#/components/schemas/MultiSelectMultiSelectItemAllOfOneOf"
           }
@@ -18379,9 +18373,6 @@
       },
       "Select2": {
         "anyOf": [
-          {
-            "$ref": "#/components/schemas/MultiSelectMultiSelectItemAnyOf"
-          },
           {
             "$ref": "#/components/schemas/MultiSelectMultiSelectItemAnyOf"
           },
