@@ -17,3 +17,10 @@ where a property present in both with the same shape scores `1.0`, and one prese
 in both with a different shape scores `0.5`. The threshold steps down gradually,
 running each level until no further merges are found, so the most confident merges
 always happen first.
+
+A bare scalar is never merged: a string, number, integer or boolean with nothing
+but a type and documentation, such as a component `idRequest` that is only
+`{"type": "string"}`. Its name and description are all it carries, and merging by
+shape would erase exactly those, giving IDs, emoji names and time zones one type.
+A scalar with a constraint, such as a `format` or an `enum`, merges like any other
+schema.

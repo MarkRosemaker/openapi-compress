@@ -307,11 +307,12 @@ func TestDocument_ThresholdDependent(t *testing.T) {
 // at threshold=1.0.
 func TestDocument_ExamplesIgnoredForEquality(t *testing.T) {
 	// Build two schemas that are identical except for their Example field.
-	schemaA := &openapi.Schema{Type: openapi.TypeString}
-	schemaA.Example = []byte(`"alice"`)
+	// a format, so neither is a bare scalar, which is never merged
+	schemaA := &openapi.Schema{Type: openapi.TypeString, Format: openapi.FormatEmail}
+	schemaA.Example = []byte(`"alice@example.com"`)
 
-	schemaB := &openapi.Schema{Type: openapi.TypeString}
-	schemaB.Example = []byte(`"bob"`)
+	schemaB := &openapi.Schema{Type: openapi.TypeString, Format: openapi.FormatEmail}
+	schemaB.Example = []byte(`"bob@example.com"`)
 
 	d := minimalDocument(map[string]*openapi.Schema{
 		"A": schemaA,
@@ -435,8 +436,8 @@ func TestShortName_UniqueSuffix(t *testing.T) {
 // their original names.
 func TestDocument_ShortensMergedCanonicals(t *testing.T) {
 	d := minimalDocument(map[string]*openapi.Schema{
-		"GetV1PetByPetIDOkJSONResponseMedicalInfo":     {Type: openapi.TypeString},
-		"ListV1PetsOkJSONResponseDataItemsMedicalInfo": {Type: openapi.TypeString},
+		"GetV1PetByPetIDOkJSONResponseMedicalInfo":     {Type: openapi.TypeString, Format: openapi.FormatURI},
+		"ListV1PetsOkJSONResponseDataItemsMedicalInfo": {Type: openapi.TypeString, Format: openapi.FormatURI},
 		"GetV1PetByPetIDOkJSONResponseBreed":           {Type: openapi.TypeObject},
 	})
 
