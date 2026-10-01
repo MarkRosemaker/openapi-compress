@@ -5778,71 +5778,7 @@
             "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/numberDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/formulaDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/selectDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/multiSelectDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/statusDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/relationDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/rollupDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/uniqueIdDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/titleDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/richTextDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/urlDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/peopleDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/filesDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/emailDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/phoneNumberDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/dateDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/checkboxDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/createdByDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/createdTimeDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/lastEditedByDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/lastEditedTimeDatabasePropertyConfigResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/databasePropertyConfigResponseAllOf1"
           }
         ]
       },
@@ -5874,14 +5810,7 @@
             "$ref": "#/components/schemas/databasePropertyRelationConfigResponseCommon"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/singlePropertyDatabasePropertyRelationConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/dualPropertyDatabasePropertyRelationConfigResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/databasePropertyRelationConfigResponseAllOf1"
           }
         ]
       },
@@ -6401,21 +6330,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorAPI400AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 400
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_api_400AllOf1"
           }
         ]
       },
@@ -6425,21 +6340,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorAPI401AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 401
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_api_401AllOf1"
           }
         ]
       },
@@ -6462,21 +6363,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorAPI404AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 404
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_api_404AllOf1"
           }
         ]
       },
@@ -6486,21 +6373,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorAPI406AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 406
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_api_406AllOf1"
           }
         ]
       },
@@ -6510,21 +6383,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorAPI409AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 409
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_api_409AllOf1"
           }
         ]
       },
@@ -6534,21 +6393,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorAPI429AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 429
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_api_429AllOf1"
           }
         ]
       },
@@ -6558,21 +6403,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorAPI500AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 500
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_api_500AllOf1"
           }
         ]
       },
@@ -6582,21 +6413,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorAPI503AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 503
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_api_503AllOf1"
           }
         ]
       },
@@ -6606,21 +6423,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorAPI504AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 504
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_api_504AllOf1"
           }
         ]
       },
@@ -6630,21 +6433,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorAPI529AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 529
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_api_529AllOf1"
           }
         ]
       },
@@ -6654,21 +6443,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorOauth400AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 400
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_oauth_400AllOf1"
           }
         ]
       },
@@ -6678,21 +6453,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorOauth401AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 401
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_oauth_401AllOf1"
           }
         ]
       },
@@ -6702,21 +6463,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorOauth403AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 403
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_oauth_403AllOf1"
           }
         ]
       },
@@ -6726,21 +6473,7 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorOauth500AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 500
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_oauth_500AllOf1"
           }
         ]
       },
@@ -7679,14 +7412,7 @@
             "$ref": "#/components/schemas/internalOrExternalFileWithNameResponseCommon"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/fileInternalOrExternalFileWithNameResponse"
-              },
-              {
-                "$ref": "#/components/schemas/externalInternalOrExternalFileWithNameResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/internalOrExternalFileWithNameResponseAllOf1"
           }
         ]
       },
@@ -8714,14 +8440,7 @@
             "$ref": "#/components/schemas/idObjectResponse"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/simpleOrArrayPropertyValueResponse"
-              },
-              {
-                "$ref": "#/components/schemas/partialRollupPropertyResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseAllOf1"
           }
         ]
       },
@@ -8918,20 +8637,7 @@
             "$ref": "#/components/schemas/partialRollupValueResponseCommon"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/numberPartialRollupValueResponse"
-              },
-              {
-                "$ref": "#/components/schemas/datePartialRollupValueResponse"
-              },
-              {
-                "$ref": "#/components/schemas/arrayPartialRollupValueResponse"
-              },
-              {
-                "$ref": "#/components/schemas/unsupportedPartialRollupValueResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/partialRollupValueResponseAllOf1"
           }
         ]
       },
@@ -9673,17 +9379,7 @@
             "$ref": "#/components/schemas/richTextItemRequestCommon"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/textRichTextItemRequest"
-              },
-              {
-                "$ref": "#/components/schemas/mentionRichTextItemRequest"
-              },
-              {
-                "$ref": "#/components/schemas/equationRichTextItemRequest"
-              }
-            ]
+            "$ref": "#/components/schemas/richTextItemRequestAllOf1"
           }
         ]
       },
@@ -9702,17 +9398,7 @@
             "$ref": "#/components/schemas/richTextItemResponseCommon"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/textRichTextItemResponse"
-              },
-              {
-                "$ref": "#/components/schemas/mentionRichTextItemResponse"
-              },
-              {
-                "$ref": "#/components/schemas/equationRichTextItemResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/richTextItemResponseAllOf1"
           }
         ]
       },
@@ -11450,14 +11136,7 @@
             "$ref": "#/components/schemas/userObjectResponseCommon"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/personUserObjectResponse"
-              },
-              {
-                "$ref": "#/components/schemas/botUserObjectResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/userObjectResponseAllOf1"
           }
         ]
       },
@@ -23102,33 +22781,39 @@
         "description": "The parameters for the create_attachment tool. Create an attachment and upload it to Notion.\n\nProvide exactly one source:\n- content for small UTF-8 text artifacts such as HTML, Markdown, plain text, CSV, JSON, XML, CSS, YAML, TSV, calendar, GPX, or SVG files.\n- source_url for a file available at a direct, publicly reachable HTTPS URL. This supports binary files and temporary signed download URLs. Notion performs a metadata-only HEAD request when supported, followed by the GET request that downloads the file. The URL must not redirect, require cookies or request headers, or resolve to a private network address.\n- source_file_id for a file this integration already uploaded. When create_file_upload is available, use it for local files so the upload is created by this same MCP integration; otherwise use ntn files create or the Notion File Upload API with this integration's token. Nothing is re-sent or re-downloaded. The upload must have a status of uploaded and must have been created by this exact integration; an upload made with a different token is not visible here.\n\nFor content and source_url, the filename must use a supported extension, and the optional content_type is a MIME type that must agree with the filename; omit it to infer the type from the extension. source_file_id takes neither, because the stored upload already carries both. Inline content is limited to 200 KiB after UTF-8 encoding. URL downloads must complete within one minute and are limited to 5 MiB for free workspaces and 50 MiB for paid workspaces. For local files, use create_file_upload when available. For larger files, URLs that redirect, or authenticated downloads requiring headers, upload through the Notion File Upload API with this integration's token and pass source_file_id.\n\nThe response includes a markdown_source value. To place the uploaded file on a page, pass that source to create-pages or update-page. To attach it to a comment, include suggested_markdown on a separate line in create-comment markdown. Unattached uploads remain temporary and are deleted once they expire: content and source_url open a fresh one-hour window, while source_file_id keeps the window that opened when the file was first uploaded, so place that source promptly and upload the file again if it has already expired. \"HTML\", \"HTML block\", \"HTML artifact\", and \"HTML embed\" all mean an HTML file placed with <embed src=\"file-upload://...\"> so Notion renders the sandboxed preview. Never place HTML in a code block or file block. Use <file src=\"file-upload://...\"> for other files.\n\n<examples>\n1. Create an HTML artifact: {\"filename\":\"report.html\",\"content\":\"<!doctype html><html><body><h1>Report</h1></body></html>\"}\n2. Create Markdown with an explicit MIME type: {\"filename\":\"notes.md\",\"content_type\":\"text/markdown\",\"content\":\"# Notes\\n\\nHello\"}\n3. Import a PDF from a signed URL: {\"filename\":\"report.pdf\",\"source_url\":\"https://storage.example.com/report.pdf?signature=...\"}\n4. Reference a file already uploaded by this integration: {\"source_file_id\":\"1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5a6b\"}\n</examples>\n\nIf availability is not already known for this connection, call get_tool_access with {} before using this tool. Reuse the returned access map across tools; check the status and restricted_parameters.",
         "allOf": [
           {
-            "type": "object",
-            "properties": {
-              "filename": {
-                "description": "The filename to create in Notion, including a supported extension such as .html, .md, .pdf, or .png. Required with content and source_url. Omit it with source_file_id; the stored upload already carries a filename.",
-                "type": "string",
-                "minLength": 1
-              },
-              "content_type": {
-                "description": "Optional MIME type, such as text/html or application/pdf. It must match the filename extension; omit it to infer the type from the filename. Omit it with source_file_id; the stored upload already carries a content type.",
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 255
-              }
-            }
+            "$ref": "#/components/schemas/CreateAttachmentCreateAttachmentAllOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CreateAttachmentCreateAttachmentAllOf1OneOf0"
-              },
-              {
-                "$ref": "#/components/schemas/CreateAttachmentCreateAttachmentAllOf1OneOf1"
-              },
-              {
-                "$ref": "#/components/schemas/CreateAttachmentCreateAttachmentAllOf1OneOf2"
-              }
-            ]
+            "$ref": "#/components/schemas/CreateAttachmentCreateAttachmentAllOf1"
+          }
+        ]
+      },
+      "CreateAttachmentCreateAttachmentAllOf0": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "description": "The filename to create in Notion, including a supported extension such as .html, .md, .pdf, or .png. Required with content and source_url. Omit it with source_file_id; the stored upload already carries a filename.",
+            "type": "string",
+            "minLength": 1
+          },
+          "content_type": {
+            "description": "Optional MIME type, such as text/html or application/pdf. It must match the filename extension; omit it to infer the type from the filename. Omit it with source_file_id; the stored upload already carries a content type.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        }
+      },
+      "CreateAttachmentCreateAttachmentAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CreateAttachmentCreateAttachmentAllOf1OneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/CreateAttachmentCreateAttachmentAllOf1OneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/CreateAttachmentCreateAttachmentAllOf1OneOf2"
           }
         ]
       },
@@ -24047,32 +23732,28 @@
         "description": "The parameters for the create_database tool. Creates a new Notion database using SQL DDL syntax, or a canonical typed database\nfor tasks, projects, or skills.\n\nProvide exactly one of:\n- schema: a CREATE TABLE statement. If no title property is provided, \"Name\" is auto-added.\n- database_type: one of tasks, projects, or skills. The database is created with\n  the canonical required properties and typed metadata used by Notion.\n\nReturns Markdown with schema, SQLite definition, and data source ID in\n<data-source> tag for use with update_data_source and query_data_sources tools.\n\nType syntax:\n- Simple: TITLE, RICH_TEXT, DATE, PEOPLE, CHECKBOX, URL, EMAIL, PHONE_NUMBER, STATUS, FILES\n- SELECT('opt':color, ...) / MULTI_SELECT('opt':color, ...)\n- NUMBER [FORMAT 'dollar'] / FORMULA('expression')\n- RELATION('data_source_id') — one-way relation\n- RELATION('data_source_id', DUAL) — two-way relation\n- RELATION('data_source_id', DUAL 'synced_name') — two-way with synced property name\n- RELATION('data_source_id', DUAL 'synced_name' 'synced_id') — two-way with synced name and ID (for self-relations)\n- ROLLUP('rel_prop', 'target_prop', 'function')\n- UNIQUE_ID [PREFIX 'X'] / CREATED_TIME / LAST_EDITED_TIME\n- Any column: COMMENT 'description text'\nColors: default, gray, brown, orange, yellow, green, blue, purple, pink, red\n\n<example description=\"Minimal\">{\"schema\": \"CREATE TABLE (\\\"Name\\\" TITLE)\"}</example>\n<example description=\"Tasks\">{\"database_type\": \"tasks\", \"title\": \"Tasks\"}</example>\n<example description=\"With parent and options\">{\"parent\": {\"page_id\": \"f336d0bc-b841-465b-8045-024475c079dd\"}, \"title\": \"Projects\", \"schema\": \"CREATE TABLE (\\\"Name\\\" TITLE, \\\"Budget\\\" NUMBER FORMAT 'dollar', \\\"Tags\\\" MULTI_SELECT('eng':blue, 'design':pink), \\\"Task ID\\\" UNIQUE_ID PREFIX 'PRJ')\"}</example>\n<example description=\"Self-relation (two-step: create database first, then use its data source ID with update_data_source to add self-relations)\">{\"title\": \"Tasks\", \"schema\": \"CREATE TABLE (\\\"Name\\\" TITLE, \\\"Parent\\\" RELATION('ds_id', DUAL 'Children' 'children'), \\\"Children\\\" RELATION('ds_id', DUAL 'Parent' 'parent'))\"}</example>",
         "allOf": [
           {
-            "type": "object",
-            "properties": {
-              "parent": {
-                "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf0Parent"
-              },
-              "title": {
-                "description": "The title of the new database.",
-                "type": "string"
-              },
-              "description": {
-                "description": "The description of the new database.",
-                "type": "string"
-              }
-            }
+            "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf1OneOf0"
-              },
-              {
-                "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf1OneOf1"
-              }
-            ]
+            "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf1"
           }
         ]
+      },
+      "CreateDatabaseCreateDatabaseAllOf0": {
+        "type": "object",
+        "properties": {
+          "parent": {
+            "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf0Parent"
+          },
+          "title": {
+            "description": "The title of the new database.",
+            "type": "string"
+          },
+          "description": {
+            "description": "The description of the new database.",
+            "type": "string"
+          }
+        }
       },
       "CreateDatabaseCreateDatabaseAllOf0Parent": {
         "description": "The parent under which to create the new database. If omitted, the database will be created as a private page at the workspace level.",
@@ -24090,6 +23771,16 @@
         },
         "required": [
           "page_id"
+        ]
+      },
+      "CreateDatabaseCreateDatabaseAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf1OneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf1OneOf1"
+          }
         ]
       },
       "CreateDatabaseCreateDatabaseAllOf1OneOf0": {
@@ -24338,34 +24029,40 @@
         "description": "The parameters for the create_comment tool. Add a comment to a page or specific content.\n\nProvide `page_id` to identify the page, then choose ONE targeting mode:\n- `page_id` alone: Add a top-level comment to the page\n- `page_id` + `selection_with_ellipsis`: Start a new discussion on the matching block\n- `discussion_id`: Reply to an existing discussion thread (page_id is still required)\n\nProvide exactly one content format:\n- `markdown`: Preferred. Inline Notion-flavored Markdown for comment text. For exact syntax, read the MCP resource `notion://docs/enhanced-markdown-spec` through your MCP client's resource-reading interface, or call the Notion \"fetch\" tool with this URI if your client does not support reading MCP resources. Do NOT pass this URI to any other URL-fetching tool. Use only the Rich text types and Mentions syntax that comments support. Comments support inline formatting (bold, italic, strikethrough, underline, code, links), inline math using `$`Equation`$`, and user/page/database/date mention tags such as `<mention-date start=\"YYYY-MM-DD\"/>`. To attach a file created by `create-file-upload` or `create-attachment`, include its returned `suggested_markdown` on a separate line; up to three file attachments are supported. Do not use UI shortcuts like `@today`, `@name`, `[[page]]`, or autocomplete-style emoji syntax; those are editor affordances, not markdown syntax. Mention tags must include a real `url` where required by the spec. Other block-level Markdown such as headings, lists, tables, blockquotes, and fenced code blocks is stored as plain comment text rather than rendered as blocks.\n- `rich_text`: Array of rich text objects.\n\nFor content targeting, use `selection_with_ellipsis` with ~10 chars from start and end: \"# Section Ti...tle content\"\n\n<example description=\"Page-level comment\">\n{\"page_id\": \"uuid\", \"markdown\": \"Comment with **important** context.\"}\n</example>\n<example description=\"Comment on specific content\">\n{\"page_id\": \"uuid\", \"selection_with_ellipsis\": \"# Meeting No...es heading\",\n \"markdown\": \"Comment on this section.\"}\n</example>\n<example description=\"Reply to discussion\">\n{\"page_id\": \"uuid\", \"discussion_id\": \"discussion://pageId/blockId/discussionId\",\n \"markdown\": \"Reply with [context](https://example.com).\"}\n</example>",
         "allOf": [
           {
-            "type": "object",
-            "properties": {
-              "page_id": {
-                "description": "The ID of the page to comment on (with or without dashes).",
-                "type": "string"
-              },
-              "discussion_id": {
-                "description": "The ID or URL of an existing discussion to reply to (e.g., discussion://pageId/blockId/discussionId).",
-                "type": "string"
-              },
-              "selection_with_ellipsis": {
-                "description": "Unique start and end snippet of the content to comment on.\nDO NOT provide the entire string. Instead, provide up to the first ~10 characters, an ellipsis, and then up to the last ~10 characters.\nMake sure you provide enough of the start and end snippet to uniquely identify the content.\nFor example: \"# Section heading...last paragraph.\"",
-                "type": "string"
-              }
-            },
-            "required": [
-              "page_id"
-            ]
+            "$ref": "#/components/schemas/CreateCommentCreateCommentAllOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CreateCommentCreateCommentAllOf1OneOf0"
-              },
-              {
-                "$ref": "#/components/schemas/CreateCommentCreateCommentAllOf1OneOf1"
-              }
-            ]
+            "$ref": "#/components/schemas/CreateCommentCreateCommentAllOf1"
+          }
+        ]
+      },
+      "CreateCommentCreateCommentAllOf0": {
+        "type": "object",
+        "properties": {
+          "page_id": {
+            "description": "The ID of the page to comment on (with or without dashes).",
+            "type": "string"
+          },
+          "discussion_id": {
+            "description": "The ID or URL of an existing discussion to reply to (e.g., discussion://pageId/blockId/discussionId).",
+            "type": "string"
+          },
+          "selection_with_ellipsis": {
+            "description": "Unique start and end snippet of the content to comment on.\nDO NOT provide the entire string. Instead, provide up to the first ~10 characters, an ellipsis, and then up to the last ~10 characters.\nMake sure you provide enough of the start and end snippet to uniquely identify the content.\nFor example: \"# Section heading...last paragraph.\"",
+            "type": "string"
+          }
+        },
+        "required": [
+          "page_id"
+        ]
+      },
+      "CreateCommentCreateCommentAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CreateCommentCreateCommentAllOf1OneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/CreateCommentCreateCommentAllOf1OneOf1"
           }
         ]
       },
@@ -31961,33 +31658,39 @@
         "description": "Provide exactly one of content for inline UTF-8 text, source_url for a direct HTTPS download, or source_file_id for a file upload this integration already created.",
         "allOf": [
           {
-            "type": "object",
-            "properties": {
-              "filename": {
-                "description": "The filename to create in Notion, including a supported extension such as .html, .md, .pdf, or .png. Required with content and source_url. Omit it with source_file_id; the stored upload already carries a filename.",
-                "type": "string",
-                "minLength": 1
-              },
-              "content_type": {
-                "description": "Optional MIME type, such as text/html or application/pdf. It must match the filename extension; omit it to infer the type from the filename. Omit it with source_file_id; the stored upload already carries a content type.",
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 255
-              }
-            }
+            "$ref": "#/components/schemas/CreateANotionAttachmentAllOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CreateANotionAttachmentAllOf1OneOf0"
-              },
-              {
-                "$ref": "#/components/schemas/CreateANotionAttachmentAllOf1OneOf1"
-              },
-              {
-                "$ref": "#/components/schemas/CreateANotionAttachmentAllOf1OneOf2"
-              }
-            ]
+            "$ref": "#/components/schemas/CreateANotionAttachmentAllOf1"
+          }
+        ]
+      },
+      "CreateANotionAttachmentAllOf0": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "description": "The filename to create in Notion, including a supported extension such as .html, .md, .pdf, or .png. Required with content and source_url. Omit it with source_file_id; the stored upload already carries a filename.",
+            "type": "string",
+            "minLength": 1
+          },
+          "content_type": {
+            "description": "Optional MIME type, such as text/html or application/pdf. It must match the filename extension; omit it to infer the type from the filename. Omit it with source_file_id; the stored upload already carries a content type.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        }
+      },
+      "CreateANotionAttachmentAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CreateANotionAttachmentAllOf1OneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/CreateANotionAttachmentAllOf1OneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/CreateANotionAttachmentAllOf1OneOf2"
           }
         ]
       },
@@ -32658,32 +32361,28 @@
       "ToolInputAnyOf16": {
         "allOf": [
           {
-            "type": "object",
-            "properties": {
-              "parent": {
-                "$ref": "#/components/schemas/ToolInputAnyOf16AllOf0Parent"
-              },
-              "title": {
-                "description": "The title of the new database.",
-                "type": "string"
-              },
-              "description": {
-                "description": "The description of the new database.",
-                "type": "string"
-              }
-            }
+            "$ref": "#/components/schemas/ToolInputAnyOf16AllOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/ToolInputAnyOf16AllOf1OneOf0"
-              },
-              {
-                "$ref": "#/components/schemas/ToolInputAnyOf16AllOf1OneOf1"
-              }
-            ]
+            "$ref": "#/components/schemas/ToolInputAnyOf16AllOf1"
           }
         ]
+      },
+      "ToolInputAnyOf16AllOf0": {
+        "type": "object",
+        "properties": {
+          "parent": {
+            "$ref": "#/components/schemas/ToolInputAnyOf16AllOf0Parent"
+          },
+          "title": {
+            "description": "The title of the new database.",
+            "type": "string"
+          },
+          "description": {
+            "description": "The description of the new database.",
+            "type": "string"
+          }
+        }
       },
       "ToolInputAnyOf16AllOf0Parent": {
         "description": "The parent under which to create the new database. If omitted, the database will be created as a private page at the workspace level.",
@@ -32701,6 +32400,16 @@
         },
         "required": [
           "page_id"
+        ]
+      },
+      "ToolInputAnyOf16AllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ToolInputAnyOf16AllOf1OneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/ToolInputAnyOf16AllOf1OneOf1"
+          }
         ]
       },
       "ToolInputAnyOf16AllOf1OneOf0": {
@@ -32873,34 +32582,40 @@
       "ToolInputAnyOf20": {
         "allOf": [
           {
-            "type": "object",
-            "properties": {
-              "page_id": {
-                "description": "The ID of the page to comment on (with or without dashes).",
-                "type": "string"
-              },
-              "discussion_id": {
-                "description": "The ID or URL of an existing discussion to reply to (e.g., discussion://pageId/blockId/discussionId).",
-                "type": "string"
-              },
-              "selection_with_ellipsis": {
-                "description": "Unique start and end snippet of the content to comment on.\nDO NOT provide the entire string. Instead, provide up to the first ~10 characters, an ellipsis, and then up to the last ~10 characters.\nMake sure you provide enough of the start and end snippet to uniquely identify the content.\nFor example: \"# Section heading...last paragraph.\"",
-                "type": "string"
-              }
-            },
-            "required": [
-              "page_id"
-            ]
+            "$ref": "#/components/schemas/ToolInputAnyOf20AllOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/ToolInputAnyOf20AllOf1OneOf0"
-              },
-              {
-                "$ref": "#/components/schemas/ToolInputAnyOf20AllOf1OneOf1"
-              }
-            ]
+            "$ref": "#/components/schemas/ToolInputAnyOf20AllOf1"
+          }
+        ]
+      },
+      "ToolInputAnyOf20AllOf0": {
+        "type": "object",
+        "properties": {
+          "page_id": {
+            "description": "The ID of the page to comment on (with or without dashes).",
+            "type": "string"
+          },
+          "discussion_id": {
+            "description": "The ID or URL of an existing discussion to reply to (e.g., discussion://pageId/blockId/discussionId).",
+            "type": "string"
+          },
+          "selection_with_ellipsis": {
+            "description": "Unique start and end snippet of the content to comment on.\nDO NOT provide the entire string. Instead, provide up to the first ~10 characters, an ellipsis, and then up to the last ~10 characters.\nMake sure you provide enough of the start and end snippet to uniquely identify the content.\nFor example: \"# Section heading...last paragraph.\"",
+            "type": "string"
+          }
+        },
+        "required": [
+          "page_id"
+        ]
+      },
+      "ToolInputAnyOf20AllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ToolInputAnyOf20AllOf1OneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/ToolInputAnyOf20AllOf1OneOf1"
           }
         ]
       },
@@ -38411,160 +38126,166 @@
       "RunToolEval": {
         "allOf": [
           {
-            "type": "object",
-            "properties": {
-              "eval_session_id": {
-                "description": "The eval session ID for tracking operations across multiple tool calls.",
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 64,
-                "pattern": "^[A-Za-z0-9_-]{1,64}$"
-              },
-              "eval_run_id": {
-                "description": "The eval run ID for organizing a group of eval sessions.",
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 64,
-                "pattern": "^[A-Za-z0-9_-]{1,64}$"
-              }
-            },
-            "required": [
-              "eval_session_id",
-              "eval_run_id"
-            ]
+            "$ref": "#/components/schemas/RunToolEvalAllOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Search2"
-              },
-              {
-                "$ref": "#/components/schemas/AiSearch2"
-              },
-              {
-                "$ref": "#/components/schemas/MemorySearch2"
-              },
-              {
-                "$ref": "#/components/schemas/GetToolAccess2"
-              },
-              {
-                "$ref": "#/components/schemas/Fetch2"
-              },
-              {
-                "$ref": "#/components/schemas/McpBusinessPlanEducation2"
-              },
-              {
-                "$ref": "#/components/schemas/CreatePages2"
-              },
-              {
-                "$ref": "#/components/schemas/UpdatePage2"
-              },
-              {
-                "$ref": "#/components/schemas/ConvertPageToSkill2"
-              },
-              {
-                "$ref": "#/components/schemas/SearchSkills2"
-              },
-              {
-                "$ref": "#/components/schemas/MovePages2"
-              },
-              {
-                "$ref": "#/components/schemas/DuplicatePage2"
-              },
-              {
-                "$ref": "#/components/schemas/CreateDatabase2"
-              },
-              {
-                "$ref": "#/components/schemas/CreateFolder2"
-              },
-              {
-                "$ref": "#/components/schemas/UpdateFolder2"
-              },
-              {
-                "$ref": "#/components/schemas/UpdateDataSource2"
-              },
-              {
-                "$ref": "#/components/schemas/CreateComment2"
-              },
-              {
-                "$ref": "#/components/schemas/GetComments2"
-              },
-              {
-                "$ref": "#/components/schemas/CreateSuggestedEdit2"
-              },
-              {
-                "$ref": "#/components/schemas/GetSuggestedEdit2"
-              },
-              {
-                "$ref": "#/components/schemas/ResolveSuggestedEdit2"
-              },
-              {
-                "$ref": "#/components/schemas/GetAsyncTask2"
-              },
-              {
-                "$ref": "#/components/schemas/GetTeams2"
-              },
-              {
-                "$ref": "#/components/schemas/GetUsers2"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyToSlackThread2"
-              },
-              {
-                "$ref": "#/components/schemas/AnswerQuestion2"
-              },
-              {
-                "$ref": "#/components/schemas/QueryDataSources2"
-              },
-              {
-                "$ref": "#/components/schemas/QueryMultipleDataSources2"
-              },
-              {
-                "$ref": "#/components/schemas/QueryDatabaseView2"
-              },
-              {
-                "$ref": "#/components/schemas/QueryMeetingNotes2"
-              },
-              {
-                "$ref": "#/components/schemas/ListAgents2"
-              },
-              {
-                "$ref": "#/components/schemas/ListPrivatePages2"
-              },
-              {
-                "$ref": "#/components/schemas/ListSharedPages2"
-              },
-              {
-                "$ref": "#/components/schemas/ListFavoritePages2"
-              },
-              {
-                "$ref": "#/components/schemas/ListRecentPages2"
-              },
-              {
-                "$ref": "#/components/schemas/SearchAgents2"
-              },
-              {
-                "$ref": "#/components/schemas/CreateView2"
-              },
-              {
-                "$ref": "#/components/schemas/UpdateView2"
-              },
-              {
-                "$ref": "#/components/schemas/SearchEmails2"
-              },
-              {
-                "$ref": "#/components/schemas/ViewThreadContent2"
-              },
-              {
-                "$ref": "#/components/schemas/CreateWorkspaceBookmark2"
-              },
-              {
-                "$ref": "#/components/schemas/ListWorkspaceBookmarks2"
-              },
-              {
-                "$ref": "#/components/schemas/DeleteWorkspaceBookmark2"
-              }
-            ]
+            "$ref": "#/components/schemas/RunToolEvalAllOf1"
+          }
+        ]
+      },
+      "RunToolEvalAllOf0": {
+        "type": "object",
+        "properties": {
+          "eval_session_id": {
+            "description": "The eval session ID for tracking operations across multiple tool calls.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9_-]{1,64}$"
+          },
+          "eval_run_id": {
+            "description": "The eval run ID for organizing a group of eval sessions.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9_-]{1,64}$"
+          }
+        },
+        "required": [
+          "eval_session_id",
+          "eval_run_id"
+        ]
+      },
+      "RunToolEvalAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Search2"
+          },
+          {
+            "$ref": "#/components/schemas/AiSearch2"
+          },
+          {
+            "$ref": "#/components/schemas/MemorySearch2"
+          },
+          {
+            "$ref": "#/components/schemas/GetToolAccess2"
+          },
+          {
+            "$ref": "#/components/schemas/Fetch2"
+          },
+          {
+            "$ref": "#/components/schemas/McpBusinessPlanEducation2"
+          },
+          {
+            "$ref": "#/components/schemas/CreatePages2"
+          },
+          {
+            "$ref": "#/components/schemas/UpdatePage2"
+          },
+          {
+            "$ref": "#/components/schemas/ConvertPageToSkill2"
+          },
+          {
+            "$ref": "#/components/schemas/SearchSkills2"
+          },
+          {
+            "$ref": "#/components/schemas/MovePages2"
+          },
+          {
+            "$ref": "#/components/schemas/DuplicatePage2"
+          },
+          {
+            "$ref": "#/components/schemas/CreateDatabase2"
+          },
+          {
+            "$ref": "#/components/schemas/CreateFolder2"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateFolder2"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateDataSource2"
+          },
+          {
+            "$ref": "#/components/schemas/CreateComment2"
+          },
+          {
+            "$ref": "#/components/schemas/GetComments2"
+          },
+          {
+            "$ref": "#/components/schemas/CreateSuggestedEdit2"
+          },
+          {
+            "$ref": "#/components/schemas/GetSuggestedEdit2"
+          },
+          {
+            "$ref": "#/components/schemas/ResolveSuggestedEdit2"
+          },
+          {
+            "$ref": "#/components/schemas/GetAsyncTask2"
+          },
+          {
+            "$ref": "#/components/schemas/GetTeams2"
+          },
+          {
+            "$ref": "#/components/schemas/GetUsers2"
+          },
+          {
+            "$ref": "#/components/schemas/ReplyToSlackThread2"
+          },
+          {
+            "$ref": "#/components/schemas/AnswerQuestion2"
+          },
+          {
+            "$ref": "#/components/schemas/QueryDataSources2"
+          },
+          {
+            "$ref": "#/components/schemas/QueryMultipleDataSources2"
+          },
+          {
+            "$ref": "#/components/schemas/QueryDatabaseView2"
+          },
+          {
+            "$ref": "#/components/schemas/QueryMeetingNotes2"
+          },
+          {
+            "$ref": "#/components/schemas/ListAgents2"
+          },
+          {
+            "$ref": "#/components/schemas/ListPrivatePages2"
+          },
+          {
+            "$ref": "#/components/schemas/ListSharedPages2"
+          },
+          {
+            "$ref": "#/components/schemas/ListFavoritePages2"
+          },
+          {
+            "$ref": "#/components/schemas/ListRecentPages2"
+          },
+          {
+            "$ref": "#/components/schemas/SearchAgents2"
+          },
+          {
+            "$ref": "#/components/schemas/CreateView2"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateView2"
+          },
+          {
+            "$ref": "#/components/schemas/SearchEmails2"
+          },
+          {
+            "$ref": "#/components/schemas/ViewThreadContent2"
+          },
+          {
+            "$ref": "#/components/schemas/CreateWorkspaceBookmark2"
+          },
+          {
+            "$ref": "#/components/schemas/ListWorkspaceBookmarks2"
+          },
+          {
+            "$ref": "#/components/schemas/DeleteWorkspaceBookmark2"
           }
         ]
       },
@@ -39692,32 +39413,28 @@
         "description": "The parameters for the create_database tool. Creates a new Notion database using SQL DDL syntax, or a canonical typed database\nfor tasks, projects, or skills.\n\nProvide exactly one of:\n- schema: a CREATE TABLE statement. If no title property is provided, \"Name\" is auto-added.\n- database_type: one of tasks, projects, or skills. The database is created with\n  the canonical required properties and typed metadata used by Notion.\n\nReturns Markdown with schema, SQLite definition, and data source ID in\n<data-source> tag for use with update_data_source and query_data_sources tools.\n\nType syntax:\n- Simple: TITLE, RICH_TEXT, DATE, PEOPLE, CHECKBOX, URL, EMAIL, PHONE_NUMBER, STATUS, FILES\n- SELECT('opt':color, ...) / MULTI_SELECT('opt':color, ...)\n- NUMBER [FORMAT 'dollar'] / FORMULA('expression')\n- RELATION('data_source_id') — one-way relation\n- RELATION('data_source_id', DUAL) — two-way relation\n- RELATION('data_source_id', DUAL 'synced_name') — two-way with synced property name\n- RELATION('data_source_id', DUAL 'synced_name' 'synced_id') — two-way with synced name and ID (for self-relations)\n- ROLLUP('rel_prop', 'target_prop', 'function')\n- UNIQUE_ID [PREFIX 'X'] / CREATED_TIME / LAST_EDITED_TIME\n- Any column: COMMENT 'description text'\nColors: default, gray, brown, orange, yellow, green, blue, purple, pink, red\n\n<example description=\"Minimal\">{\"schema\": \"CREATE TABLE (\\\"Name\\\" TITLE)\"}</example>\n<example description=\"Tasks\">{\"database_type\": \"tasks\", \"title\": \"Tasks\"}</example>\n<example description=\"With parent and options\">{\"parent\": {\"page_id\": \"f336d0bc-b841-465b-8045-024475c079dd\"}, \"title\": \"Projects\", \"schema\": \"CREATE TABLE (\\\"Name\\\" TITLE, \\\"Budget\\\" NUMBER FORMAT 'dollar', \\\"Tags\\\" MULTI_SELECT('eng':blue, 'design':pink), \\\"Task ID\\\" UNIQUE_ID PREFIX 'PRJ')\"}</example>\n<example description=\"Self-relation (two-step: create database first, then use its data source ID with update_data_source to add self-relations)\">{\"title\": \"Tasks\", \"schema\": \"CREATE TABLE (\\\"Name\\\" TITLE, \\\"Parent\\\" RELATION('ds_id', DUAL 'Children' 'children'), \\\"Children\\\" RELATION('ds_id', DUAL 'Parent' 'parent'))\"}</example>",
         "allOf": [
           {
-            "type": "object",
-            "properties": {
-              "parent": {
-                "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf0Parent2"
-              },
-              "title": {
-                "description": "The title of the new database.",
-                "type": "string"
-              },
-              "description": {
-                "description": "The description of the new database.",
-                "type": "string"
-              }
-            }
+            "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf02"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf1OneOf02"
-              },
-              {
-                "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf1OneOf12"
-              }
-            ]
+            "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf12"
           }
         ]
+      },
+      "CreateDatabaseCreateDatabaseAllOf02": {
+        "type": "object",
+        "properties": {
+          "parent": {
+            "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf0Parent2"
+          },
+          "title": {
+            "description": "The title of the new database.",
+            "type": "string"
+          },
+          "description": {
+            "description": "The description of the new database.",
+            "type": "string"
+          }
+        }
       },
       "CreateDatabaseCreateDatabaseAllOf0Parent2": {
         "description": "The parent under which to create the new database. If omitted, the database will be created as a private page at the workspace level.",
@@ -39735,6 +39452,16 @@
         },
         "required": [
           "page_id"
+        ]
+      },
+      "CreateDatabaseCreateDatabaseAllOf12": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf1OneOf02"
+          },
+          {
+            "$ref": "#/components/schemas/CreateDatabaseCreateDatabaseAllOf1OneOf12"
+          }
         ]
       },
       "CreateDatabaseCreateDatabaseAllOf1OneOf02": {
@@ -39983,34 +39710,40 @@
         "description": "The parameters for the create_comment tool. Add a comment to a page or specific content.\n\nProvide `page_id` to identify the page, then choose ONE targeting mode:\n- `page_id` alone: Add a top-level comment to the page\n- `page_id` + `selection_with_ellipsis`: Start a new discussion on the matching block\n- `discussion_id`: Reply to an existing discussion thread (page_id is still required)\n\nProvide exactly one content format:\n- `markdown`: Preferred. Inline Notion-flavored Markdown for comment text. For exact syntax, read the MCP resource `notion://docs/enhanced-markdown-spec` through your MCP client's resource-reading interface, or call the Notion \"fetch\" tool with this URI if your client does not support reading MCP resources. Do NOT pass this URI to any other URL-fetching tool. Use only the Rich text types and Mentions syntax that comments support. Comments support inline formatting (bold, italic, strikethrough, underline, code, links), inline math using `$`Equation`$`, and user/page/database/date mention tags such as `<mention-date start=\"YYYY-MM-DD\"/>`. To attach a file created by `create-file-upload` or `create-attachment`, include its returned `suggested_markdown` on a separate line; up to three file attachments are supported. Do not use UI shortcuts like `@today`, `@name`, `[[page]]`, or autocomplete-style emoji syntax; those are editor affordances, not markdown syntax. Mention tags must include a real `url` where required by the spec. Other block-level Markdown such as headings, lists, tables, blockquotes, and fenced code blocks is stored as plain comment text rather than rendered as blocks.\n- `rich_text`: Array of rich text objects.\n\nFor content targeting, use `selection_with_ellipsis` with ~10 chars from start and end: \"# Section Ti...tle content\"\n\n<example description=\"Page-level comment\">\n{\"page_id\": \"uuid\", \"markdown\": \"Comment with **important** context.\"}\n</example>\n<example description=\"Comment on specific content\">\n{\"page_id\": \"uuid\", \"selection_with_ellipsis\": \"# Meeting No...es heading\",\n \"markdown\": \"Comment on this section.\"}\n</example>\n<example description=\"Reply to discussion\">\n{\"page_id\": \"uuid\", \"discussion_id\": \"discussion://pageId/blockId/discussionId\",\n \"markdown\": \"Reply with [context](https://example.com).\"}\n</example>",
         "allOf": [
           {
-            "type": "object",
-            "properties": {
-              "page_id": {
-                "description": "The ID of the page to comment on (with or without dashes).",
-                "type": "string"
-              },
-              "discussion_id": {
-                "description": "The ID or URL of an existing discussion to reply to (e.g., discussion://pageId/blockId/discussionId).",
-                "type": "string"
-              },
-              "selection_with_ellipsis": {
-                "description": "Unique start and end snippet of the content to comment on.\nDO NOT provide the entire string. Instead, provide up to the first ~10 characters, an ellipsis, and then up to the last ~10 characters.\nMake sure you provide enough of the start and end snippet to uniquely identify the content.\nFor example: \"# Section heading...last paragraph.\"",
-                "type": "string"
-              }
-            },
-            "required": [
-              "page_id"
-            ]
+            "$ref": "#/components/schemas/CreateCommentCreateCommentAllOf02"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CreateCommentCreateCommentAllOf1OneOf02"
-              },
-              {
-                "$ref": "#/components/schemas/CreateCommentCreateCommentAllOf1OneOf12"
-              }
-            ]
+            "$ref": "#/components/schemas/CreateCommentCreateCommentAllOf12"
+          }
+        ]
+      },
+      "CreateCommentCreateCommentAllOf02": {
+        "type": "object",
+        "properties": {
+          "page_id": {
+            "description": "The ID of the page to comment on (with or without dashes).",
+            "type": "string"
+          },
+          "discussion_id": {
+            "description": "The ID or URL of an existing discussion to reply to (e.g., discussion://pageId/blockId/discussionId).",
+            "type": "string"
+          },
+          "selection_with_ellipsis": {
+            "description": "Unique start and end snippet of the content to comment on.\nDO NOT provide the entire string. Instead, provide up to the first ~10 characters, an ellipsis, and then up to the last ~10 characters.\nMake sure you provide enough of the start and end snippet to uniquely identify the content.\nFor example: \"# Section heading...last paragraph.\"",
+            "type": "string"
+          }
+        },
+        "required": [
+          "page_id"
+        ]
+      },
+      "CreateCommentCreateCommentAllOf12": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CreateCommentCreateCommentAllOf1OneOf02"
+          },
+          {
+            "$ref": "#/components/schemas/CreateCommentCreateCommentAllOf1OneOf12"
           }
         ]
       },
@@ -47130,6 +46863,73 @@
           }
         ]
       },
+      "databasePropertyConfigResponseAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/numberDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/formulaDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/selectDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/multiSelectDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/statusDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/relationDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/rollupDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/uniqueIdDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/titleDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/richTextDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/urlDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/peopleDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/filesDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/emailDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/phoneNumberDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/dateDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/checkboxDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/createdByDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/createdTimeDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/lastEditedByDatabasePropertyConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/lastEditedTimeDatabasePropertyConfigResponse"
+          }
+        ]
+      },
       "DatabasePropertyConfigResponseCommonDescription": {
         "description": "The description of the property.",
         "oneOf": [
@@ -47138,6 +46938,16 @@
           },
           {
             "type": "null"
+          }
+        ]
+      },
+      "databasePropertyRelationConfigResponseAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/singlePropertyDatabasePropertyRelationConfigResponse"
+          },
+          {
+            "$ref": "#/components/schemas/dualPropertyDatabasePropertyRelationConfigResponse"
           }
         ]
       },
@@ -47296,6 +47106,23 @@
         ],
         "additionalProperties": false
       },
+      "error_api_400AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorAPI400AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 400
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
+      },
       "ErrorAPI400AllOf1Code": {
         "type": "string",
         "enum": [
@@ -47307,6 +47134,23 @@
           "validation_error",
           "invalid_credit_limit"
         ]
+      },
+      "error_api_401AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorAPI401AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 401
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
       },
       "ErrorAPI401AllOf1Code": {
         "type": "string",
@@ -47320,23 +47164,26 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "$ref": "#/components/schemas/ErrorAPI403OneOf0AllOf1Code"
-              },
-              "status": {
-                "type": "integer",
-                "const": 403
-              }
-            },
-            "required": [
-              "code",
-              "status"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/error_api_403OneOf0AllOf1"
           }
         ]
+      },
+      "error_api_403OneOf0AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorAPI403OneOf0AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 403
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
       },
       "ErrorAPI403OneOf0AllOf1Code": {
         "type": "string",
@@ -47351,26 +47198,29 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "type": "string",
-                "const": "workspace_credits_exhausted"
-              },
-              "status": {
-                "type": "integer",
-                "const": 403
-              },
-              "additional_data": {
-                "$ref": "#/components/schemas/ErrorAPI403OneOf1AllOf1AdditionalData"
-              }
-            },
-            "required": [
-              "code",
-              "status",
-              "additional_data"
-            ]
+            "$ref": "#/components/schemas/error_api_403OneOf1AllOf1"
           }
+        ]
+      },
+      "error_api_403OneOf1AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "const": "workspace_credits_exhausted"
+          },
+          "status": {
+            "type": "integer",
+            "const": 403
+          },
+          "additional_data": {
+            "$ref": "#/components/schemas/ErrorAPI403OneOf1AllOf1AdditionalData"
+          }
+        },
+        "required": [
+          "code",
+          "status",
+          "additional_data"
         ]
       },
       "ErrorAPI403OneOf1AllOf1AdditionalData": {
@@ -47434,26 +47284,29 @@
             "$ref": "#/components/schemas/publicApiCommonErrorResponse"
           },
           {
-            "type": "object",
-            "properties": {
-              "code": {
-                "type": "string",
-                "const": "agent_credit_limit_reached"
-              },
-              "status": {
-                "type": "integer",
-                "const": 403
-              },
-              "additional_data": {
-                "$ref": "#/components/schemas/ErrorAPI403OneOf2AllOf1AdditionalData"
-              }
-            },
-            "required": [
-              "code",
-              "status",
-              "additional_data"
-            ]
+            "$ref": "#/components/schemas/error_api_403OneOf2AllOf1"
           }
+        ]
+      },
+      "error_api_403OneOf2AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "const": "agent_credit_limit_reached"
+          },
+          "status": {
+            "type": "integer",
+            "const": 403
+          },
+          "additional_data": {
+            "$ref": "#/components/schemas/ErrorAPI403OneOf2AllOf1AdditionalData"
+          }
+        },
+        "required": [
+          "code",
+          "status",
+          "additional_data"
         ]
       },
       "ErrorAPI403OneOf2AllOf1AdditionalData": {
@@ -47514,6 +47367,23 @@
           }
         ]
       },
+      "error_api_404AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorAPI404AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 404
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
+      },
       "ErrorAPI404AllOf1Code": {
         "type": "string",
         "enum": [
@@ -47521,11 +47391,45 @@
           "directory_not_found"
         ]
       },
+      "error_api_406AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorAPI406AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 406
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
+      },
       "ErrorAPI406AllOf1Code": {
         "type": "string",
         "enum": [
           "row_limit_exceeded"
         ]
+      },
+      "error_api_409AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorAPI409AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 409
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
       },
       "ErrorAPI409AllOf1Code": {
         "type": "string",
@@ -47535,11 +47439,45 @@
           "agent_deleted"
         ]
       },
+      "error_api_429AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorAPI429AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 429
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
+      },
       "ErrorAPI429AllOf1Code": {
         "type": "string",
         "enum": [
           "rate_limited"
         ]
+      },
+      "error_api_500AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorAPI500AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 500
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
       },
       "ErrorAPI500AllOf1Code": {
         "type": "string",
@@ -47547,11 +47485,45 @@
           "internal_server_error"
         ]
       },
+      "error_api_503AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorAPI503AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 503
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
+      },
       "ErrorAPI503AllOf1Code": {
         "type": "string",
         "enum": [
           "service_unavailable"
         ]
+      },
+      "error_api_504AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorAPI504AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 504
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
       },
       "ErrorAPI504AllOf1Code": {
         "type": "string",
@@ -47559,11 +47531,45 @@
           "gateway_timeout"
         ]
       },
+      "error_api_529AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorAPI529AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 529
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
+      },
       "ErrorAPI529AllOf1Code": {
         "type": "string",
         "enum": [
           "service_overload"
         ]
+      },
+      "error_oauth_400AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorOauth400AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 400
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
       },
       "ErrorOauth400AllOf1Code": {
         "type": "string",
@@ -47575,17 +47581,68 @@
           "invalid_scope"
         ]
       },
+      "error_oauth_401AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorOauth401AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 401
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
+      },
       "ErrorOauth401AllOf1Code": {
         "type": "string",
         "enum": [
           "invalid_client"
         ]
       },
+      "error_oauth_403AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorOauth403AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 403
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
+      },
       "ErrorOauth403AllOf1Code": {
         "type": "string",
         "enum": [
           "test_env_error"
         ]
+      },
+      "error_oauth_500AllOf1": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorOauth500AllOf1Code"
+          },
+          "status": {
+            "type": "integer",
+            "const": 500
+          }
+        },
+        "required": [
+          "code",
+          "status"
+        ],
+        "additionalProperties": false
       },
       "ErrorOauth500AllOf1Code": {
         "type": "string",
@@ -47747,6 +47804,16 @@
         },
         "required": [
           "name"
+        ]
+      },
+      "internalOrExternalFileWithNameResponseAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/fileInternalOrExternalFileWithNameResponse"
+          },
+          {
+            "$ref": "#/components/schemas/externalInternalOrExternalFileWithNameResponse"
+          }
         ]
       },
       "LastEditedByPropertyItemObjectResponseLastEditedBy": {
@@ -48305,6 +48372,32 @@
           }
         ]
       },
+      "pagePropertyValueWithIdResponseAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/simpleOrArrayPropertyValueResponse"
+          },
+          {
+            "$ref": "#/components/schemas/partialRollupPropertyResponse"
+          }
+        ]
+      },
+      "partialRollupValueResponseAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/numberPartialRollupValueResponse"
+          },
+          {
+            "$ref": "#/components/schemas/datePartialRollupValueResponse"
+          },
+          {
+            "$ref": "#/components/schemas/arrayPartialRollupValueResponse"
+          },
+          {
+            "$ref": "#/components/schemas/unsupportedPartialRollupValueResponse"
+          }
+        ]
+      },
       "PartialSelectPropertyValueResponseColor": {
         "description": "One of: `default`, `gray`, `brown`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`, `red`",
         "type": "string",
@@ -48789,6 +48882,32 @@
         "enum": [
           "complete",
           "incomplete"
+        ]
+      },
+      "richTextItemRequestAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/textRichTextItemRequest"
+          },
+          {
+            "$ref": "#/components/schemas/mentionRichTextItemRequest"
+          },
+          {
+            "$ref": "#/components/schemas/equationRichTextItemRequest"
+          }
+        ]
+      },
+      "richTextItemResponseAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/textRichTextItemResponse"
+          },
+          {
+            "$ref": "#/components/schemas/mentionRichTextItemResponse"
+          },
+          {
+            "$ref": "#/components/schemas/equationRichTextItemResponse"
+          }
         ]
       },
       "RichTextItemResponseCommonHref": {
@@ -60173,6 +60292,16 @@
           }
         ]
       },
+      "userObjectResponseAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/personUserObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/botUserObjectResponse"
+          }
+        ]
+      },
       "UserObjectResponseCommonName": {
         "description": "The name of the user.",
         "oneOf": [
@@ -60275,18 +60404,6 @@
             "$ref": "#/components/schemas/workflowNestedViewFilter"
           }
         ]
-      },
-      "ChatWithAgentOk2": {
-        "description": "Newline-delimited JSON (NDJSON) stream. Each line is a JSON-encoded chat stream chunk.",
-        "type": "string"
-      },
-      "ChatWithAgentStreamOk": {
-        "description": "Newline-delimited JSON (NDJSON) stream. Each line is a JSON-encoded chunk object.",
-        "type": "string"
-      },
-      "SendExternalAgentStubSessionMessageStreamOk2": {
-        "description": "Newline-delimited JSON (NDJSON) stream. Each line is a JSON-encoded chunk object.",
-        "type": "string"
       },
       "NotionVersion": {
         "type": "string",
@@ -60696,7 +60813,8 @@
           },
           "application/x-ndjson": {
             "schema": {
-              "$ref": "#/components/schemas/ChatWithAgentOk2"
+              "description": "Newline-delimited JSON (NDJSON) stream. Each line is a JSON-encoded chat stream chunk.",
+              "type": "string"
             }
           }
         }
@@ -60821,7 +60939,8 @@
           },
           "application/x-ndjson": {
             "schema": {
-              "$ref": "#/components/schemas/ChatWithAgentStreamOk"
+              "description": "Newline-delimited JSON (NDJSON) stream. Each line is a JSON-encoded chunk object.",
+              "type": "string"
             }
           }
         }
@@ -66236,7 +66355,8 @@
           },
           "application/x-ndjson": {
             "schema": {
-              "$ref": "#/components/schemas/SendExternalAgentStubSessionMessageStreamOk2"
+              "description": "Newline-delimited JSON (NDJSON) stream. Each line is a JSON-encoded chunk object.",
+              "type": "string"
             }
           }
         }
