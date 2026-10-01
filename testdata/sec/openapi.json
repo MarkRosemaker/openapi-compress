@@ -70941,12 +70941,6 @@
           "ticker",
           "title"
         ]
-      },
-      "ListFilesCompanyTickersJSONOk": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/ListFilesCompanyTickersJSONOkValue"
-        }
       }
     },
     "responses": {
@@ -70971,7 +70965,10 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ListFilesCompanyTickersJSONOk"
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/ListFilesCompanyTickersJSONOkValue"
+              }
             }
           }
         }

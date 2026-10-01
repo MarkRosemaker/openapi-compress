@@ -8450,7 +8450,6 @@
           }
         }
       },
-      "DownloadCharacterCharactersCharacterIDZip": {},
       "EditAnimationV2Request": {
         "title": "EditAnimationV2Request",
         "description": "Request model for edit-animation-v2 endpoint",
@@ -9464,9 +9463,6 @@
           "status",
           "job_id"
         ]
-      },
-      "GetLlmsTxtLlmsTxtGetOk": {
-        "type": "string"
       },
       "GetMapObjectResponse": {
         "title": "GetMapObjectResponse",
@@ -11020,11 +11016,6 @@
           "height"
         ],
         "additionalProperties": false
-      },
-      "ProFlashCapabilities": {
-        "title": "Response Get Pro Flash Capabilities",
-        "type": "object",
-        "additionalProperties": true
       },
       "ProFlashImageResponse": {
         "title": "ProFlashImageResponse",
@@ -14682,9 +14673,7 @@
         "description": "ZIP file download containing character data",
         "content": {
           "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/DownloadCharacterCharactersCharacterIDZip"
-            }
+            "schema": {}
           },
           "application/zip": {
             "example": "Binary ZIP file content"
@@ -14711,9 +14700,7 @@
         "description": "ZIP file containing the sheet PNG and layout JSON",
         "content": {
           "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/DownloadCharacterCharactersCharacterIDZip"
-            }
+            "schema": {}
           },
           "application/zip": {
             "example": "Binary ZIP file content"
@@ -14736,9 +14723,7 @@
         "description": "ZIP file containing the sheet PNG and layout JSON",
         "content": {
           "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/DownloadCharacterCharactersCharacterIDZip"
-            }
+            "schema": {}
           },
           "application/zip": {
             "example": "Binary ZIP file content"
@@ -15887,7 +15872,7 @@
         "content": {
           "text/plain": {
             "schema": {
-              "$ref": "#/components/schemas/GetLlmsTxtLlmsTxtGetOk"
+              "type": "string"
             },
             "example": "# PixelLab v2 API Documentation\n\n..."
           }
@@ -15991,7 +15976,9 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ProFlashCapabilities"
+              "title": "Response Get Pro Flash Capabilities",
+              "type": "object",
+              "additionalProperties": true
             }
           }
         }
@@ -16001,7 +15988,9 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ProFlashCapabilities"
+              "title": "Response Get Pro Flash Cost",
+              "type": "object",
+              "additionalProperties": true
             }
           }
         }
@@ -16026,9 +16015,7 @@
         "description": "Successfully retrieved sidescroller tileset",
         "content": {
           "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/DownloadCharacterCharactersCharacterIDZip"
-            }
+            "schema": {}
           }
         }
       },
