@@ -37,6 +37,8 @@ func TestCompress_TestData(t *testing.T) {
 
 	for _, tc := range entries {
 		t.Run(tc.Name(), func(t *testing.T) {
+			t.Parallel()
+
 			f, err := testdata.Open(filepath.Join("testdata", tc.Name(), "openapi.json"))
 			if err != nil {
 				t.Fatal(err)
