@@ -2165,98 +2165,6 @@
           "user_ids"
         ]
       },
-      "AddLegalHoldUsers2": {
-        "type": "object",
-        "properties": {
-          "created_by": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "created_time": {
-            "type": "number"
-          },
-          "id": {
-            "type": "string"
-          },
-          "start_date": {
-            "type": "number"
-          },
-          "status": {
-            "$ref": "#/components/schemas/AddLegalHoldUsersStatus"
-          },
-          "user_interaction_type": {
-            "$ref": "#/components/schemas/AddLegalHoldUsersUserInteractionType"
-          },
-          "users": {
-            "$ref": "#/components/schemas/AddLegalHoldUsers3"
-          },
-          "workspaces": {
-            "$ref": "#/components/schemas/AddLegalHoldUsers3"
-          },
-          "description": {
-            "type": "string"
-          },
-          "end_date": {
-            "type": "number"
-          },
-          "icon": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "created_by",
-          "created_time",
-          "id",
-          "start_date",
-          "status",
-          "user_interaction_type",
-          "users",
-          "workspaces"
-        ]
-      },
-      "AddLegalHoldUsers3": {
-        "type": "object",
-        "properties": {
-          "ids": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          "total": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "ids",
-          "total"
-        ]
-      },
-      "AddLegalHoldUsersStatus": {
-        "type": "string",
-        "enum": [
-          "active",
-          "released"
-        ]
-      },
-      "AddLegalHoldUsersUserInteractionType": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/AddLegalHoldUsersUserInteractionTypeItem"
-        }
-      },
-      "AddLegalHoldUsersUserInteractionTypeItem": {
-        "type": "string",
-        "enum": [
-          "page.created",
-          "page.edited",
-          "page.viewed"
-        ]
-      },
       "AddPermissionGroupMember": {
         "type": "object",
         "properties": {
@@ -2264,6 +2172,7 @@
             "$ref": "#/components/schemas/AddPermissionGroupMemberMember"
           },
           "role": {
+            "description": "The user's role in the group.",
             "$ref": "#/components/schemas/AddPermissionGroupMemberRole"
           }
         },
@@ -2288,6 +2197,7 @@
             "$ref": "#/components/schemas/AddPermissionGroupMember3"
           },
           "role": {
+            "description": "The user's role in the group.",
             "$ref": "#/components/schemas/AddPermissionGroupMemberRole"
           }
         },
@@ -2337,7 +2247,6 @@
         ]
       },
       "AddPermissionGroupMemberRole": {
-        "description": "The user's role in the group.",
         "type": "string",
         "enum": [
           "owner",
@@ -2443,6 +2352,7 @@
             "type": "number"
           },
           "status": {
+            "description": "Agent status; same values as the list-agents endpoint's status field.",
             "$ref": "#/components/schemas/AgentCreditUsageStatus"
           },
           "total_credits_used": {
@@ -2514,7 +2424,6 @@
         "additionalProperties": false
       },
       "AgentCreditUsageStatus": {
-        "description": "Agent status; same values as the list-agents endpoint's status field.",
         "type": "string",
         "enum": [
           "active",
@@ -2546,7 +2455,6 @@
         ]
       },
       "AgentPermissions": {
-        "description": "The page of permission entries, up to 250 per request. The workspace-wide grant always sorts first, then groups, then users.",
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/AgentPermissionsItem"
@@ -2557,13 +2465,15 @@
         "type": "object",
         "properties": {
           "principal": {
-            "$ref": "#/components/schemas/AgentPermissionsItemPrincipal"
+            "$ref": "#/components/schemas/UpdateAgentPermissionsRemoveItem"
           },
           "resolved_role": {
-            "$ref": "#/components/schemas/AgentPermissionsItemResolvedRole"
+            "description": "The effective role for this principal: the most permissive of the stored role and every other grant that reaches the principal — the workspace-wide grant and, for users, any granted group they belong to. Roles rank \"view_and_interact\" < \"edit\" < \"full_access\", so a user whose stored role is \"edit\" resolves to \"full_access\" when the workspace-wide grant allows \"full_access\". Grants that do not reach the principal are excluded: the workspace-wide grant reaches only full workspace members, and group grants reach only workspace members (never page guests or non-members, even if a stale group-member row still exists for them).",
+            "$ref": "#/components/schemas/UpdateAgentPermissionsSetItemRole"
           },
           "role": {
-            "$ref": "#/components/schemas/AgentPermissionsItemResolvedRole"
+            "description": "The role stored on this principal's agent permission item.",
+            "$ref": "#/components/schemas/UpdateAgentPermissionsSetItemRole"
           }
         },
         "required": [
@@ -2572,62 +2482,6 @@
           "role"
         ],
         "additionalProperties": false
-      },
-      "AgentPermissionsItemPrincipal": {
-        "description": "A recipient of a permission grant. \"workspace\" maps to a space-wide permission granting all workspace members the given role; guests are never covered by it.",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/AgentPermissionsItemPrincipalOneOf"
-          },
-          {
-            "$ref": "#/components/schemas/CreateCreditLimitPolicySelectorOneOf2"
-          },
-          {
-            "$ref": "#/components/schemas/AgentPermissionsItemPrincipalOneOf2"
-          }
-        ]
-      },
-      "AgentPermissionsItemPrincipalOneOf": {
-        "type": "object",
-        "properties": {
-          "group_id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "type": {
-            "description": "Always `group`",
-            "type": "string",
-            "const": "group"
-          }
-        },
-        "required": [
-          "group_id",
-          "type"
-        ],
-        "additionalProperties": false
-      },
-      "AgentPermissionsItemPrincipalOneOf2": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `workspace`",
-            "type": "string",
-            "const": "workspace"
-          }
-        },
-        "required": [
-          "type"
-        ],
-        "additionalProperties": false
-      },
-      "AgentPermissionsItemResolvedRole": {
-        "description": "The effective role for this principal: the most permissive of the stored role and every other grant that reaches the principal — the workspace-wide grant and, for users, any granted group they belong to. Roles rank \"view_and_interact\" < \"edit\" < \"full_access\", so a user whose stored role is \"edit\" resolves to \"full_access\" when the workspace-wide grant allows \"full_access\". Grants that do not reach the principal are excluded: the workspace-wide grant reaches only full workspace members, and group grants reach only workspace members (never page guests or non-members, even if a stale group-member row still exists for them).",
-        "type": "string",
-        "enum": [
-          "edit",
-          "full_access",
-          "view_and_interact"
-        ]
       },
       "Bot": {
         "title": "Bot",
@@ -2809,7 +2663,7 @@
             }
           },
           "user_interaction_type": {
-            "$ref": "#/components/schemas/AddLegalHoldUsersUserInteractionType"
+            "$ref": "#/components/schemas/LegalHoldUserInteractionType"
           },
           "description": {
             "type": "string"
@@ -3031,6 +2885,7 @@
         "type": "object",
         "properties": {
           "permissions": {
+            "description": "The page of permission entries, up to 250 per request. The workspace-wide grant always sorts first, then groups, then users.",
             "$ref": "#/components/schemas/AgentPermissions"
           },
           "next_cursor": {
@@ -3184,6 +3039,7 @@
             "format": "uuid"
           },
           "status": {
+            "description": "The agent's current status: \"active\", \"deleted\", or a snake_case paused reason. Uses the same values as the status query filter.",
             "$ref": "#/components/schemas/AgentCreditUsageStatus"
           },
           "type": {
@@ -3194,6 +3050,7 @@
             "format": "uuid"
           },
           "created_by_table": {
+            "description": "The actor table of the agent's creator, such as \"notion_user\".",
             "$ref": "#/components/schemas/WorkflowsMetadataForSpaceResultsItemCreatedByTable"
           },
           "created_time": {
@@ -3217,6 +3074,7 @@
             "format": "uuid"
           },
           "last_edited_by_table": {
+            "description": "The actor table of the agent's last editor, such as \"notion_user\".",
             "$ref": "#/components/schemas/WorkflowsMetadataForSpaceResultsItemCreatedByTable"
           },
           "last_edited_time": {
@@ -3250,6 +3108,7 @@
             "$ref": "#/components/schemas/GetWorkflowsMetadataForSpaceOkResultsItemParentTable"
           },
           "permissions": {
+            "description": "Who the agent is shared with: each principal's stored and resolved roles, workspace grant first, at most 250 entries. Omitted for database (autofill) agents, whose sharing state is not exposed.",
             "$ref": "#/components/schemas/AgentPermissions"
           }
         },
@@ -3351,15 +3210,96 @@
           "true"
         ]
       },
-      "ListCreditLimitPoliciesNextCursor": {
-        "description": "Cursor for the next page, or null on the last page.",
-        "oneOf": [
-          {
+      "LegalHold": {
+        "type": "object",
+        "properties": {
+          "created_by": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "created_time": {
+            "type": "number"
+          },
+          "id": {
             "type": "string"
           },
-          {
-            "type": "null"
+          "start_date": {
+            "type": "number"
+          },
+          "status": {
+            "$ref": "#/components/schemas/LegalHoldStatus"
+          },
+          "user_interaction_type": {
+            "$ref": "#/components/schemas/LegalHoldUserInteractionType"
+          },
+          "users": {
+            "$ref": "#/components/schemas/LegalHoldUsers"
+          },
+          "workspaces": {
+            "$ref": "#/components/schemas/LegalHoldUsers"
+          },
+          "description": {
+            "type": "string"
+          },
+          "end_date": {
+            "type": "number"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
           }
+        },
+        "required": [
+          "created_by",
+          "created_time",
+          "id",
+          "start_date",
+          "status",
+          "user_interaction_type",
+          "users",
+          "workspaces"
+        ]
+      },
+      "LegalHoldStatus": {
+        "type": "string",
+        "enum": [
+          "active",
+          "released"
+        ]
+      },
+      "LegalHoldUserInteractionType": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LegalHoldUserInteractionTypeItem"
+        }
+      },
+      "LegalHoldUserInteractionTypeItem": {
+        "type": "string",
+        "enum": [
+          "page.created",
+          "page.edited",
+          "page.viewed"
+        ]
+      },
+      "LegalHoldUsers": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "ids",
+          "total"
         ]
       },
       "ListCreditLimitPoliciesOk": {
@@ -3383,7 +3323,8 @@
             "type": "boolean"
           },
           "next_cursor": {
-            "$ref": "#/components/schemas/ListCreditLimitPoliciesNextCursor"
+            "description": "Cursor for the next page, or null on the last page.",
+            "$ref": "#/components/schemas/ListUsersNextCursor"
           }
         },
         "required": [
@@ -3472,7 +3413,7 @@
       "ListLegalHoldsOkLegalHolds": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/AddLegalHoldUsers2"
+          "$ref": "#/components/schemas/LegalHold"
         }
       },
       "ListMcpClientConnectionsOk": {
@@ -3517,6 +3458,7 @@
             "type": "boolean"
           },
           "user": {
+            "description": "The member connected to the client.",
             "$ref": "#/components/schemas/ListMcpClientConnectionsResultsItemUser"
           },
           "workspaces": {
@@ -3601,7 +3543,6 @@
         }
       },
       "ListMcpClientConnectionsResultsItemUser": {
-        "description": "The member connected to the client.",
         "type": "object",
         "properties": {
           "id": {
@@ -3634,7 +3575,8 @@
             "type": "boolean"
           },
           "next_cursor": {
-            "$ref": "#/components/schemas/ListCreditLimitPoliciesNextCursor"
+            "description": "Cursor for the next page, or null on the last page.",
+            "$ref": "#/components/schemas/ListUsersNextCursor"
           }
         },
         "required": [
@@ -3674,7 +3616,8 @@
             "type": "boolean"
           },
           "next_cursor": {
-            "$ref": "#/components/schemas/ListCreditLimitPoliciesNextCursor"
+            "description": "Cursor for the next page, or null on the last page.",
+            "$ref": "#/components/schemas/ListUsersNextCursor"
           }
         },
         "required": [
@@ -3729,6 +3672,7 @@
             "format": "uuid"
           },
           "creator": {
+            "description": "Member who created the token.",
             "$ref": "#/components/schemas/ListPersonalAccessTokensResultsItemCreator"
           },
           "created_at": {
@@ -3736,7 +3680,8 @@
             "type": "number"
           },
           "status": {
-            "$ref": "#/components/schemas/ListPersonalAccessTokensResultsItemStatus"
+            "description": "Current token status.",
+            "$ref": "#/components/schemas/StatusOneOfItem"
           },
           "name": {
             "description": "Token name, when available.",
@@ -3755,6 +3700,7 @@
             "type": "number"
           },
           "revoked_by": {
+            "description": "User or bot that revoked the token.",
             "$ref": "#/components/schemas/ListPersonalAccessTokensResultsItemCreator"
           }
         },
@@ -3776,7 +3722,6 @@
         ]
       },
       "ListPersonalAccessTokensResultsItemCreator": {
-        "description": "Member who created the token.",
         "type": "object",
         "properties": {
           "id": {
@@ -3804,13 +3749,14 @@
         ],
         "additionalProperties": false
       },
-      "ListPersonalAccessTokensResultsItemStatus": {
-        "description": "Current token status.",
-        "type": "string",
-        "enum": [
-          "active",
-          "expired",
-          "revoked"
+      "ListUsersNextCursor": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
         ]
       },
       "ListUsersOk": {
@@ -3839,7 +3785,8 @@
             "type": "boolean"
           },
           "next_cursor": {
-            "$ref": "#/components/schemas/ListCreditLimitPoliciesNextCursor"
+            "description": "Opaque continuation cursor for the next page.",
+            "$ref": "#/components/schemas/ListUsersNextCursor"
           }
         },
         "required": [
@@ -3874,10 +3821,12 @@
             "type": "string"
           },
           "name": {
-            "$ref": "#/components/schemas/ListCreditLimitPoliciesNextCursor"
+            "description": "The name of the user.",
+            "$ref": "#/components/schemas/ListUsersNextCursor"
           },
           "avatar_url": {
-            "$ref": "#/components/schemas/ListCreditLimitPoliciesNextCursor"
+            "description": "The avatar URL of the user.",
+            "$ref": "#/components/schemas/ListUsersNextCursor"
           }
         },
         "required": [
@@ -4114,8 +4063,17 @@
       "StatusOneOf0": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/ListPersonalAccessTokensResultsItemStatus"
+          "description": "One of: `active`, `expired`, `revoked`",
+          "$ref": "#/components/schemas/StatusOneOfItem"
         }
+      },
+      "StatusOneOfItem": {
+        "type": "string",
+        "enum": [
+          "active",
+          "expired",
+          "revoked"
+        ]
       },
       "UpdateAgentCreationPolicy": {
         "type": "object",
@@ -4215,6 +4173,7 @@
         "type": "object",
         "properties": {
           "credit_limit": {
+            "description": "The per-agent credit limit as a non-negative integer, or null to clear the limit.",
             "$ref": "#/components/schemas/UpdateAgentCreditLimitCreditLimit"
           }
         },
@@ -4223,7 +4182,6 @@
         ]
       },
       "UpdateAgentCreditLimitCreditLimit": {
-        "description": "The per-agent credit limit as a non-negative integer, or null to clear the limit.",
         "oneOf": [
           {
             "type": "number"
@@ -4237,12 +4195,15 @@
         "type": "object",
         "properties": {
           "credit_limit_by_workspace_admin": {
+            "description": "The workspace admin credit limit after the change, or `null` if no workspace admin limit applies.",
             "$ref": "#/components/schemas/UpdateAgentCreditLimitCreditLimit"
           },
           "enforced_credit_limit": {
+            "description": "The credit limit that applies to the agent after the change. This is the lower of the workspace admin limit and the limit set by the agent creator. The workspace default applies if neither limit is set. `null` means no limit applies.",
             "$ref": "#/components/schemas/UpdateAgentCreditLimitCreditLimit"
           },
           "current_credit_usage": {
+            "description": "The agent's credit usage in the current billing period, or `null` if the billing period is unknown.",
             "$ref": "#/components/schemas/UpdateAgentCreditLimitCreditLimit"
           },
           "did_clear_paused_state": {
@@ -4273,7 +4234,7 @@
             "description": "Principals to revoke permissions for.",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AgentPermissionsItemPrincipal"
+              "$ref": "#/components/schemas/UpdateAgentPermissionsRemoveItem"
             }
           }
         },
@@ -4283,11 +4244,59 @@
         "type": "object",
         "properties": {
           "permissions": {
+            "description": "The updated permission list, in the same shape as the read endpoint. This is a pre-commit projection truncated at 250 entries with no cursor; treat the paginated read endpoint as the source of truth.",
             "$ref": "#/components/schemas/AgentPermissions"
           }
         },
         "required": [
           "permissions"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateAgentPermissionsRemoveItem": {
+        "description": "A recipient of a permission grant. \"workspace\" maps to a space-wide permission granting all workspace members the given role; guests are never covered by it.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UpdateAgentPermissionsRemoveItemOneOf"
+          },
+          {
+            "$ref": "#/components/schemas/CreateCreditLimitPolicySelectorOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateAgentPermissionsRemoveItemOneOf3"
+          }
+        ]
+      },
+      "UpdateAgentPermissionsRemoveItemOneOf": {
+        "type": "object",
+        "properties": {
+          "group_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "description": "Always `group`",
+            "type": "string",
+            "const": "group"
+          }
+        },
+        "required": [
+          "group_id",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateAgentPermissionsRemoveItemOneOf3": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `workspace`",
+            "type": "string",
+            "const": "workspace"
+          }
+        },
+        "required": [
+          "type"
         ],
         "additionalProperties": false
       },
@@ -4303,10 +4312,11 @@
         "type": "object",
         "properties": {
           "principal": {
-            "$ref": "#/components/schemas/AgentPermissionsItemPrincipal"
+            "$ref": "#/components/schemas/UpdateAgentPermissionsRemoveItem"
           },
           "role": {
-            "$ref": "#/components/schemas/AgentPermissionsItemResolvedRole"
+            "description": "One of: `edit`, `full_access`, `view_and_interact`",
+            "$ref": "#/components/schemas/UpdateAgentPermissionsSetItemRole"
           }
         },
         "required": [
@@ -4315,10 +4325,19 @@
         ],
         "additionalProperties": false
       },
+      "UpdateAgentPermissionsSetItemRole": {
+        "type": "string",
+        "enum": [
+          "edit",
+          "full_access",
+          "view_and_interact"
+        ]
+      },
       "UpdateAgentStatus": {
         "type": "object",
         "properties": {
           "admin_status": {
+            "description": "Set to \"active\" to re-enable an agent that was disabled through this API, or \"disabled\" to turn off a running agent.",
             "$ref": "#/components/schemas/UpdateAgentStatusAdminStatus"
           }
         },
@@ -4327,7 +4346,6 @@
         ]
       },
       "UpdateAgentStatusAdminStatus": {
-        "description": "Set to \"active\" to re-enable an agent that was disabled through this API, or \"disabled\" to turn off a running agent.",
         "type": "string",
         "enum": [
           "active",
@@ -4338,6 +4356,7 @@
         "type": "object",
         "properties": {
           "admin_status": {
+            "description": "The administrative status you set (\"active\" or \"disabled\"). This is the admin-disable toggle only; it does not tell you whether the agent will actually run.",
             "$ref": "#/components/schemas/UpdateAgentStatusAdminStatus"
           },
           "run_status": {
@@ -4418,6 +4437,7 @@
         "type": "object",
         "properties": {
           "access": {
+            "description": "'denied' blocks access; 'allowed' restores access.",
             "$ref": "#/components/schemas/UpdateMcpClientConnectionEnterpriseManagedAccess2"
           },
           "user_id": {
@@ -4436,7 +4456,6 @@
         ]
       },
       "UpdateMcpClientConnectionEnterpriseManagedAccess2": {
-        "description": "'denied' blocks access; 'allowed' restores access.",
         "type": "string",
         "enum": [
           "allowed",
@@ -4447,6 +4466,7 @@
         "type": "object",
         "properties": {
           "access": {
+            "description": "Access state applied to the member.",
             "$ref": "#/components/schemas/UpdateMcpClientConnectionEnterpriseManagedAccess2"
           },
           "revoked_token_count": {
@@ -4463,6 +4483,7 @@
         "type": "object",
         "properties": {
           "role": {
+            "description": "The user's new role in the group.",
             "$ref": "#/components/schemas/AddPermissionGroupMemberRole"
           }
         },
@@ -4474,6 +4495,7 @@
         "type": "object",
         "properties": {
           "default_agent_credit_limit": {
+            "description": "Workspace-wide default agent credit limit, applied to agents going forward. Must be a non-negative whole number of credits; other values are rejected with a validation error. Use null to remove the workspace-wide default cap.",
             "$ref": "#/components/schemas/UpdateAgentCreditLimitCreditLimit"
           }
         },
@@ -4489,6 +4511,7 @@
             "format": "uuid"
           },
           "default_agent_credit_limit": {
+            "description": "The workspace-wide default agent credit limit now in effect, or null when no default cap is set.",
             "$ref": "#/components/schemas/UpdateAgentCreditLimitCreditLimit"
           }
         },
@@ -4498,7 +4521,6 @@
         ]
       },
       "UserIds": {
-        "description": "Member IDs to include. Use bracket encoding for multiple values.",
         "anyOf": [
           {
             "type": "array",
@@ -4514,7 +4536,6 @@
         ]
       },
       "WorkflowsMetadataForSpaceResultsItemCreatedByTable": {
-        "description": "The actor table of the agent's creator, such as \"notion_user\".",
         "type": "string",
         "enum": [
           "bot",
@@ -5026,7 +5047,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/AddLegalHoldUsers2"
+              "$ref": "#/components/schemas/LegalHold"
             }
           }
         }
@@ -5432,7 +5453,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/AddLegalHoldUsers2"
+              "$ref": "#/components/schemas/LegalHold"
             }
           }
         }
@@ -6668,7 +6689,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/AddLegalHoldUsers2"
+              "$ref": "#/components/schemas/LegalHold"
             }
           }
         }
@@ -8278,7 +8299,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/AddLegalHoldUsers2"
+              "$ref": "#/components/schemas/LegalHold"
             }
           }
         }
@@ -8392,7 +8413,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/AddLegalHoldUsers2"
+              "$ref": "#/components/schemas/LegalHold"
             }
           }
         }
@@ -9747,7 +9768,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/AddLegalHoldUsers2"
+              "$ref": "#/components/schemas/LegalHold"
             }
           }
         }
@@ -10798,6 +10819,7 @@
         "name": "user_ids",
         "in": "query",
         "schema": {
+          "description": "Member IDs to include. Use bracket encoding for multiple values.",
           "$ref": "#/components/schemas/UserIds"
         }
       },
@@ -10805,6 +10827,7 @@
         "name": "workspace_ids",
         "in": "query",
         "schema": {
+          "description": "Workspace IDs to include. Use bracket encoding for multiple values.",
           "$ref": "#/components/schemas/UserIds"
         }
       }
