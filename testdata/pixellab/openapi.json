@@ -14045,7 +14045,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/parameters/states/schema"
       },
       "AnimationType": {
         "title": "Animation Type",
@@ -14056,7 +14057,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/parameters/animation_type/schema"
       },
       "AnimationGroupID": {
         "title": "Animation Group Id",
@@ -14068,7 +14070,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/parameters/animation_group_id/schema"
       },
       "Direction2": {
         "title": "Direction",
@@ -14079,7 +14082,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/parameters/direction/schema"
       },
       "AnimationType2": {
         "title": "Animation Type",
@@ -14091,7 +14095,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/parameters/animation_type2/schema"
       },
       "AnimationGroupID2": {
         "title": "Animation Group Id",
@@ -14104,7 +14109,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/parameters/animation_group_id2/schema"
       },
       "Direction3": {
         "title": "Direction",
@@ -14116,7 +14122,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/parameters/direction2/schema"
       },
       "Operation": {
         "title": "Operation",
@@ -14127,7 +14134,8 @@
           "inpaint",
           "character",
           "object"
-        ]
+        ],
+        "x-flattened-from": "#/components/parameters/operation/schema"
       },
       "AnimateObjectRequestMode": {
         "title": "Mode",
@@ -14137,7 +14145,8 @@
           "pro",
           "v3"
         ],
-        "default": "v3"
+        "default": "v3",
+        "x-flattened-from": "#/components/schemas/AnimateObjectRequest/properties/mode"
       },
       "AnimateObjectRequestAnimationDescription": {
         "title": "Animation Description",
@@ -14151,7 +14160,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateObjectRequest/properties/animation_description"
       },
       "AnimateObjectRequestDirections": {
         "title": "Directions",
@@ -14163,13 +14173,15 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateObjectRequest/properties/directions"
       },
       "AnimateObjectRequestDirectionsAnyOf0": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/AnimateObjectRequestDirectionsAnyOf0Item"
-        }
+        },
+        "x-flattened-from": "#/components/schemas/AnimateObjectRequestDirections/anyOf/0"
       },
       "AnimateObjectRequestDirectionsAnyOf0Item": {
         "type": "string",
@@ -14182,7 +14194,8 @@
           "north-east",
           "east",
           "south-east"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateObjectRequestDirectionsAnyOf0/items"
       },
       "AnimateObjectRequestAnimationGroupID": {
         "title": "Animation Group Id",
@@ -14195,7 +14208,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateObjectRequest/properties/animation_group_id"
       },
       "AnimateObjectRequestDisplayName": {
         "title": "Display Name",
@@ -14207,7 +14221,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateObjectRequest/properties/display_name"
       },
       "AnimateObjectRequestFrameCount": {
         "title": "Frame Count",
@@ -14219,7 +14234,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateObjectRequest/properties/frame_count"
       },
       "AnimateObjectRequestCustomStartFrame": {
         "description": "Optional custom starting pose for the animation (`mode='v3'` only). When omitted, the object's idle frame for the chosen direction is used as the start. When provided, the image's dimensions become the canvas for the animation (subject to v3's 256x256 maximum).\n\n**Requires exactly one direction.**\n- 8-direction objects: the caller must specify which direction the animation is for. The eight options are south, south-west, west, north-west, north, north-east, east, south-east. Pass that one direction as `directions=[<that direction>]`. For AI agents calling this endpoint: ASK the user which direction they want; do not pick one yourself or default to south.\n- 1-direction objects: do not pass `directions` at all; the single internal direction is auto-resolved.\n\nNot compatible with `mode='pro'`.",
@@ -14230,7 +14246,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateObjectRequest/properties/custom_start_frame"
       },
       "AnimateObjectRequestEndFrame": {
         "description": "Optional target pose to interpolate toward (`mode='v3'` only). Providing this enables **interpolation mode**: the model animates between the start frame (idle or `custom_start_frame`) and this end frame. Dimensions must match the start frame.\n\n**Requires exactly one direction.**\n- 8-direction objects: the caller must specify which direction the animation is for. The eight options are south, south-west, west, north-west, north, north-east, east, south-east. Pass that one direction as `directions=[<that direction>]`. For AI agents calling this endpoint: ASK the user which direction they want; do not pick one yourself or default to south.\n- 1-direction objects: do not pass `directions` at all; the single internal direction is auto-resolved.\n\nNot compatible with `mode='pro'`.",
@@ -14241,7 +14258,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateObjectRequest/properties/end_frame"
       },
       "AnimateObjectResponseUsage": {
         "anyOf": [
@@ -14255,7 +14273,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/AnimateObjectResponse/properties/usage"
       },
       "AnimateObjectResponseMode": {
         "title": "Mode",
@@ -14263,7 +14282,8 @@
         "enum": [
           "pro",
           "v3"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateObjectResponse/properties/mode"
       },
       "AnimateObjectResponseDisplayName": {
         "title": "Display Name",
@@ -14274,7 +14294,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateObjectResponse/properties/display_name"
       },
       "AnimateObjectResponseEnhancedPrompt": {
         "title": "Enhanced Prompt",
@@ -14286,7 +14307,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateObjectResponse/properties/enhanced_prompt"
       },
       "AnimateObjectResponseEnhanceUsage": {
         "description": "Cost of the prompt enhancement, separate from generation usage. Populated only when enhance_prompt=true.",
@@ -14297,7 +14319,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateObjectResponse/properties/enhance_usage"
       },
       "AnimatePixminimaxRequestLastFrame": {
         "description": "Optional end pose, same size as first_frame — the motion is generated between the two.",
@@ -14308,7 +14331,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimatePixminimaxRequest/properties/last_frame"
       },
       "AnimatePixminimaxRequestSeed": {
         "title": "Seed",
@@ -14322,7 +14346,8 @@
             "type": "null"
           }
         ],
-        "default": 0
+        "default": 0,
+        "x-flattened-from": "#/components/schemas/AnimatePixminimaxRequest/properties/seed"
       },
       "AnimatePixminimaxRequestDriftThreshold": {
         "title": "Drift Threshold",
@@ -14335,7 +14360,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimatePixminimaxRequest/properties/drift_threshold"
       },
       "AnimatePixminimaxRequestDirection": {
         "title": "Direction",
@@ -14347,7 +14373,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimatePixminimaxRequest/properties/direction"
       },
       "AnimatePixminimaxRequestDirectionAnyOf0": {
         "type": "string",
@@ -14360,7 +14387,8 @@
           "south-west",
           "north-east",
           "north-west"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimatePixminimaxRequestDirection/anyOf/0"
       },
       "AnimatePixminimaxResponseUsage": {
         "anyOf": [
@@ -14374,7 +14402,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/AnimatePixminimaxResponse/properties/usage"
       },
       "AnimatePixminimaxResponseEnhancedPrompt": {
         "title": "Enhanced Prompt",
@@ -14386,7 +14415,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimatePixminimaxResponse/properties/enhanced_prompt"
       },
       "AnimatePixminimaxResponseEnhanceUsage": {
         "description": "Cost of the prompt enhancement, separate from generation usage. Populated only when enhance_prompt=true.",
@@ -14397,7 +14427,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimatePixminimaxResponse/properties/enhance_usage"
       },
       "AnimateWithSkeletonRequestInitImages": {
         "title": "Init Images",
@@ -14412,7 +14443,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithSkeletonRequest/properties/init_images"
       },
       "AnimateWithSkeletonRequestInpaintingImagesItem": {
         "anyOf": [
@@ -14422,7 +14454,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithSkeletonRequest/properties/inpainting_images/items"
       },
       "AnimateWithSkeletonRequestMaskImagesItem": {
         "anyOf": [
@@ -14432,7 +14465,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithSkeletonRequest/properties/mask_images/items"
       },
       "AnimateWithSkeletonRequestColorImage": {
         "description": "Forced color palette, image containing colors used for palette",
@@ -14443,7 +14477,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithSkeletonRequest/properties/color_image"
       },
       "AnimateWithSkeletonRequestSeed": {
         "title": "Seed",
@@ -14455,7 +14490,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithSkeletonRequest/properties/seed"
       },
       "AnimateWithSkeletonResponseUsage": {
         "anyOf": [
@@ -14469,7 +14505,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/AnimateWithSkeletonResponse/properties/usage"
       },
       "AnimateWithSkeletonV3RequestTemplateID": {
         "title": "Template Id",
@@ -14483,7 +14520,8 @@
           "horse",
           "lion"
         ],
-        "default": "mannequin"
+        "default": "mannequin",
+        "x-flattened-from": "#/components/schemas/AnimateWithSkeletonV3Request/properties/template_id"
       },
       "AnimateWithSkeletonV3ResponseUsage": {
         "anyOf": [
@@ -14497,7 +14535,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/AnimateWithSkeletonV3Response/properties/usage"
       },
       "AnimateWithTextRequestTextGuidanceScale": {
         "title": "Text Guidance Scale",
@@ -14512,7 +14551,8 @@
             "type": "null"
           }
         ],
-        "default": 8.0
+        "default": 8.0,
+        "x-flattened-from": "#/components/schemas/AnimateWithTextRequest/properties/text_guidance_scale"
       },
       "AnimateWithTextRequestImageGuidanceScale": {
         "title": "Image Guidance Scale",
@@ -14527,7 +14567,8 @@
             "type": "null"
           }
         ],
-        "default": 1.4
+        "default": 1.4,
+        "x-flattened-from": "#/components/schemas/AnimateWithTextRequest/properties/image_guidance_scale"
       },
       "AnimateWithTextRequestNFrames": {
         "title": "N Frames",
@@ -14542,7 +14583,8 @@
             "type": "null"
           }
         ],
-        "default": 4
+        "default": 4,
+        "x-flattened-from": "#/components/schemas/AnimateWithTextRequest/properties/n_frames"
       },
       "AnimateWithTextRequestStartFrameIndex": {
         "title": "Start Frame Index",
@@ -14557,7 +14599,8 @@
             "type": "null"
           }
         ],
-        "default": 0
+        "default": 0,
+        "x-flattened-from": "#/components/schemas/AnimateWithTextRequest/properties/start_frame_index"
       },
       "AnimateWithTextRequestInitImages": {
         "title": "Init Images",
@@ -14572,7 +14615,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithTextRequest/properties/init_images"
       },
       "AnimateWithTextRequestInpaintingImagesItem": {
         "anyOf": [
@@ -14582,7 +14626,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithTextRequest/properties/inpainting_images/items"
       },
       "AnimateWithTextRequestMaskImages": {
         "title": "Mask Images",
@@ -14603,7 +14648,8 @@
           null,
           null,
           null
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithTextRequest/properties/mask_images"
       },
       "AnimateWithTextRequestMaskImagesAnyOf0Item": {
         "anyOf": [
@@ -14613,7 +14659,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithTextRequestMaskImages/anyOf/0/items"
       },
       "AnimateWithTextRequestColorImage": {
         "description": "Forced color palette, image containing colors used for palette",
@@ -14624,7 +14671,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithTextRequest/properties/color_image"
       },
       "AnimateWithTextRequestSeed": {
         "title": "Seed",
@@ -14637,7 +14685,8 @@
             "type": "null"
           }
         ],
-        "default": 0
+        "default": 0,
+        "x-flattened-from": "#/components/schemas/AnimateWithTextRequest/properties/seed"
       },
       "AnimateWithTextResponseUsage": {
         "anyOf": [
@@ -14651,7 +14700,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/AnimateWithTextResponse/properties/usage"
       },
       "AnimateWithTextV2RequestSeed": {
         "title": "Seed",
@@ -14664,7 +14714,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithTextV2Request/properties/seed"
       },
       "AnimateWithTextV2RequestNoBackground": {
         "title": "No Background",
@@ -14677,7 +14728,8 @@
             "type": "null"
           }
         ],
-        "default": true
+        "default": true,
+        "x-flattened-from": "#/components/schemas/AnimateWithTextV2Request/properties/no_background"
       },
       "AnimateWithTextV2RequestView": {
         "title": "View",
@@ -14689,7 +14741,8 @@
           "high top-down",
           "side"
         ],
-        "default": "none"
+        "default": "none",
+        "x-flattened-from": "#/components/schemas/AnimateWithTextV2Request/properties/view"
       },
       "AnimateWithTextV2RequestDirection": {
         "title": "Direction",
@@ -14706,7 +14759,8 @@
           "north-east",
           "north-west"
         ],
-        "default": "none"
+        "default": "none",
+        "x-flattened-from": "#/components/schemas/AnimateWithTextV2Request/properties/direction"
       },
       "AnimateWithTextV2ResponseUsage": {
         "anyOf": [
@@ -14720,7 +14774,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/AnimateWithTextV2Response/properties/usage"
       },
       "AnimateWithTextV3RequestLastFrame": {
         "description": "Optional last frame to guide the animation endpoint (PNG/JPEG base64, max 256x256 pixels)",
@@ -14731,7 +14786,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithTextV3Request/properties/last_frame"
       },
       "AnimateWithTextV3RequestSeed": {
         "title": "Seed",
@@ -14745,7 +14801,8 @@
             "type": "null"
           }
         ],
-        "default": 0
+        "default": 0,
+        "x-flattened-from": "#/components/schemas/AnimateWithTextV3Request/properties/seed"
       },
       "AnimateWithTextV3RequestNoBackground": {
         "title": "No Background",
@@ -14757,7 +14814,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithTextV3Request/properties/no_background"
       },
       "AnimateWithTextV3RequestDriftThreshold": {
         "title": "Drift Threshold",
@@ -14770,7 +14828,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithTextV3Request/properties/drift_threshold"
       },
       "AnimateWithTextV3ResponseUsage": {
         "anyOf": [
@@ -14784,7 +14843,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/AnimateWithTextV3Response/properties/usage"
       },
       "AnimateWithTextV3ResponseEnhancedPrompt": {
         "title": "Enhanced Prompt",
@@ -14796,7 +14856,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithTextV3Response/properties/enhanced_prompt"
       },
       "AnimateWithTextV3ResponseEnhanceUsage": {
         "description": "Cost of the prompt enhancement, separate from generation usage. Populated when enhance_prompt=true AND the enhancement succeeded; null means it was skipped and not charged.",
@@ -14807,7 +14868,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimateWithTextV3Response/properties/enhance_usage"
       },
       "AnimationGroupDisplayName": {
         "title": "Display Name",
@@ -14819,7 +14881,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimationGroup/properties/display_name"
       },
       "AnimationGroupAnimationGroupID": {
         "title": "Animation Group Id",
@@ -14831,7 +14894,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/AnimationGroup/properties/animation_group_id"
       },
       "BackgroundJobResponseUsage": {
         "anyOf": [
@@ -14845,7 +14909,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/BackgroundJobResponse/properties/usage"
       },
       "BackgroundJobResponseLastResponse": {
         "title": "Last Response",
@@ -14858,7 +14923,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/BackgroundJobResponse/properties/last_response"
       },
       "CharacterDetailStateName": {
         "title": "State Name",
@@ -14870,7 +14936,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterDetail/properties/state_name"
       },
       "CharacterDetailUpdatedAt": {
         "title": "Updated At",
@@ -14882,7 +14949,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterDetail/properties/updated_at"
       },
       "CharacterDetailView": {
         "title": "View",
@@ -14894,7 +14962,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterDetail/properties/view"
       },
       "CharacterDetailRotationUrls": {
         "description": "URLs for all rotation images (null unless status == 'completed')",
@@ -14905,7 +14974,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterDetail/properties/rotation_urls"
       },
       "CharacterDetailStyleSettings": {
         "title": "Style Settings",
@@ -14918,7 +14988,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterDetail/properties/style_settings"
       },
       "CharacterDetailGuidance": {
         "title": "Guidance",
@@ -14930,7 +15001,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterDetail/properties/guidance"
       },
       "CharacterDetailAiFreedom": {
         "title": "Ai Freedom",
@@ -14942,7 +15014,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterDetail/properties/ai_freedom"
       },
       "CharacterDetailGroupID": {
         "title": "Group Id",
@@ -14954,7 +15027,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterDetail/properties/group_id"
       },
       "CharacterDetailSkeletons": {
         "title": "Skeletons",
@@ -14967,7 +15041,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterDetail/properties/skeletons"
       },
       "CharacterProportionsPresetName": {
         "title": "Name",
@@ -14982,7 +15057,8 @@
           "realistic_female",
           "heroic"
         ],
-        "default": "default"
+        "default": "default",
+        "x-flattened-from": "#/components/schemas/CharacterProportionsPreset/properties/name"
       },
       "CharacterRotationUrlsSouthEast": {
         "title": "South-East",
@@ -14994,7 +15070,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterRotationUrls/properties/south-east"
       },
       "CharacterRotationUrlsNorthEast": {
         "title": "North-East",
@@ -15006,7 +15083,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterRotationUrls/properties/north-east"
       },
       "CharacterRotationUrlsNorthWest": {
         "title": "North-West",
@@ -15018,7 +15096,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterRotationUrls/properties/north-west"
       },
       "CharacterRotationUrlsSouthWest": {
         "title": "South-West",
@@ -15030,7 +15109,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterRotationUrls/properties/south-west"
       },
       "CharacterSummaryStateName": {
         "title": "State Name",
@@ -15042,7 +15122,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterSummary/properties/state_name"
       },
       "CharacterSummaryUpdatedAt": {
         "title": "Updated At",
@@ -15054,7 +15135,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterSummary/properties/updated_at"
       },
       "CharacterSummaryView": {
         "title": "View",
@@ -15066,7 +15148,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterSummary/properties/view"
       },
       "CharacterSummaryPreviewURL": {
         "title": "Preview Url",
@@ -15078,7 +15161,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterSummary/properties/preview_url"
       },
       "CharacterSummaryGroupID": {
         "title": "Group Id",
@@ -15090,7 +15174,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CharacterSummary/properties/group_id"
       },
       "CharactersListResponseUsage": {
         "anyOf": [
@@ -15104,7 +15189,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CharactersListResponse/properties/usage"
       },
       "CorrectPixelartResponseUsage": {
         "anyOf": [
@@ -15118,7 +15204,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CorrectPixelartResponse/properties/usage"
       },
       "Create1DirectionObjectRequestSize": {
         "title": "Size",
@@ -15132,7 +15219,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Create1DirectionObjectRequest/properties/size"
       },
       "Create1DirectionObjectRequestView": {
         "title": "View",
@@ -15142,7 +15230,8 @@
           "top-down",
           "sidescroller"
         ],
-        "default": "top-down"
+        "default": "top-down",
+        "x-flattened-from": "#/components/schemas/Create1DirectionObjectRequest/properties/view"
       },
       "Create1DirectionObjectRequestItemDescriptions": {
         "title": "Item Descriptions",
@@ -15157,7 +15246,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Create1DirectionObjectRequest/properties/item_descriptions"
       },
       "Create1DirectionObjectResponseUsage": {
         "anyOf": [
@@ -15171,7 +15261,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/Create1DirectionObjectResponse/properties/usage"
       },
       "Create8DirectionObjectRequestSize": {
         "title": "Size",
@@ -15185,7 +15276,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Create8DirectionObjectRequest/properties/size"
       },
       "Create8DirectionObjectRequestView": {
         "title": "View",
@@ -15196,7 +15288,8 @@
           "high top-down",
           "side"
         ],
-        "default": "low top-down"
+        "default": "low top-down",
+        "x-flattened-from": "#/components/schemas/Create8DirectionObjectRequest/properties/view"
       },
       "Create8DirectionObjectRequestReferenceImage": {
         "description": "Reference image of the object — generates 8 rotations of this exact image. Mutually exclusive with `style_image` and `size`.",
@@ -15207,7 +15300,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Create8DirectionObjectRequest/properties/reference_image"
       },
       "Create8DirectionObjectRequestStyleImage": {
         "description": "Style reference — generates a new object matching the description with the style of this image. Mutually exclusive with `reference_image` and `size`.",
@@ -15218,7 +15312,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Create8DirectionObjectRequest/properties/style_image"
       },
       "Create8DirectionObjectRequestStyleObjectID": {
         "title": "Style Object Id",
@@ -15230,7 +15325,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Create8DirectionObjectRequest/properties/style_object_id"
       },
       "Create8DirectionObjectResponseUsage": {
         "anyOf": [
@@ -15244,7 +15340,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/Create8DirectionObjectResponse/properties/usage"
       },
       "CreateCharacterAnimationRequestAnimationGroupID": {
         "title": "Animation Group Id",
@@ -15257,7 +15354,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/animation_group_id"
       },
       "CreateCharacterAnimationRequestAnimationName": {
         "title": "Animation Name",
@@ -15269,7 +15367,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/animation_name"
       },
       "CreateCharacterAnimationRequestDescription": {
         "title": "Description",
@@ -15283,7 +15382,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/description"
       },
       "CreateCharacterAnimationRequestActionDescription": {
         "title": "Action Description",
@@ -15295,7 +15395,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/action_description"
       },
       "CreateCharacterAnimationRequestAsyncMode": {
         "title": "Async Mode",
@@ -15309,7 +15410,8 @@
             "type": "null"
           }
         ],
-        "default": true
+        "default": true,
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/async_mode"
       },
       "CreateCharacterAnimationRequestMode": {
         "title": "Mode",
@@ -15321,7 +15423,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/mode"
       },
       "CreateCharacterAnimationRequestModeAnyOf0": {
         "type": "string",
@@ -15330,7 +15433,8 @@
           "skeleton-v3",
           "v3",
           "pro"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequestMode/anyOf/0"
       },
       "CreateCharacterAnimationRequestTemplateAnimationID": {
         "title": "Template Animation Id",
@@ -15342,7 +15446,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/template_animation_id"
       },
       "CreateCharacterAnimationRequestFrameCount": {
         "title": "Frame Count",
@@ -15357,7 +15462,8 @@
             "type": "null"
           }
         ],
-        "default": 8
+        "default": 8,
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/frame_count"
       },
       "CreateCharacterAnimationRequestCustomStartFrame": {
         "description": "Optional custom starting pose for the animation (`mode='v3'` only). When omitted, the character's rotation image for the chosen direction is used as the start. Subject to v3's 256x256 maximum. Requires exactly one direction (pass e.g. `directions=['south']`). Not compatible with `mode='template'` or `mode='pro'`.",
@@ -15368,7 +15474,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/custom_start_frame"
       },
       "CreateCharacterAnimationRequestEndFrame": {
         "description": "Optional target pose to interpolate toward (`mode='v3'` only). Providing this enables interpolation mode: the model animates between the start frame (rotation image or `custom_start_frame`) and this end frame. Dimensions must match the start frame. Requires exactly one direction. Not compatible with `mode='template'` or `mode='pro'`.",
@@ -15379,7 +15486,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/end_frame"
       },
       "CreateCharacterAnimationRequestTextGuidanceScale": {
         "title": "Text Guidance Scale",
@@ -15394,7 +15502,8 @@
             "type": "null"
           }
         ],
-        "default": 8.0
+        "default": 8.0,
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/text_guidance_scale"
       },
       "CreateCharacterAnimationRequestOutline": {
         "title": "Outline",
@@ -15406,7 +15515,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/outline"
       },
       "CreateCharacterAnimationRequestShading": {
         "title": "Shading",
@@ -15418,7 +15528,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/shading"
       },
       "CreateCharacterAnimationRequestDetail": {
         "title": "Detail",
@@ -15430,7 +15541,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/detail"
       },
       "CreateCharacterAnimationRequestDirections": {
         "title": "Directions",
@@ -15445,7 +15557,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/directions"
       },
       "CreateCharacterAnimationRequestIsometric": {
         "title": "Isometric",
@@ -15458,7 +15571,8 @@
             "type": "null"
           }
         ],
-        "default": false
+        "default": false,
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/isometric"
       },
       "CreateCharacterAnimationRequestColorImage": {
         "description": "Color palette reference image",
@@ -15469,7 +15583,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/color_image"
       },
       "CreateCharacterAnimationRequestForceColors": {
         "title": "Force Colors",
@@ -15482,7 +15597,8 @@
             "type": "null"
           }
         ],
-        "default": false
+        "default": false,
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/force_colors"
       },
       "CreateCharacterAnimationRequestSeed": {
         "title": "Seed",
@@ -15495,7 +15611,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationRequest/properties/seed"
       },
       "CreateCharacterAnimationResponseAnimationGroupID": {
         "title": "Animation Group Id",
@@ -15507,7 +15624,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationResponse/properties/animation_group_id"
       },
       "CreateCharacterAnimationResponseEnhancedPrompt": {
         "title": "Enhanced Prompt",
@@ -15519,7 +15637,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationResponse/properties/enhanced_prompt"
       },
       "CreateCharacterAnimationResponseEnhanceUsage": {
         "description": "Cost of the prompt enhancement, separate from generation usage. Populated only when enhance_prompt=true.",
@@ -15530,7 +15649,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterAnimationResponse/properties/enhance_usage"
       },
       "CreateCharacterProFlashRequestSourceImageID": {
         "title": "Source Image Id",
@@ -15543,7 +15663,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterProFlashRequest/properties/source_image_id"
       },
       "CreateCharacterProFlashRequestFirstFrame": {
         "description": "Encoded south-facing PNG upload; mutually exclusive with source_image_id.",
@@ -15554,7 +15675,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterProFlashRequest/properties/first_frame"
       },
       "CreateCharacterProFlashRequestView": {
         "title": "View",
@@ -15564,7 +15686,8 @@
           "high top-down",
           "side"
         ],
-        "default": "low top-down"
+        "default": "low top-down",
+        "x-flattened-from": "#/components/schemas/CreateCharacterProFlashRequest/properties/view"
       },
       "CreateCharacterProFlashRequestImageSize": {
         "description": "Defaults to 64x64 for text creation. Native sizes: 16x16 (experimental), 24x24, 32x32, 32x48, 64x64, 96x64, 96x96. Custom size (Beta): integer width 16–256 and height 16–256. Both dimensions must be multiples of 4 pixels. Pixel-grid recovery uses image-to-pixel-art with fixer when needed. No native image resizing.",
@@ -15593,7 +15716,8 @@
         "required": [
           "width",
           "height"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterProFlashRequest/properties/image_size"
       },
       "CreateCharacterProFlashRequestStyleImage": {
         "anyOf": [
@@ -15603,7 +15727,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterProFlashRequest/properties/style_image"
       },
       "CreateCharacterProFlashRequestStyleOptions": {
         "anyOf": [
@@ -15613,7 +15738,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterProFlashRequest/properties/style_options"
       },
       "CreateCharacterProFlashRequestTemplateID": {
         "title": "Template Id",
@@ -15627,7 +15753,8 @@
           "lion",
           "custom"
         ],
-        "default": "mannequin"
+        "default": "mannequin",
+        "x-flattened-from": "#/components/schemas/CreateCharacterProFlashRequest/properties/template_id"
       },
       "CreateCharacterProFlashResponseUsage": {
         "anyOf": [
@@ -15641,7 +15768,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateCharacterProFlashResponse/properties/usage"
       },
       "CreateCharacterProRequestMethod": {
         "title": "Method",
@@ -15652,7 +15780,8 @@
           "create_from_concept",
           "rotate_character"
         ],
-        "default": "create_with_style"
+        "default": "create_with_style",
+        "x-flattened-from": "#/components/schemas/CreateCharacterProRequest/properties/method"
       },
       "CreateCharacterProRequestView": {
         "title": "View",
@@ -15663,7 +15792,8 @@
           "high top-down",
           "side"
         ],
-        "default": "low top-down"
+        "default": "low top-down",
+        "x-flattened-from": "#/components/schemas/CreateCharacterProRequest/properties/view"
       },
       "CreateCharacterProRequestConceptImage": {
         "description": "Optional concept image (max 1024x1024). Used with `method=create_from_concept`.",
@@ -15674,7 +15804,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterProRequest/properties/concept_image"
       },
       "CreateCharacterProRequestReferenceImage": {
         "description": "Optional reference image (max 168x168). Used as style reference for `create_with_style` / `create_from_concept`, or as the character to rotate for `rotate_character`.",
@@ -15685,7 +15816,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterProRequest/properties/reference_image"
       },
       "CreateCharacterProRequestStyleCharacterID": {
         "title": "Style Character Id",
@@ -15697,7 +15829,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterProRequest/properties/style_character_id"
       },
       "CreateCharacterProRequestStyleDescription": {
         "title": "Style Description",
@@ -15710,7 +15843,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterProRequest/properties/style_description"
       },
       "CreateCharacterProRequestSeed": {
         "title": "Seed",
@@ -15723,7 +15857,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterProRequest/properties/seed"
       },
       "CreateCharacterProRequestNoBackground": {
         "title": "No Background",
@@ -15736,7 +15871,8 @@
             "type": "null"
           }
         ],
-        "default": true
+        "default": true,
+        "x-flattened-from": "#/components/schemas/CreateCharacterProRequest/properties/no_background"
       },
       "CreateCharacterProResponseUsage": {
         "anyOf": [
@@ -15750,7 +15886,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateCharacterProResponse/properties/usage"
       },
       "CreateCharacterStateRequestSeed": {
         "title": "Seed",
@@ -15762,7 +15899,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterStateRequest/properties/seed"
       },
       "CreateCharacterStateRequestOverrideFrameSize": {
         "description": "Optional larger canvas for the state, for edits that add something big (a weapon, wings) needing room beyond the character's tight canvas. Width/height must be multiples of 4 and no smaller than the source character's size. Omit to keep the source size.",
@@ -15773,7 +15911,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterStateRequest/properties/override_frame_size"
       },
       "CreateCharacterStateRequestStateName": {
         "title": "State Name",
@@ -15786,7 +15925,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterStateRequest/properties/state_name"
       },
       "CreateCharacterStateResponseUsage": {
         "anyOf": [
@@ -15800,7 +15940,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateCharacterStateResponse/properties/usage"
       },
       "CreateCharacterV3RequestReferenceImage": {
         "description": "South-facing reference image (PNG/JPEG base64). If provided, the v3 model rotates it into 8 directions. If omitted, a sprite is generated from `description` using Pixen first. Max 256x256 pixels.",
@@ -15811,7 +15952,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterV3Request/properties/reference_image"
       },
       "CreateCharacterV3RequestImageSize": {
         "description": "Output frame size. For reference mode this is advisory (model picks its own size). For from-scratch mode this controls the requested generation size (32-256, default 64x64); a non-square result is padded to a square before rotation.",
@@ -15822,7 +15964,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterV3Request/properties/image_size"
       },
       "CreateCharacterV3RequestView": {
         "title": "View",
@@ -15833,7 +15976,8 @@
           "high top-down",
           "side"
         ],
-        "default": "low top-down"
+        "default": "low top-down",
+        "x-flattened-from": "#/components/schemas/CreateCharacterV3Request/properties/view"
       },
       "CreateCharacterV3RequestName": {
         "title": "Name",
@@ -15845,7 +15989,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterV3Request/properties/name"
       },
       "CreateCharacterV3RequestSeed": {
         "title": "Seed",
@@ -15858,7 +16003,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterV3Request/properties/seed"
       },
       "CreateCharacterV3RequestNoBackground": {
         "title": "No Background",
@@ -15871,7 +16017,8 @@
             "type": "null"
           }
         ],
-        "default": true
+        "default": true,
+        "x-flattened-from": "#/components/schemas/CreateCharacterV3Request/properties/no_background"
       },
       "CreateCharacterV3RequestOutline": {
         "title": "Outline",
@@ -15884,7 +16031,8 @@
             "type": "null"
           }
         ],
-        "default": "single color black outline"
+        "default": "single color black outline",
+        "x-flattened-from": "#/components/schemas/CreateCharacterV3Request/properties/outline"
       },
       "CreateCharacterV3RequestDetail": {
         "title": "Detail",
@@ -15897,7 +16045,8 @@
             "type": "null"
           }
         ],
-        "default": "medium detail"
+        "default": "medium detail",
+        "x-flattened-from": "#/components/schemas/CreateCharacterV3Request/properties/detail"
       },
       "CreateCharacterV3ResponseUsage": {
         "anyOf": [
@@ -15911,7 +16060,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateCharacterV3Response/properties/usage"
       },
       "CreateCharacterV3ResponseEnhancedPrompt": {
         "title": "Enhanced Prompt",
@@ -15923,7 +16073,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterV3Response/properties/enhanced_prompt"
       },
       "CreateCharacterV3ResponseEnhanceUsage": {
         "description": "Cost of the prompt enhancement, separate from generation usage. Populated only when enhance_prompt=true.",
@@ -15934,7 +16085,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterV3Response/properties/enhance_usage"
       },
       "CreateCharacterWith4DirectionsRequestAsyncMode": {
         "title": "Async Mode",
@@ -15948,7 +16100,8 @@
             "type": "null"
           }
         ],
-        "default": true
+        "default": true,
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/async_mode"
       },
       "CreateCharacterWith4DirectionsRequestTextGuidanceScale": {
         "title": "Text Guidance Scale",
@@ -15963,7 +16116,8 @@
             "type": "null"
           }
         ],
-        "default": 8.0
+        "default": 8.0,
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/text_guidance_scale"
       },
       "CreateCharacterWith4DirectionsRequestOutline": {
         "title": "Outline",
@@ -15976,7 +16130,8 @@
             "type": "null"
           }
         ],
-        "default": "single color black outline"
+        "default": "single color black outline",
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/outline"
       },
       "CreateCharacterWith4DirectionsRequestShading": {
         "title": "Shading",
@@ -15989,7 +16144,8 @@
             "type": "null"
           }
         ],
-        "default": "basic shading"
+        "default": "basic shading",
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/shading"
       },
       "CreateCharacterWith4DirectionsRequestDetail": {
         "title": "Detail",
@@ -16002,7 +16158,8 @@
             "type": "null"
           }
         ],
-        "default": "medium detail"
+        "default": "medium detail",
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/detail"
       },
       "CreateCharacterWith4DirectionsRequestView": {
         "title": "View",
@@ -16015,7 +16172,8 @@
             "type": "null"
           }
         ],
-        "default": "low top-down"
+        "default": "low top-down",
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/view"
       },
       "CreateCharacterWith4DirectionsRequestIsometric": {
         "title": "Isometric",
@@ -16028,7 +16186,8 @@
             "type": "null"
           }
         ],
-        "default": false
+        "default": false,
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/isometric"
       },
       "CreateCharacterWith4DirectionsRequestColorImage": {
         "description": "Color palette reference image",
@@ -16039,7 +16198,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/color_image"
       },
       "CreateCharacterWith4DirectionsRequestForceColors": {
         "title": "Force Colors",
@@ -16052,7 +16212,8 @@
             "type": "null"
           }
         ],
-        "default": false
+        "default": false,
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/force_colors"
       },
       "CreateCharacterWith4DirectionsRequestProportions": {
         "title": "Proportions",
@@ -16064,7 +16225,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/proportions"
       },
       "CreateCharacterWith4DirectionsRequestProportionsAnyOf0": {
         "oneOf": [
@@ -16081,7 +16243,8 @@
             "custom": "#/components/schemas/CharacterProportions",
             "preset": "#/components/schemas/CharacterProportionsPreset"
           }
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequestProportions/anyOf/0"
       },
       "CreateCharacterWith4DirectionsRequestTemplateID": {
         "title": "Template Id",
@@ -16093,7 +16256,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/template_id"
       },
       "CreateCharacterWith4DirectionsRequestSeed": {
         "title": "Seed",
@@ -16106,7 +16270,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/seed"
       },
       "CreateCharacterWith4DirectionsRequestDirections": {
         "title": "Directions",
@@ -16133,7 +16298,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/directions"
       },
       "CreateCharacterWith4DirectionsRequestOutputType": {
         "title": "Output Type",
@@ -16147,7 +16313,8 @@
             "type": "null"
           }
         ],
-        "default": "dict"
+        "default": "dict",
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsRequest/properties/output_type"
       },
       "CreateCharacterWith4DirectionsResponseUsage": {
         "anyOf": [
@@ -16161,7 +16328,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith4DirectionsResponse/properties/usage"
       },
       "CreateCharacterWith8DirectionsRequestMode": {
         "title": "Mode",
@@ -16174,14 +16342,16 @@
             "type": "null"
           }
         ],
-        "default": "standard"
+        "default": "standard",
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/mode"
       },
       "CreateCharacterWith8DirectionsRequestModeAnyOf0": {
         "type": "string",
         "enum": [
           "standard",
           "pro"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequestMode/anyOf/0"
       },
       "CreateCharacterWith8DirectionsRequestAsyncMode": {
         "title": "Async Mode",
@@ -16195,7 +16365,8 @@
             "type": "null"
           }
         ],
-        "default": true
+        "default": true,
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/async_mode"
       },
       "CreateCharacterWith8DirectionsRequestTextGuidanceScale": {
         "title": "Text Guidance Scale",
@@ -16210,7 +16381,8 @@
             "type": "null"
           }
         ],
-        "default": 8.0
+        "default": 8.0,
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/text_guidance_scale"
       },
       "CreateCharacterWith8DirectionsRequestOutline": {
         "title": "Outline",
@@ -16223,7 +16395,8 @@
             "type": "null"
           }
         ],
-        "default": "single color black outline"
+        "default": "single color black outline",
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/outline"
       },
       "CreateCharacterWith8DirectionsRequestShading": {
         "title": "Shading",
@@ -16236,7 +16409,8 @@
             "type": "null"
           }
         ],
-        "default": "basic shading"
+        "default": "basic shading",
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/shading"
       },
       "CreateCharacterWith8DirectionsRequestDetail": {
         "title": "Detail",
@@ -16249,7 +16423,8 @@
             "type": "null"
           }
         ],
-        "default": "medium detail"
+        "default": "medium detail",
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/detail"
       },
       "CreateCharacterWith8DirectionsRequestView": {
         "title": "View",
@@ -16262,7 +16437,8 @@
             "type": "null"
           }
         ],
-        "default": "low top-down"
+        "default": "low top-down",
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/view"
       },
       "CreateCharacterWith8DirectionsRequestIsometric": {
         "title": "Isometric",
@@ -16275,7 +16451,8 @@
             "type": "null"
           }
         ],
-        "default": false
+        "default": false,
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/isometric"
       },
       "CreateCharacterWith8DirectionsRequestColorImage": {
         "description": "Color palette reference image",
@@ -16286,7 +16463,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/color_image"
       },
       "CreateCharacterWith8DirectionsRequestForceColors": {
         "title": "Force Colors",
@@ -16299,7 +16477,8 @@
             "type": "null"
           }
         ],
-        "default": false
+        "default": false,
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/force_colors"
       },
       "CreateCharacterWith8DirectionsRequestProportions": {
         "title": "Proportions",
@@ -16311,7 +16490,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/proportions"
       },
       "CreateCharacterWith8DirectionsRequestProportionsAnyOf0": {
         "oneOf": [
@@ -16328,7 +16508,8 @@
             "custom": "#/components/schemas/CharacterProportions",
             "preset": "#/components/schemas/CharacterProportionsPreset"
           }
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequestProportions/anyOf/0"
       },
       "CreateCharacterWith8DirectionsRequestTemplateID": {
         "title": "Template Id",
@@ -16340,7 +16521,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/template_id"
       },
       "CreateCharacterWith8DirectionsRequestSeed": {
         "title": "Seed",
@@ -16353,7 +16535,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/seed"
       },
       "CreateCharacterWith8DirectionsRequestDirections": {
         "title": "Directions",
@@ -16380,7 +16563,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/directions"
       },
       "CreateCharacterWith8DirectionsRequestOutputType": {
         "title": "Output Type",
@@ -16394,7 +16578,8 @@
             "type": "null"
           }
         ],
-        "default": "dict"
+        "default": "dict",
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsRequest/properties/output_type"
       },
       "CreateCharacterWith8DirectionsResponseUsage": {
         "anyOf": [
@@ -16408,7 +16593,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateCharacterWith8DirectionsResponse/properties/usage"
       },
       "CreateImageBitforgeRequestOutline": {
         "description": "Outline style reference",
@@ -16419,7 +16605,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeRequest/properties/outline"
       },
       "CreateImageBitforgeRequestShading": {
         "description": "Shading style reference",
@@ -16430,7 +16617,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeRequest/properties/shading"
       },
       "CreateImageBitforgeRequestDetail": {
         "description": "Detail style reference",
@@ -16441,7 +16629,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeRequest/properties/detail"
       },
       "CreateImageBitforgeRequestView": {
         "description": "Camera view angle",
@@ -16452,7 +16641,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeRequest/properties/view"
       },
       "CreateImageBitforgeRequestDirection": {
         "description": "Subject direction",
@@ -16463,7 +16653,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeRequest/properties/direction"
       },
       "CreateImageBitforgeRequestCoveragePercentage": {
         "title": "Coverage Percentage",
@@ -16477,7 +16668,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeRequest/properties/coverage_percentage"
       },
       "CreateImageBitforgeRequestInitImage": {
         "description": "Initial image to start from",
@@ -16488,7 +16680,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeRequest/properties/init_image"
       },
       "CreateImageBitforgeRequestStyleImage": {
         "description": "Reference image for style transfer",
@@ -16499,7 +16692,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeRequest/properties/style_image"
       },
       "CreateImageBitforgeRequestInpaintingImage": {
         "description": "Reference image which is inpainted",
@@ -16510,7 +16704,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeRequest/properties/inpainting_image"
       },
       "CreateImageBitforgeRequestMaskImage": {
         "description": "Inpainting / mask image (black and white image, where the white is where the model should inpaint)",
@@ -16521,7 +16716,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeRequest/properties/mask_image"
       },
       "CreateImageBitforgeRequestColorImage": {
         "description": "Forced color palette, image containing colors used for palette",
@@ -16532,7 +16728,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeRequest/properties/color_image"
       },
       "CreateImageBitforgeRequestSkeletonKeypoints": {
         "title": "Skeleton Keypoints",
@@ -16547,7 +16744,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeRequest/properties/skeleton_keypoints"
       },
       "CreateImageBitforgeRequestSeed": {
         "title": "Seed",
@@ -16559,7 +16757,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeRequest/properties/seed"
       },
       "CreateImageBitforgeResponseUsage": {
         "anyOf": [
@@ -16573,7 +16772,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateImageBitforgeResponse/properties/usage"
       },
       "CreateImagePixenRequestOutline": {
         "description": "Outline style",
@@ -16584,7 +16784,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixenRequest/properties/outline"
       },
       "CreateImagePixenRequestDetail": {
         "description": "Detail level (default: highly detailed)",
@@ -16596,7 +16797,8 @@
             "type": "null"
           }
         ],
-        "default": "highly detailed"
+        "default": "highly detailed",
+        "x-flattened-from": "#/components/schemas/CreateImagePixenRequest/properties/detail"
       },
       "CreateImagePixenRequestView": {
         "description": "Camera view angle",
@@ -16607,7 +16809,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixenRequest/properties/view"
       },
       "CreateImagePixenRequestDirection": {
         "description": "Subject direction",
@@ -16618,7 +16821,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixenRequest/properties/direction"
       },
       "CreateImagePixenRequestBackgroundRemovalTask": {
         "title": "Background Removal Task",
@@ -16628,7 +16832,8 @@
           "remove_simple_background",
           "remove_complex_background"
         ],
-        "default": "remove_simple_background"
+        "default": "remove_simple_background",
+        "x-flattened-from": "#/components/schemas/CreateImagePixenRequest/properties/background_removal_task"
       },
       "CreateImagePixenRequestSeed": {
         "title": "Seed",
@@ -16640,7 +16845,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixenRequest/properties/seed"
       },
       "CreateImagePixenResponseUsage": {
         "anyOf": [
@@ -16654,7 +16860,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateImagePixenResponse/properties/usage"
       },
       "CreateImagePixenResponseEnhancedPrompt": {
         "title": "Enhanced Prompt",
@@ -16666,7 +16873,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixenResponse/properties/enhanced_prompt"
       },
       "CreateImagePixenResponseEnhanceUsage": {
         "description": "Cost of the prompt enhancement, separate from generation usage. Populated only when enhance_prompt=true.",
@@ -16677,7 +16885,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixenResponse/properties/enhance_usage"
       },
       "CreateImagePixfluxBackgroundResponseUsage": {
         "anyOf": [
@@ -16691,7 +16900,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateImagePixfluxBackgroundResponse/properties/usage"
       },
       "CreateImagePixfluxRequestOutline": {
         "description": "Outline style reference (weakly guiding)",
@@ -16702,7 +16912,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixfluxRequest/properties/outline"
       },
       "CreateImagePixfluxRequestShading": {
         "description": "Shading style reference (weakly guiding)",
@@ -16713,7 +16924,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixfluxRequest/properties/shading"
       },
       "CreateImagePixfluxRequestDetail": {
         "description": "Detail style reference (weakly guiding)",
@@ -16724,7 +16936,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixfluxRequest/properties/detail"
       },
       "CreateImagePixfluxRequestView": {
         "description": "Camera view angle (weakly guiding)",
@@ -16735,7 +16948,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixfluxRequest/properties/view"
       },
       "CreateImagePixfluxRequestDirection": {
         "description": "Subject direction (weakly guiding)",
@@ -16746,7 +16960,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixfluxRequest/properties/direction"
       },
       "CreateImagePixfluxRequestBackgroundRemovalTask": {
         "title": "Background Removal Task",
@@ -16756,7 +16971,8 @@
           "remove_simple_background",
           "remove_complex_background"
         ],
-        "default": "remove_simple_background"
+        "default": "remove_simple_background",
+        "x-flattened-from": "#/components/schemas/CreateImagePixfluxRequest/properties/background_removal_task"
       },
       "CreateImagePixfluxRequestInitImage": {
         "description": "Initial image to start from",
@@ -16767,7 +16983,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixfluxRequest/properties/init_image"
       },
       "CreateImagePixfluxRequestColorImage": {
         "description": "Forced color palette, image containing colors used for palette",
@@ -16778,7 +16995,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixfluxRequest/properties/color_image"
       },
       "CreateImagePixfluxRequestSeed": {
         "title": "Seed",
@@ -16790,7 +17008,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImagePixfluxRequest/properties/seed"
       },
       "CreateImagePixfluxResponseUsage": {
         "anyOf": [
@@ -16804,7 +17023,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateImagePixfluxResponse/properties/usage"
       },
       "CreateImageProFlashRequestStyleImage": {
         "anyOf": [
@@ -16814,7 +17034,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageProFlashRequest/properties/style_image"
       },
       "CreateImageProFlashRequestProjectID": {
         "title": "Project Id",
@@ -16826,7 +17047,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateImageProFlashRequest/properties/project_id"
       },
       "CreateIsometricTileBackgroundResponseUsage": {
         "anyOf": [
@@ -16840,7 +17062,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateIsometricTileBackgroundResponse/properties/usage"
       },
       "CreateIsometricTileRequestOutline": {
         "title": "Outline",
@@ -16853,7 +17076,8 @@
             "type": "null"
           }
         ],
-        "default": "lineless"
+        "default": "lineless",
+        "x-flattened-from": "#/components/schemas/CreateIsometricTileRequest/properties/outline"
       },
       "CreateIsometricTileRequestOutlineAnyOf0": {
         "type": "string",
@@ -16861,7 +17085,8 @@
           "single color outline",
           "selective outline",
           "lineless"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateIsometricTileRequestOutline/anyOf/0"
       },
       "CreateIsometricTileRequestShading": {
         "title": "Shading",
@@ -16874,7 +17099,8 @@
             "type": "null"
           }
         ],
-        "default": "basic shading"
+        "default": "basic shading",
+        "x-flattened-from": "#/components/schemas/CreateIsometricTileRequest/properties/shading"
       },
       "CreateIsometricTileRequestShadingAnyOf0": {
         "type": "string",
@@ -16884,7 +17110,8 @@
           "medium shading",
           "detailed shading",
           "highly detailed shading"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateIsometricTileRequestShading/anyOf/0"
       },
       "CreateIsometricTileRequestDetail": {
         "title": "Detail",
@@ -16897,7 +17124,8 @@
             "type": "null"
           }
         ],
-        "default": "medium detail"
+        "default": "medium detail",
+        "x-flattened-from": "#/components/schemas/CreateIsometricTileRequest/properties/detail"
       },
       "CreateIsometricTileRequestDetailAnyOf0": {
         "type": "string",
@@ -16905,7 +17133,8 @@
           "low detail",
           "medium detail",
           "highly detailed"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateIsometricTileRequestDetail/anyOf/0"
       },
       "CreateIsometricTileRequestInitImage": {
         "description": "Initial image to start from",
@@ -16916,7 +17145,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateIsometricTileRequest/properties/init_image"
       },
       "CreateIsometricTileRequestIsometricTileSize": {
         "title": "Isometric Tile Size",
@@ -16933,7 +17163,8 @@
             "type": "null"
           }
         ],
-        "default": 16
+        "default": 16,
+        "x-flattened-from": "#/components/schemas/CreateIsometricTileRequest/properties/isometric_tile_size"
       },
       "CreateIsometricTileRequestIsometricTileShape": {
         "title": "Isometric Tile Shape",
@@ -16944,7 +17175,8 @@
           "thin tile",
           "block"
         ],
-        "default": "block"
+        "default": "block",
+        "x-flattened-from": "#/components/schemas/CreateIsometricTileRequest/properties/isometric_tile_shape"
       },
       "CreateIsometricTileRequestColorImage": {
         "description": "Forced color palette, image containing colors used for palette",
@@ -16955,7 +17187,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateIsometricTileRequest/properties/color_image"
       },
       "CreateIsometricTileRequestSeed": {
         "title": "Seed",
@@ -16967,7 +17200,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateIsometricTileRequest/properties/seed"
       },
       "CreateIsometricTileResponseUsage": {
         "anyOf": [
@@ -16981,7 +17215,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateIsometricTileResponse/properties/usage"
       },
       "CreateMapObjectRequestView": {
         "title": "View",
@@ -16992,7 +17227,8 @@
           "high top-down",
           "side"
         ],
-        "default": "high top-down"
+        "default": "high top-down",
+        "x-flattened-from": "#/components/schemas/CreateMapObjectRequest/properties/view"
       },
       "CreateMapObjectRequestOutline": {
         "title": "Outline",
@@ -17005,7 +17241,8 @@
             "type": "null"
           }
         ],
-        "default": "single color outline"
+        "default": "single color outline",
+        "x-flattened-from": "#/components/schemas/CreateMapObjectRequest/properties/outline"
       },
       "CreateMapObjectRequestOutlineAnyOf0": {
         "type": "string",
@@ -17013,7 +17250,8 @@
           "single color outline",
           "selective outline",
           "lineless"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateMapObjectRequestOutline/anyOf/0"
       },
       "CreateMapObjectRequestShading": {
         "title": "Shading",
@@ -17026,7 +17264,8 @@
             "type": "null"
           }
         ],
-        "default": "medium shading"
+        "default": "medium shading",
+        "x-flattened-from": "#/components/schemas/CreateMapObjectRequest/properties/shading"
       },
       "CreateMapObjectRequestShadingAnyOf0": {
         "type": "string",
@@ -17035,7 +17274,8 @@
           "basic shading",
           "medium shading",
           "detailed shading"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateMapObjectRequestShading/anyOf/0"
       },
       "CreateMapObjectRequestDetail": {
         "title": "Detail",
@@ -17048,7 +17288,8 @@
             "type": "null"
           }
         ],
-        "default": "medium detail"
+        "default": "medium detail",
+        "x-flattened-from": "#/components/schemas/CreateMapObjectRequest/properties/detail"
       },
       "CreateMapObjectRequestDetailAnyOf0": {
         "type": "string",
@@ -17056,7 +17297,8 @@
           "low detail",
           "medium detail",
           "high detail"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateMapObjectRequestDetail/anyOf/0"
       },
       "CreateMapObjectRequestInitImage": {
         "description": "Initial image to start from",
@@ -17067,7 +17309,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateMapObjectRequest/properties/init_image"
       },
       "CreateMapObjectRequestColorImage": {
         "description": "Image containing colors for forced palette",
@@ -17078,7 +17321,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateMapObjectRequest/properties/color_image"
       },
       "CreateMapObjectRequestBackgroundImage": {
         "description": "Background/map image for style matching. Required when using inpainting.",
@@ -17089,7 +17333,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateMapObjectRequest/properties/background_image"
       },
       "CreateMapObjectRequestInpainting": {
         "title": "Inpainting",
@@ -17107,7 +17352,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateMapObjectRequest/properties/inpainting"
       },
       "CreateMapObjectRequestSeed": {
         "title": "Seed",
@@ -17120,7 +17366,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateMapObjectRequest/properties/seed"
       },
       "CreateMapObjectResponseUsage": {
         "anyOf": [
@@ -17134,7 +17381,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateMapObjectResponse/properties/usage"
       },
       "CreateObjectProFlashRequestSourceImageID": {
         "title": "Source Image Id",
@@ -17147,7 +17395,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateObjectProFlashRequest/properties/source_image_id"
       },
       "CreateObjectProFlashRequestFirstFrame": {
         "description": "Encoded south-facing PNG upload; mutually exclusive with source_image_id.",
@@ -17158,7 +17407,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateObjectProFlashRequest/properties/first_frame"
       },
       "CreateObjectProFlashRequestView": {
         "title": "View",
@@ -17168,7 +17418,8 @@
           "high top-down",
           "side"
         ],
-        "default": "low top-down"
+        "default": "low top-down",
+        "x-flattened-from": "#/components/schemas/CreateObjectProFlashRequest/properties/view"
       },
       "CreateObjectProFlashRequestImageSize": {
         "description": "Defaults to 64x64 for text creation. Native sizes: 16x16 (experimental), 24x24, 32x32, 32x48, 64x64, 96x64, 96x96. Custom size (Beta): integer width 16–256 and height 16–256. Both dimensions must be multiples of 4 pixels. Pixel-grid recovery uses image-to-pixel-art with fixer when needed. No native image resizing.",
@@ -17197,7 +17448,8 @@
         "required": [
           "width",
           "height"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateObjectProFlashRequest/properties/image_size"
       },
       "CreateObjectProFlashRequestStyleImage": {
         "anyOf": [
@@ -17207,7 +17459,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateObjectProFlashRequest/properties/style_image"
       },
       "CreateObjectProFlashRequestStyleOptions": {
         "anyOf": [
@@ -17217,7 +17470,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateObjectProFlashRequest/properties/style_options"
       },
       "CreateObjectProFlashResponseUsage": {
         "anyOf": [
@@ -17231,7 +17485,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateObjectProFlashResponse/properties/usage"
       },
       "CreateObjectStateRequestSeed": {
         "title": "Seed",
@@ -17243,7 +17498,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateObjectStateRequest/properties/seed"
       },
       "CreateObjectStateRequestStateName": {
         "title": "State Name",
@@ -17256,7 +17512,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateObjectStateRequest/properties/state_name"
       },
       "CreateObjectStateResponseUsage": {
         "anyOf": [
@@ -17270,7 +17527,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateObjectStateResponse/properties/usage"
       },
       "CreateTilesProBackgroundResponseUsage": {
         "anyOf": [
@@ -17284,7 +17542,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateTilesProBackgroundResponse/properties/usage"
       },
       "CreateTilesProRequestTileType": {
         "title": "Tile Type",
@@ -17298,7 +17557,8 @@
           "octagon",
           "square_topdown"
         ],
-        "default": "isometric"
+        "default": "isometric",
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/tile_type"
       },
       "CreateTilesProRequestTileHeight": {
         "title": "Tile Height",
@@ -17312,7 +17572,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/tile_height"
       },
       "CreateTilesProRequestTileView": {
         "title": "Tile View",
@@ -17324,7 +17585,8 @@
           "low top-down",
           "side"
         ],
-        "default": "low top-down"
+        "default": "low top-down",
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/tile_view"
       },
       "CreateTilesProRequestTileViewAngle": {
         "title": "Tile View Angle",
@@ -17338,7 +17600,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/tile_view_angle"
       },
       "CreateTilesProRequestTileDepthRatio": {
         "title": "Tile Depth Ratio",
@@ -17352,7 +17615,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/tile_depth_ratio"
       },
       "CreateTilesProRequestTileFlatTopPx": {
         "title": "Tile Flat Top Px",
@@ -17366,7 +17630,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/tile_flat_top_px"
       },
       "CreateTilesProRequestOutlineMode": {
         "title": "Outline Mode",
@@ -17376,7 +17641,8 @@
           "outline",
           "segmentation"
         ],
-        "default": "outline"
+        "default": "outline",
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/outline_mode"
       },
       "CreateTilesProRequestTileFeature": {
         "title": "Tile Feature",
@@ -17388,7 +17654,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/tile_feature"
       },
       "CreateTilesProRequestTileFeatureAnyOf0": {
         "type": "string",
@@ -17396,7 +17663,8 @@
           "roads",
           "tileset",
           "building"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequestTileFeature/anyOf/0"
       },
       "CreateTilesProRequestBuildingWallTiles": {
         "title": "Building Wall Tiles",
@@ -17410,7 +17678,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/building_wall_tiles"
       },
       "CreateTilesProRequestBuildingLayout": {
         "title": "Building Layout",
@@ -17422,14 +17691,16 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/building_layout"
       },
       "CreateTilesProRequestBuildingLayoutAnyOf0": {
         "type": "string",
         "enum": [
           "grid",
           "materials"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequestBuildingLayout/anyOf/0"
       },
       "CreateTilesProRequestBuildingWallDescription": {
         "title": "Building Wall Description",
@@ -17442,7 +17713,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/building_wall_description"
       },
       "CreateTilesProRequestBuildingFloorDescription": {
         "title": "Building Floor Description",
@@ -17455,7 +17727,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/building_floor_description"
       },
       "CreateTilesProRequestBuildingFloor2Description": {
         "title": "Building Floor2 Description",
@@ -17468,7 +17741,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/building_floor2_description"
       },
       "CreateTilesProRequestBuildingWallAngle": {
         "title": "Building Wall Angle",
@@ -17482,7 +17756,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/building_wall_angle"
       },
       "CreateTilesProRequestObliqueLean": {
         "title": "Oblique Lean",
@@ -17496,7 +17771,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/oblique_lean"
       },
       "CreateTilesProRequestSeed": {
         "title": "Seed",
@@ -17509,7 +17785,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/seed"
       },
       "CreateTilesProRequestStyleImages": {
         "title": "Style Images",
@@ -17524,7 +17801,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/style_images"
       },
       "CreateTilesProRequestStyleOptions": {
         "description": "Options for what to copy from the style images. Only used when style_images is provided.",
@@ -17535,7 +17813,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesProRequest/properties/style_options"
       },
       "CreateTilesetBackgroundResponseUsage": {
         "anyOf": [
@@ -17549,7 +17828,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateTilesetBackgroundResponse/properties/usage"
       },
       "CreateTilesetRequestLowerBaseTileID": {
         "title": "Lower Base Tile Id",
@@ -17562,7 +17842,8 @@
             "type": "null"
           }
         ],
-        "example": "123e4567-e89b-12d3-a456-426614174000"
+        "example": "123e4567-e89b-12d3-a456-426614174000",
+        "x-flattened-from": "#/components/schemas/CreateTilesetRequest/properties/lower_base_tile_id"
       },
       "CreateTilesetRequestUpperBaseTileID": {
         "title": "Upper Base Tile Id",
@@ -17575,7 +17856,8 @@
             "type": "null"
           }
         ],
-        "example": "987fcdeb-51a2-43f1-9876-543210fedcba"
+        "example": "987fcdeb-51a2-43f1-9876-543210fedcba",
+        "x-flattened-from": "#/components/schemas/CreateTilesetRequest/properties/upper_base_tile_id"
       },
       "CreateTilesetRequestMode": {
         "title": "Mode",
@@ -17585,7 +17867,8 @@
           "standard",
           "pro"
         ],
-        "default": "standard"
+        "default": "standard",
+        "x-flattened-from": "#/components/schemas/CreateTilesetRequest/properties/mode"
       },
       "CreateTilesetRequestShapeStyle": {
         "title": "Shape Style",
@@ -17597,14 +17880,16 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetRequest/properties/shape_style"
       },
       "CreateTilesetRequestShapeStyleAnyOf0": {
         "type": "string",
         "enum": [
           "square",
           "round"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetRequestShapeStyle/anyOf/0"
       },
       "CreateTilesetRequestOutline": {
         "description": "Outline style reference",
@@ -17615,7 +17900,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetRequest/properties/outline"
       },
       "CreateTilesetRequestShading": {
         "description": "Shading style reference",
@@ -17626,7 +17912,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetRequest/properties/shading"
       },
       "CreateTilesetRequestDetail": {
         "description": "Detail style reference",
@@ -17637,7 +17924,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetRequest/properties/detail"
       },
       "CreateTilesetRequestLowerReferenceImage": {
         "description": "Reference image for lower terrain style",
@@ -17648,7 +17936,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetRequest/properties/lower_reference_image"
       },
       "CreateTilesetRequestUpperReferenceImage": {
         "description": "Reference image for upper terrain style",
@@ -17659,7 +17948,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetRequest/properties/upper_reference_image"
       },
       "CreateTilesetRequestTransitionReferenceImage": {
         "description": "Reference image for transition area style",
@@ -17670,7 +17960,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetRequest/properties/transition_reference_image"
       },
       "CreateTilesetRequestColorImage": {
         "description": "Reference image for color palette",
@@ -17681,7 +17972,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetRequest/properties/color_image"
       },
       "CreateTilesetRequestSeed": {
         "title": "Seed",
@@ -17693,7 +17985,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetRequest/properties/seed"
       },
       "CreateTilesetResponseUsage": {
         "anyOf": [
@@ -17707,7 +18000,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateTilesetResponse/properties/usage"
       },
       "CreateTilesetSidescrollerRequestLowerBaseTileID": {
         "title": "Lower Base Tile Id",
@@ -17720,7 +18014,8 @@
             "type": "null"
           }
         ],
-        "example": "123e4567-e89b-12d3-a456-426614174000"
+        "example": "123e4567-e89b-12d3-a456-426614174000",
+        "x-flattened-from": "#/components/schemas/CreateTilesetSidescrollerRequest/properties/lower_base_tile_id"
       },
       "CreateTilesetSidescrollerRequestOutline": {
         "description": "Outline style reference",
@@ -17731,7 +18026,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetSidescrollerRequest/properties/outline"
       },
       "CreateTilesetSidescrollerRequestShading": {
         "description": "Shading style reference",
@@ -17742,7 +18038,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetSidescrollerRequest/properties/shading"
       },
       "CreateTilesetSidescrollerRequestDetail": {
         "description": "Detail style reference",
@@ -17753,7 +18050,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetSidescrollerRequest/properties/detail"
       },
       "CreateTilesetSidescrollerRequestLowerReferenceImage": {
         "description": "Reference image for platform terrain style",
@@ -17764,7 +18062,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetSidescrollerRequest/properties/lower_reference_image"
       },
       "CreateTilesetSidescrollerRequestTransitionReferenceImage": {
         "description": "Reference image for transition area style",
@@ -17775,7 +18074,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetSidescrollerRequest/properties/transition_reference_image"
       },
       "CreateTilesetSidescrollerRequestColorImage": {
         "description": "Reference image for color palette",
@@ -17786,7 +18086,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetSidescrollerRequest/properties/color_image"
       },
       "CreateTilesetSidescrollerRequestSeed": {
         "title": "Seed",
@@ -17798,7 +18099,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateTilesetSidescrollerRequest/properties/seed"
       },
       "CreateUIAssetRequestPieces": {
         "title": "Pieces",
@@ -17813,7 +18115,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateUIAssetRequest/properties/pieces"
       },
       "CreateUIAssetRequestPiecesAnyOf0Item": {
         "anyOf": [
@@ -17826,7 +18129,8 @@
           {
             "$ref": "#/components/schemas/UiPiecePolygon"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateUIAssetRequestPieces/anyOf/0/items"
       },
       "CreateUIAssetRequestElements": {
         "title": "Elements",
@@ -17841,7 +18145,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateUIAssetRequest/properties/elements"
       },
       "CreateUIAssetRequestStyleImage": {
         "description": "Optional style reference image (PNG/JPEG base64)",
@@ -17852,7 +18157,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateUIAssetRequest/properties/style_image"
       },
       "CreateUIAssetRequestColorPalette": {
         "title": "Color Palette",
@@ -17865,7 +18171,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateUIAssetRequest/properties/color_palette"
       },
       "CreateUIAssetRequestSeed": {
         "title": "Seed",
@@ -17878,7 +18185,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateUIAssetRequest/properties/seed"
       },
       "CreateUIAssetRequestName": {
         "title": "Name",
@@ -17890,7 +18198,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateUIAssetRequest/properties/name"
       },
       "CreateUIAssetRequestProjectID": {
         "title": "Project Id",
@@ -17902,7 +18211,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/CreateUIAssetRequest/properties/project_id"
       },
       "CreateUIAssetResponseUsage": {
         "anyOf": [
@@ -17916,7 +18226,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/CreateUIAssetResponse/properties/usage"
       },
       "DeleteAnimationResponseUsage": {
         "anyOf": [
@@ -17930,7 +18241,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/DeleteAnimationResponse/properties/usage"
       },
       "DeleteAnimationResponseLabel": {
         "title": "Label",
@@ -17942,7 +18254,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteAnimationResponse/properties/label"
       },
       "DeleteAnimationResponseError": {
         "title": "Error",
@@ -17953,7 +18266,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteAnimationResponse/properties/error"
       },
       "DeleteCharacterResponseUsage": {
         "anyOf": [
@@ -17967,7 +18281,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/DeleteCharacterResponse/properties/usage"
       },
       "DeleteCharacterResponseCharacterID": {
         "title": "Character Id",
@@ -17979,7 +18294,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteCharacterResponse/properties/character_id"
       },
       "DeleteCharacterResponseFilesDeleted": {
         "title": "Files Deleted",
@@ -17991,7 +18307,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteCharacterResponse/properties/files_deleted"
       },
       "DeleteCharacterResponseAnimationsDeleted": {
         "title": "Animations Deleted",
@@ -18003,7 +18320,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteCharacterResponse/properties/animations_deleted"
       },
       "DeleteCharacterResponseGroupID": {
         "title": "Group Id",
@@ -18015,7 +18333,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteCharacterResponse/properties/group_id"
       },
       "DeleteCharacterResponseNextStateID": {
         "title": "Next State Id",
@@ -18027,7 +18346,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteCharacterResponse/properties/next_state_id"
       },
       "DeleteCharacterResponseError": {
         "title": "Error",
@@ -18039,7 +18359,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteCharacterResponse/properties/error"
       },
       "DeleteIsometricTileResponseUsage": {
         "anyOf": [
@@ -18053,7 +18374,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/DeleteIsometricTileResponse/properties/usage"
       },
       "DeleteIsometricTileResponseTileID": {
         "title": "Tile Id",
@@ -18065,7 +18387,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteIsometricTileResponse/properties/tile_id"
       },
       "DeleteIsometricTileResponseError": {
         "title": "Error",
@@ -18077,7 +18400,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteIsometricTileResponse/properties/error"
       },
       "DeleteObjectResponseUsage": {
         "anyOf": [
@@ -18091,7 +18415,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/DeleteObjectResponse/properties/usage"
       },
       "DeleteObjectResponseObjectID": {
         "title": "Object Id",
@@ -18103,7 +18428,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteObjectResponse/properties/object_id"
       },
       "DeleteObjectResponseError": {
         "title": "Error",
@@ -18115,7 +18441,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteObjectResponse/properties/error"
       },
       "DeleteSidescrollerTilesetResponseUsage": {
         "anyOf": [
@@ -18129,7 +18456,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/DeleteSidescrollerTilesetResponse/properties/usage"
       },
       "DeleteSidescrollerTilesetResponseTilesetID": {
         "title": "Tileset Id",
@@ -18141,7 +18469,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteSidescrollerTilesetResponse/properties/tileset_id"
       },
       "DeleteSidescrollerTilesetResponseError": {
         "title": "Error",
@@ -18153,7 +18482,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteSidescrollerTilesetResponse/properties/error"
       },
       "DeleteTilesProResponseUsage": {
         "anyOf": [
@@ -18167,7 +18497,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/DeleteTilesProResponse/properties/usage"
       },
       "DeleteTilesProResponseTileID": {
         "title": "Tile Id",
@@ -18179,7 +18510,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteTilesProResponse/properties/tile_id"
       },
       "DeleteTilesProResponseError": {
         "title": "Error",
@@ -18191,7 +18523,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteTilesProResponse/properties/error"
       },
       "DeleteTilesetResponseUsage": {
         "anyOf": [
@@ -18205,7 +18538,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/DeleteTilesetResponse/properties/usage"
       },
       "DeleteTilesetResponseTilesetID": {
         "title": "Tileset Id",
@@ -18217,7 +18551,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteTilesetResponse/properties/tileset_id"
       },
       "DeleteTilesetResponseError": {
         "title": "Error",
@@ -18229,7 +18564,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DeleteTilesetResponse/properties/error"
       },
       "DeleteUIAssetResponseUsage": {
         "anyOf": [
@@ -18243,7 +18579,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/DeleteUIAssetResponse/properties/usage"
       },
       "DirectionSubmissionStatus": {
         "title": "Status",
@@ -18251,7 +18588,8 @@
         "enum": [
           "queued",
           "rate_limited"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DirectionSubmission/properties/status"
       },
       "DirectionSubmissionBackgroundJobID": {
         "title": "Background Job Id",
@@ -18262,7 +18600,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DirectionSubmission/properties/background_job_id"
       },
       "DirectionSubmissionAnimationID": {
         "title": "Animation Id",
@@ -18273,7 +18612,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/DirectionSubmission/properties/animation_id"
       },
       "DismissReviewResponseUsage": {
         "anyOf": [
@@ -18287,7 +18627,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/DismissReviewResponse/properties/usage"
       },
       "EditAnimationV2RequestSeed": {
         "title": "Seed",
@@ -18300,7 +18641,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EditAnimationV2Request/properties/seed"
       },
       "EditAnimationV2RequestNoBackground": {
         "title": "No Background",
@@ -18313,7 +18655,8 @@
             "type": "null"
           }
         ],
-        "default": false
+        "default": false,
+        "x-flattened-from": "#/components/schemas/EditAnimationV2Request/properties/no_background"
       },
       "EditAnimationV2ResponseUsage": {
         "anyOf": [
@@ -18327,7 +18670,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/EditAnimationV2Response/properties/usage"
       },
       "EditImagePixenRequestWidth": {
         "title": "Width",
@@ -18340,7 +18684,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EditImagePixenRequest/properties/width"
       },
       "EditImagePixenRequestHeight": {
         "title": "Height",
@@ -18353,7 +18698,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EditImagePixenRequest/properties/height"
       },
       "EditImagePixenRequestSeed": {
         "title": "Seed",
@@ -18366,7 +18712,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EditImagePixenRequest/properties/seed"
       },
       "EditImagePixenResponseUsage": {
         "anyOf": [
@@ -18380,7 +18727,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/EditImagePixenResponse/properties/usage"
       },
       "EditImageProFlashRequestMethod": {
         "title": "Method",
@@ -18389,7 +18737,8 @@
           "text",
           "reference"
         ],
-        "default": "text"
+        "default": "text",
+        "x-flattened-from": "#/components/schemas/EditImageProFlashRequest/properties/method"
       },
       "EditImageProFlashRequestDescription": {
         "title": "Description",
@@ -18401,7 +18750,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EditImageProFlashRequest/properties/description"
       },
       "EditImageProFlashRequestReferenceImage": {
         "anyOf": [
@@ -18411,7 +18761,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EditImageProFlashRequest/properties/reference_image"
       },
       "EditImageProFlashRequestProjectID": {
         "title": "Project Id",
@@ -18423,7 +18774,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EditImageProFlashRequest/properties/project_id"
       },
       "EditImageRequestSeed": {
         "title": "Seed",
@@ -18436,7 +18788,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EditImageRequest/properties/seed"
       },
       "EditImageRequestNoBackground": {
         "title": "No Background",
@@ -18449,7 +18802,8 @@
             "type": "null"
           }
         ],
-        "default": true
+        "default": true,
+        "x-flattened-from": "#/components/schemas/EditImageRequest/properties/no_background"
       },
       "EditImageRequestTextGuidanceScale": {
         "title": "Text Guidance Scale",
@@ -18464,7 +18818,8 @@
             "type": "null"
           }
         ],
-        "default": 8.0
+        "default": 8.0,
+        "x-flattened-from": "#/components/schemas/EditImageRequest/properties/text_guidance_scale"
       },
       "EditImageRequestColorImage": {
         "description": "Color reference image for style guidance",
@@ -18475,7 +18830,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EditImageRequest/properties/color_image"
       },
       "EditImageResponseUsage": {
         "anyOf": [
@@ -18489,7 +18845,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/EditImageResponse/properties/usage"
       },
       "EditImagesV2RequestMethod": {
         "title": "Method",
@@ -18499,7 +18856,8 @@
           "edit_with_text",
           "edit_with_reference"
         ],
-        "default": "edit_with_text"
+        "default": "edit_with_text",
+        "x-flattened-from": "#/components/schemas/EditImagesV2Request/properties/method"
       },
       "EditImagesV2RequestDescription": {
         "title": "Description",
@@ -18513,7 +18871,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EditImagesV2Request/properties/description"
       },
       "EditImagesV2RequestReferenceImage": {
         "description": "Reference image (required for edit_with_reference method)",
@@ -18524,7 +18883,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EditImagesV2Request/properties/reference_image"
       },
       "EditImagesV2RequestSeed": {
         "title": "Seed",
@@ -18537,7 +18897,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EditImagesV2Request/properties/seed"
       },
       "EditImagesV2RequestNoBackground": {
         "title": "No Background",
@@ -18550,7 +18911,8 @@
             "type": "null"
           }
         ],
-        "default": false
+        "default": false,
+        "x-flattened-from": "#/components/schemas/EditImagesV2Request/properties/no_background"
       },
       "EditImagesV2ResponseUsage": {
         "anyOf": [
@@ -18564,7 +18926,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/EditImagesV2Response/properties/usage"
       },
       "EnhanceAnimationV3PromptRequestLastFrame": {
         "description": "Optional end frame. When provided, the enhanced prompt describes the interpolated motion between first_frame and last_frame.",
@@ -18575,7 +18938,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EnhanceAnimationV3PromptRequest/properties/last_frame"
       },
       "EnhanceAnimationV3PromptRequestEngine": {
         "title": "Engine",
@@ -18586,7 +18950,8 @@
           "pixminimax",
           "skeleton-v3"
         ],
-        "default": "v3"
+        "default": "v3",
+        "x-flattened-from": "#/components/schemas/EnhanceAnimationV3PromptRequest/properties/engine"
       },
       "EnhanceAnimationV3PromptRequestDirection": {
         "title": "Direction",
@@ -18598,7 +18963,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EnhanceAnimationV3PromptRequest/properties/direction"
       },
       "EnhanceAnimationV3PromptRequestDirectionAnyOf0": {
         "type": "string",
@@ -18611,7 +18977,8 @@
           "south-west",
           "north-east",
           "north-west"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EnhanceAnimationV3PromptRequestDirection/anyOf/0"
       },
       "EnhanceAnimationV3PromptRequestFrameCount": {
         "title": "Frame Count",
@@ -18625,7 +18992,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EnhanceAnimationV3PromptRequest/properties/frame_count"
       },
       "EnhanceAnimationV3PromptResponseUsage": {
         "anyOf": [
@@ -18639,7 +19007,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/EnhanceAnimationV3PromptResponse/properties/usage"
       },
       "EnhanceCharacterV3PromptRequestView": {
         "title": "View",
@@ -18650,7 +19019,8 @@
           "high top-down",
           "side"
         ],
-        "default": "low top-down"
+        "default": "low top-down",
+        "x-flattened-from": "#/components/schemas/EnhanceCharacterV3PromptRequest/properties/view"
       },
       "EnhanceCharacterV3PromptRequestOutline": {
         "title": "Outline",
@@ -18662,7 +19032,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EnhanceCharacterV3PromptRequest/properties/outline"
       },
       "EnhanceCharacterV3PromptRequestDetail": {
         "title": "Detail",
@@ -18674,7 +19045,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EnhanceCharacterV3PromptRequest/properties/detail"
       },
       "EnhanceCharacterV3PromptResponseUsage": {
         "anyOf": [
@@ -18688,7 +19060,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/EnhanceCharacterV3PromptResponse/properties/usage"
       },
       "EnhancePixenPromptRequestOutline": {
         "description": "Outline style hint.",
@@ -18699,7 +19072,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EnhancePixenPromptRequest/properties/outline"
       },
       "EnhancePixenPromptRequestDetail": {
         "description": "Detail level hint.",
@@ -18711,7 +19085,8 @@
             "type": "null"
           }
         ],
-        "default": "highly detailed"
+        "default": "highly detailed",
+        "x-flattened-from": "#/components/schemas/EnhancePixenPromptRequest/properties/detail"
       },
       "EnhancePixenPromptRequestView": {
         "description": "Camera view angle.",
@@ -18722,7 +19097,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EnhancePixenPromptRequest/properties/view"
       },
       "EnhancePixenPromptRequestDirection": {
         "description": "Subject direction the enhanced description should describe.",
@@ -18733,7 +19109,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/EnhancePixenPromptRequest/properties/direction"
       },
       "EnhancePixenPromptResponseUsage": {
         "anyOf": [
@@ -18747,7 +19124,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/EnhancePixenPromptResponse/properties/usage"
       },
       "EstimateSkeletonResponseUsage": {
         "anyOf": [
@@ -18761,7 +19139,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/EstimateSkeletonResponse/properties/usage"
       },
       "Generate8RotationsV2RequestMethod": {
         "title": "Method",
@@ -18772,7 +19151,8 @@
           "create_with_style",
           "create_from_concept"
         ],
-        "default": "rotate_character"
+        "default": "rotate_character",
+        "x-flattened-from": "#/components/schemas/Generate8RotationsV2Request/properties/method"
       },
       "Generate8RotationsV2RequestReferenceImage": {
         "description": "Image to rotate (rotate_character) or style reference",
@@ -18783,7 +19163,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Generate8RotationsV2Request/properties/reference_image"
       },
       "Generate8RotationsV2RequestConceptImage": {
         "description": "Concept art image (only for create_from_concept method)",
@@ -18794,7 +19175,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Generate8RotationsV2Request/properties/concept_image"
       },
       "Generate8RotationsV2RequestDescription": {
         "title": "Description",
@@ -18807,7 +19189,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Generate8RotationsV2Request/properties/description"
       },
       "Generate8RotationsV2RequestStyleDescription": {
         "title": "Style Description",
@@ -18820,7 +19203,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Generate8RotationsV2Request/properties/style_description"
       },
       "Generate8RotationsV2RequestView": {
         "title": "View",
@@ -18831,7 +19215,8 @@
           "high top-down",
           "side"
         ],
-        "default": "low top-down"
+        "default": "low top-down",
+        "x-flattened-from": "#/components/schemas/Generate8RotationsV2Request/properties/view"
       },
       "Generate8RotationsV2RequestSeed": {
         "title": "Seed",
@@ -18844,7 +19229,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Generate8RotationsV2Request/properties/seed"
       },
       "Generate8RotationsV2RequestNoBackground": {
         "title": "No Background",
@@ -18857,7 +19243,8 @@
             "type": "null"
           }
         ],
-        "default": true
+        "default": true,
+        "x-flattened-from": "#/components/schemas/Generate8RotationsV2Request/properties/no_background"
       },
       "Generate8RotationsV2ResponseUsage": {
         "anyOf": [
@@ -18871,7 +19258,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/Generate8RotationsV2Response/properties/usage"
       },
       "Generate8RotationsV3RequestDescription": {
         "title": "Description",
@@ -18884,7 +19272,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Generate8RotationsV3Request/properties/description"
       },
       "Generate8RotationsV3RequestNoBackground": {
         "title": "No Background",
@@ -18896,7 +19285,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Generate8RotationsV3Request/properties/no_background"
       },
       "Generate8RotationsV3RequestSeed": {
         "title": "Seed",
@@ -18910,7 +19300,8 @@
             "type": "null"
           }
         ],
-        "default": 0
+        "default": 0,
+        "x-flattened-from": "#/components/schemas/Generate8RotationsV3Request/properties/seed"
       },
       "Generate8RotationsV3ResponseUsage": {
         "anyOf": [
@@ -18924,7 +19315,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/Generate8RotationsV3Response/properties/usage"
       },
       "GenerateFontProRequestWeight": {
         "title": "Weight",
@@ -18933,7 +19325,8 @@
         "enum": [
           "Bold",
           "Regular"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GenerateFontProRequest/properties/weight"
       },
       "GenerateFontProRequestSeed": {
         "title": "Seed",
@@ -18946,7 +19339,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GenerateFontProRequest/properties/seed"
       },
       "GenerateFontProRequestFontName": {
         "title": "Font Name",
@@ -18959,7 +19353,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GenerateFontProRequest/properties/font_name"
       },
       "GenerateFontProResponseUsage": {
         "anyOf": [
@@ -18973,7 +19368,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/GenerateFontProResponse/properties/usage"
       },
       "GenerateImageV2RequestSeed": {
         "title": "Seed",
@@ -18986,7 +19382,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GenerateImageV2Request/properties/seed"
       },
       "GenerateImageV2RequestNoBackground": {
         "title": "No Background",
@@ -18999,7 +19396,8 @@
             "type": "null"
           }
         ],
-        "default": true
+        "default": true,
+        "x-flattened-from": "#/components/schemas/GenerateImageV2Request/properties/no_background"
       },
       "GenerateImageV2RequestReferenceImages": {
         "title": "Reference Images",
@@ -19015,7 +19413,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GenerateImageV2Request/properties/reference_images"
       },
       "GenerateImageV2RequestStyleImage": {
         "description": "Optional style image for pixel size and style reference",
@@ -19026,7 +19425,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GenerateImageV2Request/properties/style_image"
       },
       "GenerateImageV2ResponseUsage": {
         "anyOf": [
@@ -19040,7 +19440,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/GenerateImageV2Response/properties/usage"
       },
       "GenerateUiv2RequestSeed": {
         "title": "Seed",
@@ -19053,7 +19454,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GenerateUIV2Request/properties/seed"
       },
       "GenerateUiv2RequestNoBackground": {
         "title": "No Background",
@@ -19066,7 +19468,8 @@
             "type": "null"
           }
         ],
-        "default": true
+        "default": true,
+        "x-flattened-from": "#/components/schemas/GenerateUIV2Request/properties/no_background"
       },
       "GenerateUiv2RequestConceptImage": {
         "description": "Optional concept image to guide the UI design",
@@ -19077,7 +19480,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GenerateUIV2Request/properties/concept_image"
       },
       "GenerateUiv2RequestColorPalette": {
         "title": "Color Palette",
@@ -19090,7 +19494,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GenerateUIV2Request/properties/color_palette"
       },
       "GenerateUiv2ResponseUsage": {
         "anyOf": [
@@ -19104,7 +19509,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/GenerateUIV2Response/properties/usage"
       },
       "GenerateWithStyleV2RequestStyleDescription": {
         "title": "Style Description",
@@ -19117,7 +19523,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GenerateWithStyleV2Request/properties/style_description"
       },
       "GenerateWithStyleV2RequestSeed": {
         "title": "Seed",
@@ -19130,7 +19537,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GenerateWithStyleV2Request/properties/seed"
       },
       "GenerateWithStyleV2RequestNoBackground": {
         "title": "No Background",
@@ -19143,7 +19551,8 @@
             "type": "null"
           }
         ],
-        "default": true
+        "default": true,
+        "x-flattened-from": "#/components/schemas/GenerateWithStyleV2Request/properties/no_background"
       },
       "GenerateWithStyleV2RequestImageSize": {
         "title": "Image Size",
@@ -19159,7 +19568,8 @@
             "type": "null"
           }
         ],
-        "deprecated": true
+        "deprecated": true,
+        "x-flattened-from": "#/components/schemas/GenerateWithStyleV2Request/properties/image_size"
       },
       "GenerateWithStyleV2ResponseUsage": {
         "anyOf": [
@@ -19173,7 +19583,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/GenerateWithStyleV2Response/properties/usage"
       },
       "GetFontResponseUsage": {
         "anyOf": [
@@ -19187,7 +19598,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/GetFontResponse/properties/usage"
       },
       "GetFontResponseGlyphPx": {
         "title": "Glyph Px",
@@ -19198,7 +19610,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetFontResponse/properties/glyph_px"
       },
       "GetFontResponseDownloadAtlasURL": {
         "title": "Download Atlas Url",
@@ -19210,7 +19623,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetFontResponse/properties/download_atlas_url"
       },
       "GetFontResponseDownloadTtfURL": {
         "title": "Download Ttf Url",
@@ -19222,7 +19636,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetFontResponse/properties/download_ttf_url"
       },
       "GetMapObjectResponseUsage": {
         "anyOf": [
@@ -19236,7 +19651,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/GetMapObjectResponse/properties/usage"
       },
       "GetMapObjectResponseDescription": {
         "title": "Description",
@@ -19247,7 +19663,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetMapObjectResponse/properties/description"
       },
       "GetMapObjectResponseWidth": {
         "title": "Width",
@@ -19258,7 +19675,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetMapObjectResponse/properties/width"
       },
       "GetMapObjectResponseHeight": {
         "title": "Height",
@@ -19269,7 +19687,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetMapObjectResponse/properties/height"
       },
       "GetMapObjectResponseView": {
         "title": "View",
@@ -19280,7 +19699,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetMapObjectResponse/properties/view"
       },
       "GetMapObjectResponseCreatedAt": {
         "title": "Created At",
@@ -19291,7 +19711,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetMapObjectResponse/properties/created_at"
       },
       "GetMapObjectResponseDownloadURL": {
         "title": "Download Url",
@@ -19303,7 +19724,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetMapObjectResponse/properties/download_url"
       },
       "GetPortraitCharacterResponseUsage": {
         "anyOf": [
@@ -19317,7 +19739,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/GetPortraitCharacterResponse/properties/usage"
       },
       "GetPortraitCharacterResponseWidth": {
         "title": "Width",
@@ -19328,7 +19751,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetPortraitCharacterResponse/properties/width"
       },
       "GetPortraitCharacterResponseHeight": {
         "title": "Height",
@@ -19339,7 +19763,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetPortraitCharacterResponse/properties/height"
       },
       "GetPortraitCharacterResponseSeed": {
         "title": "Seed",
@@ -19350,7 +19775,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetPortraitCharacterResponse/properties/seed"
       },
       "GetPortraitCharacterResponseDownloadURL": {
         "title": "Download Url",
@@ -19362,7 +19788,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetPortraitCharacterResponse/properties/download_url"
       },
       "GetTilesProResponseUsage": {
         "anyOf": [
@@ -19376,7 +19803,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/GetTilesProResponse/properties/usage"
       },
       "GetTilesProResponseTileRules": {
         "title": "Tile Rules",
@@ -19389,7 +19817,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetTilesProResponse/properties/tile_rules"
       },
       "GetVocalAnimationResponseUsage": {
         "anyOf": [
@@ -19403,7 +19832,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/GetVocalAnimationResponse/properties/usage"
       },
       "GetVocalAnimationResponseCharacterID": {
         "title": "Character Id",
@@ -19414,7 +19844,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetVocalAnimationResponse/properties/character_id"
       },
       "GetVocalAnimationResponseVisemes": {
         "title": "Visemes",
@@ -19429,7 +19860,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetVocalAnimationResponse/properties/visemes"
       },
       "GetVocalAnimationResponseMoodsOnCharacter": {
         "title": "Moods On Character",
@@ -19444,7 +19876,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetVocalAnimationResponse/properties/moods_on_character"
       },
       "GetVocalAnimationResponseGridURL": {
         "title": "Grid Url",
@@ -19456,7 +19889,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetVocalAnimationResponse/properties/grid_url"
       },
       "GetVocalAnimationResponseVisemeOrder": {
         "title": "Viseme Order",
@@ -19471,7 +19905,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetVocalAnimationResponse/properties/viseme_order"
       },
       "ImageToPixelartProRequestDescription": {
         "title": "Description",
@@ -19489,7 +19924,8 @@
         "examples": [
           "retro vibes with light dithering",
           "anime styled with sharp edges"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ImageToPixelartProRequest/properties/description"
       },
       "ImageToPixelartProRequestSeed": {
         "title": "Seed",
@@ -19502,7 +19938,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ImageToPixelartProRequest/properties/seed"
       },
       "ImageToPixelartProResponseUsage": {
         "anyOf": [
@@ -19516,7 +19953,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/ImageToPixelartProResponse/properties/usage"
       },
       "ImageToPixelartRequestTextGuidanceScale": {
         "title": "Text Guidance Scale",
@@ -19531,7 +19969,8 @@
             "type": "null"
           }
         ],
-        "default": 8.0
+        "default": 8.0,
+        "x-flattened-from": "#/components/schemas/ImageToPixelartRequest/properties/text_guidance_scale"
       },
       "ImageToPixelartRequestSeed": {
         "title": "Seed",
@@ -19544,7 +19983,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ImageToPixelartRequest/properties/seed"
       },
       "ImageToPixelartResponseUsage": {
         "anyOf": [
@@ -19558,7 +19998,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/ImageToPixelartResponse/properties/usage"
       },
       "ImageToTextRequestPrompt": {
         "title": "Prompt",
@@ -19572,7 +20013,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ImageToTextRequest/properties/prompt"
       },
       "ImageToTextResponseUsage": {
         "anyOf": [
@@ -19586,7 +20028,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/ImageToTextResponse/properties/usage"
       },
       "InpaintImageProFlashRequestContextImage": {
         "anyOf": [
@@ -19596,7 +20039,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/InpaintImageProFlashRequest/properties/context_image"
       },
       "InpaintImageProFlashRequestBoundingBox": {
         "anyOf": [
@@ -19606,7 +20050,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/InpaintImageProFlashRequest/properties/bounding_box"
       },
       "InpaintImageProFlashRequestBackgroundRemovalTask": {
         "title": "Background Removal Task",
@@ -19615,7 +20060,8 @@
           "remove_simple_background",
           "remove_complex_background"
         ],
-        "default": "remove_simple_background"
+        "default": "remove_simple_background",
+        "x-flattened-from": "#/components/schemas/InpaintImageProFlashRequest/properties/background_removal_task"
       },
       "InpaintImageProFlashRequestOutputMethod": {
         "title": "Output Method",
@@ -19625,7 +20071,8 @@
           "Modify current layer, only changes",
           "Modify current layer"
         ],
-        "default": "Modify current layer"
+        "default": "Modify current layer",
+        "x-flattened-from": "#/components/schemas/InpaintImageProFlashRequest/properties/output_method"
       },
       "InpaintImageProFlashRequestProjectID": {
         "title": "Project Id",
@@ -19637,7 +20084,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/InpaintImageProFlashRequest/properties/project_id"
       },
       "InpaintRequestOutline": {
         "description": "Outline style reference",
@@ -19648,7 +20096,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/InpaintRequest/properties/outline"
       },
       "InpaintRequestShading": {
         "description": "Shading style reference",
@@ -19659,7 +20108,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/InpaintRequest/properties/shading"
       },
       "InpaintRequestDetail": {
         "description": "Detail style reference",
@@ -19670,7 +20120,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/InpaintRequest/properties/detail"
       },
       "InpaintRequestView": {
         "description": "Camera view angle",
@@ -19681,7 +20132,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/InpaintRequest/properties/view"
       },
       "InpaintRequestDirection": {
         "description": "Subject direction",
@@ -19692,7 +20144,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/InpaintRequest/properties/direction"
       },
       "InpaintRequestInitImage": {
         "description": "Initial image to start from",
@@ -19703,7 +20156,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/InpaintRequest/properties/init_image"
       },
       "InpaintRequestColorImage": {
         "description": "Forced color palette, image containing colors used for palette",
@@ -19714,7 +20168,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/InpaintRequest/properties/color_image"
       },
       "InpaintRequestSeed": {
         "title": "Seed",
@@ -19726,7 +20181,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/InpaintRequest/properties/seed"
       },
       "InpaintResponseUsage": {
         "anyOf": [
@@ -19740,7 +20196,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/InpaintResponse/properties/usage"
       },
       "InpaintV3RequestContextImage": {
         "description": "Context image (deprecated)",
@@ -19752,7 +20209,8 @@
             "type": "null"
           }
         ],
-        "deprecated": true
+        "deprecated": true,
+        "x-flattened-from": "#/components/schemas/InpaintV3Request/properties/context_image"
       },
       "InpaintV3RequestBoundingBox": {
         "description": "Bounding box (deprecated)",
@@ -19764,7 +20222,8 @@
             "type": "null"
           }
         ],
-        "deprecated": true
+        "deprecated": true,
+        "x-flattened-from": "#/components/schemas/InpaintV3Request/properties/bounding_box"
       },
       "InpaintV3RequestSeed": {
         "title": "Seed",
@@ -19777,7 +20236,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/InpaintV3Request/properties/seed"
       },
       "InpaintV3RequestNoBackground": {
         "title": "No Background",
@@ -19790,7 +20250,8 @@
             "type": "null"
           }
         ],
-        "default": false
+        "default": false,
+        "x-flattened-from": "#/components/schemas/InpaintV3Request/properties/no_background"
       },
       "InpaintV3RequestCropToMask": {
         "title": "Crop To Mask",
@@ -19803,7 +20264,8 @@
             "type": "null"
           }
         ],
-        "default": true
+        "default": true,
+        "x-flattened-from": "#/components/schemas/InpaintV3Request/properties/crop_to_mask"
       },
       "InpaintV3ResponseUsage": {
         "anyOf": [
@@ -19817,7 +20279,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/InpaintV3Response/properties/usage"
       },
       "InterpolationV2RequestSeed": {
         "title": "Seed",
@@ -19830,7 +20293,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/InterpolationV2Request/properties/seed"
       },
       "InterpolationV2RequestNoBackground": {
         "title": "No Background",
@@ -19843,7 +20307,8 @@
             "type": "null"
           }
         ],
-        "default": true
+        "default": true,
+        "x-flattened-from": "#/components/schemas/InterpolationV2Request/properties/no_background"
       },
       "InterpolationV2ResponseUsage": {
         "anyOf": [
@@ -19857,7 +20322,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/InterpolationV2Response/properties/usage"
       },
       "IsometricTileSummaryName": {
         "title": "Name",
@@ -19869,7 +20335,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/IsometricTileSummary/properties/name"
       },
       "IsometricTileSummarySize": {
         "title": "Size",
@@ -19881,7 +20348,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/IsometricTileSummary/properties/size"
       },
       "IsometricTileSummaryTileShape": {
         "title": "Tile Shape",
@@ -19893,7 +20361,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/IsometricTileSummary/properties/tile_shape"
       },
       "IsometricTilesListResponseUsage": {
         "anyOf": [
@@ -19907,7 +20376,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/IsometricTilesListResponse/properties/usage"
       },
       "KeypointInputDepth": {
         "title": "Depth",
@@ -19921,7 +20391,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Keypoint-Input/properties/depth"
       },
       "LipSyncRequestCharacterID": {
         "title": "Character Id",
@@ -19933,7 +20404,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/LipSyncRequest/properties/character_id"
       },
       "LipSyncRequestMood": {
         "title": "Mood",
@@ -19945,7 +20417,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/LipSyncRequest/properties/mood"
       },
       "LipSyncRequestMoodAnyOf0": {
         "type": "string",
@@ -19955,7 +20428,8 @@
           "angry",
           "sad",
           "surprised"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/LipSyncRequestMood/anyOf/0"
       },
       "LipSyncRequestVisemeCount": {
         "title": "Viseme Count",
@@ -19973,7 +20447,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/LipSyncRequest/properties/viseme_count"
       },
       "LipSyncResponseUsage": {
         "anyOf": [
@@ -19987,7 +20462,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/LipSyncResponse/properties/usage"
       },
       "LipSyncResponseMood": {
         "title": "Mood",
@@ -19998,7 +20474,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/LipSyncResponse/properties/mood"
       },
       "LipSyncResponseGridURL": {
         "title": "Grid Url",
@@ -20010,7 +20487,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/LipSyncResponse/properties/grid_url"
       },
       "LipSyncResponseRow": {
         "title": "Row",
@@ -20022,7 +20500,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/LipSyncResponse/properties/row"
       },
       "LipSyncResponseRows": {
         "title": "Rows",
@@ -20034,7 +20513,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/LipSyncResponse/properties/rows"
       },
       "ObjectAnimationGroupDisplayName": {
         "title": "Display Name",
@@ -20046,7 +20526,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectAnimationGroup/properties/display_name"
       },
       "ObjectDetailName": {
         "title": "Name",
@@ -20058,7 +20539,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectDetail/properties/name"
       },
       "ObjectDetailStateName": {
         "title": "State Name",
@@ -20070,7 +20552,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectDetail/properties/state_name"
       },
       "ObjectDetailView": {
         "title": "View",
@@ -20082,7 +20565,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectDetail/properties/view"
       },
       "ObjectDetailFrameUrls": {
         "title": "Frame Urls",
@@ -20097,7 +20581,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectDetail/properties/frame_urls"
       },
       "ObjectDetailStyleSettings": {
         "title": "Style Settings",
@@ -20110,7 +20595,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectDetail/properties/style_settings"
       },
       "ObjectDetailStatus": {
         "title": "Status",
@@ -20122,7 +20608,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectDetail/properties/status"
       },
       "ObjectDetailGroupID": {
         "title": "Group Id",
@@ -20134,7 +20621,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectDetail/properties/group_id"
       },
       "ObjectDetailProgressPercent": {
         "title": "Progress Percent",
@@ -20146,7 +20634,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectDetail/properties/progress_percent"
       },
       "ObjectDetailEtaSeconds": {
         "title": "Eta Seconds",
@@ -20158,7 +20647,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectDetail/properties/eta_seconds"
       },
       "ObjectRotationUrlsSouth": {
         "title": "South",
@@ -20170,7 +20660,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectRotationUrls/properties/south"
       },
       "ObjectRotationUrlsWest": {
         "title": "West",
@@ -20182,7 +20673,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectRotationUrls/properties/west"
       },
       "ObjectRotationUrlsEast": {
         "title": "East",
@@ -20194,7 +20686,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectRotationUrls/properties/east"
       },
       "ObjectRotationUrlsNorth": {
         "title": "North",
@@ -20206,7 +20699,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectRotationUrls/properties/north"
       },
       "ObjectRotationUrlsSouthEast": {
         "title": "South-East",
@@ -20218,7 +20712,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectRotationUrls/properties/south-east"
       },
       "ObjectRotationUrlsSouthWest": {
         "title": "South-West",
@@ -20230,7 +20725,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectRotationUrls/properties/south-west"
       },
       "ObjectRotationUrlsNorthEast": {
         "title": "North-East",
@@ -20242,7 +20738,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectRotationUrls/properties/north-east"
       },
       "ObjectRotationUrlsNorthWest": {
         "title": "North-West",
@@ -20254,7 +20751,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectRotationUrls/properties/north-west"
       },
       "ObjectSummaryName": {
         "title": "Name",
@@ -20266,7 +20764,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectSummary/properties/name"
       },
       "ObjectSummaryStateName": {
         "title": "State Name",
@@ -20278,7 +20777,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectSummary/properties/state_name"
       },
       "ObjectSummaryView": {
         "title": "View",
@@ -20290,7 +20790,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectSummary/properties/view"
       },
       "ObjectSummaryPreviewURL": {
         "title": "Preview Url",
@@ -20302,7 +20803,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectSummary/properties/preview_url"
       },
       "ObjectSummaryStatus": {
         "title": "Status",
@@ -20314,7 +20816,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ObjectSummary/properties/status"
       },
       "ObjectsListResponseUsage": {
         "anyOf": [
@@ -20328,7 +20831,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/ObjectsListResponse/properties/usage"
       },
       "PortraitCharacterProRequestDirection": {
         "title": "Direction",
@@ -20338,7 +20842,8 @@
           "portrait_to_character",
           "character_to_portrait"
         ],
-        "default": "portrait_to_character"
+        "default": "portrait_to_character",
+        "x-flattened-from": "#/components/schemas/PortraitCharacterProRequest/properties/direction"
       },
       "PortraitCharacterProRequestView": {
         "title": "View",
@@ -20349,7 +20854,8 @@
           "high top-down",
           "side"
         ],
-        "default": "low top-down"
+        "default": "low top-down",
+        "x-flattened-from": "#/components/schemas/PortraitCharacterProRequest/properties/view"
       },
       "PortraitCharacterProRequestSeed": {
         "title": "Seed",
@@ -20362,7 +20868,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/PortraitCharacterProRequest/properties/seed"
       },
       "PortraitCharacterProResponseUsage": {
         "anyOf": [
@@ -20376,7 +20883,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/PortraitCharacterProResponse/properties/usage"
       },
       "ProFlashImageResponseUsage": {
         "anyOf": [
@@ -20390,7 +20898,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/ProFlashImageResponse/properties/usage"
       },
       "ProFlashReferenceImageUsageDescription": {
         "title": "Usage Description",
@@ -20401,7 +20910,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ProFlashReferenceImage/properties/usage_description"
       },
       "ReduceColorsRequestNumColors": {
         "title": "Num Colors",
@@ -20415,7 +20925,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ReduceColorsRequest/properties/num_colors"
       },
       "ReduceColorsRequestPaletteImage": {
         "description": "An image whose colors become the palette (max 256 colors). Use it to force frames onto an existing game palette. Mutually exclusive with num_colors.",
@@ -20426,7 +20937,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ReduceColorsRequest/properties/palette_image"
       },
       "ReduceColorsRequestDithering": {
         "title": "Dithering",
@@ -20438,7 +20950,8 @@
           "4x4",
           "8x8"
         ],
-        "default": "none"
+        "default": "none",
+        "x-flattened-from": "#/components/schemas/ReduceColorsRequest/properties/dithering"
       },
       "ReduceColorsResponseUsage": {
         "anyOf": [
@@ -20452,7 +20965,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/ReduceColorsResponse/properties/usage"
       },
       "RemoveBackgroundRequestBackgroundRemovalTask": {
         "title": "Background Removal Task",
@@ -20462,7 +20976,8 @@
           "remove_simple_background",
           "remove_complex_background"
         ],
-        "default": "remove_simple_background"
+        "default": "remove_simple_background",
+        "x-flattened-from": "#/components/schemas/RemoveBackgroundRequest/properties/background_removal_task"
       },
       "RemoveBackgroundRequestText": {
         "title": "Text",
@@ -20475,7 +20990,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/RemoveBackgroundRequest/properties/text"
       },
       "RemoveBackgroundRequestSeed": {
         "title": "Seed",
@@ -20488,7 +21004,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/RemoveBackgroundRequest/properties/seed"
       },
       "RemoveBackgroundResponseUsage": {
         "anyOf": [
@@ -20502,7 +21019,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/RemoveBackgroundResponse/properties/usage"
       },
       "ResizeRequestView": {
         "description": "Camera view angle",
@@ -20513,7 +21031,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ResizeRequest/properties/view"
       },
       "ResizeRequestDirection": {
         "description": "Directional view",
@@ -20524,7 +21043,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ResizeRequest/properties/direction"
       },
       "ResizeRequestIsometric": {
         "title": "Isometric",
@@ -20537,7 +21057,8 @@
             "type": "null"
           }
         ],
-        "default": false
+        "default": false,
+        "x-flattened-from": "#/components/schemas/ResizeRequest/properties/isometric"
       },
       "ResizeRequestObliqueProjection": {
         "title": "Oblique Projection",
@@ -20550,7 +21071,8 @@
             "type": "null"
           }
         ],
-        "default": false
+        "default": false,
+        "x-flattened-from": "#/components/schemas/ResizeRequest/properties/oblique_projection"
       },
       "ResizeRequestNoBackground": {
         "title": "No Background",
@@ -20563,7 +21085,8 @@
             "type": "null"
           }
         ],
-        "default": false
+        "default": false,
+        "x-flattened-from": "#/components/schemas/ResizeRequest/properties/no_background"
       },
       "ResizeRequestColorImage": {
         "description": "Forced color palette, image containing colors used for palette",
@@ -20574,7 +21097,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ResizeRequest/properties/color_image"
       },
       "ResizeRequestInitImage": {
         "description": "Initial image to start from",
@@ -20585,7 +21109,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ResizeRequest/properties/init_image"
       },
       "ResizeRequestInitImageStrength": {
         "title": "Init Image Strength",
@@ -20600,7 +21125,8 @@
             "type": "null"
           }
         ],
-        "default": 150.0
+        "default": 150.0,
+        "x-flattened-from": "#/components/schemas/ResizeRequest/properties/init_image_strength"
       },
       "ResizeRequestSeed": {
         "title": "Seed",
@@ -20613,7 +21139,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ResizeRequest/properties/seed"
       },
       "ResizeResponseUsage": {
         "anyOf": [
@@ -20627,7 +21154,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/ResizeResponse/properties/usage"
       },
       "RotateRequestViewChange": {
         "title": "View Change",
@@ -20641,7 +21169,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/RotateRequest/properties/view_change"
       },
       "RotateRequestDirectionChange": {
         "title": "Direction Change",
@@ -20655,7 +21184,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/RotateRequest/properties/direction_change"
       },
       "RotateRequestFromView": {
         "description": "From camera view angle",
@@ -20667,7 +21197,8 @@
             "type": "null"
           }
         ],
-        "default": "side"
+        "default": "side",
+        "x-flattened-from": "#/components/schemas/RotateRequest/properties/from_view"
       },
       "RotateRequestToView": {
         "description": "To camera view angle",
@@ -20679,7 +21210,8 @@
             "type": "null"
           }
         ],
-        "default": "side"
+        "default": "side",
+        "x-flattened-from": "#/components/schemas/RotateRequest/properties/to_view"
       },
       "RotateRequestFromDirection": {
         "description": "From subject direction",
@@ -20691,7 +21223,8 @@
             "type": "null"
           }
         ],
-        "default": "south"
+        "default": "south",
+        "x-flattened-from": "#/components/schemas/RotateRequest/properties/from_direction"
       },
       "RotateRequestToDirection": {
         "description": "From subject direction",
@@ -20703,7 +21236,8 @@
             "type": "null"
           }
         ],
-        "default": "east"
+        "default": "east",
+        "x-flattened-from": "#/components/schemas/RotateRequest/properties/to_direction"
       },
       "RotateRequestInitImage": {
         "description": "Initial image to start from",
@@ -20714,7 +21248,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/RotateRequest/properties/init_image"
       },
       "RotateRequestMaskImage": {
         "description": "Inpainting / mask image. Requires init image! (black and white image, where the white is where the model should inpaint)",
@@ -20725,7 +21260,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/RotateRequest/properties/mask_image"
       },
       "RotateRequestColorImage": {
         "description": "Forced color palette, image containing colors used for palette",
@@ -20736,7 +21272,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/RotateRequest/properties/color_image"
       },
       "RotateRequestSeed": {
         "title": "Seed",
@@ -20748,7 +21285,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/RotateRequest/properties/seed"
       },
       "RotateResponseUsage": {
         "anyOf": [
@@ -20762,7 +21300,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/RotateResponse/properties/usage"
       },
       "SelectObjectFramesRequestCommonTag": {
         "title": "Common Tag",
@@ -20774,7 +21313,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/SelectObjectFramesRequest/properties/common_tag"
       },
       "SelectObjectFramesResponseUsage": {
         "anyOf": [
@@ -20788,7 +21328,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/SelectObjectFramesResponse/properties/usage"
       },
       "SetPortraitResponseUsage": {
         "anyOf": [
@@ -20802,7 +21343,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/SetPortraitResponse/properties/usage"
       },
       "SidescrollerTilesetSummaryName": {
         "title": "Name",
@@ -20813,7 +21355,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/SidescrollerTilesetSummary/properties/name"
       },
       "SidescrollerTilesetSummaryLowerDescription": {
         "title": "Lower Description",
@@ -20824,7 +21367,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/SidescrollerTilesetSummary/properties/lower_description"
       },
       "SidescrollerTilesetSummaryTransitionDescription": {
         "title": "Transition Description",
@@ -20835,7 +21379,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/SidescrollerTilesetSummary/properties/transition_description"
       },
       "SidescrollerTilesetsListResponseUsage": {
         "anyOf": [
@@ -20849,7 +21394,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/SidescrollerTilesetsListResponse/properties/usage"
       },
       "SubscriptionPlan": {
         "title": "Plan",
@@ -20864,7 +21410,8 @@
         ],
         "examples": [
           "Tier 2: Pixel Artisan"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Subscription/properties/plan"
       },
       "TalkingGifRequestCharacterID": {
         "title": "Character Id",
@@ -20876,7 +21423,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TalkingGifRequest/properties/character_id"
       },
       "TalkingGifRequestMood": {
         "title": "Mood",
@@ -20888,7 +21436,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TalkingGifRequest/properties/mood"
       },
       "TalkingGifRequestMoodAnyOf0": {
         "type": "string",
@@ -20898,7 +21447,8 @@
           "angry",
           "sad",
           "surprised"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TalkingGifRequestMood/anyOf/0"
       },
       "TalkingGifRequestVisemes": {
         "title": "Visemes",
@@ -20913,7 +21463,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TalkingGifRequest/properties/visemes"
       },
       "TalkingGifResponseUsage": {
         "anyOf": [
@@ -20927,7 +21478,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/TalkingGifResponse/properties/usage"
       },
       "TalkingGifResponseMood": {
         "title": "Mood",
@@ -20938,7 +21490,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TalkingGifResponse/properties/mood"
       },
       "TileDescription": {
         "title": "Description",
@@ -20950,7 +21503,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Tile/properties/description"
       },
       "TileConnections2": {
         "description": "Deprecated. Null on newly generated top-down tilesets; some older tilesets still carry it. Use pattern_4x4 (or corners) to decide tile placement.",
@@ -20961,7 +21515,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/Tile/properties/connections"
       },
       "TileCornersNw": {
         "title": "Nw",
@@ -20971,7 +21526,8 @@
           "lower",
           "upper",
           "transition"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TileCorners/properties/NW"
       },
       "TileCornersNe": {
         "title": "Ne",
@@ -20981,7 +21537,8 @@
           "lower",
           "upper",
           "transition"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TileCorners/properties/NE"
       },
       "TileCornersSw": {
         "title": "Sw",
@@ -20991,7 +21548,8 @@
           "lower",
           "upper",
           "transition"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TileCorners/properties/SW"
       },
       "TileCornersSe": {
         "title": "Se",
@@ -21001,7 +21559,8 @@
           "lower",
           "upper",
           "transition"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TileCorners/properties/SE"
       },
       "TilesProListResponseUsage": {
         "anyOf": [
@@ -21015,7 +21574,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/TilesProListResponse/properties/usage"
       },
       "TilesProSummaryName": {
         "title": "Name",
@@ -21026,7 +21586,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TilesProSummary/properties/name"
       },
       "TilesProSummaryDescription": {
         "title": "Description",
@@ -21037,7 +21598,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TilesProSummary/properties/description"
       },
       "TilesProSummaryTileSize": {
         "title": "Tile Size",
@@ -21048,7 +21610,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TilesProSummary/properties/tile_size"
       },
       "TilesProSummaryNTiles": {
         "title": "N Tiles",
@@ -21059,7 +21622,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TilesProSummary/properties/n_tiles"
       },
       "TilesProSummaryTileView": {
         "title": "Tile View",
@@ -21070,7 +21634,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TilesProSummary/properties/tile_view"
       },
       "TilesetMetadataTerrainIds": {
         "title": "Terrain Ids",
@@ -21085,7 +21650,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TilesetMetadata/properties/terrain_ids"
       },
       "TilesetSummaryName": {
         "title": "Name",
@@ -21097,7 +21663,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TilesetSummary/properties/name"
       },
       "TilesetSummaryTileSize": {
         "title": "Tile Size",
@@ -21112,7 +21679,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TilesetSummary/properties/tile_size"
       },
       "TilesetSummaryView": {
         "title": "View",
@@ -21124,7 +21692,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TilesetSummary/properties/view"
       },
       "TilesetsListResponseUsage": {
         "anyOf": [
@@ -21138,7 +21707,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/TilesetsListResponse/properties/usage"
       },
       "TransferOutfitV2RequestSeed": {
         "title": "Seed",
@@ -21151,7 +21721,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/TransferOutfitV2Request/properties/seed"
       },
       "TransferOutfitV2RequestNoBackground": {
         "title": "No Background",
@@ -21164,7 +21735,8 @@
             "type": "null"
           }
         ],
-        "default": false
+        "default": false,
+        "x-flattened-from": "#/components/schemas/TransferOutfitV2Request/properties/no_background"
       },
       "TransferOutfitV2RequestAdditionalInstructions": {
         "title": "Additional Instructions",
@@ -21178,7 +21750,8 @@
             "type": "null"
           }
         ],
-        "default": ""
+        "default": "",
+        "x-flattened-from": "#/components/schemas/TransferOutfitV2Request/properties/additional_instructions"
       },
       "TransferOutfitV2ResponseUsage": {
         "anyOf": [
@@ -21192,7 +21765,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/TransferOutfitV2Response/properties/usage"
       },
       "UIAssetDetailName": {
         "title": "Name",
@@ -21204,7 +21778,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/UIAssetDetail/properties/name"
       },
       "UIAssetDetailImageURL": {
         "title": "Image Url",
@@ -21216,7 +21791,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/UIAssetDetail/properties/image_url"
       },
       "UIAssetDetailStatus": {
         "title": "Status",
@@ -21228,7 +21804,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/UIAssetDetail/properties/status"
       },
       "UIAssetDetailProgressPercent": {
         "title": "Progress Percent",
@@ -21240,7 +21817,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/UIAssetDetail/properties/progress_percent"
       },
       "UIAssetDetailEtaSeconds": {
         "title": "Eta Seconds",
@@ -21252,7 +21830,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/UIAssetDetail/properties/eta_seconds"
       },
       "UIAssetSummaryName": {
         "title": "Name",
@@ -21264,7 +21843,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/UIAssetSummary/properties/name"
       },
       "UIAssetSummaryImageURL": {
         "title": "Image Url",
@@ -21276,7 +21856,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/UIAssetSummary/properties/image_url"
       },
       "UIAssetSummaryStatus": {
         "title": "Status",
@@ -21288,7 +21869,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/UIAssetSummary/properties/status"
       },
       "UIAssetsListResponseUsage": {
         "anyOf": [
@@ -21302,7 +21884,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/UIAssetsListResponse/properties/usage"
       },
       "UnzoomResponseUsage": {
         "anyOf": [
@@ -21316,7 +21899,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/UnzoomResponse/properties/usage"
       },
       "UpdateObjectTagsResponseUsage": {
         "anyOf": [
@@ -21330,7 +21914,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/UpdateObjectTagsResponse/properties/usage"
       },
       "UpdateTagsResponseUsage": {
         "anyOf": [
@@ -21344,7 +21929,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/UpdateTagsResponse/properties/usage"
       },
       "UsageType": {
         "title": "Type",
@@ -21354,7 +21940,8 @@
           "generations"
         ],
         "default": "usd",
-        "example": "usd"
+        "example": "usd",
+        "x-flattened-from": "#/components/schemas/Usage/properties/type"
       },
       "UsageUsd": {
         "title": "Usd",
@@ -21366,7 +21953,8 @@
             "type": "null"
           }
         ],
-        "example": 0.02
+        "example": 0.02,
+        "x-flattened-from": "#/components/schemas/Usage/properties/usd"
       },
       "UsageGenerations": {
         "title": "Generations",
@@ -21379,7 +21967,8 @@
             "type": "null"
           }
         ],
-        "example": 1
+        "example": 1,
+        "x-flattened-from": "#/components/schemas/Usage/properties/generations"
       },
       "ValidationErrorLocItem": {
         "anyOf": [
@@ -21389,7 +21978,8 @@
           {
             "type": "integer"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ValidationError/properties/loc/items"
       },
       "VocalAnimationRequestCharacterID": {
         "title": "Character Id",
@@ -21401,7 +21991,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/VocalAnimationRequest/properties/character_id"
       },
       "VocalAnimationRequestPortrait": {
         "description": "Generate from this image instead and store nothing — the mouth positions come back inline. Max 256x256. Mutually exclusive with `character_id`.",
@@ -21412,7 +22003,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/VocalAnimationRequest/properties/portrait"
       },
       "VocalAnimationRequestMood": {
         "title": "Mood",
@@ -21425,7 +22017,8 @@
           "sad",
           "surprised"
         ],
-        "default": "neutral"
+        "default": "neutral",
+        "x-flattened-from": "#/components/schemas/VocalAnimationRequest/properties/mood"
       },
       "VocalAnimationRequestSeed": {
         "title": "Seed",
@@ -21438,7 +22031,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/VocalAnimationRequest/properties/seed"
       },
       "VocalAnimationResponseUsage": {
         "anyOf": [
@@ -21452,7 +22046,8 @@
         "example": {
           "type": "usd",
           "usd": 0.02
-        }
+        },
+        "x-flattened-from": "#/components/schemas/VocalAnimationResponse/properties/usage"
       },
       "AppEndpointsExternalV2GenerateImageV2ReferenceImageUsageDescription": {
         "title": "Usage Description",
@@ -21465,7 +22060,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/app__endpoints__external__v2__generate_image_v2__ReferenceImage/properties/usage_description"
       }
     },
     "responses": {

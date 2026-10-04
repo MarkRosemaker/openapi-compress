@@ -51,13 +51,15 @@
         "required": [
           "data",
           "pagination"
-        ]
+        ],
+        "x-flattened-from": "#/components/responses/ListV1PetsOk/content/application~1json/schema"
       },
       "ListV1PetsOkData": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ListV1PetsOkDataItem"
-        }
+        },
+        "x-flattened-from": "#/components/schemas/ListV1PetsOk/properties/data"
       },
       "ListV1PetsOkDataItem": {
         "type": "object",
@@ -127,7 +129,8 @@
           "goodWithKids",
           "createdAt",
           "updatedAt"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ListV1PetsOkData/items"
       },
       "ListV1PetsOkDataItemMedicalInfo": {
         "type": "object",
@@ -155,7 +158,8 @@
           "microchipped",
           "specialNeeds",
           "healthNotes"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ListV1PetsOkDataItem/properties/medicalInfo"
       },
       "ListV1PetsOkPagination": {
         "type": "object",
@@ -182,7 +186,8 @@
           "limit",
           "totalItems",
           "totalPages"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/ListV1PetsOk/properties/pagination"
       },
       "GetV1PetByPetIDOk": {
         "type": "object",
@@ -254,7 +259,8 @@
           "createdAt",
           "updatedAt",
           "medicalInfo"
-        ]
+        ],
+        "x-flattened-from": "#/components/responses/GetV1PetByPetIDOk/content/application~1json/schema"
       },
       "GetV1PetByPetIDOkMedicalInfo": {
         "type": "object",
@@ -282,7 +288,8 @@
           "microchipped",
           "specialNeeds",
           "healthNotes"
-        ]
+        ],
+        "x-flattened-from": "#/components/schemas/GetV1PetByPetIDOk/properties/medicalInfo"
       }
     },
     "responses": {
