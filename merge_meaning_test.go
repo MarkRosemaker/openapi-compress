@@ -1,6 +1,7 @@
 package compress_test
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/MarkRosemaker/openapi"
@@ -86,5 +87,80 @@ func TestDocument_KeepsTheMostReferencedName(t *testing.T) {
 
 	if _, ok := doc.Components.Schemas["FileUploadPageCoverFileUpload"]; ok {
 		t.Error("FileUploadPageCoverFileUpload was kept")
+	}
+}
+
+func TestDocument_KeepsTheSpecificationsName(t *testing.T) {
+	doc, err := openapi.LoadFromDataJSON([]byte(`{
+  "openapi": "3.1.0",
+  "info": {"title": "t", "version": "1"},
+  "paths": {},
+  "components": {"schemas": {
+    "PageParentID": {"type": "object", "properties": {"id": {"type": "string"}}, "required": ["id"],
+      "x-flattened-from": "#/components/schemas/Page/properties/parent"},
+    "idObjectResponse": {"type": "object", "properties": {"id": {"type": "string"}}, "required": ["id"]},
+    "Page": {"type": "object", "x-go-name": "Page", "properties": {
+      "parent": {"$ref": "#/components/schemas/PageParentID"},
+      "owner": {"$ref": "#/components/schemas/PageParentID"},
+      "space": {"$ref": "#/components/schemas/idObjectResponse"}
+    }}
+  }}
+}`))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if err := compress.Document(doc, compress.Config{SkipNameShortening: true}); err != nil {
+		t.Fatal(err)
+	}
+
+	// a name the specification gave wins over one flatten made up, however often that one is referred to
+	if _, ok := doc.Components.Schemas["idObjectResponse"]; !ok {
+		t.Error("idObjectResponse was merged away")
+	}
+
+	if _, ok := doc.Components.Schemas["PageParentID"]; ok {
+		t.Error("PageParentID was kept")
+	}
+
+	// the mark is gone, and other extensions stay
+	for name, s := range doc.Components.Schemas {
+		if strings.Contains(string(s.Extensions), "x-flattened-from") {
+			t.Errorf("%s still has x-flattened-from", name)
+		}
+	}
+
+	if got := string(doc.Components.Schemas["Page"].Extensions); got != `{"x-go-name":"Page"}` {
+		t.Errorf("Page's extensions are %s", got)
+	}
+}
+
+func TestDocument_KeepsExamplesOfAlternatives(t *testing.T) {
+	doc, err := openapi.LoadFromDataJSON([]byte(`{
+  "openapi": "3.1.0",
+  "info": {"title": "t", "version": "1"},
+  "paths": {},
+  "components": {"schemas": {
+    "aName": {"oneOf": [{"type": "string"}, {"type": "null"}]},
+    "bURL": {"oneOf": [{"type": "string", "example": "https://example.com"}, {"type": "null"}]},
+    "Page": {"type": "object", "properties": {
+      "name": {"$ref": "#/components/schemas/aName"},
+      "title": {"$ref": "#/components/schemas/aName"},
+      "url": {"$ref": "#/components/schemas/bURL"}
+    }}
+  }}
+}`))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if err := compress.Document(doc, compress.Config{SkipNameShortening: true}); err != nil {
+		t.Fatal(err)
+	}
+
+	// aName is kept, for its more references, and gets the example bURL had for its string
+	kept := doc.Components.Schemas["aName"]
+	if got := string(kept.OneOf[0].Example); got != `"https://example.com"` {
+		t.Errorf("the string alternative's example is %s, want the merged schema's", got)
 	}
 }
