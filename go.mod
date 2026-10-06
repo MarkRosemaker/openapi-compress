@@ -5,9 +5,9 @@ go 1.27
 require (
 	github.com/MarkRosemaker/fsutil v0.0.0-20261004011212-542873237c74
 	github.com/MarkRosemaker/jsonutil v0.0.0-20261004011215-c1eff28436f6
-	github.com/MarkRosemaker/openapi v0.0.0-20261005183413-2a3bd56f42a1
-	github.com/MarkRosemaker/openapi-compare v0.0.0-20261005183439-4c528983edcf
-	github.com/MarkRosemaker/openapi-edit v0.0.0-20261005183438-5084b9673f29
+	github.com/MarkRosemaker/openapi v0.0.0-20261006170304-55e0a87dfa74
+	github.com/MarkRosemaker/openapi-compare v0.0.0-20261006170625-3d01d94b1dab
+	github.com/MarkRosemaker/openapi-edit v0.0.0-20261006170628-7d8379d5a60a
 	github.com/MarkRosemaker/openapi-enrich v0.0.0-20261006161725-2683d182abbf
 )
 
