@@ -15,7 +15,7 @@ require (
 	cloud.google.com/go v0.123.0 // indirect
 	github.com/MarkRosemaker/errpath v0.0.0-20261004011213-d39d7f96c8f4 // indirect
 	github.com/MarkRosemaker/json2yaml v0.0.0-20261004011213-3850e046f118 // indirect
-	github.com/MarkRosemaker/openapi-merge v0.0.0-20261006161412-db0e153b0b83 // indirect
+	github.com/MarkRosemaker/openapi-merge v0.0.0-20261006185915-34714385a10c // indirect
 	github.com/MarkRosemaker/ordmap v0.0.0-20261005183330-99e2b69a0bc0 // indirect
 	github.com/MarkRosemaker/yaml v0.0.0-20261004011229-302f2a2e75b5 // indirect
 	github.com/MarkRosemaker/yaml2json v0.0.0-20261004011213-bbdd737b26f4 // indirect

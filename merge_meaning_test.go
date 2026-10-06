@@ -164,3 +164,33 @@ func TestDocument_KeepsExamplesOfAlternatives(t *testing.T) {
 		t.Errorf("the string alternative's example is %s, want the merged schema's", got)
 	}
 }
+
+func TestDocument_SameShapeRequiresOnlyWhatBothRequire(t *testing.T) {
+	// petstore's pet as listed and as fetched: the same properties, but the list's pets lack breed
+	doc, err := openapi.LoadFromDataJSON([]byte(`{
+  "openapi": "3.1.0",
+  "info": {"title": "t", "version": "1"},
+  "paths": {},
+  "components": {"schemas": {
+    "PetByID": {"type": "object", "required": ["id", "breed"], "properties": {"id": {"type": "string"}, "breed": {"type": "string"}}},
+    "PetsItem": {"type": "object", "required": ["id"], "properties": {"id": {"type": "string"}, "breed": {"type": "string"}}},
+    "Owner": {"type": "object", "properties": {"pet": {"$ref": "#/components/schemas/PetsItem"}, "favorite": {"$ref": "#/components/schemas/PetByID"}}}
+  }}
+}`))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if err := compress.Document(doc, compress.Config{SkipNameShortening: true, MinSimilarity: 0.8}); err != nil {
+		t.Fatal(err)
+	}
+
+	if len(doc.Components.Schemas) != 2 {
+		t.Fatalf("the two pets did not merge: %d schemas", len(doc.Components.Schemas))
+	}
+
+	pet := doc.Components.Schemas["Owner"].Properties["pet"].Ref.Value
+	if got := strings.Join(pet.Required, ","); got != "id" {
+		t.Errorf("required: got %q, want id", got)
+	}
+}
