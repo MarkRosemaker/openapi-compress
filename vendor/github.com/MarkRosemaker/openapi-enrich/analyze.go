@@ -96,7 +96,7 @@ func analyzeInteraction(doc *openapi.Document, ia *cassette.Interaction) error {
 	}
 
 	// 4. Find or create the operation for this HTTP method.
-	op := getOrCreateOperation(pi, ia.Request.Method)
+	op, created := getOrCreateOperation(pi, ia.Request.Method)
 
 	// 5. Process query parameters.
 	if err := processQueryParams(doc, pi, op, reqURL); err != nil {
@@ -105,15 +105,18 @@ func analyzeInteraction(doc *openapi.Document, ia *cassette.Interaction) error {
 
 	// 6. Process request headers.
 	var contentType string
-	if err := processRequestHeaders(doc, pi.Parameters, op, ia.Request.Headers, &contentType); err != nil {
+	if err := processRequestHeaders(doc, pi.Parameters, op, created, ia.Request.Headers, &contentType); err != nil {
 		return fmt.Errorf("request headers: %w", err)
 	}
 
 	// 7. Process request body.
-	if len(ia.Request.Body) > 0 && isJSONMediaType(contentType) {
+	switch {
+	case len(ia.Request.Body) > 0 && isJSONMediaType(contentType):
 		if err := processRequestBody(op, ia.Request.Body, contentType); err != nil {
 			return fmt.Errorf("request body: %w", err)
 		}
+	case contentType != "" && !cassette.IsText(contentType) && (ia.Request.BodyOmitted || len(ia.Request.Body) > 0):
+		addBinaryRequestBody(op, contentType)
 	}
 
 	// 8. Infer operation ID if not already set.
@@ -131,17 +134,17 @@ func analyzeInteraction(doc *openapi.Document, ia *cassette.Interaction) error {
 
 // getOrCreateOperation returns the existing operation for the given method
 // or creates a new one and attaches it.
-func getOrCreateOperation(pi *openapi.PathItem, method string) *openapi.Operation {
+func getOrCreateOperation(pi *openapi.PathItem, method string) (op *openapi.Operation, created bool) {
 	for m, op := range pi.Operations {
 		if strings.EqualFold(m, method) {
-			return op
+			return op, false
 		}
 	}
 
-	op := &openapi.Operation{}
+	op = &openapi.Operation{}
 	pi.SetOperation(method, op)
 
-	return op
+	return op, true
 }
 
 func processQueryParams(doc *openapi.Document, pi *openapi.PathItem, op *openapi.Operation, reqURL *url.URL) error {
@@ -201,7 +204,13 @@ func processQueryParams(doc *openapi.Document, pi *openapi.PathItem, op *openapi
 	return nil
 }
 
-func processRequestHeaders(doc *openapi.Document, piParams openapi.ParameterList, op *openapi.Operation, h http.Header, contentType *string) error {
+// processRequestHeaders reads the request headers h into op; created says op has only just been added, so the
+// document's security says nothing yet about what it requires.
+func processRequestHeaders(doc *openapi.Document, piParams openapi.ParameterList, op *openapi.Operation, created bool, h http.Header, contentType *string) error {
+	if h.Get("Authorization") == "" {
+		allowAnonymous(doc, op, created)
+	}
+
 	for _, key := range slices.Sorted(maps.Keys(h)) {
 		// assume all keys are stored in canonical form
 		if canonical := http.CanonicalHeaderKey(key); canonical != key {
@@ -212,7 +221,7 @@ func processRequestHeaders(doc *openapi.Document, piParams openapi.ParameterList
 
 		switch key {
 		case "Authorization":
-			if err := processAuth(doc, op, val); err != nil {
+			if err := processAuth(doc, op, created, val); err != nil {
 				return fmt.Errorf("%s: %w", val, err)
 			}
 		case "Content-Type":
@@ -238,7 +247,7 @@ func processRequestHeaders(doc *openapi.Document, piParams openapi.ParameterList
 	return nil
 }
 
-func processAuth(doc *openapi.Document, op *openapi.Operation, v string) error {
+func processAuth(doc *openapi.Document, op *openapi.Operation, created bool, v string) error {
 	var scheme, schemeName string
 
 	switch {
@@ -275,12 +284,7 @@ func processAuth(doc *openapi.Document, op *openapi.Operation, v string) error {
 		})
 	}
 
-	// Add security requirement to operation if not present there
-	// or in the general security settings.
-	req := openapi.SecurityRequirement{name: []string{}}
-	if !op.Security.Contains(req) && !doc.Security.Contains(req) {
-		op.Security = append(op.Security, req)
-	}
+	requireAuth(doc, op, created, openapi.SecurityRequirement{name: []string{}})
 
 	return nil
 }
@@ -525,4 +529,32 @@ func isCustomHeader(key string) bool {
 	_, isStd := standardRequestHeaders[key]
 
 	return !isStd
+}
+
+// addBinaryRequestBody gives op a request body of the media type contentType that is not text, such as a file
+// upload, if it has none of that type yet: a string of bytes, as the recording does not keep it.
+func addBinaryRequestBody(op *openapi.Operation, contentType string) {
+	if op.RequestBody == nil {
+		op.RequestBody = &openapi.RequestBodyRef{Value: &openapi.RequestBody{Required: true, Content: openapi.Content{}}}
+	}
+
+	rb := op.RequestBody.Value
+	if rb == nil {
+		return
+	}
+
+	if _, ok := rb.Content[openapi.MediaRange(contentType)]; ok {
+		return
+	}
+
+	if rb.Content == nil {
+		rb.Content = openapi.Content{}
+	}
+
+	rb.Content.Set(openapi.MediaRange(contentType), &openapi.MediaType{Schema: binarySchema()})
+}
+
+// binarySchema is the schema of a body that is not text: a string of bytes.
+func binarySchema() *openapi.Schema {
+	return &openapi.Schema{Type: openapi.TypeString, Format: openapi.FormatBinary}
 }
