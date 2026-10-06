@@ -5124,8 +5124,7 @@
           }
         },
         "required": [
-          "progressDelta",
-          "collection"
+          "progressDelta"
         ],
         "x-flattened-from": "#/components/schemas/PostApiv3TaskScoreUpOkDataTmp/properties/quest"
       },
@@ -5157,8 +5156,6 @@
           }
         },
         "required": [
-          "target",
-          "canDrop",
           "value",
           "key",
           "type",
