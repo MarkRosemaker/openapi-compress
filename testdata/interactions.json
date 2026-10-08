@@ -1,0 +1,148 @@
+[
+	{
+		"request": {
+			"method": "GET",
+			"url": "https://api.example.com/v1/users?limit=10"
+		},
+		"response": {
+			"statusCode": 200,
+			"header": {
+				"Content-Type": "application/json"
+			},
+			"body": [
+				{
+					"id": 1,
+					"name": "Alice",
+					"email": "alice@example.com"
+				}
+			]
+		}
+	},
+	{
+		"request": {
+			"method": "GET",
+			"url": "https://api.example.com/v1/users/1"
+		},
+		"response": {
+			"statusCode": 200,
+			"header": {
+				"Content-Type": "application/json"
+			},
+			"body": {
+				"id": 1,
+				"name": "Alice",
+				"email": "alice@example.com"
+			}
+		}
+	},
+	{
+		"request": {
+			"method": "GET",
+			"url": "https://api.example.com/v1/posts?limit=5"
+		},
+		"response": {
+			"statusCode": 200,
+			"header": {
+				"Content-Type": "application/json"
+			},
+			"body": [
+				{
+					"id": 7,
+					"title": "Hello",
+					"author": {
+						"id": 2,
+						"name": "Bob",
+						"email": "bob@example.com"
+					}
+				}
+			]
+		}
+	},
+	{
+		"request": {
+			"method": "GET",
+			"url": "https://api.example.com/v1/posts/7"
+		},
+		"response": {
+			"statusCode": 200,
+			"header": {
+				"Content-Type": "application/json"
+			},
+			"body": {
+				"id": 7,
+				"title": "Hello",
+				"body": "text",
+				"views": 10,
+				"lang": "en",
+				"tags": [
+					"a"
+				],
+				"score": 1.5
+			}
+		}
+	},
+	{
+		"request": {
+			"method": "GET",
+			"url": "https://api.example.com/v1/drafts/8"
+		},
+		"response": {
+			"statusCode": 200,
+			"header": {
+				"Content-Type": "application/json"
+			},
+			"body": {
+				"id": 8,
+				"title": "Draft",
+				"body": "text",
+				"views": 0,
+				"lang": "de",
+				"tags": [
+					"b"
+				],
+				"score": 2,
+				"wip": true
+			}
+		}
+	},
+	{
+		"request": {
+			"method": "POST",
+			"url": "https://api.example.com/v1/users",
+			"header": {
+				"Content-Type": "application/json"
+			},
+			"body": {
+				"name": "Carol",
+				"email": "carol@example.com"
+			}
+		},
+		"response": {
+			"statusCode": 201,
+			"header": {
+				"Content-Type": "application/json"
+			},
+			"body": {
+				"id": 3,
+				"name": "Carol",
+				"email": "carol@example.com"
+			}
+		}
+	},
+	{
+		"request": {
+			"method": "GET",
+			"url": "https://api.example.com/v1/stats"
+		},
+		"response": {
+			"statusCode": 200,
+			"header": {
+				"Content-Type": "application/json"
+			},
+			"body": {
+				"id": "s1",
+				"count": 3
+			}
+		}
+	}
+]

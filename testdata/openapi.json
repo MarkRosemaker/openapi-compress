@@ -1,0 +1,626 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API",
+    "version": "0.0.1",
+    "description": "TestDocument_Golden compresses this document three times over, and must get golden.json each time; enriching the result with interactions.json, which this document was made from, must change nothing. Edit all three by hand. Added by hand: User, which the specification names, so the users flatten named merge into it, requiring only what all of them do, and their descriptions move beside the references to each; Person and Human, which only refer to User and so merge; Emoji and TimeZone, bare scalars that merge with nothing, Emoji keeping its other extension; Color and Colour, scalars with an enum, which merge; Form and Shape, and Tally and Count, which merge keeping the examples of alternatives and of map values; and the webhook and the callback, whose references to the parameter limit2 that merges into limit are rewritten."
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com/v1"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "operationId": "ListV1Users",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListV1UsersOk"
+          }
+        },
+        "callbacks": {
+          "onChange": {
+            "{$request.query.url}": {
+              "post": {
+                "parameters": [
+                  {
+                    "$ref": "#/components/parameters/limit2"
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "OK"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "PostV1Users",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/PostV1Users"
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/PostV1UsersCreated"
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/userId"
+        }
+      ],
+      "get": {
+        "operationId": "GetV1UserByUserID",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetV1UserByUserIDOk"
+          }
+        }
+      }
+    },
+    "/posts": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/limit2"
+        }
+      ],
+      "get": {
+        "operationId": "ListV1Posts",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListV1PostsOk"
+          }
+        }
+      }
+    },
+    "/posts/{postId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/postId"
+        }
+      ],
+      "get": {
+        "operationId": "GetV1PostByPostID",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetV1PostByPostIDOk"
+          }
+        }
+      }
+    },
+    "/drafts/{draftId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/draftId"
+        }
+      ],
+      "get": {
+        "operationId": "GetV1DraftByDraftID",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetV1DraftByDraftIDOk"
+          }
+        }
+      }
+    },
+    "/stats": {
+      "get": {
+        "operationId": "ListV1Stats",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListV1StatsOk"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ListV1UsersOk": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ListV1UsersOkItem"
+        },
+        "x-flattened-from": "#/components/responses/ListV1UsersOk/content/application~1json/schema"
+      },
+      "ListV1UsersOkItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Alice"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "alice@example.com"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email"
+        ],
+        "x-flattened-from": "#/components/schemas/ListV1UsersOk/items"
+      },
+      "PostV1Users": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Carol"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "carol@example.com"
+          }
+        },
+        "required": [
+          "name",
+          "email"
+        ],
+        "x-flattened-from": "#/components/requestBodies/PostV1Users/content/application~1json/schema"
+      },
+      "PostV1UsersCreated": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 3
+          },
+          "name": {
+            "type": "string",
+            "example": "Carol"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "carol@example.com"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email"
+        ],
+        "x-flattened-from": "#/components/responses/PostV1UsersCreated/content/application~1json/schema"
+      },
+      "GetV1UserByUserIDOk": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Alice"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "alice@example.com"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email"
+        ],
+        "x-flattened-from": "#/components/responses/GetV1UserByUserIDOk/content/application~1json/schema",
+        "description": "The user asked for."
+      },
+      "ListV1PostsOk": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ListV1PostsOkItem"
+        },
+        "x-flattened-from": "#/components/responses/ListV1PostsOk/content/application~1json/schema"
+      },
+      "ListV1PostsOkItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 7
+          },
+          "title": {
+            "type": "string",
+            "example": "Hello"
+          },
+          "author": {
+            "$ref": "#/components/schemas/ListV1PostsOkItemAuthor"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "author"
+        ],
+        "x-flattened-from": "#/components/schemas/ListV1PostsOk/items"
+      },
+      "ListV1PostsOkItemAuthor": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 2
+          },
+          "name": {
+            "type": "string",
+            "example": "Bob"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "bob@example.com"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email"
+        ],
+        "x-flattened-from": "#/components/schemas/ListV1PostsOkItem/properties/author",
+        "description": "Who wrote the post."
+      },
+      "GetV1PostByPostIDOk": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 7
+          },
+          "title": {
+            "type": "string",
+            "example": "Hello"
+          },
+          "body": {
+            "type": "string",
+            "example": "text"
+          },
+          "views": {
+            "type": "integer",
+            "example": 10
+          },
+          "lang": {
+            "type": "string",
+            "example": "en"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "a"
+            }
+          },
+          "score": {
+            "type": "number",
+            "format": "double",
+            "example": 1.5
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "body",
+          "views",
+          "lang",
+          "tags",
+          "score"
+        ],
+        "x-flattened-from": "#/components/responses/GetV1PostByPostIDOk/content/application~1json/schema"
+      },
+      "GetV1DraftByDraftIDOk": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 8
+          },
+          "title": {
+            "type": "string",
+            "example": "Draft"
+          },
+          "body": {
+            "type": "string",
+            "example": "text"
+          },
+          "views": {
+            "type": "integer",
+            "example": 0
+          },
+          "lang": {
+            "type": "string",
+            "example": "de"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "b"
+            }
+          },
+          "score": {
+            "type": "integer",
+            "example": 2
+          },
+          "wip": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "body",
+          "views",
+          "lang",
+          "tags",
+          "score",
+          "wip"
+        ],
+        "x-flattened-from": "#/components/responses/GetV1DraftByDraftIDOk/content/application~1json/schema"
+      },
+      "ListV1StatsOk": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "s1"
+          },
+          "count": {
+            "type": "integer",
+            "example": 3
+          }
+        },
+        "required": [
+          "id",
+          "count"
+        ],
+        "x-flattened-from": "#/components/responses/ListV1StatsOk/content/application~1json/schema"
+      },
+      "User": {
+        "description": "A person with an account.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "Emoji": {
+        "type": "string",
+        "x-go-name": "Emoji",
+        "description": "An emoji."
+      },
+      "TimeZone": {
+        "description": "An IANA time zone.",
+        "type": "string"
+      },
+      "Color": {
+        "type": "string",
+        "enum": [
+          "red",
+          "blue"
+        ]
+      },
+      "Colour": {
+        "type": "string",
+        "enum": [
+          "red",
+          "blue"
+        ]
+      },
+      "Form": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          }
+        ]
+      },
+      "Shape": {
+        "oneOf": [
+          {
+            "type": "string",
+            "example": "a"
+          },
+          {
+            "type": "integer",
+            "example": 1
+          }
+        ]
+      },
+      "Person": {
+        "$ref": "#/components/schemas/User"
+      },
+      "Human": {
+        "$ref": "#/components/schemas/User"
+      },
+      "Tally": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer"
+        }
+      },
+      "Count": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer",
+          "example": 3
+        }
+      }
+    },
+    "responses": {
+      "ListV1UsersOk": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ListV1UsersOk"
+            }
+          }
+        }
+      },
+      "PostV1UsersCreated": {
+        "description": "Created",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PostV1UsersCreated"
+            }
+          }
+        }
+      },
+      "GetV1UserByUserIDOk": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/GetV1UserByUserIDOk"
+            }
+          }
+        }
+      },
+      "ListV1PostsOk": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ListV1PostsOk"
+            }
+          }
+        }
+      },
+      "GetV1PostByPostIDOk": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/GetV1PostByPostIDOk"
+            }
+          }
+        }
+      },
+      "GetV1DraftByDraftIDOk": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/GetV1DraftByDraftIDOk"
+            }
+          }
+        }
+      },
+      "ListV1StatsOk": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ListV1StatsOk"
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "limit": {
+        "name": "limit",
+        "in": "query",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "userId": {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "limit2": {
+        "name": "limit",
+        "in": "query",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "postId": {
+        "name": "postId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "draftId": {
+        "name": "draftId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "requestBodies": {
+      "PostV1Users": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PostV1Users"
+            }
+          }
+        }
+      }
+    }
+  },
+  "webhooks": {
+    "userCreated": {
+      "post": {
+        "description": "A reference to a parameter merged away is rewritten here too, and in a callback.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/limit2"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}
