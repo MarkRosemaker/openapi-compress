@@ -251,23 +251,6 @@ func TestMergeSchemas_IntegerPlusNumberBecomesNumber(t *testing.T) {
 
 // ─── Document integration ────────────────────────────────────────────────────
 
-// TestDocument_DifferentTypesNeverMerge verifies that schemas of different
-// types are never merged regardless of how low MinSimilarity is set.
-func TestDocument_DifferentTypesNeverMerge(t *testing.T) {
-	d := minimalDocument(map[string]*openapi.Schema{
-		"A": {Type: openapi.TypeString},
-		"B": {Type: openapi.TypeInteger},
-	})
-
-	if err := Document(d, Config{MinSimilarity: 0.0}); err != nil {
-		t.Fatal(err)
-	}
-
-	if len(d.Components.Schemas) != 2 {
-		t.Errorf("want 2 schemas (no merge), got %d", len(d.Components.Schemas))
-	}
-}
-
 // TestDocument_ThresholdDependent checks that two similar-but-not-equal
 // schemas merge at a permissive threshold but not at a strict one.
 //
@@ -299,57 +282,6 @@ func TestDocument_ThresholdDependent(t *testing.T) {
 
 	if len(d.Components.Schemas) != 2 {
 		t.Errorf("threshold 0.5: want 2 schemas (no merge), got %d", len(d.Components.Schemas))
-	}
-}
-
-// TestDocument_ExamplesIgnoredForEquality confirms that two schemas that are
-// structurally identical but have different example values are still merged
-// at threshold=1.0.
-func TestDocument_ExamplesIgnoredForEquality(t *testing.T) {
-	// Build two schemas that are identical except for their Example field.
-	// a format, so neither is a bare scalar, which is never merged
-	schemaA := &openapi.Schema{Type: openapi.TypeString, Format: openapi.FormatEmail}
-	schemaA.Example = []byte(`"alice@example.com"`)
-
-	schemaB := &openapi.Schema{Type: openapi.TypeString, Format: openapi.FormatEmail}
-	schemaB.Example = []byte(`"bob@example.com"`)
-
-	d := minimalDocument(map[string]*openapi.Schema{
-		"A": schemaA,
-		"B": schemaB,
-	})
-
-	if err := Document(d, Config{}); err != nil {
-		t.Fatal(err)
-	}
-
-	if len(d.Components.Schemas) != 1 {
-		t.Errorf("want 1 schema after merging identical schemas with different examples, got %d", len(d.Components.Schemas))
-	}
-}
-
-// TestDocument_NonObjectSameShapeDifferentDescriptionMerges confirms that two
-// non-object schemas with the same shape but different documentation (title,
-// description) are merged at threshold=1.0. Before switching to
-// schema.SameShape, schemasSimilarity returned 0.0 for any non-object schemas
-// that weren't byte-for-byte equal, so schemas like this - identical in every
-// way that affects validation, differing only in description - could never be
-// deduplicated.
-func TestDocument_NonObjectSameShapeDifferentDescriptionMerges(t *testing.T) {
-	schemaA := &openapi.Schema{Type: openapi.TypeString, Format: "email", Description: "the user's email"}
-	schemaB := &openapi.Schema{Type: openapi.TypeString, Format: "email", Description: "email address"}
-
-	d := minimalDocument(map[string]*openapi.Schema{
-		"A": schemaA,
-		"B": schemaB,
-	})
-
-	if err := Document(d, Config{}); err != nil {
-		t.Fatal(err)
-	}
-
-	if len(d.Components.Schemas) != 1 {
-		t.Errorf("want 1 schema after merging same-shape schemas with different descriptions, got %d", len(d.Components.Schemas))
 	}
 }
 
@@ -428,32 +360,6 @@ func TestShortName_UniqueSuffix(t *testing.T) {
 	got := shortName("GetV1PetByPetIDOkJSONResponse", schemas)
 	if got != "PetByPetID2" {
 		t.Errorf("want %q, got %q", "PetByPetID2", got)
-	}
-}
-
-// TestDocument_ShortensMergedCanonicals verifies that after compression the
-// merged canonical schema gets a shorter name while non-merged schemas keep
-// their original names.
-func TestDocument_ShortensMergedCanonicals(t *testing.T) {
-	d := minimalDocument(map[string]*openapi.Schema{
-		"GetV1PetByPetIDOkJSONResponseMedicalInfo":     {Type: openapi.TypeString, Format: openapi.FormatURI},
-		"ListV1PetsOkJSONResponseDataItemsMedicalInfo": {Type: openapi.TypeString, Format: openapi.FormatURI},
-		"GetV1PetByPetIDOkJSONResponseBreed":           {Type: openapi.TypeObject},
-	})
-
-	if err := Document(d, Config{}); err != nil {
-		t.Fatal(err)
-	}
-
-	// The two identical string schemas merged; the canonical (lex-smaller) got
-	// shortened: "GetV1PetByPetIDOkJSONResponseMedicalInfo" → "PetByPetIDMedicalInfo".
-	// The unique object schema was never merged so keeps its name.
-	if _, ok := d.Components.Schemas["PetByPetIDMedicalInfo"]; !ok {
-		t.Errorf("expected shortened name 'PetByPetIDMedicalInfo', got schemas: %v", schemaKeys(d))
-	}
-
-	if _, ok := d.Components.Schemas["GetV1PetByPetIDOkJSONResponseBreed"]; !ok {
-		t.Error("non-merged schema should keep its original name")
 	}
 }
 

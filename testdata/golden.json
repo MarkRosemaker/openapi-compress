@@ -1,0 +1,447 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API",
+    "description": "TestDocument_Golden compresses this document three times over, and must get golden.json each time; enriching the result with interactions.json, which this document was made from, must change nothing. Edit all three by hand. Added by hand: User, which the specification names, so the users flatten named merge into it, requiring only what all of them do, and their descriptions move beside the references to each; Person and Human, which only refer to User and so merge; Emoji and TimeZone, bare scalars that merge with nothing, Emoji keeping its other extension; Color and Colour, scalars with an enum, which merge; Form and Shape, and Tally and Count, which merge keeping the examples of alternatives and of map values; and the webhook and the callback, whose references to the parameter limit2 that merges into limit are rewritten.",
+    "version": "0.0.1"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com/v1"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "operationId": "ListV1Users",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListV1UsersOk"
+          }
+        },
+        "callbacks": {
+          "onChange": {
+            "{$request.query.url}": {
+              "post": {
+                "parameters": [
+                  {
+                    "$ref": "#/components/parameters/limit"
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "OK"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "PostV1Users",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/PostV1Users"
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/PostV1UsersCreated"
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/userId"
+        }
+      ],
+      "get": {
+        "operationId": "GetV1UserByUserID",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetV1UserByUserIDOk"
+          }
+        }
+      }
+    },
+    "/posts": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/limit"
+        }
+      ],
+      "get": {
+        "operationId": "ListV1Posts",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListV1PostsOk"
+          }
+        }
+      }
+    },
+    "/posts/{postId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/postId"
+        }
+      ],
+      "get": {
+        "operationId": "GetV1PostByPostID",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetV1PostByPostIDOk"
+          }
+        }
+      }
+    },
+    "/drafts/{draftId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/draftId"
+        }
+      ],
+      "get": {
+        "operationId": "GetV1DraftByDraftID",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetV1DraftByDraftIDOk"
+          }
+        }
+      }
+    },
+    "/stats": {
+      "get": {
+        "operationId": "ListV1Stats",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListV1StatsOk"
+          }
+        }
+      }
+    }
+  },
+  "webhooks": {
+    "userCreated": {
+      "post": {
+        "description": "A reference to a parameter merged away is rewritten here too, and in a callback.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Color": {
+        "type": "string",
+        "enum": [
+          "red",
+          "blue"
+        ]
+      },
+      "Count": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer",
+          "example": 3
+        }
+      },
+      "Emoji": {
+        "description": "An emoji.",
+        "type": "string",
+        "x-go-name": "Emoji"
+      },
+      "Form": {
+        "oneOf": [
+          {
+            "type": "string",
+            "example": "a"
+          },
+          {
+            "type": "integer",
+            "example": 1
+          }
+        ]
+      },
+      "Human": {
+        "description": "A person with an account.",
+        "$ref": "#/components/schemas/User"
+      },
+      "ListV1PostsOk": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ListV1PostsOkItem"
+        }
+      },
+      "ListV1PostsOkItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 7
+          },
+          "title": {
+            "type": "string",
+            "example": "Hello"
+          },
+          "author": {
+            "description": "Who wrote the post.",
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "author"
+        ]
+      },
+      "ListV1StatsOk": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "s1"
+          },
+          "count": {
+            "type": "integer",
+            "example": 3
+          }
+        },
+        "required": [
+          "id",
+          "count"
+        ]
+      },
+      "ListV1UsersOk": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/User"
+        }
+      },
+      "PostByPostID": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 7
+          },
+          "title": {
+            "type": "string",
+            "example": "Hello"
+          },
+          "body": {
+            "type": "string",
+            "example": "text"
+          },
+          "views": {
+            "type": "integer",
+            "example": 10
+          },
+          "lang": {
+            "type": "string",
+            "example": "en"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "a"
+            }
+          },
+          "score": {
+            "type": "number",
+            "format": "double",
+            "example": 1.5
+          },
+          "wip": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "body",
+          "views",
+          "lang",
+          "tags",
+          "score"
+        ]
+      },
+      "PostV1Users": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Carol"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "carol@example.com"
+          }
+        },
+        "required": [
+          "name",
+          "email"
+        ]
+      },
+      "TimeZone": {
+        "description": "An IANA time zone.",
+        "type": "string"
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Alice"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "alice@example.com"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      }
+    },
+    "responses": {
+      "GetV1DraftByDraftIDOk": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PostByPostID"
+            }
+          }
+        }
+      },
+      "GetV1PostByPostIDOk": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PostByPostID"
+            }
+          }
+        }
+      },
+      "GetV1UserByUserIDOk": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "description": "The user asked for.",
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        }
+      },
+      "ListV1PostsOk": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ListV1PostsOk"
+            }
+          }
+        }
+      },
+      "ListV1StatsOk": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ListV1StatsOk"
+            }
+          }
+        }
+      },
+      "ListV1UsersOk": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ListV1UsersOk"
+            }
+          }
+        }
+      },
+      "PostV1UsersCreated": {
+        "description": "Created",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "draftId": {
+        "name": "draftId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "limit": {
+        "name": "limit",
+        "in": "query",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "postId": {
+        "name": "postId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "userId": {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "requestBodies": {
+      "PostV1Users": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PostV1Users"
+            }
+          }
+        }
+      }
+    }
+  }
+}
