@@ -3,9 +3,9 @@ module github.com/MarkRosemaker/openapi-compress
 go 1.27
 
 require (
-	github.com/MarkRosemaker/openapi v0.0.0-20261009163327-1d4ffdc7ddea
-	github.com/MarkRosemaker/openapi-compare v0.0.0-20261009163350-9faceaea9606
-	github.com/MarkRosemaker/openapi-edit v0.0.0-20261009163351-a02bdc2eaf2e
+	github.com/MarkRosemaker/openapi v0.0.0-20261009220216-37f4a6ce811f
+	github.com/MarkRosemaker/openapi-compare v0.0.0-20261009220258-3e82e16d5a53
+	github.com/MarkRosemaker/openapi-edit v0.0.0-20261009220258-f1baf7a308df
 	github.com/MarkRosemaker/openapi-enrich v0.0.0-20261008140000-3ae033260e2c
 )
 
@@ -15,11 +15,11 @@ require (
 	github.com/MarkRosemaker/json2yaml v0.0.0-20261009163255-8bb84916580b // indirect
 	github.com/MarkRosemaker/jsonutil v0.0.0-20261009163256-63143e59ef10 // indirect
 	github.com/MarkRosemaker/openapi-merge v0.0.0-20261008091307-6be9f0bfc2a5 // indirect
-	github.com/MarkRosemaker/ordmap v0.0.0-20261009163305-fc252a982e0c // indirect
+	github.com/MarkRosemaker/ordmap v0.0.0-20261009220143-681d018b7a2f // indirect
 	github.com/MarkRosemaker/yaml v0.0.0-20261009163313-a4483f4cc7d4 // indirect
 	github.com/MarkRosemaker/yaml2json v0.0.0-20261004011213-bbdd737b26f4 // indirect
 	github.com/ettle/strcase v0.2.0 // indirect
 	github.com/go-api-libs/types v0.0.0-20260821232109-0cf45378823e // indirect
-	golang.org/x/exp v0.0.0-20261007192929-f45ad48fbe92 // indirect
+	golang.org/x/exp v0.0.0-20261009195045-ca0d7ba23607 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
