@@ -1,6 +1,9 @@
 # cloud.google.com/go v0.123.0
 ## explicit; go 1.24.0
 cloud.google.com/go/civil
+# github.com/MarkRosemaker/cassette v0.0.0-20261010200555-d954f0014821
+## explicit; go 1.27
+github.com/MarkRosemaker/cassette
 # github.com/MarkRosemaker/errpath v0.0.0-20261004011213-d39d7f96c8f4
 ## explicit; go 1.23.2
 github.com/MarkRosemaker/errpath
@@ -19,11 +22,10 @@ github.com/MarkRosemaker/openapi-compare/schema
 # github.com/MarkRosemaker/openapi-edit v0.0.0-20261009220258-f1baf7a308df
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-edit
-# github.com/MarkRosemaker/openapi-enrich v0.0.0-20261008140000-3ae033260e2c
+# github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010200623-3b942fefdf03
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-enrich
-github.com/MarkRosemaker/openapi-enrich/cassette
-# github.com/MarkRosemaker/openapi-merge v0.0.0-20261008091307-6be9f0bfc2a5
+# github.com/MarkRosemaker/openapi-merge v0.0.0-20261009220258-57c4bc8ba894
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-merge
 # github.com/MarkRosemaker/ordmap v0.0.0-20261009220143-681d018b7a2f
