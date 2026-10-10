@@ -1,5 +1,7 @@
 cloud.google.com/go v0.123.0 h1:2NAUJwPR47q+E35uaJeYoNhuNEM9kM8SjgRgdeOJUSE=
 cloud.google.com/go v0.123.0/go.mod h1:xBoMV08QcqUGuPW65Qfm1o9Y4zKZBpGS+7bImXLTAZU=
+github.com/MarkRosemaker/cassette v0.0.0-20261010193503-c64e44fd92ae h1:6X9g/d2F3d/dBOP2ioHmLWU5FTaVV1e3NCfCJyAPl5M=
+github.com/MarkRosemaker/cassette v0.0.0-20261010193503-c64e44fd92ae/go.mod h1:6zKCA830qu54cr4aMj9nnbS3n+PoVj4364DB4FFWJc4=
 github.com/MarkRosemaker/errpath v0.0.0-20261004011213-d39d7f96c8f4 h1:LfdmULH+N5sLixn6UOQ3+OkWwCCwyvFKpqT0MY/anhM=
 github.com/MarkRosemaker/errpath v0.0.0-20261004011213-d39d7f96c8f4/go.mod h1:VnXpUlsS3n1gSToedcQl2FCARGoA16CyitbCanUIv+I=
 github.com/MarkRosemaker/json2yaml v0.0.0-20261009163255-8bb84916580b h1:Q9puEnX8Hk/MiNu5P3a+0YVAz58R+4wzyyBkxxJMHdQ=
@@ -12,10 +14,10 @@ github.com/MarkRosemaker/openapi-compare v0.0.0-20261009220258-3e82e16d5a53 h1:h
 github.com/MarkRosemaker/openapi-compare v0.0.0-20261009220258-3e82e16d5a53/go.mod h1:b/Cg8CLypcx008HKlhT2ExFeBeG0tsnWfTgDWAh+joA=
 github.com/MarkRosemaker/openapi-edit v0.0.0-20261009220258-f1baf7a308df h1:XIYRaBGFsuUwohnfwQtTdPaPQhpJcIVsc57R7HHL3aM=
 github.com/MarkRosemaker/openapi-edit v0.0.0-20261009220258-f1baf7a308df/go.mod h1:NIeTZusG9qYfqMwAwxSPuKO2buae88H1Jcu4uJvP8l8=
-github.com/MarkRosemaker/openapi-enrich v0.0.0-20261008140000-3ae033260e2c h1:SxHOUT5TeHDOsE6PqWNSKD18Fl9XrWxTd2x6KxAI51o=
-github.com/MarkRosemaker/openapi-enrich v0.0.0-20261008140000-3ae033260e2c/go.mod h1:3ihDz67kintzUSD4/CTpnpFq2/eAHu7Btm4Ksp/LXYA=
-github.com/MarkRosemaker/openapi-merge v0.0.0-20261008091307-6be9f0bfc2a5 h1:yIM7Z3Q93g4X98zBAGF9gvxX3M5Vv5vE3QDj7NM86y8=
-github.com/MarkRosemaker/openapi-merge v0.0.0-20261008091307-6be9f0bfc2a5/go.mod h1:d3QKiTv41Sovj2so2GHj/VWh182LK5v7a9s3nIxh50M=
+github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010193557-f45f5bb91038 h1:w0lHnSiPUbEDQJYDKVsLMt6C/vla36Ewx5Et3963N1o=
+github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010193557-f45f5bb91038/go.mod h1:EWF1dE5p9mhnCADI1ia5Bb3KPJN2GqNTQUSVIxZXKQI=
+github.com/MarkRosemaker/openapi-merge v0.0.0-20261009220258-57c4bc8ba894 h1:fK6ld3zdSy1tJcVa7S9kixkn5e/IyLVQHowed2yLLOU=
+github.com/MarkRosemaker/openapi-merge v0.0.0-20261009220258-57c4bc8ba894/go.mod h1:JAAF3M82LuQyQ7+ByxhADsiy9e8ZxJQ8viAOsjrwS0c=
 github.com/MarkRosemaker/ordmap v0.0.0-20261009220143-681d018b7a2f h1:FFtwK2+ZgZAW+NFU2hmNMjVaxnq8mNnQ+GcjFROrKXY=
 github.com/MarkRosemaker/ordmap v0.0.0-20261009220143-681d018b7a2f/go.mod h1:Zw0XUX5iBENmN1tms7cShZnBhvt7G4JELwy9jll65F0=
 github.com/MarkRosemaker/yaml v0.0.0-20261009163313-a4483f4cc7d4 h1:k7QfHOqn+BlpMWq7Bsrd0QjIgNjLMtzH6WzQ9Wxoz9s=

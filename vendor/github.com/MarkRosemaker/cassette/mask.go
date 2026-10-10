@@ -3,7 +3,9 @@ package cassette
 import (
 	"bytes"
 	"encoding/json/jsontext"
+	"net/url"
 	"regexp"
+	"slices"
 	"strings"
 	"unicode"
 )
@@ -75,6 +77,18 @@ type Masker struct {
 	KeepEmails bool
 }
 
+func (m Masker) rules() rules {
+	return rules{
+		headers:   lowerSet(m.HeaderKeys),
+		keys:      lowerSet(m.BodyKeys),
+		ids:       lowerSet(m.IDKeys),
+		names:     lowerSet(m.NameKeys),
+		usernames: lowerSet(m.UsernameKeys),
+		values:    m.Values,
+		emails:    !m.KeepEmails,
+	}
+}
+
 // DefaultMasker returns the configuration used by [Interactions.Mask]: the
 // headers and body keys that carry credentials in most APIs.
 //
@@ -104,6 +118,16 @@ func DefaultMasker() Masker {
 	}
 }
 
+// Keep returns m without the headers named among its HeaderKeys: an API may use one such as X-Client to name the tool
+// calling it, which recordings keep.
+func (m Masker) Keep(headers ...string) Masker {
+	m.HeaderKeys = slices.DeleteFunc(slices.Clone(m.HeaderKeys), func(k string) bool {
+		return slices.ContainsFunc(headers, func(h string) bool { return strings.EqualFold(h, k) })
+	})
+
+	return m
+}
+
 // rules is the compiled form of a [Masker]: key sets rather than slices.
 type rules struct {
 	headers, keys, ids, names, usernames map[string]bool
@@ -118,27 +142,32 @@ type scope struct {
 }
 
 // Mask redacts sensitive values in place using [DefaultMasker].
+func (ia *Interaction) Mask() { ia.MaskWith(DefaultMasker()) }
+
+// MaskWith redacts sensitive values in place according to m.
+func (ia *Interaction) MaskWith(m Masker) {
+	ia.mask(m.rules())
+}
+
+// Mask redacts sensitive values in place using [DefaultMasker].
 func (ias Interactions) Mask() { ias.MaskWith(DefaultMasker()) }
 
 // MaskWith redacts sensitive values in place according to m.
 func (ias Interactions) MaskWith(m Masker) {
-	r := rules{
-		headers:   lowerSet(m.HeaderKeys),
-		keys:      lowerSet(m.BodyKeys),
-		ids:       lowerSet(m.IDKeys),
-		names:     lowerSet(m.NameKeys),
-		usernames: lowerSet(m.UsernameKeys),
-		values:    m.Values,
-		emails:    !m.KeepEmails,
+	r := m.rules()
+	for _, ia := range ias {
+		ia.mask(r)
 	}
+}
 
-	for i := range ias {
-		maskHeaders(ias[i].Request.Headers, r.headers)
-		maskHeaders(ias[i].Response.Headers, r.headers)
+func (ia *Interaction) mask(r rules) {
+	maskHeaders(ia.Request.Headers, r.headers)
+	maskHeaders(ia.Response.Headers, r.headers)
 
-		ias[i].Request.Body = maskBody(ias[i].Request.Body, r)
-		ias[i].Response.Body = maskBody(ias[i].Response.Body, r)
-	}
+	ia.Request.URL.RawQuery = maskQuery(ia.Request.URL.RawQuery, r.keys)
+
+	ia.Request.Body = maskBody(ia.Request.Body, r)
+	ia.Response.Body = maskBody(ia.Response.Body, r)
 }
 
 func lowerSet(keys []string) map[string]bool {
@@ -163,6 +192,31 @@ func maskHeaders(h map[string][]string, keys map[string]bool) {
 
 		h[k] = masked
 	}
+}
+
+// maskQuery masks the values of the query parameters raw holds whose names are among keys, as it does the members of a
+// body; every other parameter is kept as it was written.
+func maskQuery(raw string, keys map[string]bool) string {
+	if raw == "" {
+		return raw
+	}
+
+	params := strings.Split(raw, "&")
+	for i, param := range params {
+		name, value, ok := strings.Cut(param, "=")
+		if !ok || !keys[strings.ToLower(queryName(param))] {
+			continue
+		}
+
+		if unescaped, err := url.QueryUnescape(value); err == nil {
+			value = unescaped
+		}
+
+		// the asterisks of a masked value need no escaping, and read better without
+		params[i] = name + "=" + strings.ReplaceAll(url.QueryEscape(maskString(value)), "%2A", "*")
+	}
+
+	return strings.Join(params, "&")
 }
 
 // maskBody rewrites b according to r. A body that is not valid JSON is returned

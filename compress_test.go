@@ -6,10 +6,10 @@ import (
 	"os"
 	"testing"
 
+	"github.com/MarkRosemaker/cassette"
 	"github.com/MarkRosemaker/openapi"
 	compress "github.com/MarkRosemaker/openapi-compress"
 	enrich "github.com/MarkRosemaker/openapi-enrich"
-	"github.com/MarkRosemaker/openapi-enrich/cassette"
 )
 
 // TestDocument_Golden compresses testdata/openapi.json three times over and must get testdata/golden.json each time.

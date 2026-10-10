@@ -436,16 +436,31 @@ func cloneSchema(s *openapi.Schema) (*openapi.Schema, error) {
 	return clone, nil
 }
 
-// mergeItemBounds widens a's bounds on the number of items to cover b's too: an unbounded side leaves the result unbounded.
+// mergeItemBounds widens a's bounds on the number of items to cover b's too. A side that states no bound says nothing
+// of it, as a recorded array does not count its items, so the other's stands; but a maximum of zero only says the
+// array was seen empty, and an array seen empty allows no minimum.
 func mergeItemBounds(a, b *openapi.Schema) {
-	a.MinItems = min(a.MinItems, b.MinItems)
+	switch {
+	case seenEmpty(a) || seenEmpty(b):
+		a.MinItems = 0
+	case a.MinItems == 0 || b.MinItems == 0:
+		a.MinItems = max(a.MinItems, b.MinItems)
+	default:
+		a.MinItems = min(a.MinItems, b.MinItems)
+	}
 
-	if a.MaxItems != nil && b.MaxItems != nil {
+	switch {
+	case a.MaxItems != nil && b.MaxItems != nil:
 		a.MaxItems = new(max(*a.MaxItems, *b.MaxItems))
-	} else {
+	case a.MaxItems == nil && b.MaxItems != nil && *b.MaxItems > 0:
+		a.MaxItems = b.MaxItems
+	case a.MaxItems != nil && b.MaxItems == nil && *a.MaxItems == 0:
 		a.MaxItems = nil
 	}
 }
+
+// seenEmpty reports whether the array s allows no items: one recorded only empty.
+func seenEmpty(s *openapi.Schema) bool { return s.MaxItems != nil && *s.MaxItems == 0 }
 
 // mergeItemsField merges a.Items with b.Items. Either side may be nil,
 // meaning that side never saw inside the array at all -- e.g. because it was
@@ -749,9 +764,10 @@ func mergeIntoAlternative(alt, b *openapi.Schema) error {
 //
 // Among alternatives of b's type, one that pins properties to a single value
 // -- with const or a one-value enum, the way a tagged union's "type" names
-// its variant -- matches only if b has each of those properties with that
-// value. One that pins none matches any b of its type, and is the fallback
-// when no alternative's pinned properties match.
+// its variant -- matches only if b agrees with each of those values (see
+// [pinsAgree]), and wins if b holds one of them. One that pins none, or none b
+// holds, matches any b of its type, and is the fallback when no alternative's
+// pinned properties match: the one b fits best.
 func matchingAlternative(alts openapi.SchemaList, b *openapi.Schema) (int, error) {
 	discriminators := map[string]bool{}
 
@@ -802,12 +818,13 @@ func matchAlternative(
 		}
 
 		if len(union) > 0 {
+			// a union competes as its best alternative does: by its pinned properties, or else by how well b fits it
 			if _, f, p, ok := matchAlternative(union, b, anyFormat, discriminators); p {
 				if f > bestFit {
 					best, bestFit = i, f
 				}
-			} else if ok && fallback == -1 {
-				fallback = i
+			} else if ok && (fallback == -1 || f > fallbackFit) {
+				fallback, fallbackFit = i, f
 			}
 
 			continue
@@ -827,9 +844,19 @@ func matchAlternative(
 			continue
 		}
 
-		if !hasValues(b, values) {
+		agrees, evidence := pinsAgree(alt, b, values)
+		if !agrees {
 			for name := range values {
 				discriminators[name] = true
+			}
+
+			continue
+		}
+
+		if !evidence {
+			// nothing b holds names this branch, nor contradicts it: it competes as one that pins nothing
+			if f := fitOf(alt, b); fallback == -1 || f > fallbackFit {
+				fallback, fallbackFit = i, f
 			}
 
 			continue
@@ -844,7 +871,7 @@ func matchAlternative(
 		return best, bestFit, true, true
 	}
 
-	return fallback, 0, false, fallback != -1
+	return fallback, fallbackFit, false, fallback != -1
 }
 
 // fitOf is how well b fits the branch s: twice the number of b's properties s declares, and one more if b has every
@@ -909,16 +936,57 @@ func pinnedProperties(s *openapi.Schema) map[string]jsontext.Value {
 	return pinned
 }
 
-// hasValues reports whether b has each of the properties with its value.
-func hasValues(b *openapi.Schema, values map[string]jsontext.Value) bool {
+// pinsAgree reports whether b agrees with the values s pins its properties to, and whether any of them is evidence
+// that b is an s. A property b has with the pinned value is both; one s does not require and b lacks, or one b has
+// with no value recorded, such as a boolean, but of the pinned value's type, agrees without being evidence.
+func pinsAgree(s, b *openapi.Schema, values map[string]jsontext.Value) (agrees, evidence bool) {
+	required := requiredOf(s)
+
 	for name, want := range values {
 		p, ok := b.Properties[name]
-		if !ok || !equalJSON(valueOf(deref(p)), want) {
-			return false
+		if !ok {
+			if required[name] {
+				return false, false
+			}
+
+			continue
 		}
+
+		p = deref(p)
+
+		v := valueOf(p)
+		if v == nil {
+			if !typeAgrees(p.Type, want) {
+				return false, false
+			}
+
+			continue
+		}
+
+		if !equalJSON(v, want) {
+			return false, false
+		}
+
+		evidence = true
 	}
 
-	return true
+	return true, evidence
+}
+
+// typeAgrees reports whether a value of type tp can be v.
+func typeAgrees(tp openapi.DataType, v jsontext.Value) bool {
+	switch v.Kind() {
+	case '"':
+		return tp == openapi.TypeString
+	case 't', 'f':
+		return tp == openapi.TypeBoolean
+	case '0':
+		return tp == openapi.TypeNumber || tp == openapi.TypeInteger
+	case 'n':
+		return tp == openapi.TypeNull
+	default:
+		return false
+	}
 }
 
 // valueOf is the one value s says a property has: its const, its only enum
