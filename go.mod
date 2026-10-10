@@ -3,11 +3,11 @@ module github.com/MarkRosemaker/openapi-compress
 go 1.27
 
 require (
-	github.com/MarkRosemaker/cassette v0.0.0-20261010193503-c64e44fd92ae
+	github.com/MarkRosemaker/cassette v0.0.0-20261010200555-d954f0014821
 	github.com/MarkRosemaker/openapi v0.0.0-20261009220216-37f4a6ce811f
 	github.com/MarkRosemaker/openapi-compare v0.0.0-20261009220258-3e82e16d5a53
 	github.com/MarkRosemaker/openapi-edit v0.0.0-20261009220258-f1baf7a308df
-	github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010193557-f45f5bb91038
+	github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010200623-3b942fefdf03
 )
 
 require (
