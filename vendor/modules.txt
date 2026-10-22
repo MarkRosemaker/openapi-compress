@@ -10,16 +10,16 @@ github.com/MarkRosemaker/errpath
 # github.com/MarkRosemaker/json2yaml v0.0.0-20261022123116-6447be2c9430
 ## explicit; go 1.27
 github.com/MarkRosemaker/json2yaml
-# github.com/MarkRosemaker/jsonutil v0.0.0-20261022123119-c37b7f04825a
+# github.com/MarkRosemaker/jsonutil v0.0.0-20261022180540-57bb1844af32
 ## explicit; go 1.27
 github.com/MarkRosemaker/jsonutil
-# github.com/MarkRosemaker/openapi v0.0.0-20261022123316-d2273ca54f40
+# github.com/MarkRosemaker/openapi v0.0.0-20261022220210-59c8f75f8239
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi
-# github.com/MarkRosemaker/openapi-compare v0.0.0-20261022123351-c911911e51a4
+# github.com/MarkRosemaker/openapi-compare v0.0.0-20261022220248-d6fbe64d0b83
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-compare/schema
-# github.com/MarkRosemaker/openapi-edit v0.0.0-20261022123352-b16f5366efe1
+# github.com/MarkRosemaker/openapi-edit v0.0.0-20261022220251-be152ca3761e
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-edit
 # github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010200623-3b942fefdf03
