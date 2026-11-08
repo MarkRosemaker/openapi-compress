@@ -4,9 +4,9 @@ go 1.27
 
 require (
 	github.com/MarkRosemaker/cassette v0.0.0-20261010200555-d954f0014821
-	github.com/MarkRosemaker/openapi v0.0.0-20261107140611-13177bae7f07
-	github.com/MarkRosemaker/openapi-compare v0.0.0-20261107140638-03bef786fc53
-	github.com/MarkRosemaker/openapi-edit v0.0.0-20261107140639-85d8ba50e45c
+	github.com/MarkRosemaker/openapi v0.0.0-20261108211915-31ba4a6d7900
+	github.com/MarkRosemaker/openapi-compare v0.0.0-20261108230245-1c749fd12aa1
+	github.com/MarkRosemaker/openapi-edit v0.0.0-20261108230247-ae9812341df5
 	github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010200623-3b942fefdf03
 )
 
