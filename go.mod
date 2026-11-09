@@ -4,9 +4,9 @@ go 1.27
 
 require (
 	github.com/MarkRosemaker/cassette v0.0.0-20261010200555-d954f0014821
-	github.com/MarkRosemaker/openapi v0.0.0-20261109135105-2a95a2dad154
-	github.com/MarkRosemaker/openapi-compare v0.0.0-20261109135152-8a1c5021b581
-	github.com/MarkRosemaker/openapi-edit v0.0.0-20261109135154-4cb87b778e57
+	github.com/MarkRosemaker/openapi v0.0.0-20261109161642-725ef5aabe58
+	github.com/MarkRosemaker/openapi-compare v0.0.0-20261109161739-2fa272f4d24c
+	github.com/MarkRosemaker/openapi-edit v0.0.0-20261109161741-d76f0817b31b
 	github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010200623-3b942fefdf03
 )
 
@@ -17,7 +17,7 @@ require (
 	github.com/MarkRosemaker/jsonutil v0.0.0-20261109120454-26f22c55639c // indirect
 	github.com/MarkRosemaker/openapi-merge v0.0.0-20261009220258-57c4bc8ba894 // indirect
 	github.com/MarkRosemaker/ordmap v0.0.0-20261109120513-91fe4bc7e3db // indirect
-	github.com/MarkRosemaker/yaml v0.0.0-20261109134148-916ecfa7e164 // indirect
+	github.com/MarkRosemaker/yaml v0.0.0-20261109161623-86a6a512ccb9 // indirect
 	github.com/MarkRosemaker/yaml2json v0.0.0-20261109120453-1b901dbf7e8f // indirect
 	github.com/ettle/strcase v0.2.0 // indirect
 	github.com/go-api-libs/types v0.0.0-20261109120451-6cd1daca4971 // indirect
