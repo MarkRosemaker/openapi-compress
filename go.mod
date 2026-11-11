@@ -4,9 +4,9 @@ go 1.27
 
 require (
 	github.com/MarkRosemaker/cassette v0.0.0-20261010200555-d954f0014821
-	github.com/MarkRosemaker/openapi v0.0.0-20261109211946-32ea4a5e2711
-	github.com/MarkRosemaker/openapi-compare v0.0.0-20261109212022-f5a4f4a5080e
-	github.com/MarkRosemaker/openapi-edit v0.0.0-20261109212023-da578ef7b002
+	github.com/MarkRosemaker/openapi v0.0.0-20261111024415-25c3009dcfea
+	github.com/MarkRosemaker/openapi-compare v0.0.0-20261111024634-5238ae314349
+	github.com/MarkRosemaker/openapi-edit v0.0.0-20261111024639-8239f18d980b
 	github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010200623-3b942fefdf03
 )
 
@@ -14,7 +14,7 @@ require (
 	cloud.google.com/go v0.123.0 // indirect
 	github.com/MarkRosemaker/errpath v0.0.0-20261109120451-91cd29644c73 // indirect
 	github.com/MarkRosemaker/json2yaml v0.0.0-20261109120452-2329987d7bc8 // indirect
-	github.com/MarkRosemaker/jsonutil v0.0.0-20261109120454-26f22c55639c // indirect
+	github.com/MarkRosemaker/jsonutil v0.0.0-20261111023756-6c211037c3df // indirect
 	github.com/MarkRosemaker/openapi-merge v0.0.0-20261009220258-57c4bc8ba894 // indirect
 	github.com/MarkRosemaker/ordmap v0.0.0-20261109211921-475c54164ef0 // indirect
 	github.com/MarkRosemaker/yaml v0.0.0-20261109161623-86a6a512ccb9 // indirect
