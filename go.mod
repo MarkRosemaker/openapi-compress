@@ -6,7 +6,7 @@ require (
 	github.com/MarkRosemaker/cassette v0.0.0-20261010200555-d954f0014821
 	github.com/MarkRosemaker/openapi v0.0.0-20261113130942-537594635ea6
 	github.com/MarkRosemaker/openapi-compare v0.0.0-20261113131038-106c23012eba
-	github.com/MarkRosemaker/openapi-edit v0.0.0-20261113185459-918b985d04fb
+	github.com/MarkRosemaker/openapi-edit v0.0.0-20261113212259-fa195788a161
 	github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010200623-3b942fefdf03
 )
 
