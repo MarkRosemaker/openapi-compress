@@ -19,7 +19,7 @@ github.com/MarkRosemaker/openapi
 # github.com/MarkRosemaker/openapi-compare v0.0.0-20261113131038-106c23012eba
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-compare/schema
-# github.com/MarkRosemaker/openapi-edit v0.0.0-20261113131039-6e51bd94c90a
+# github.com/MarkRosemaker/openapi-edit v0.0.0-20261113185459-918b985d04fb
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-edit
 # github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010200623-3b942fefdf03
