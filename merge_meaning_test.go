@@ -79,3 +79,43 @@ func TestDocument_EnumsKeepTheirMeaning(t *testing.T) {
 		t.Error("RespKind, which flatten named, was kept beside an enum of the same values")
 	}
 }
+
+// TestDocument_DefaultsStayWhereUsed: two enums flatten named, alike but for their defaults, merge, and each default
+// stays beside the references to its enum, since what a value is when left out is the request's.
+func TestDocument_DefaultsStayWhereUsed(t *testing.T) {
+	doc, err := openapi.LoadFromDataJSON([]byte(`{
+  "openapi": "3.1.0",
+  "info": {"title": "t", "version": "1"},
+  "paths": {},
+  "components": {"schemas": {
+    "MapView": {"type": "string", "enum": ["low", "high"], "default": "high", "x-flattened-from": "Map.view"},
+    "RoomView": {"type": "string", "enum": ["low", "high"], "default": "low", "x-flattened-from": "Room.view"},
+    "Map": {"type": "object", "properties": {"view": {"$ref": "#/components/schemas/MapView"}, "width": {"type": "integer"}}},
+    "Room": {"type": "object", "properties": {"view": {"$ref": "#/components/schemas/RoomView"}}}
+  }}
+}`))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if err := compress.Document(doc, compress.Config{SkipNameShortening: true}); err != nil {
+		t.Fatal(err)
+	}
+
+	schemas := doc.Components.Schemas
+	if len(schemas) != 3 {
+		t.Fatalf("the views did not merge: %d schemas", len(schemas))
+	}
+
+	for owner, want := range map[string]string{"Map": `"high"`, "Room": `"low"`} {
+		if got := string(schemas[owner].Properties["view"].Default); got != want {
+			t.Errorf("%s.view defaults to %s, want %s", owner, got, want)
+		}
+	}
+
+	for name, s := range schemas {
+		if len(s.Enum) > 0 && len(s.Default) > 0 {
+			t.Errorf("%s, the enum kept, has a default of its own: %s", name, s.Default)
+		}
+	}
+}
