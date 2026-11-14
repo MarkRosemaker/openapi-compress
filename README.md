@@ -76,6 +76,9 @@ A description says what a schema is used for in one place, not what shape it
 has. When the schemas that merge disagree on it, each one's description moves
 beside the `$ref`s that pointed at it, and the schema kept has none, so no
 reference shows another's. A reference with a description of its own keeps it.
+Within the schema kept, a property, item or alternative that has no description
+takes one from those merged into it, as examples do: what a property is for is
+the same in both. Where both describe it, the one kept says what it does.
 
 ## Usage
 

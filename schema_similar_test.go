@@ -413,4 +413,27 @@ func TestFillExamples(t *testing.T) {
 			t.Errorf("%s: got example %s, want %s", name, got, want)
 		}
 	}
+	// what a property is for is the same in both, unless a says otherwise; a itself keeps its own
+	a = &openapi.Schema{Type: openapi.TypeObject, Properties: openapi.Schemas{
+		"kept":   &openapi.Schema{Type: openapi.TypeBoolean, Description: "Copy the outline"},
+		"filled": &openapi.Schema{Type: openapi.TypeBoolean},
+		"ref":    &openapi.Schema{Ref: &openapi.SchemaRef{Identifier: "#/components/schemas/X"}},
+	}}
+	b = &openapi.Schema{Type: openapi.TypeObject, Description: "Options of b", Properties: openapi.Schemas{
+		"kept":   &openapi.Schema{Type: openapi.TypeBoolean, Description: "Copy outline style"},
+		"filled": &openapi.Schema{Type: openapi.TypeBoolean, Description: "Copy color palette"},
+		"ref":    &openapi.Schema{Ref: &openapi.SchemaRef{Identifier: "#/components/schemas/X"}, Description: "Where it is from"},
+	}}
+
+	fillExamples(a, b)
+
+	if a.Description != "" {
+		t.Errorf("a took b's description %q", a.Description)
+	}
+
+	for name, want := range map[string]string{"kept": "Copy the outline", "filled": "Copy color palette", "ref": "Where it is from"} {
+		if got := a.Properties[name].Description; got != want {
+			t.Errorf("%s: got description %q, want %q", name, got, want)
+		}
+	}
 }
