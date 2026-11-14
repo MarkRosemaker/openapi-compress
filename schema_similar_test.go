@@ -352,14 +352,20 @@ func TestShortName_Unchanged(t *testing.T) {
 	}
 }
 
-func TestShortName_UniqueSuffix(t *testing.T) {
-	// When the shortened name collides, a numeric suffix is appended.
+func TestShortName_Taken(t *testing.T) {
+	// When the shortened name is another schema's, the word that tells a response from a request stays.
 	schemas := make(openapi.Schemas)
 	schemas.Set("PetByPetID", &openapi.Schema{Type: openapi.TypeObject})
 
-	got := shortName("GetV1PetByPetIDOkJSONResponse", schemas)
-	if got != "PetByPetID2" {
-		t.Errorf("want %q, got %q", "PetByPetID2", got)
+	if got := shortName("GetV1PetByPetIDOkJSONResponse", schemas); got != "PetByPetIDResponse" {
+		t.Errorf("want %q, got %q", "PetByPetIDResponse", got)
+	}
+
+	// When that is taken too, the name stays as it is.
+	schemas.Set("PetByPetIDResponse", &openapi.Schema{Type: openapi.TypeObject})
+
+	if got := shortName("GetV1PetByPetIDOkJSONResponse", schemas); got != "GetV1PetByPetIDOkJSONResponse" {
+		t.Errorf("want the name unchanged, got %q", got)
 	}
 }
 
