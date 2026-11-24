@@ -13,13 +13,13 @@ github.com/MarkRosemaker/json2yaml
 # github.com/MarkRosemaker/jsonutil v0.0.0-20261118230255-4b04cfc02484
 ## explicit; go 1.27
 github.com/MarkRosemaker/jsonutil
-# github.com/MarkRosemaker/openapi v0.0.0-20261121170220-f57f1b068362
+# github.com/MarkRosemaker/openapi v0.0.0-20261124050252-52a60c76de04
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi
-# github.com/MarkRosemaker/openapi-compare v0.0.0-20261121170251-5f29691172a2
+# github.com/MarkRosemaker/openapi-compare v0.0.0-20261124050336-b439780a57a8
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-compare/schema
-# github.com/MarkRosemaker/openapi-edit v0.0.0-20261121170253-65d58b25fa18
+# github.com/MarkRosemaker/openapi-edit v0.0.0-20261124050336-02af6fa36ba9
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-edit
 # github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010200623-3b942fefdf03
@@ -28,7 +28,7 @@ github.com/MarkRosemaker/openapi-enrich
 # github.com/MarkRosemaker/openapi-merge v0.0.0-20261009220258-57c4bc8ba894
 ## explicit; go 1.27
 github.com/MarkRosemaker/openapi-merge
-# github.com/MarkRosemaker/ordmap v0.0.0-20261121170147-e671a1e76005
+# github.com/MarkRosemaker/ordmap v0.0.0-20261124050216-f3096eb875be
 ## explicit; go 1.27
 github.com/MarkRosemaker/ordmap
 # github.com/MarkRosemaker/yaml v0.0.0-20261118230544-f88f96ca5149
@@ -43,7 +43,7 @@ github.com/ettle/strcase
 # github.com/go-api-libs/types v0.0.0-20261118230255-0e16a3d7de5d
 ## explicit; go 1.27
 github.com/go-api-libs/types
-# golang.org/x/exp v0.0.0-20261121134650-e1094eeca1b5
+# golang.org/x/exp v0.0.0-20261124000051-d6646c509b6d
 ## explicit; go 1.26.0
 golang.org/x/exp/maps
 # gopkg.in/yaml.v3 v3.0.1
