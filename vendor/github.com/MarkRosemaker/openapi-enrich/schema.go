@@ -49,7 +49,7 @@ func decodeSchema(dec *jsontext.Decoder) (*openapi.Schema, error) {
 
 	case '0': // number
 		str := v.String()
-		if _, err := strconv.Atoi(str); err == nil {
+		if _, err := strconv.ParseInt(str, 10, 64); err == nil {
 			return &openapi.Schema{Type: openapi.TypeInteger, Example: jsontext.Value(str)}, nil
 		}
 

@@ -12,7 +12,12 @@
 		"schema-inference",
 		"swagger"
 	],
-	"coverage": 83.9,
-	"devtoolVersion": "v0.0.0-20261009163607-d404613f6665",
-	"kind": "library"
+	"coverage": 84.4,
+	"devtoolVersion": "v0.0.0-20261127001746-34d10457ea40",
+	"kind": "library",
+	"tools": {
+		"golangci-lint": "v2.15.0",
+		"govulncheck": "v1.10.0",
+		"pkgsite": "v0.7.0"
+	}
 }

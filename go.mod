@@ -3,11 +3,11 @@ module github.com/MarkRosemaker/openapi-compress
 go 1.27
 
 require (
-	github.com/MarkRosemaker/cassette v0.0.0-20261010200555-d954f0014821
+	github.com/MarkRosemaker/cassette v0.0.0-20261127001959-2e9c977b04a7
 	github.com/MarkRosemaker/openapi v0.0.0-20261127002030-cbffd96bf394
 	github.com/MarkRosemaker/openapi-compare v0.0.0-20261127002121-d284f72800b7
 	github.com/MarkRosemaker/openapi-edit v0.0.0-20261127002121-4ed97994dce4
-	github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010200623-3b942fefdf03
+	github.com/MarkRosemaker/openapi-enrich v0.0.0-20261127002247-de0235d018f2
 )
 
 require (
@@ -15,7 +15,7 @@ require (
 	github.com/MarkRosemaker/errpath v0.0.0-20261127001931-41afc0b86075 // indirect
 	github.com/MarkRosemaker/json2yaml v0.0.0-20261127001931-55b661ab603c // indirect
 	github.com/MarkRosemaker/jsonutil v0.0.0-20261127001933-b07dbcceebd6 // indirect
-	github.com/MarkRosemaker/openapi-merge v0.0.0-20261009220258-57c4bc8ba894 // indirect
+	github.com/MarkRosemaker/openapi-merge v0.0.0-20261127002121-c54b5b9829ad // indirect
 	github.com/MarkRosemaker/ordmap v0.0.0-20261127001949-5d682e0c3100 // indirect
 	github.com/MarkRosemaker/yaml v0.0.0-20261127001955-6df1e561eef1 // indirect
 	github.com/MarkRosemaker/yaml2json v0.0.0-20261127001931-8d8f24890a05 // indirect

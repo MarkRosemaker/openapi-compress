@@ -96,13 +96,14 @@ func analyzeInteraction(doc *openapi.Document, ia *cassette.Interaction) error {
 	op, created := getOrCreateOperation(pi, ia.Request.Method)
 
 	// 5. Process query parameters.
-	if err := processQueryParams(doc, pi, op, reqURL); err != nil {
+	apiKeys, err := processQueryParams(doc, pi, op, reqURL)
+	if err != nil {
 		return fmt.Errorf("query params: %w", err)
 	}
 
 	// 6. Process request headers.
 	var contentType string
-	if err := processRequestHeaders(doc, pi.Parameters, op, created, ia.Request.Headers, &contentType); err != nil {
+	if err := processRequestHeaders(doc, pi.Parameters, op, created, ia.Request.Headers, apiKeys, &contentType); err != nil {
 		return fmt.Errorf("request headers: %w", err)
 	}
 
@@ -144,9 +145,16 @@ func getOrCreateOperation(pi *openapi.PathItem, method string) (op *openapi.Oper
 	return op, true
 }
 
-func processQueryParams(doc *openapi.Document, pi *openapi.PathItem, op *openapi.Operation, reqURL *url.URL) error {
+func processQueryParams(doc *openapi.Document, pi *openapi.PathItem, op *openapi.Operation, reqURL *url.URL) ([]openapi.SecuritySchemeName, error) {
+	var apiKeys []openapi.SecuritySchemeName
+
 	query := reqURL.Query()
 	for _, name := range slices.Sorted(maps.Keys(query)) {
+		if scheme, ok := apiKeyScheme(doc, openapi.SecuritySchemeInQuery, name); ok {
+			apiKeys = append(apiKeys, scheme)
+			continue
+		}
+
 		values := query[name]
 		value := strings.Join(values, ",")
 
@@ -159,7 +167,7 @@ func processQueryParams(doc *openapi.Document, pi *openapi.PathItem, op *openapi
 			// Comma-separated → non-exploded array
 			items, err := commaListSchema(value)
 			if err != nil {
-				return fmt.Errorf("param %q: %w", name, err)
+				return nil, fmt.Errorf("param %q: %w", name, err)
 			}
 
 			schema = &openapi.Schema{
@@ -179,7 +187,7 @@ func processQueryParams(doc *openapi.Document, pi *openapi.PathItem, op *openapi
 
 				schema, err = scalarSchema(value)
 				if err != nil {
-					return fmt.Errorf("param %q: %w", name, err)
+					return nil, fmt.Errorf("param %q: %w", name, err)
 				}
 			}
 		}
@@ -194,21 +202,42 @@ func processQueryParams(doc *openapi.Document, pi *openapi.PathItem, op *openapi
 		}
 
 		if err := addParam(doc, pi.Parameters, op, incoming); err != nil {
-			return fmt.Errorf("merging param %q: %w", name, err)
+			return nil, fmt.Errorf("merging param %q: %w", name, err)
 		}
 	}
 
-	return nil
+	return apiKeys, nil
 }
 
 // processRequestHeaders reads the request headers h into op; created says op has only just been added, so the
-// document's security says nothing yet about what it requires.
-func processRequestHeaders(doc *openapi.Document, piParams openapi.ParameterList, op *openapi.Operation, created bool, h http.Header, contentType *string) error {
-	if h.Get("Authorization") == "" {
-		allowAnonymous(doc, op, created)
+// document's security says nothing yet about what it requires. apiKeys are the apiKey schemes the query carried a
+// credential for.
+func processRequestHeaders(doc *openapi.Document, piParams openapi.ParameterList, op *openapi.Operation, created bool, h http.Header, apiKeys []openapi.SecuritySchemeName, contentType *string) error {
+	for _, c := range (&http.Request{Header: h}).Cookies() {
+		if scheme, ok := apiKeyScheme(doc, openapi.SecuritySchemeInCookie, c.Name); ok {
+			apiKeys = append(apiKeys, scheme)
+		}
 	}
 
 	for _, key := range slices.Sorted(maps.Keys(h)) {
+		if scheme, ok := apiKeyScheme(doc, openapi.SecuritySchemeInHeader, key); ok {
+			apiKeys = append(apiKeys, scheme)
+		}
+	}
+
+	if h.Get("Authorization") == "" && len(apiKeys) == 0 {
+		allowAnonymous(doc, op, created)
+	}
+
+	for _, scheme := range apiKeys {
+		requireAuth(doc, op, created, openapi.SecurityRequirement{scheme: []string{}})
+	}
+
+	for _, key := range slices.Sorted(maps.Keys(h)) {
+		if _, ok := apiKeyScheme(doc, openapi.SecuritySchemeInHeader, key); ok {
+			continue
+		}
+
 		// assume all keys are stored in canonical form
 		if canonical := http.CanonicalHeaderKey(key); canonical != key {
 			return fmt.Errorf("header %q: not in canonical form (%q)", key, canonical)
@@ -266,20 +295,7 @@ func processAuth(doc *openapi.Document, op *openapi.Operation, created bool, v s
 		return nil
 	}
 
-	// Add security scheme to components if not present.
-	if doc.Components.SecuritySchemes == nil {
-		doc.Components.SecuritySchemes = openapi.SecuritySchemes{}
-	}
-
-	name := openapi.SecuritySchemeName(schemeName)
-	if _, ok := doc.Components.SecuritySchemes[name]; !ok {
-		doc.Components.SecuritySchemes.Set(name, &openapi.SecuritySchemeRef{
-			Value: &openapi.SecurityScheme{
-				Type:   openapi.SecuritySchemeTypeHTTP,
-				Scheme: scheme,
-			},
-		})
-	}
+	name := httpScheme(doc, schemeName, scheme)
 
 	requireAuth(doc, op, created, openapi.SecurityRequirement{name: []string{}})
 
@@ -348,7 +364,7 @@ func processResponse(op *openapi.Operation, resp *cassette.Response) error {
 	sc := openapi.StatusCode(strconv.Itoa(resp.StatusCode))
 
 	if op.Responses == nil {
-		op.Responses = openapi.OperationResponses{}
+		op.Responses = openapi.OperationResponses{} //nolint:exhaustive
 	}
 
 	existing, ok := op.Responses[sc]
@@ -554,4 +570,25 @@ func addBinaryRequestBody(op *openapi.Operation, contentType string) {
 // binarySchema is the schema of a body that is not text: a string of bytes.
 func binarySchema() *openapi.Schema {
 	return &openapi.Schema{Type: openapi.TypeString, Format: openapi.FormatBinary}
+}
+
+// httpScheme is the name of the document's HTTP security scheme for scheme, as "bearer", adding one by name if it has
+// none: a spec that declares its bearer scheme as HTTPBearer keeps that one name for it.
+func httpScheme(doc *openapi.Document, name, scheme string) openapi.SecuritySchemeName {
+	for n, s := range doc.Components.SecuritySchemes.ByIndex() {
+		if s != nil && s.Value != nil && s.Value.Type == openapi.SecuritySchemeTypeHTTP &&
+			strings.EqualFold(s.Value.Scheme, scheme) {
+			return n
+		}
+	}
+
+	if doc.Components.SecuritySchemes == nil {
+		doc.Components.SecuritySchemes = openapi.SecuritySchemes{}
+	}
+
+	doc.Components.SecuritySchemes.Set(openapi.SecuritySchemeName(name), &openapi.SecuritySchemeRef{
+		Value: &openapi.SecurityScheme{Type: openapi.SecuritySchemeTypeHTTP, Scheme: scheme},
+	})
+
+	return openapi.SecuritySchemeName(name)
 }

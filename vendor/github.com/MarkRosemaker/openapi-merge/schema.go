@@ -2,13 +2,17 @@ package merge
 
 import (
 	"bytes"
+	"cmp"
 	"encoding/json/jsontext"
 	"encoding/json/v2"
 	"errors"
 	"fmt"
 	"maps"
+	"math"
 	"slices"
+	"strconv"
 	"strings"
+	"time"
 
 	"github.com/MarkRosemaker/errpath"
 	"github.com/MarkRosemaker/openapi"
@@ -237,6 +241,11 @@ func reconcileTypeMismatch(a, b *openapi.Schema, tp openapi.DataType, isParam bo
 		}
 
 		return false, nil
+	case tp == openapi.TypeString && (b.Type == openapi.TypeNumber || b.Type == openapi.TypeInteger) && isNumericString(a),
+		tp == openapi.TypeNumber && b.Type == openapi.TypeString && isNumericString(b):
+		// an API that sends numbers as strings, such as "9.5", and now and then a number, such as 0.0
+		mergeStringOrNumber(a, b)
+		return true, nil
 	case tp == openapi.TypeNumber && b.Type == openapi.TypeString && isInfinityExample(bJSON),
 		b.Type == openapi.TypeNumber && tp == openapi.TypeString && isZeroDoubleExample(bJSON):
 		b.Replace(a)
@@ -260,9 +269,81 @@ func reconcileTypeMismatch(a, b *openapi.Schema, tp openapi.DataType, isParam bo
 	case a.Type == openapi.TypeInteger && b.Type == openapi.TypeString:
 		b.Replace(a)
 		return true, nil
+	case a.Type == openapi.TypeObject && b.Type == openapi.TypeArray,
+		a.Type == openapi.TypeArray && b.Type == openapi.TypeObject:
+		// a value seen as an object in one sample and as an array in another, as a job's images, one per direction
+		// or a list of frames, is either
+		mergeObjectOrArray(a, b)
+		return true, nil
 	default:
 		return true, mismatchError("type", fmt.Errorf("%q != %q", tp, b.Type), a, b)
 	}
+}
+
+// widenIntegerFormat gives integers a and b the wider of their formats, int64 over int32 and uint64 over uint32, and a
+// 64-bit one where an example does not fit 32 bits.
+func widenIntegerFormat(a, b *openapi.Schema) {
+	for _, s := range []*openapi.Schema{a, b} {
+		var w openapi.Format
+
+		switch s.Format { //nolint:exhaustive // only 32-bit formats widen
+		case openapi.FormatInt32:
+			w = openapi.FormatInt64
+		case openapi.FormatUint32:
+			w = openapi.FormatUint64
+		default:
+			continue
+		}
+
+		if a.Format == w || b.Format == w || !fits32(a.Example, s.Format) || !fits32(b.Example, s.Format) {
+			a.Format, b.Format = w, w
+			return
+		}
+	}
+}
+
+// fits32 reports whether the integer example v, if any, fits the 32-bit format f.
+func fits32(v jsontext.Value, f openapi.Format) bool {
+	if len(v) == 0 {
+		return true
+	}
+
+	if f == openapi.FormatUint32 {
+		_, err := strconv.ParseUint(string(v), 10, 32)
+		return err == nil
+	}
+
+	_, err := strconv.ParseInt(string(v), 10, 32)
+
+	return err == nil
+}
+
+// fitsDateBasic reports whether the string example v, if any, is a date in ISO 8601's basic form, such as "20260320".
+func fitsDateBasic(v jsontext.Value) bool {
+	if len(v) == 0 {
+		return true
+	}
+
+	var str string
+	if json.Unmarshal(v, &str) != nil {
+		return false
+	}
+
+	_, err := time.Parse("20060102", str)
+
+	return err == nil
+}
+
+// isEmptyString reports whether v is the empty string.
+func isEmptyString(v jsontext.Value) bool { return string(v) == `""` }
+
+// withoutFormat is whichever of a and b has no format.
+func withoutFormat(a, b *openapi.Schema) *openapi.Schema {
+	if a.Format == "" {
+		return a
+	}
+
+	return b
 }
 
 // reconcileFormats resolves a and b's formats when either is unset, and
@@ -272,17 +353,9 @@ func reconcileFormats(a, b *openapi.Schema) error {
 	if a.Format == "" || b.Format == "" {
 		switch a.Type {
 		case openapi.TypeInteger:
-			// Except if one is a date or datetime, then we can transform the integer
-			if a.Format == openapi.FormatDate || a.Format == openapi.FormatDateTime ||
-				a.Format == openapi.FormatDuration {
-				b.Format = a.Format
-			} else if b.Format == openapi.FormatDate || b.Format == openapi.FormatDateTime ||
-				b.Format == openapi.FormatDuration {
-				a.Format = b.Format
-			} else {
-				a.Format = ""
-				b.Format = ""
-			}
+			// an integer without a format is one of any width: the other's format stays, wide enough for both below
+			f := cmp.Or(a.Format, b.Format)
+			a.Format, b.Format = f, f
 		case openapi.TypeNumber:
 			if a.Format != "" {
 				b.Format = a.Format
@@ -293,10 +366,33 @@ func reconcileFormats(a, b *openapi.Schema) error {
 				a.Format = openapi.FormatDouble
 				b.Format = openapi.FormatDouble
 			}
+		case openapi.TypeString:
+			// date-basic, which no sample is recorded with, stays where the value without a format fits it
+			switch f := cmp.Or(a.Format, b.Format); {
+			case f == openapi.FormatDateBasic && fitsDateBasic(a.Example) && fitsDateBasic(b.Example):
+				a.Format, b.Format = f, f
+			case (f == openapi.FormatDate || f == openapi.FormatDateTime) && isEmptyString(withoutFormat(a, b).Example):
+				// an empty string is a date or date-time left out, which a client reads as the zero value
+				if isEmptyString(a.Example) {
+					a.Example = b.Example
+				}
+
+				a.Format, b.Format = f, f
+			default:
+				// Merging only widens: a string without a format is either a contract that allows any string, such as
+				// an upstream specification declares, or what values that share no format left behind, and nothing
+				// tells the two apart. Taking the other side's format would claim of every value what one showed, and
+				// a generated client would then reject the values it does not fit. Keep it bare.
+				a.Format, b.Format = "", ""
+			}
 		default:
 			a.Format = ""
 			b.Format = ""
 		}
+	}
+
+	if a.Type == openapi.TypeInteger {
+		widenIntegerFormat(a, b)
 	}
 
 	// check that the formats are the same
@@ -1194,6 +1290,60 @@ func mergeDateTimeOrTimestamp(a, b *openapi.Schema) {
 			&strCopy,
 			&intCopy,
 		},
+	}
+
+	a.Replace(&merged)
+	b.Replace(&merged)
+}
+
+// mergeObjectOrArray makes a and b a oneOf of an object and an array, the object first, storing the result in both.
+func mergeObjectOrArray(a, b *openapi.Schema) {
+	obj, arr := *a, *b
+	if a.Type == openapi.TypeArray {
+		obj, arr = *b, *a
+	}
+
+	obj.Title, obj.Description = "", ""
+	arr.Title, arr.Description = "", ""
+
+	merged := openapi.Schema{Title: a.Title, Description: a.Description, OneOf: openapi.SchemaList{&obj, &arr}}
+
+	a.Replace(&merged)
+	b.Replace(&merged)
+}
+
+// isNumericString reports whether the string schema s holds numbers, as its example says: "9.5", say, not "foo".
+func isNumericString(s *openapi.Schema) bool {
+	var v string
+	if json.Unmarshal(s.Example, &v) != nil {
+		return false
+	}
+
+	f, err := strconv.ParseFloat(v, 64)
+
+	return err == nil && !math.IsInf(f, 0) && !math.IsNaN(f) // "Infinity" is an overflow, see [isInfinityExample]
+}
+
+// mergeStringOrNumber makes a and b a oneOf of a string and a number, the string first, each with its own example: a
+// number sent as a string sometimes and as a number other times. An integer's alternative is a number, as the strings
+// may hold fractions.
+func mergeStringOrNumber(a, b *openapi.Schema) {
+	str, num := *a, *b
+	if a.Type != openapi.TypeString {
+		str, num = *b, *a
+	}
+
+	str.Title, str.Description = "", ""
+	num.Title, num.Description = "", ""
+
+	if num.Type == openapi.TypeInteger {
+		num.Type, num.Format = openapi.TypeNumber, openapi.FormatDouble
+	}
+
+	merged := openapi.Schema{
+		Title:       a.Title,
+		Description: a.Description,
+		OneOf:       openapi.SchemaList{&str, &num},
 	}
 
 	a.Replace(&merged)

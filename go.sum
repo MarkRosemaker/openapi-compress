@@ -1,7 +1,7 @@
 cloud.google.com/go v0.123.0 h1:2NAUJwPR47q+E35uaJeYoNhuNEM9kM8SjgRgdeOJUSE=
 cloud.google.com/go v0.123.0/go.mod h1:xBoMV08QcqUGuPW65Qfm1o9Y4zKZBpGS+7bImXLTAZU=
-github.com/MarkRosemaker/cassette v0.0.0-20261010200555-d954f0014821 h1:BJd5QgPqSqRtZzzwuCr4R39XrILSObBSpOnBz5XgBog=
-github.com/MarkRosemaker/cassette v0.0.0-20261010200555-d954f0014821/go.mod h1:6zKCA830qu54cr4aMj9nnbS3n+PoVj4364DB4FFWJc4=
+github.com/MarkRosemaker/cassette v0.0.0-20261127001959-2e9c977b04a7 h1:s4iZamcKdjIP2Eh/PmRT4k3gKpQsyO88XwKhGorMeA8=
+github.com/MarkRosemaker/cassette v0.0.0-20261127001959-2e9c977b04a7/go.mod h1:VC3Nc2r+4OJ1c6gRtJjs4H4jp0Iy11PbLPkys6+O/Y4=
 github.com/MarkRosemaker/errpath v0.0.0-20261127001931-41afc0b86075 h1:qJS31SpFD4TSnn2cOfh7n3dhsyUleXsl0o+Svo4JzMk=
 github.com/MarkRosemaker/errpath v0.0.0-20261127001931-41afc0b86075/go.mod h1:VnXpUlsS3n1gSToedcQl2FCARGoA16CyitbCanUIv+I=
 github.com/MarkRosemaker/json2yaml v0.0.0-20261127001931-55b661ab603c h1:t+nWAPGKlpQTpcDVessJk4Jl1PABKdeO3bdEFisb1pY=
@@ -14,10 +14,10 @@ github.com/MarkRosemaker/openapi-compare v0.0.0-20261127002121-d284f72800b7 h1:1
 github.com/MarkRosemaker/openapi-compare v0.0.0-20261127002121-d284f72800b7/go.mod h1:YKLfAnLhQ1OJ6/Qw9ECIx1ksyIwJ1hFEhcmfahGy/9E=
 github.com/MarkRosemaker/openapi-edit v0.0.0-20261127002121-4ed97994dce4 h1:fRrkCFQpd7v0Ewlntg+wDTVn42uoxVdv5jrxkK6knU8=
 github.com/MarkRosemaker/openapi-edit v0.0.0-20261127002121-4ed97994dce4/go.mod h1:bLiMu+sL/nAXYYThHFqcGrR/L6oETgYbMvisefjc0Oc=
-github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010200623-3b942fefdf03 h1:RHXZfeyefM1V/GaxZJ+RAUVGBpAtdb2u6k6f7grWLiw=
-github.com/MarkRosemaker/openapi-enrich v0.0.0-20261010200623-3b942fefdf03/go.mod h1:autrmEPWisPks3aJzJHcxKf8K6Mpk1Ph3jg1XywizDk=
-github.com/MarkRosemaker/openapi-merge v0.0.0-20261009220258-57c4bc8ba894 h1:fK6ld3zdSy1tJcVa7S9kixkn5e/IyLVQHowed2yLLOU=
-github.com/MarkRosemaker/openapi-merge v0.0.0-20261009220258-57c4bc8ba894/go.mod h1:JAAF3M82LuQyQ7+ByxhADsiy9e8ZxJQ8viAOsjrwS0c=
+github.com/MarkRosemaker/openapi-enrich v0.0.0-20261127002247-de0235d018f2 h1:ZgJnMp+8yuOpD1DCksDtyLSI2XBRcd6Kl5cyJXt5P9Q=
+github.com/MarkRosemaker/openapi-enrich v0.0.0-20261127002247-de0235d018f2/go.mod h1:M8SjfSVoNs/xuz0/juL9v7wIhvraJ8g6oumfaDJGl2A=
+github.com/MarkRosemaker/openapi-merge v0.0.0-20261127002121-c54b5b9829ad h1:H9p+NAN0aPhJEakGPITKrwhiXasrWhXjEOYGbnqKTek=
+github.com/MarkRosemaker/openapi-merge v0.0.0-20261127002121-c54b5b9829ad/go.mod h1:aOUsdtzvGlac3zEDxVhBkjQChneq6DUXMKxJ5t3u2To=
 github.com/MarkRosemaker/ordmap v0.0.0-20261127001949-5d682e0c3100 h1:wvglUubdVe8277qBGegUZI4NrDT3rHqaRaOam5em5Mk=
 github.com/MarkRosemaker/ordmap v0.0.0-20261127001949-5d682e0c3100/go.mod h1:BVGp9B5Xop+ZJENNy8Fd/qcRO6jzJJEtH+aT9WYROa8=
 github.com/MarkRosemaker/yaml v0.0.0-20261127001955-6df1e561eef1 h1:2dRaK6fC3atBQM5m8Uyjwn3Q3Q6GwraeqcwA6y3esgs=
